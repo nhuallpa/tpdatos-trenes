@@ -13,6 +13,7 @@ RM := rm -rf
 -include src/persistence/subdir.mk
 -include src/logger/exceptions/subdir.mk
 -include src/logger/subdir.mk
+-include src/iu/subdir.mk
 -include src/index/subdir.mk
 -include src/entidades/subdir.mk
 -include src/bplustree/strategies/subdir.mk
