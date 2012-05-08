@@ -25,7 +25,7 @@ int main(int argc, char** argv){
     //interfaz de usuario para operar elementos de manera unitaria
 
 	Menu* menu_principal     = new MenuPrincipal();
-
+	// TODO este metodo deberia devolver una "operacion" a trabajar.
 	menu_principal->iniciar();
 
 	return 0;
