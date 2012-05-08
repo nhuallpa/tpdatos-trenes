@@ -98,7 +98,7 @@ public:
 	virtual std::string serialize();
 	virtual void unserialize(std::string &buffer);
 
-	/* Devuelve el tama�o de los datos del nodo: Level y RegisterCount */
+	/* Devuelve el tamanio de los datos del nodo: Level y RegisterCount */
 	virtual int getDataSize();
 	friend ostream& operator<<(ostream&,BNode&);
 	virtual ostream& printMe(ostream&)=0;
