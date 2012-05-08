@@ -1,4 +1,4 @@
-src/KDTree.d src/KDTree.o: ../src/KDTree.cpp ../src/bplustree/BPlusTree.h \
+src/KDTree.d: ../src/KDTree.cpp ../src/bplustree/BPlusTree.h \
  ../src/bplustree/../utils/const.h ../src/bplustree/BNode.h \
  ../src/bplustree/../persistence/Block.h \
  ../src/bplustree/../persistence/ISerializable.h \
@@ -40,7 +40,11 @@ src/KDTree.d src/KDTree.o: ../src/KDTree.cpp ../src/bplustree/BPlusTree.h \
  ../src/index/../index/../index/../bplustree/../persistence/ISerializable.h \
  ../src/index/../index/../index/../bplustree/../utils/types.h \
  ../src/index/../index/../index/../bplustree/exceptions/ProgramException.h \
- ../src/index/../index/../index/../bplustree/BPlusTree.h
+ ../src/index/../index/../index/../bplustree/BPlusTree.h \
+ ../src/utils/util_main.h ../src/iu/Menu.h ../src/iu/UtilMenu.h \
+ ../src/iu/MenuPrincipal.h ../src/iu/Menu.h ../src/iu/MenuAlta.h \
+ ../src/iu/MenuBaja.h ../src/iu/MenuModificacion.h \
+ ../src/iu/MenuConsulta.h
 
 ../src/bplustree/BPlusTree.h:
 
@@ -137,3 +141,21 @@ src/KDTree.d src/KDTree.o: ../src/KDTree.cpp ../src/bplustree/BPlusTree.h \
 ../src/index/../index/../index/../bplustree/exceptions/ProgramException.h:
 
 ../src/index/../index/../index/../bplustree/BPlusTree.h:
+
+../src/utils/util_main.h:
+
+../src/iu/Menu.h:
+
+../src/iu/UtilMenu.h:
+
+../src/iu/MenuPrincipal.h:
+
+../src/iu/Menu.h:
+
+../src/iu/MenuAlta.h:
+
+../src/iu/MenuBaja.h:
+
+../src/iu/MenuModificacion.h:
+
+../src/iu/MenuConsulta.h:

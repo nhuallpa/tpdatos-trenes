@@ -27,6 +27,7 @@ src/utils \
 src/persistence \
 src/logger/exceptions \
 src/logger \
+src/iu \
 src/index \
 src/entidades \
 src/bplustree/strategies \

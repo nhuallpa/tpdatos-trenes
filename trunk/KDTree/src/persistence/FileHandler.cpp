@@ -17,3 +17,4 @@ void FileHandler::init(){
 }
 
 
+// tengo que extender de esta clase?
