@@ -1,0 +1,7 @@
+1,Choque con otra formacion
+2,incendio
+3,choque con estacion
+4,descarrilado
+5,desacoplado
+6,no enciende
+7,se corto la energia en un tramo

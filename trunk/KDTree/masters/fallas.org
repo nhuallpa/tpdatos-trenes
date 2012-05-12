@@ -1,0 +1,7 @@
+1,No cierras las puertas
+2,Cierran al 50 porciento
+3,Cierran al 80 porciento
+4,Enganchan mal los bagones
+5,no frena
+6,frena al 50%
+7,frena al 80%
