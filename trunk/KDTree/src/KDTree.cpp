@@ -23,8 +23,8 @@
 int main(int argc, char** argv){
 	cout<<"INTERFAZ DE USUARIO::"<<endl;
     //interfaz de usuario para operar elementos de manera unitaria
-
-	Menu* menu_principal     = new MenuPrincipal();
+	KDTreeController kdTreeController;
+	Menu* menu_principal     = new MenuPrincipal(kdTreeController);
 	// TODO este metodo deberia devolver una "operacion" a trabajar.
 	menu_principal->iniciar();
 

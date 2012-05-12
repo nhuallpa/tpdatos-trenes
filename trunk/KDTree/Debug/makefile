@@ -16,6 +16,7 @@ RM := rm -rf
 -include src/iu/subdir.mk
 -include src/index/subdir.mk
 -include src/entidades/subdir.mk
+-include src/controller/subdir.mk
 -include src/bplustree/strategies/subdir.mk
 -include src/bplustree/exceptions/subdir.mk
 -include src/bplustree/subdir.mk

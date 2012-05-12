@@ -30,6 +30,7 @@ src/logger \
 src/iu \
 src/index \
 src/entidades \
+src/controller \
 src/bplustree/strategies \
 src/bplustree/exceptions \
 src/bplustree \

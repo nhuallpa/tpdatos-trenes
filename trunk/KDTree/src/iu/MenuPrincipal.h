@@ -14,13 +14,19 @@
 #include "MenuModificacion.h"
 #include "MenuConsulta.h"
 #include "UtilMenu.h"
+#include "../controller/KDTreeController.h"
 
 class MenuPrincipal: public Menu {
+
+private:
+	KDTreeController kdTreeController;
+
 public:
-	MenuPrincipal();
+	MenuPrincipal(KDTreeController& kdTreeController);
 	virtual ~MenuPrincipal();
 	void iniciar();
 	void mostrar();
+    KDTreeController& getKdTreeController() {return this->kdTreeController;}
 };
 
 #endif /* MENUPRINCIPAL_H_ */

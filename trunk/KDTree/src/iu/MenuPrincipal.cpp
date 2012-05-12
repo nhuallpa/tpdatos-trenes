@@ -7,7 +7,7 @@
 
 #include "MenuPrincipal.h"
 
-MenuPrincipal::MenuPrincipal() {
+MenuPrincipal::MenuPrincipal(KDTreeController &kdTreeController):kdTreeController(kdTreeController)  {
 	// TODO Auto-generated constructor stub
 
 }
@@ -28,7 +28,9 @@ void MenuPrincipal::mostrar(){
 
 void MenuPrincipal::iniciar()
 {
-	Menu* menu_alta          = new MenuAlta();
+	this->getKdTreeController().init();
+
+	Menu* menu_alta          = new MenuAlta(this->getKdTreeController());
 	Menu* menu_baja          = new MenuBaja();
 	Menu* menu_modifcacion   = new MenuModificacion();
 	Menu* menu_consulta      = new MenuConsulta();
@@ -54,5 +56,9 @@ void MenuPrincipal::iniciar()
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
     }
+    delete menu_alta;
+    delete menu_baja;
+    delete menu_modifcacion;
+    delete menu_consulta;
 
 }

@@ -9,15 +9,24 @@
 #define MENUALTA_H_
 
 #include "Menu.h"
+#include "../controller/KDTreeController.h"
 
 class MenuAlta: public Menu {
+
+private:
+	KDTreeController kdTreeController;
+
 public:
-	MenuAlta();
+	MenuAlta(KDTreeController& kdTreeController);
 	virtual ~MenuAlta();
 	void iniciar();
 	void mostrar();
+
+	KDTreeController& getController() { return this->kdTreeController;}
+
 private:
 	void insertar_elemento();
+	void mostrarLista(list<string>& lista);
 };
 
 #endif /* MENUALTA_H_ */
