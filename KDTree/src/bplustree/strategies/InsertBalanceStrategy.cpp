@@ -27,7 +27,7 @@ int InsertBalanceStrategy::getTypeOfStrategy(){
  */
 bool InsertBalanceStrategy::doBalance(Node* parent,BNode* child){
 	bool hasChanged=false;
-	bool hasChangedForUnderflow;
+	bool hasChangedForUnderflow = false;
 	ComposedBalanceStrategy* strategy=BalanceStrategyFactory::createComposedBalanceStrategy(OVERFLOW);
 	hasChanged=strategy->doBalance(parent,child,this);
 	strategy=BalanceStrategyFactory::createComposedBalanceStrategy(UNDERFLOW);

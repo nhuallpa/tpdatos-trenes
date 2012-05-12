@@ -18,4 +18,7 @@
 
 #define RANDOM_VOTANTES 1000
 
+
+#define ARCH_LINEAS "masters/lineas.org"
+
 #endif /* CONST_H_ */

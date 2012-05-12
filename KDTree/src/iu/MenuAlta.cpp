@@ -7,7 +7,7 @@
 
 #include "MenuAlta.h"
 
-MenuAlta::MenuAlta() {
+MenuAlta::MenuAlta(KDTreeController& kdTreeController): kdTreeController(kdTreeController){
 	// TODO Auto-generated constructor stub
 }
 
@@ -21,6 +21,8 @@ void MenuAlta::mostrar(){
     cout<<"1-insertar elemento"<<endl;
     cout<<"2-salir del menu de Altas"<<endl;
 }
+
+
 
 void MenuAlta::iniciar(){
     bool salir_alta = false;
@@ -46,16 +48,27 @@ void MenuAlta::insertar_elemento()
     string accidente = "";
     string franjaHoraria = "";
 
-    cout<<"Insertar nombre de linea: ";
-        cin>>linea;
-        UtilMenu::limpiar_pantalla();
-    cout<<"Insertar nombre de formacion: ";
+
+    list<string>& lista = this->getController().getLineas();
+    this->mostrarLista(lista);
+    bool valida = true;
+    do {
+    cout<<"Insertar nro de linea: ";
+    cin>>linea;
+    valida = this->getController().validarNroLinea(linea);
+    } while (!valida);
+    UtilMenu::limpiar_pantalla();
+
+
+
+
+    cout<<"Insertar nro de formacion: ";
         cin>>formacion;
         UtilMenu::limpiar_pantalla();
-    cout<<"Insertar nombre de falla: ";
+    cout<<"Insertar nro de falla: ";
         cin>>falla;
         UtilMenu::limpiar_pantalla();
-    cout<<"Insertar nombre de accidente: ";
+    cout<<"Insertar nro de accidente: ";
         cin>>accidente;
         UtilMenu::limpiar_pantalla();
 	cout<<"Insertar franja horaria del siniestro: ";
@@ -69,4 +82,15 @@ void MenuAlta::insertar_elemento()
     cout<<"accidente: "<<accidente<<endl;
     cout<<"franjaHoraria: "<<franjaHoraria<<endl;
 }
+
+void MenuAlta::mostrarLista(list<string> & lista) {
+	list<string>::iterator it;
+	for (it=lista.begin(); it!=lista.end(); it++){
+		cout<<*it<<endl;
+	}
+}
+
+
+
+
 

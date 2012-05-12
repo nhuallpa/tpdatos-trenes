@@ -43,8 +43,9 @@ src/KDTree.d: ../src/KDTree.cpp ../src/bplustree/BPlusTree.h \
  ../src/index/../index/../index/../bplustree/BPlusTree.h \
  ../src/utils/util_main.h ../src/iu/Menu.h ../src/iu/UtilMenu.h \
  ../src/iu/MenuPrincipal.h ../src/iu/Menu.h ../src/iu/MenuAlta.h \
- ../src/iu/MenuBaja.h ../src/iu/MenuModificacion.h \
- ../src/iu/MenuConsulta.h
+ ../src/iu/../controller/KDTreeController.h \
+ ../src/iu/../controller/../utils/const.h ../src/iu/MenuBaja.h \
+ ../src/iu/MenuModificacion.h ../src/iu/MenuConsulta.h
 
 ../src/bplustree/BPlusTree.h:
 
@@ -153,6 +154,10 @@ src/KDTree.d: ../src/KDTree.cpp ../src/bplustree/BPlusTree.h \
 ../src/iu/Menu.h:
 
 ../src/iu/MenuAlta.h:
+
+../src/iu/../controller/KDTreeController.h:
+
+../src/iu/../controller/../utils/const.h:
 
 ../src/iu/MenuBaja.h:
 
