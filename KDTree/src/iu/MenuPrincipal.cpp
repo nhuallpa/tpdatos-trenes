@@ -35,7 +35,7 @@ void MenuPrincipal::iniciar()
 	Menu* menu_modifcacion   = new MenuModificacion();
 	Menu* menu_consulta      = new MenuConsulta();
 
-    //primero creo la interfax de usuario cuando se tenga que operar con elementos unitarios
+    //TODO by ariel:primero creo la interfax de usuario cuando se tenga que operar con elementos unitarios
     //y no en conjuntos mediante archivos de configuracion
 
     bool salir = false;

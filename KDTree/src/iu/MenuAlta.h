@@ -27,6 +27,7 @@ public:
 private:
 	void insertar_elemento();
 	void mostrarLista(list<string>& lista);
+	string elejir_subElemento_segun(string tipo_deSubElemento, list<string>& lista);
 };
 
 #endif /* MENUALTA_H_ */
