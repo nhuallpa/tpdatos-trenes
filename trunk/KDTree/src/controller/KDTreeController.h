@@ -12,12 +12,24 @@
 #include <string>
 #include <list>
 #include "../utils/const.h"
+#include "../iu/UtilMenu.h"
 using namespace std;
+
+#include <stdlib.h>
+#include <string.h>
 
 class KDTreeController {
 
 private:
+	//listas de subElementos...
 	list<string> listLineas;
+	list<string> listFormaciones;
+	list<string> listFallas;
+	list<string> listAccidentes;
+	list<string> listFranjasHorarias;
+
+	//para validar los numeros elejidos de los subElementos
+	int cantidades_enListas[CANT_SUBELEMENTOS];
 
 public:
 	KDTreeController();
@@ -25,9 +37,16 @@ public:
 	void init();
 
 	list<string>& getLineas() { return this->listLineas;}
-	// TODO: (Nestor) falta validar el numero de la linea contra la lista
-	bool validarNroLinea(string& nroLinea) ;
+	list<string>& getFormaciones() { return this->listFormaciones;}
+	list<string>& getFallas() { return this->listFallas;}
+	list<string>& getAccidentes() { return this->listAccidentes;}
+	list<string>& getFranjasHorarias() { return this->listFranjasHorarias;}
 
+	// TODO: (Ariel) terminar de implementar la validacion...
+	bool validarNroSubElemento(string& tipo_deSubElemento, string& subElemento);
+
+private:
+	void levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida);
 };
 
 #endif /* KDTREECONTROLLER_H_ */

@@ -22,8 +22,6 @@ void MenuAlta::mostrar(){
     cout<<"2-salir del menu de Altas"<<endl;
 }
 
-
-
 void MenuAlta::iniciar(){
     bool salir_alta = false;
     while(!salir_alta)
@@ -48,33 +46,13 @@ void MenuAlta::insertar_elemento()
     string accidente = "";
     string franjaHoraria = "";
 
+    linea = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(0), this->getController().getLineas());
+    formacion = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(1), this->getController().getFormaciones());
+    falla = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(2), this->getController().getFallas());
+    accidente = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(3), this->getController().getAccidentes());
+    franjaHoraria = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(4), this->getController().getFranjasHorarias());
 
-    list<string>& lista = this->getController().getLineas();
-    this->mostrarLista(lista);
-    bool valida = true;
-    do {
-    cout<<"Insertar nro de linea: ";
-    cin>>linea;
-    valida = this->getController().validarNroLinea(linea);
-    } while (!valida);
-    UtilMenu::limpiar_pantalla();
-
-
-
-
-    cout<<"Insertar nro de formacion: ";
-        cin>>formacion;
-        UtilMenu::limpiar_pantalla();
-    cout<<"Insertar nro de falla: ";
-        cin>>falla;
-        UtilMenu::limpiar_pantalla();
-    cout<<"Insertar nro de accidente: ";
-        cin>>accidente;
-        UtilMenu::limpiar_pantalla();
-	cout<<"Insertar franja horaria del siniestro: ";
-		cin>>franjaHoraria;
-		UtilMenu::limpiar_pantalla();
-
+    //TODO tengo que estructurar estos sub elementos en un elemento encapsulado por una interfax
     cout<<"::Datos Insertados::"<<endl;
     cout<<"linea: "<<linea<<endl;
     cout<<"formacion: "<<formacion<<endl;
@@ -83,14 +61,23 @@ void MenuAlta::insertar_elemento()
     cout<<"franjaHoraria: "<<franjaHoraria<<endl;
 }
 
+string MenuAlta::elejir_subElemento_segun(string tipo_deSubElemento, list<string>& lista)
+{
+    this->mostrarLista(lista);
+    string nroSubElemento;
+    bool valida = true;
+    do {
+		cout<<"Insertar nro de "<<tipo_deSubElemento<<": ";
+		cin>>nroSubElemento;
+		valida = this->getController().validarNroSubElemento(tipo_deSubElemento, nroSubElemento);
+    } while (!valida);
+    UtilMenu::limpiar_pantalla();
+    return nroSubElemento;
+}
+
 void MenuAlta::mostrarLista(list<string> & lista) {
 	list<string>::iterator it;
 	for (it=lista.begin(); it!=lista.end(); it++){
 		cout<<*it<<endl;
 	}
 }
-
-
-
-
-

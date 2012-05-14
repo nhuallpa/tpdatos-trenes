@@ -82,23 +82,26 @@ void MenuConsulta::crearEstructura_deResulado()
 void MenuConsulta::crearFiltro_deConsulta()
 {
 	//TODO filtro en proceso de construccion
-	this->cant_campos_enFiltro = 1;
+	this->cant_campos_enFiltro = 0;
 	this->estructura_filtro = new string[this->cant_campos_enFiltro];
-	this->estructura_filtro[0] = "[filtro en proceso de construccion]";
 	UtilMenu::limpiar_pantalla();
 
 	////////////////////////////////////////////////////////////////////////////
-	cout<<"La estructura del filtro de la consulta es:"<<endl;
-	UtilMenu::verEstructuraFiltro(this->estructura_filtro, this->cant_campos_enFiltro);
-	cout<<endl;
+	cout<<"Crear filtro de consulta: en proceso de construccion..."<<endl;
 }
 
 void MenuConsulta::verConsulta(){
 	cout<<"El formato de la consulta es(tipo MySql):"<<endl;
 	cout<<"SELECT ";
-	UtilMenu::verEstructraResultado(this->estructura_resultado, this->cant_campos_enResultado);
+	if (this->cant_campos_enResultado < 1)
+		cout<<"* ";
+	else
+		UtilMenu::verEstructraResultado(this->estructura_resultado, this->cant_campos_enResultado);
 	cout<<"FROM tabla-arbolKD WHERE ";
-	UtilMenu::verEstructuraFiltro(this->estructura_filtro, this->cant_campos_enFiltro);
+	if (this->cant_campos_enFiltro < 1)
+		cout<<"1";
+	else
+		UtilMenu::verEstructuraFiltro(this->estructura_filtro, this->cant_campos_enFiltro);
 	cout<<";"<<endl;
 }
 
