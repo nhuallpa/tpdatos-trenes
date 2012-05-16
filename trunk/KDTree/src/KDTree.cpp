@@ -19,14 +19,23 @@
 
 #include "iu/Menu.h"
 #include "iu/MenuPrincipal.h"
+#include "horario/TestFranjaHoraria.h"
+
+void iniciartestFranajaHoraria(){
+	//para testear la clase FranjaHoraria
+	TestFranjaHoraria* testFranajaHoraria = new TestFranjaHoraria();
+	testFranajaHoraria->iniciar();
+}
 
 int main(int argc, char** argv){
-	cout<<"INTERFAZ DE USUARIO::"<<endl;
+	//cout<<"INTERFAZ DE USUARIO::"<<endl;
     //interfaz de usuario para operar elementos de manera unitaria
 	KDTreeController kdTreeController;
 	Menu* menu_principal     = new MenuPrincipal(kdTreeController);
 	// TODO este metodo deberia devolver una "operacion" a trabajar.
 	menu_principal->iniciar();
+
+//	iniciartestFranajaHoraria();
 
 	return 0;
 }
