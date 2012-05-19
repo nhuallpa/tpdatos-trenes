@@ -20,6 +20,8 @@ class MenuPrincipal: public Menu {
 
 private:
 	KDTreeController kdTreeController;
+	//TODO actualizarlo
+	Operacion* operacionElejida;
 
 public:
 	MenuPrincipal(KDTreeController& kdTreeController);
@@ -27,6 +29,9 @@ public:
 	void iniciar();
 	void mostrar();
     KDTreeController& getKdTreeController() {return this->kdTreeController;}
+
+    Operacion* getOperacionElejida();
+
 };
 
 #endif /* MENUPRINCIPAL_H_ */

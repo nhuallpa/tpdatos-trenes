@@ -16,10 +16,14 @@ private:
 	int cant_campos_enResultado;
 	string* estructura_filtro;
 	int cant_campos_enFiltro;
+	KDTreeController kdTreeController;
+	//TODO actualizarlo
+	Operacion* operacionElejida;
 public:
 	MenuConsulta();
 	virtual ~MenuConsulta();
 	void iniciar();
+	Operacion* getOperacionElejida(){ return this->operacionElejida; }
 private:
 	void mostrar();
 	void mostrarMenu_estructuraResultado();
