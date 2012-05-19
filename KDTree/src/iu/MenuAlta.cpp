@@ -7,8 +7,10 @@
 
 #include "MenuAlta.h"
 
-MenuAlta::MenuAlta(KDTreeController& kdTreeController): kdTreeController(kdTreeController){
-	// TODO Auto-generated constructor stub
+MenuAlta::MenuAlta(KDTreeController& kdTreeController){
+	this->kdTreeController = kdTreeController;
+	this->operacionElejida = new Operacion();
+	this->operacion_fueCreada = true;
 }
 
 MenuAlta::~MenuAlta() {

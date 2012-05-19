@@ -34,7 +34,7 @@ public:
 	    string cod;
 	    ifstream in(arch_franjasHorarias, ios::in);
 	    if (in)
-	    	cout<<"abrio bien"<<endl;
+	    	cout<<"abrio: "<<arch_franjasHorarias<<endl;
 	    list<FranjaHoraria*>::iterator it; //20120320-1200-2400
 	    int cont = 0;
 	    while (!in.eof() && cont < 2){
@@ -44,20 +44,34 @@ public:
 			if (in.good()) {
 				//logica  de desformateo de la franja Horaria
 				string bufString(buffer);
-				int anio = atoi(bufString.substr(0,3).c_str());
-				int mes = atoi(bufString.substr(4,5).c_str());
-				int dia = atoi(bufString.substr(6,7).c_str());
-				int horaInicio_ = atoi(bufString.substr(9,10).c_str());
-				int minutoInicio = atoi(bufString.substr(11,12).c_str());
-				int horaFin_ = atoi(bufString.substr(14,15).c_str());
-				int minutoFin = atoi(bufString.substr(16,17).c_str());
+//				int anio = bufString.substr(0,3).c_str());
+//				int mes = bufString.substr(4,5).c_str());
+//				int dia = bufString.substr(6,7).c_str());
+//				int horaInicio_ = bufString.substr(9,10).c_str());
+//				int minutoInicio = bufString.substr(11,12).c_str());
+//				int horaFin_ = bufString.substr(14,15).c_str());
+//				int minutoFin = bufString.substr(16,17).c_str());
 
-				Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
-				Hour* horaFin = new Hour(horaFin_, minutoFin);
-				Date* fecha = new Date(dia, mes, anio);
-				FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
+				//TODO corregir este maldito calculo
+//				ejemplo de dos primeras lineas del archivo:
+//				20120320-0000-1200
+//				20120320-1200-2400
+				cout<<bufString<<endl;
+				string anio = bufString.substr(0,4);
+				string mes = bufString.substr(5,6);
+				string dia = bufString.substr(7,8);
+				string horaInicio_ = bufString.substr(9,10);
+				string minutoInicio = bufString.substr(11,12);
+				string horaFin_ = bufString.substr(14,15);
+				string minutoFin = bufString.substr(16,17);
+				cout<<horaInicio_<<":"<<minutoInicio<<"-"<<horaFin_<<":"<<minutoFin<<" "<<dia<<"/"<<mes<<"/"<<anio<<endl;
 
-				this->franjasHorarias.push_back(fh);
+//				Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
+//				Hour* horaFin = new Hour(horaFin_, minutoFin);
+//				Date* fecha = new Date(dia, mes, anio);
+//				FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
+//				cout<<*fh<<endl;
+//				this->franjasHorarias.push_back(fh);
 			}
 		}
 	    in.close();

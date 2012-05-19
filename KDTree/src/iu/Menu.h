@@ -14,12 +14,15 @@
 using namespace std;
 
 #include "UtilMenu.h"
+#include "../controller/KDTreeController.h"
+#include "../Operacion.h"
 
 class Menu {
 public:
 	Menu();
 	virtual ~Menu();
 	virtual void iniciar() = 0;
+	virtual Operacion* getOperacionElejida() = 0;
 private:
 	virtual void mostrar() = 0;
 };

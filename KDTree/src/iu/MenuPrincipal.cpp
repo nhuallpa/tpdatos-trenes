@@ -7,9 +7,9 @@
 
 #include "MenuPrincipal.h"
 
-MenuPrincipal::MenuPrincipal(KDTreeController &kdTreeController):kdTreeController(kdTreeController)  {
-	// TODO Auto-generated constructor stub
-
+MenuPrincipal::MenuPrincipal(KDTreeController &kdTreeController) {
+	this->kdTreeController = kdTreeController;
+	this->operacionElejida = new Operacion();
 }
 
 MenuPrincipal::~MenuPrincipal() {
@@ -35,9 +35,6 @@ void MenuPrincipal::iniciar()
 	Menu* menu_modifcacion   = new MenuModificacion();
 	Menu* menu_consulta      = new MenuConsulta();
 
-    //TODO by ariel:primero creo la interfax de usuario cuando se tenga que operar con elementos unitarios
-    //y no en conjuntos mediante archivos de configuracion
-
     bool salir = false;
     while(!salir)
     {
@@ -61,4 +58,9 @@ void MenuPrincipal::iniciar()
     delete menu_modifcacion;
     delete menu_consulta;
 
+}
+
+Operacion* MenuPrincipal::getOperacionElejida()
+{
+	return this->operacionElejida;
 }
