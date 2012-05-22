@@ -29,16 +29,16 @@ using std::string;
 
 class FranjaHoraria {
 private:
-	Hour horaInicio;
-	Hour horaFin;
-	Date fecha;
+        Hour horaInicio;
+        Hour horaFin;
+        Date fecha;
 public:
-	FranjaHoraria();
-	FranjaHoraria(Hour horaInicio, Hour horaFin, Date fecha){
-		this->horaInicio = horaInicio;
-		this->horaFin = horaFin;
-		this->fecha = fecha;
-	}
+        FranjaHoraria();
+        FranjaHoraria(Hour horaInicio, Hour horaFin, Date fecha){
+                this->horaInicio = horaInicio;
+                this->horaFin = horaFin;
+                this->fecha = fecha;
+        }
 
 	bool intersectaCon(Horario& horario){
 		bool intersecta = false;
