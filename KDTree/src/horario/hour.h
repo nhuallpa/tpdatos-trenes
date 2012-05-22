@@ -1,4 +1,4 @@
-#ifndef HOUR_H
+	#ifndef HOUR_H
 #define HOUR_H
 #include <iostream>
 #include "HourExceptions.h"
