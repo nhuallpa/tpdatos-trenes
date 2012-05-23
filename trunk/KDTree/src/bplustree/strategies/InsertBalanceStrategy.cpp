@@ -4,7 +4,6 @@
  */
 
 #include "InsertBalanceStrategy.h"
-#include "../../persistence/PersistorPool.h"
 #include "../../persistence/PersistorBTree.h"
 #include "../KeyElement.h"
 #include "BalanceStrategyFactory.h"

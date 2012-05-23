@@ -7,7 +7,6 @@
 //============================================================================
 
 #include "bplustree/BPlusTree.h"
-#include "index/BPlussIStructureFactory.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,6 +1,5 @@
 
 #include "FileHandler.h"
-#include "../index/BPlussIStructureFactory.h"
 
 FileHandler::FileHandler() {
 	init();

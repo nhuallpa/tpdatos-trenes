@@ -12,14 +12,7 @@
 class Block: public ISerializable {
 private:
 	Offset offset;
-	ESTRUCTURAS estructura;
 public:
-	ESTRUCTURAS getEstructura() {
-		return estructura;
-	}
-	void setEstructura(ESTRUCTURAS estructura) {
-		this->estructura = estructura;
-	}
 	Block();
 	virtual ~Block();
 	/**

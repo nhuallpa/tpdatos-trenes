@@ -9,19 +9,21 @@
 #include "PersistorBase.h"
 #include "../utils/types.h"
 #include "../bplustree/BNode.h"
-#include "../utils/types.h"
+
 class PersistorBTree : public PersistorBase {
 protected:
-	ESTRUCTURAS estructura;
+	static PersistorBTree instance;
 	//Sobreescribo este metodo para que cree un nodo raiz vacio
-	void newFile(std::string fileName,ESTRUCTURAS estructura) ;
+	void newFile(std::string fileName) ;
 
+	PersistorBTree() ;
 public:
-	PersistorBTree(std::string fileName, BlockSize size,ESTRUCTURAS estructura) ;
+	static PersistorBTree* getInstance();
+
+	void init(std::string fileName, BlockSize size);
 	virtual ~PersistorBTree();
 	BNode* getNodeInBlock(int blockNumber);
 	BNode* getRoot();
-
 };
 
 #endif /* PERSISTORBTREE_H_ */

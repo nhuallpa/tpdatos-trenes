@@ -15,7 +15,6 @@
 #include <vector>
 #include <algorithm>
 #include "../persistence/PersistorBase.h"
-#include "../persistence/PersistorPool.h"
 #include <functional>
 #include "NodeFactory.h"
 class LeafNode: public BNode {
@@ -63,10 +62,5 @@ public:
 	RegisterCounter getRegisterCounter();
 
 };
-//Borrar si la clase EqualElementComparator funciona bien
-/*struct ElementComparator: public std::binary_function<Element,Element,bool>{
-  bool operator () ( const Element& elem,const Element& elem2) const {
-	return elem.getKey()==elem2.getKey();
-    }
-  };*/
+
 #endif /* LEAFNODE_H_ */

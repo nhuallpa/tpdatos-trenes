@@ -35,9 +35,4 @@ typedef char* Data;
 typedef unsigned short PrecisionInt;
 typedef unsigned long EnteroLargo;
 
-
-enum ESTRUCTURAS {
-	DEFAULT=0
-};
-
 #endif /* TYPES_H_ */

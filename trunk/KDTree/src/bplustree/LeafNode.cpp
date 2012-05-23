@@ -6,9 +6,11 @@
 #include "LeafNode.h"
 #include <iostream>
 #include "exceptions/OperationNotFoundException.h"
-#include "../entidades/EntityFactory.h"
 #include "../utils/StringUtils.h"
+#include "../persistence/PersistorBTree.h"
 #include "ElementFactory.h"
+#include "../entidades/EntityFactory.h"
+
 LeafNode::LeafNode() {
 	nextNode = -1;
 	prevNode = -1;
@@ -283,8 +285,8 @@ bool LeafNode::insertarTest(IElement* elem) {
 KeyElement* LeafNode::doSplit() {
 	KeyElement* keyElementFromMiddle = new KeyElement();
 
-	LeafNode* newLeafNode = NodeFactory::createLeafNode(this->getEstructura());
-	PersistorBTree* p = PersistorPool::getInstance(this->getEstructura());
+	LeafNode* newLeafNode = NodeFactory::createLeafNode();
+	PersistorBTree* p = PersistorBTree::getInstance();
 	newLeafNode->elements = this->splitElements();
 
 	vector<IElement*>::iterator it;
@@ -326,15 +328,13 @@ bool LeafNode::isOverflowded(int modifyOrInsert) {
 		int dataSize;
 		dataSize = this->getDataSize();
 		int maxNodeLoad;
-		maxNodeLoad = ConfigurationMannagerPool::getInstance(
-				this->getEstructura())->getMaxNodeLoadForInsert();
+		maxNodeLoad = ConfigurationMananger::getInstance()->getMaxNodeLoadForInsert();
 		isOverflow = dataSize > maxNodeLoad;
 		break;
 	case MODIFY:
 		//si entra esta bien.
 		dataSize = this->getDataSize();
-		maxNodeLoad = ConfigurationMannagerPool::getInstance(
-				this->getEstructura())->getBufferSizeTree();
+		maxNodeLoad = ConfigurationMananger::getInstance()->getBufferSizeTree();
 		isOverflow = dataSize > maxNodeLoad;
 		break;
 	default:
@@ -346,8 +346,7 @@ bool LeafNode::isOverflowded(int modifyOrInsert) {
 }
 
 bool LeafNode::isUnderflowded() {
-	ConfigurationMananger *cManager = ConfigurationMannagerPool::getInstance(
-			this->getEstructura());
+	ConfigurationMananger *cManager = ConfigurationMananger::getInstance();
 
 	int minUnderflow = cManager->getMinUnderflowSizeTree();
 	int dataSize = this->getDataSize();
@@ -401,7 +400,7 @@ void LeafNode::unserialize(std::string &buffer) {
 	buffer.erase(0, sizeof(Offset));
 
 	for (RegisterCounter i = 0; i < registerCounter; i++) {
-		IElement* el = ElementFactory::createElement(this->getEstructura());
+		IElement* el = ElementFactory::createElement();
 		el->unserialize(buffer);
 		elements.push_back(el);
 	}
@@ -437,7 +436,7 @@ void LeafNode::exportNode() {
 		//vale para todas menos para Element
 
 		IEntidad* ientidad = NULL;
-		ientidad = EntityFactory::createEntity(this->getEstructura(), elem);
+		ientidad = EntityFactory::createEntity(elem);
 
 		//casteo para usar el operador que corresonde
 		//esto quedo deprecado.El arobl solo sabe mostrar element.
@@ -454,8 +453,7 @@ ostream& LeafNode::printMe(ostream& myOstream) {
 	myOstream << "Nodo: " << getOffset() << " ";
 	for (it = getElementsBegin(); it != getElementsEnds(); it++) {
 		Element* elem = (Element*) (*it);
-		IEntidad* ientidad = EntityFactory::createEntity(this->getEstructura(),
-				elem);
+		IEntidad* ientidad = EntityFactory::createEntity(elem);
 		//casteo para usar el operador que corresonde
 
 		myOstream << *elem << " ";

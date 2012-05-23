@@ -9,23 +9,24 @@
 #include "../logger/Logger.h"
 #include "../utils/StringUtils.h"
 
-ConfigurationMananger::ConfigurationMananger(string name) {
-	this->prefixName = name;
+ConfigurationMananger ConfigurationMananger::instance;
+
+ConfigurationMananger* ConfigurationMananger::getInstance(){
+	return &instance;
+}
+
+ConfigurationMananger::ConfigurationMananger() {
 	configFile = new ConfigFile("config.txt", "=", "#", "EndConfigFile");
 
 	double maxRecordPercent;
 
-	configFile->readInto(bufferSize, this->prefixName + "blockSize");
-	configFile->readInto(bufferSizeTree, this->prefixName + "treeBlockSize");
-	configFile->readInto<double> (chargeFactor, this->prefixName
-			+ "chargePercent");
-	configFile->readInto(minRecordSizeTree, this->prefixName
-			+ "minRecordSizeTree");
-	configFile->readInto<string> (this->filename, this->prefixName + "filename");
-	configFile->readInto<string> (this->sequenceName, this->prefixName
-			+ "sequenceName");
-	configFile->readInto<string> (this->sequenceFilename, this->prefixName
-			+ "sequenceFilename");
+	configFile->readInto(bufferSize, "blockSize");
+	configFile->readInto(bufferSizeTree, "treeBlockSize");
+	configFile->readInto<double> (chargeFactor, "chargePercent");
+	configFile->readInto(minRecordSizeTree, "minRecordSizeTree");
+	configFile->readInto<string> (this->filename, "filename");
+	configFile->readInto<string> (this->sequenceName, "sequenceName");
+	configFile->readInto<string> (this->sequenceFilename, "sequenceFilename");
 	//configFile->readInto(maxRecordPercent,"maxRecordPercent");
 
 	/* El factor maximo de registro tiene que ser tal que si dos nodos NO estan en underflow,
@@ -53,7 +54,7 @@ ConfigurationMananger::ConfigurationMananger(string name) {
 			- this->getMaxRecordSizeTree());
 	//delete configFile;
 	string mensaje;
-	mensaje.append("ConfigurationMannager name: ").append(name).append(
+	mensaje.append("ConfigurationMannager name: ").append(
 			"filename: ").append(this->filename).append("treeBlockSize ").append(
 			StringUtils::convertIntToString(this->bufferSizeTree)).append(
 			" maxRecordPercent: ").append(StringUtils::converFloatToString(

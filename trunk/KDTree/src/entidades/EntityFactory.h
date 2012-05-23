@@ -17,9 +17,8 @@ class EntityFactory {
 public:
 	EntityFactory();
 	virtual ~EntityFactory();
-	static SimpleSecondaryIndex* createSimpleSecondaryIndex(ESTRUCTURAS type);
-	static IEntidad* createEntity(ESTRUCTURAS type);
-	static IEntidad* createEntity(ESTRUCTURAS type,IElement* element);
+	static IEntidad* createEntity();
+	static IEntidad* createEntity(IElement* element);
 };
 
 #endif /* ENTITYFACTORY_H_ */

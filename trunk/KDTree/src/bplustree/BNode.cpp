@@ -1,5 +1,4 @@
 #include "BNode.h"
-#include "../persistence/PersistorPool.h"
 #include "../persistence/PersistorBTree.h"
 
 BNode::BNode() {
@@ -23,7 +22,7 @@ int BNode::getDataSize() {
 }
 
 void BNode::modify(){
-	PersistorBTree* p=PersistorPool::getInstance(this->getEstructura());
+	PersistorBTree* p= PersistorBTree::getInstance();
 	p->modify(this);
 }
 std::string  BNode::serialize() {

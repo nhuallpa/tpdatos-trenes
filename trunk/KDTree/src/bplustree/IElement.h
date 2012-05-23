@@ -11,13 +11,6 @@
 class IElement:public ISerializable {
 public:
 	/**
-	 * Estructura de datos real que se implementa.
-	 * Este valor no hay que persistirlo necesariamente.
-	 * Para este TP no se persiste
-	 */
-	virtual ESTRUCTURAS getEstructura()=0;
-	virtual void setEstructura(ESTRUCTURAS estructura)=0;
-	/**
 	 * Longitud del dato
 	 */
 	virtual Data getData()=0;

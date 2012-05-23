@@ -8,6 +8,9 @@
 #include "../bplustree/Node.h"
 #include "../bplustree/NodeFactory.h"
 #include "../utils/StringUtils.h"
+
+PersistorBTree PersistorBTree::instance;
+
 BNode *PersistorBTree::getNodeInBlock(int blockNumber) {
 	std::string buffer;
 	Level level;
@@ -17,9 +20,9 @@ BNode *PersistorBTree::getNodeInBlock(int blockNumber) {
 	buffer.copy((char*) &level, sizeof(Level));
 
 	if (level == 0)
-		root = NodeFactory::createLeafNode(estructura);
+		root = NodeFactory::createLeafNode();
 	else
-		root = NodeFactory::createKeyNode(estructura);
+		root = NodeFactory::createKeyNode();
 
 	root->unserialize(buffer);
 	root->setOffset(blockNumber);
@@ -27,8 +30,11 @@ BNode *PersistorBTree::getNodeInBlock(int blockNumber) {
 	return root;
 }
 
-PersistorBTree::PersistorBTree(std::string fileName, BlockSize size,
-		ESTRUCTURAS estructura) {
+PersistorBTree* PersistorBTree::getInstance(){
+	return &instance;
+}
+
+void PersistorBTree::init(std::string fileName, BlockSize size) {
 	/* Validacion de que este iniciado */
 	if (fileName.length() == 0 || size == 0) {
 		string mensaje;
@@ -48,10 +54,9 @@ PersistorBTree::PersistorBTree(std::string fileName, BlockSize size,
 	this->blockSize = size;
 	this->fileName = fileName;
 
-	this->estructura = estructura;
 	if (!this->archivo.is_open()) {
 		this->archivo.clear();
-		this->newFile(fileName, estructura);
+		this->newFile(fileName);
 	}
 
 	this->archivo.seekg(0, std::ios::beg);
@@ -66,12 +71,15 @@ PersistorBTree::PersistorBTree(std::string fileName, BlockSize size,
 		throw new PersistExceptions::WrongBlockSize();
 }
 
+PersistorBTree::PersistorBTree() {
+}
+
 PersistorBTree::~PersistorBTree() {
 }
 
-void PersistorBTree::newFile(std::string fileName, ESTRUCTURAS estructura) {
+void PersistorBTree::newFile(std::string fileName) {
 	PersistorBase::newFile(fileName);
-	LeafNode *root = NodeFactory::createLeafNode(estructura);
+	LeafNode *root = NodeFactory::createLeafNode();
 
 	this->add(root);
 
@@ -87,9 +95,9 @@ BNode* PersistorBTree::getRoot() {
 	buffer.copy((char*) &level, sizeof(Level));
 
 	if (level == 0)
-		root = NodeFactory::createLeafNode(estructura);
+		root = NodeFactory::createLeafNode();
 	else
-		root = NodeFactory::createKeyNode(estructura);
+		root = NodeFactory::createKeyNode();
 
 	root->unserialize(buffer);
 	root->setOffset(0);
