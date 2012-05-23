@@ -4,6 +4,8 @@
  */
 
 #include "OverflowStrategy.h"
+#include "../../persistence/PersistorBTree.h"
+
 
 OverflowStrategy::OverflowStrategy() {
 
@@ -16,7 +18,8 @@ OverflowStrategy::OverflowStrategy() {
 bool OverflowStrategy::doBalance(Node* parent, BNode* child,BalanceStrategy* parentStrategy){
 	KeyElement* keyToInsert=NULL;
 		bool hasChanged=false;
-		PersistorBTree* p=PersistorPool::getInstance(parent->getEstructura());
+		PersistorBTree* p= PersistorBTree::getInstance();
+
 		int typeofStrategy=parentStrategy->getTypeOfStrategy();
 		if(child->isOverflowded(typeofStrategy)){
 	        keyToInsert = child->doSplit();

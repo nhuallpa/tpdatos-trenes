@@ -7,7 +7,6 @@
 
 #ifndef FILEHANDLER_H_
 #define FILEHANDLER_H_
-#include "../index/IStrutureBTreeImpl.h"
 #include <vector>
 
 class FileHandler {

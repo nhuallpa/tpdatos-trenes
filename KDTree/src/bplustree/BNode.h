@@ -8,7 +8,6 @@
 #include <string>
 #include "KeyElement.h"
 #include "../utils/ConfigurationMananger.h"
-#include "../utils/ConfigurationMannagerPool.h"
 #include "../utils/types.h"
 #include <iostream>
 using namespace std;

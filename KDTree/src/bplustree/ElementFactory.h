@@ -12,19 +12,16 @@
 
 class ElementFactory {
 public:
-	static Element* createElement(ESTRUCTURAS estructura,Key id,ISerializable* ser){
+	static Element* createElement(Key id,ISerializable* ser){
 		Element* element=new Element(id,ser);
-		element->setEstructura(estructura);
 		return element;
 	}
-	static Element* createElement(ESTRUCTURAS estructura,Key i, Data data, DataSize dataSize){
+	static Element* createElement(Key i, Data data, DataSize dataSize){
 		Element* element= new Element(i, data, dataSize);
-		element->setEstructura(estructura);
 		return element;
 	}
-	static Element* createElement(ESTRUCTURAS estructura){
+	static Element* createElement(){
 		Element* element=new Element();
-		element->setEstructura(estructura);
 		return element;
 	}
 	ElementFactory();

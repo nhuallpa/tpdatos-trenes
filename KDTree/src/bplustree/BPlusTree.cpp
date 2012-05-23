@@ -4,18 +4,17 @@
 #include "../utils/StringUtils.h"
 #include "exceptions/ProgramException.h"
 
-BPlusTree::BPlusTree(int blockSize, string fileName, ESTRUCTURAS estructura) {
-	this->estructura = estructura;
-	PersistorPool::init(fileName, blockSize, estructura);
-	PersistorBTree* p = PersistorPool::getInstance(estructura);
+BPlusTree::BPlusTree(int blockSize, string fileName) {
+
+	PersistorBTree* p = PersistorBTree::getInstance();
+	p->init(fileName, blockSize);
 
 	this->root = p->getRoot();
 	this->current = NULL;//this->getLeftLeafNodo(root);
 }
 
-BPlusTree::BPlusTree(ESTRUCTURAS estructura) {
-	this->estructura = estructura;
-	PersistorBTree* p = PersistorPool::getInstance(estructura);
+BPlusTree::BPlusTree() {
+	PersistorBTree* p = PersistorBTree::getInstance();
 
 	this->root = p->getRoot();
 	this->current = NULL;// this->getLeftLeafNodo(root);
@@ -48,15 +47,12 @@ void BPlusTree::insert(IElement* element) {
 LeafNode* BPlusTree::getLeftLeafNodo(BNode* actualNode) {
 
 	LeafNode* firstLeftNode = NULL;
-	if (actualNode->getEstructura() != this->estructura) {
-		throw ProgramException(
-				"Estructura de nodos incorrecta: bplusTree::getLeafNodo");
-	}
+
 	if (actualNode->getLevel() > 0) {
 		Node *internalNode = (Node*) actualNode;
 		BNode *leftNode = NodeFactory::createNodeForSearch(
-				actualNode->getLevel(), estructura);
-		PersistorPool::getInstance(actualNode->getEstructura())->load(
+				actualNode->getLevel());
+		PersistorBTree::getInstance()->load(
 				internalNode->getLeftNode(), leftNode);
 
 		firstLeftNode = this->getLeftLeafNodo(leftNode);
@@ -121,11 +117,11 @@ LeafNode* BPlusTree::next() {
 		current = this->getLeftLeafNodo(this->root);
 		return current;
 	}
-	LeafNode* nextNode = NodeFactory::createLeafNode(estructura);
+	LeafNode* nextNode = NodeFactory::createLeafNode();
 	if (current->getNextNode() == -1) {
 		return NULL;
 	}
-	PersistorPool::getInstance(estructura)->load(current->getNextNode(),
+	PersistorBTree::getInstance()->load(current->getNextNode(),
 			nextNode);
 	delete current;
 	this->current = nextNode;
@@ -134,8 +130,8 @@ LeafNode* BPlusTree::next() {
 }
 
 LeafNode* BPlusTree::prev() {
-	LeafNode* prevNode = NodeFactory::createLeafNode(estructura);
-	PersistorPool::getInstance(estructura)->load(current->getPrevNode(),
+	LeafNode* prevNode = NodeFactory::createLeafNode();
+	PersistorBTree::getInstance()->load(current->getPrevNode(),
 			prevNode);
 
 	return prevNode;
@@ -147,19 +143,17 @@ LeafNode* BPlusTree::prev() {
  }*/
 
 void BPlusTree::deleteTree() {
-	//PersistorPool::getInstance(estructura)->deleteFile();
-	PersistorPool::dropInstance(estructura);
+	PersistorBTree::getInstance()->deleteFile();
 }
 void BPlusTree::exportTree(int blockNumber) {
 
-	BNode* node = PersistorPool::getInstance(estructura)->getNodeInBlock(
-			blockNumber);
+	BNode* node = PersistorBTree::getInstance()->getNodeInBlock(blockNumber);
 
 	node->exportNode();
 	delete node;
 }
 void BPlusTree::exportTree() {
-	this->root = PersistorPool::getInstance(estructura)->getRoot();
+	this->root = PersistorBTree::getInstance()->getRoot();
 	this->root->exportNode();
 	cout << endl;
 }
@@ -168,7 +162,7 @@ void BPlusTree::exportTree() {
 //*****************************************//
 void BPlusTree::insert(IElement* element, int modifyOrInsert) {
 	this->validateElementSize(element);
-	PersistorBTree* p = PersistorPool::getInstance(estructura);
+	PersistorBTree* p = PersistorBTree::getInstance();
 	KeyElement* keyOverflow = NULL;
 	bool modified = false;
 
@@ -186,7 +180,7 @@ void BPlusTree::insert(IElement* element, int modifyOrInsert) {
 		//TODO pasarlo a una estrategia de balanceo de root;
 		if (this->root->isOverflowded(modifyOrInsert)) {
 			//como hubo overflow entonces, tengo que crear un nuevo root con esta clave
-			Node* newRoot = NodeFactory::createKeyNode(estructura);
+			Node* newRoot = NodeFactory::createKeyNode();
 			newRoot->setLevel(this->root->getLevel() + 1);
 			keyOverflow = this->root->doSplit();
 			newRoot->setOffset(this->root->getOffset());
@@ -207,9 +201,8 @@ void BPlusTree::insert(IElement* element, int modifyOrInsert) {
 }
 
 void BPlusTree::validateElementSize(IElement* elm) {
-	//todo NECESITO UN NOMBRE PARA QUE FUNCIONE BIEN
-	ConfigurationMananger* c = ConfigurationMannagerPool::getInstance(
-			this->estructura);
+
+	ConfigurationMananger* c = ConfigurationMananger::getInstance();
 	int maxRecordSize =c->getMaxRecordSizeTree();
 
 	if (elm->getDataSize() > maxRecordSize) {
@@ -217,7 +210,6 @@ void BPlusTree::validateElementSize(IElement* elm) {
 		mensaje.append("BplussTree: tamano configurado invalido de registro ");
 		mensaje.append(
 				"los nodos son demasiado pequennos para soportar la estructura reconfigure el sistema");
-		mensaje.append(" estructura ").append(ConfigurationMannagerPool::getStructureName(this->estructura));
 		mensaje.append(" tamanno del elemento ").append(
 				StringUtils::convertIntToString(elm->getDataSize())).append(
 				"tamanno configurado ").append(StringUtils::convertIntToString(

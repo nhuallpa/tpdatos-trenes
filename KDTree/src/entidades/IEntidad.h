@@ -34,16 +34,7 @@ public:
 	virtual int getDataSize() {
 		return this->serialize().length();
 	}
-	ESTRUCTURAS getTipoEntidad(){
-		return this->tipoEntidad;
-	}
 
-	void setTipoEntidad(ESTRUCTURAS tipo){
-		this->tipoEntidad=tipo;
-	}
-private:
-	//este campo no tiene porque persisitirse. Distrito tiene un campo tipo pero no se porque se lo metieron
-	ESTRUCTURAS tipoEntidad;
 protected:
 	ID id;
 

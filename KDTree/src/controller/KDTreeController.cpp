@@ -18,7 +18,7 @@ KDTreeController::~KDTreeController() {
 
 void KDTreeController::levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida){
 	int SIZE = 512;
-	char buffer[SIZE];
+	char * buffer = new char[SIZE];
 	ifstream in(fileName_entrada, ios::in);
 	if (in.is_open()) {
 		while (!in.eof()){
@@ -33,6 +33,7 @@ void KDTreeController::levantar_datosMaestros_segun(const char* fileName_entrada
 	}else{
 		cout<<"No puedo abrir el archivo "<<fileName_entrada<<endl;
 	}
+	delete(buffer);
 }
 
 void KDTreeController::init(){

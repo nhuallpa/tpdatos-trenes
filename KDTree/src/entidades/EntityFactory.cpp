@@ -16,27 +16,17 @@ EntityFactory::~EntityFactory() {
 }
 
 
-IEntidad* EntityFactory::createEntity(ESTRUCTURAS estructura) {
+IEntidad* EntityFactory::createEntity() {
 	IEntidad* entidad = NULL;
-	switch (estructura) {
-	default:
-		string mensaje;
-
-		mensaje.append(
-				"Entity Factory No esta configurada la creacion de entidades para la entidad ").append(
-				StringUtils::intToString(estructura));
-		throw ProgramException(mensaje);
-		break;
-
-	}
+	// TODO crear entidad de Clave compuesta
 	return entidad;
 }
 
 //Este metodo es solo para el arbol. Lo dejo asi por andar haciendo funciones amigos. Si lo usan mal lo saco.
-IEntidad* EntityFactory::createEntity(ESTRUCTURAS type, IElement* element) {
+IEntidad* EntityFactory::createEntity(IElement* element) {
 	IEntidad* entidad =NULL;
 
-	entidad=EntityFactory::createEntity(type);
+	entidad = EntityFactory::createEntity();
 	string serializedElement;
 
 	serializedElement.append(element->getData(), element->getDataSize());// += element->getData();

@@ -15,12 +15,12 @@ using namespace std;
 
 class ConfigurationMananger {
 private:
+
 	int minUnderflowSizeTree;
 	int maxNodeLoadForInsert;
-	//prefijo que parametriza el tipo
-	string prefixName;
-	/** instancia del Singleton. */
 
+	/** instancia del Singleton. */
+	static ConfigurationMananger instance;
 
 	/** Almacena el porcentaje util de un nodo */
 	ChargeFactor chargeFactor;
@@ -51,9 +51,8 @@ private:
 	 */
 	ConfigFile *configFile;
 
+	ConfigurationMananger();
 public:
-
-	ConfigurationMananger(string name);
 	//Destructor
 	virtual ~ConfigurationMananger();
 

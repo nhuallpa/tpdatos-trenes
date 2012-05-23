@@ -18,17 +18,7 @@ private:
 	DataSize dataSize;
 	Data data;
 
-	/**
-	 * Este dato no lo persistimos
-	 */
-	ESTRUCTURAS estructura;
 public:
-	ESTRUCTURAS getEstructura(){
-		return estructura;
-	}
-	void setEstructura(ESTRUCTURAS estructura){
-		this->estructura=estructura;
-	}
 	/**
 	 * Ojo que el Serializable no debe serializar el ID
 	 */

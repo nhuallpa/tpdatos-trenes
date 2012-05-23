@@ -18,10 +18,10 @@ public:
 	/**
 	 * Crea un nodo para búsqueda según en nivel de hoja en el que se encuentre
 	 */
-	static BNode* createNodeForSearch(int level,ESTRUCTURAS estructura);
-	static Node* createKeyNode(ESTRUCTURAS estrucutra);
-	static LeafNode* createLeafNode(ESTRUCTURAS estructura);
-	static BNode* createSibling(int level,ESTRUCTURAS estructura);
+	static BNode* createNodeForSearch(int level);
+	static Node* createKeyNode();
+	static LeafNode* createLeafNode();
+	static BNode* createSibling(int level);
 
 	virtual ~NodeFactory();
 };

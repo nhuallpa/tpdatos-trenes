@@ -9,7 +9,6 @@
 #include "BNode.h"
 #include "../utils/types.h"
 #include "KeyElement.h"
-#include "../persistence/PersistorPool.h"
 #include <string.h>
 #include <vector>
 #include <algorithm>

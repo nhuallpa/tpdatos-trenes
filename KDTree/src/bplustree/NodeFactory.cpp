@@ -15,32 +15,30 @@ NodeFactory::NodeFactory() {
 /**
  * En caso que el nivel sea 1 el proximo sera una hoja.
  */
-BNode* NodeFactory::createNodeForSearch(int level, ESTRUCTURAS estructura) {
+BNode* NodeFactory::createNodeForSearch(int level) {
 	nodeCounter++;
 	if (level == 1 || level == 0) {
-		return createLeafNode(estructura);
+		return createLeafNode();
 	} else {
-		return createKeyNode(estructura);
+		return createKeyNode();
 	}
 }
-BNode* NodeFactory::createSibling(int level, ESTRUCTURAS estructura) {
+BNode* NodeFactory::createSibling(int level) {
 	nodeCounter++;
 	if (level >= 1) {
-		return createKeyNode(estructura);
+		return createKeyNode();
 	} else {
-		return createLeafNode(estructura);
+		return createLeafNode();
 	}
 }
-Node* NodeFactory::createKeyNode(ESTRUCTURAS estructura) {
+Node* NodeFactory::createKeyNode() {
 	nodeCounter++;
 	Node* newNode = new Node();
-	newNode->setEstructura(estructura);
 	return newNode;
 }
-LeafNode* NodeFactory::createLeafNode(ESTRUCTURAS estructura) {
+LeafNode* NodeFactory::createLeafNode() {
 	nodeCounter++;
 	LeafNode* newNode = new LeafNode();
-	newNode->setEstructura(estructura);
 	return newNode;
 }
 NodeFactory::~NodeFactory() {

@@ -7,7 +7,7 @@
 #include "LeafNode.h"
 #include <string>
 #include "Element.h"
-#include "../persistence/PersistorPool.h"
+#include "../persistence/PersistorBTree.h"
 #include "NodeFactory.h"
 #include "exceptions/ElementNotFoundException.h"
 #include "../persistence/exceptions/PersistExceptions.h"
@@ -18,7 +18,6 @@ class BPlusTree {
  private://variables privadas
     BNode* root;
     LeafNode* current;
-    ESTRUCTURAS estructura;
 
  private://metodos privados
     /**
@@ -37,11 +36,11 @@ class BPlusTree {
     /**
      * Este constructor se utiliza cuando el Persistor ya fue inicializado
      */
-    BPlusTree(ESTRUCTURAS estructura);
+    BPlusTree();
     /**
      * Tamaño del nodo que tendra el arbol y el nombre del archivo con el cual se va a guardar
      */
-    BPlusTree(int nodeSize, string fileName,ESTRUCTURAS estructura);
+    BPlusTree(int nodeSize, string fileName);
     /**
      * Exporta el arbol desde su raiz.
      */
