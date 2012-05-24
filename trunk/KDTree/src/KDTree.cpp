@@ -13,6 +13,8 @@
 #include <unistd.h>
 #include <getopt.h>
 #include <ctype.h>
+#include <fstream>
+#include <string>
 
 #include "utils/util_main.h"
 
@@ -24,6 +26,9 @@
 
 using std::cout;
 using std::endl;
+using std::ios;
+using std::ifstream;
+using std::string;
 
 void iniciartestFranajaHoraria(){
 	//para testear la clase FranjaHoraria
@@ -64,6 +69,17 @@ void iniciarInterfase() {
 
 void iniciarCargaMasiva(const char* fichero_entrada) {
     cout<<"Carga Masiva de : "<<fichero_entrada<<endl;
+    ifstream in;
+    in.open(fichero_entrada, ifstream::in);
+    if (in.is_open()) {
+    	while (!in.eof()) {
+    		string registro("");
+    		in>>registro;
+    		if (in.good()) {
+    			cout<<registro<<endl;
+    		}
+    	}
+    }
 }
 
 int main(int argc, char** argv){
@@ -86,8 +102,6 @@ int main(int argc, char** argv){
 	/* El nombre del fichero que recibe la salida del programa */
 	const char* fichero_entrada = NULL ;
 
-	/* Bandera a activar si hay que imprimir más información
-	* en el modo verbose */
 	bool activaInterfase = 0;
 
 	/* Guardar el nombre del programa para incluirlo a la salida */
@@ -116,11 +130,11 @@ int main(int argc, char** argv){
 	              imprime_uso();
 	              exit(EXIT_SUCCESS);
 
-	          case 'i' : /* -v o --verbose */
+	          case 'i' : /* -i o --interfase */
 	        	  activaInterfase = true;
 	              break;
 
-	          case 'c' : /* -o ó --output */
+	          case 'c' : /* -c 	ó --carga */
 
 	              fichero_entrada = optarg;
 	              break;
