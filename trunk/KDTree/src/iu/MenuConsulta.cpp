@@ -131,3 +131,7 @@ void MenuConsulta::iniciar(){
 
 }
 
+Operacion* MenuConsulta::getOperacionElejida(){
+	return this->operacionElejida;
+}
+

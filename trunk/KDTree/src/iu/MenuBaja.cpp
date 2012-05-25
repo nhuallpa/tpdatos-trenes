@@ -25,3 +25,6 @@ void MenuBaja::iniciar(){
    cout<<"En proceso de construccion..."<<endl;
 }
 
+Operacion* MenuBaja::getOperacionElejida(){
+	return this->operacionElejida;
+}

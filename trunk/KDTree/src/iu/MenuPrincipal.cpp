@@ -13,7 +13,7 @@ MenuPrincipal::MenuPrincipal(KDTreeController &kdTreeController) {
 }
 
 MenuPrincipal::~MenuPrincipal() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void MenuPrincipal::mostrar(){
@@ -63,4 +63,8 @@ void MenuPrincipal::iniciar()
 Operacion* MenuPrincipal::getOperacionElejida()
 {
 	return this->operacionElejida;
+}
+
+KDTreeController& MenuPrincipal::getKdTreeController() {
+	return this->kdTreeController;
 }

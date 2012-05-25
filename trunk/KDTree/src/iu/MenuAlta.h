@@ -21,16 +21,8 @@ public:
 	virtual ~MenuAlta();
 	void iniciar();
 	void mostrar();
-
-	KDTreeController& getController() { return this->kdTreeController;}
-
-	Operacion* getOperacionElejida(){
-		Operacion* operacionVacia = new Operacion();
-		if (this->operacion_fueCreada)
-			return this->operacionElejida;
-		else
-			return operacionVacia;
-	}
+	KDTreeController& getController();
+	Operacion* getOperacionElejida();
 
 private:
 	void insertar_elemento();

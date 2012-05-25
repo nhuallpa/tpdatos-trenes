@@ -52,7 +52,7 @@ string StringUtils::trim(const string& str){
 	string auxStr;
 
 	//recorro los caracteres y extraigo todos los que no son espacios para copiarlos al nuevo string
-	for(int i = 0; i < str.length(); i++)
+	for(int i = 0; i < ((int)str.length()); i++)
 		if(str[i] != SPACE_CHAR)
 			auxStr += str[i];
 

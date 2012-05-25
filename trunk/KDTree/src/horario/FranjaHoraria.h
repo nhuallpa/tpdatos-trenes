@@ -34,41 +34,13 @@ private:
         Date fecha;
 public:
         FranjaHoraria();
-        FranjaHoraria(Hour horaInicio, Hour horaFin, Date fecha){
-                this->horaInicio = horaInicio;
-                this->horaFin = horaFin;
-                this->fecha = fecha;
-        }
-
-	bool intersectaCon(Horario& horario){
-		bool intersecta = false;
-		if (this->fecha == horario.getFecha() ){
-			if (horario.getHora() >= this->horaInicio && horario.getHora() <= this->horaFin){
-				intersecta = true;
-			}
-		}
-		return intersecta;
-	}
-
-	bool intersectaCompletaCon(FranjaHoraria& unaFranjaHoraria){
-		bool intersecta = false;
-		if (this->fecha == unaFranjaHoraria.getFecha() ){
-			if ( this->horaInicio >= unaFranjaHoraria.getHoraInicio() && this->horaFin <= unaFranjaHoraria.getHoraFin()){
-				intersecta = true;
-			}
-		}
-		return intersecta;
-	}
-
-	Hour getHoraInicio() const{ return this->horaInicio; }
-	Hour getHoraFin() const{ return this->horaFin; }
-	Date getFecha() const { return this->fecha; }
-
-	friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh){
-		  os << setfill('0') << setw(2) << fh.horaInicio << "-" << setfill('0') << setw(2) << fh.horaFin;
-		  os << "-" << setfill('0') << setw(4)  << fh.fecha;
-		  return os;
-	}
+        FranjaHoraria(Hour horaInicio, Hour horaFin, Date fecha);
+	bool intersectaCon(Horario& horario);
+	bool intersectaCompletaCon(FranjaHoraria& unaFranjaHoraria);
+	Hour getHoraInicio() const;
+	Hour getHoraFin() const;
+	Date getFecha() const;
+	friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh);
 	virtual ~FranjaHoraria();
 };
 

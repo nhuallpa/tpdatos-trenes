@@ -17,18 +17,9 @@ private:
 	Date fecha;
 public:
 	Horario();
-	Horario(Hour hora, Date fecha){
-		this->hora = hora;
-		this->fecha = fecha;
-	}
-
-	Date getFecha(){
-		return this->fecha;
-	}
-
-	Hour getHora(){
-		return this->hora;
-	}
+	Horario(Hour hora, Date fecha);
+	Date getFecha() const;
+	Hour getHora() const;
 	virtual ~Horario();
 };
 

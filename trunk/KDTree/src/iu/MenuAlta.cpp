@@ -14,7 +14,7 @@ MenuAlta::MenuAlta(KDTreeController& kdTreeController){
 }
 
 MenuAlta::~MenuAlta() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void MenuAlta::mostrar(){
@@ -82,4 +82,16 @@ void MenuAlta::mostrarLista(list<string> & lista) {
 	for (it=lista.begin(); it!=lista.end(); it++){
 		cout<<*it<<endl;
 	}
+}
+
+Operacion* MenuAlta::getOperacionElejida(){
+	Operacion* operacionVacia = new Operacion();
+	if (this->operacion_fueCreada)
+		return this->operacionElejida;
+	else
+		return operacionVacia;
+}
+
+KDTreeController& MenuAlta::getController() {
+	return this->kdTreeController;
 }
