@@ -23,3 +23,7 @@ void MenuModificacion::iniciar(){
    this->mostrar();
    cout<<"En proceso de construccion..."<<endl;
 }
+
+Operacion* MenuModificacion::getOperacionElejida(){
+	return this->operacionElejida;
+}

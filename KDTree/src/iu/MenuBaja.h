@@ -21,7 +21,7 @@ public:
 	virtual ~MenuBaja();
 	void iniciar();
 	void mostrar();
-	Operacion* getOperacionElejida(){ return this->operacionElejida; }
+	Operacion* getOperacionElejida();
 };
 
 #endif /* MENUBAJA_H_ */

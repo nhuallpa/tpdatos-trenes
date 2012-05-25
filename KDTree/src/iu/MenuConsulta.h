@@ -23,7 +23,7 @@ public:
 	MenuConsulta();
 	virtual ~MenuConsulta();
 	void iniciar();
-	Operacion* getOperacionElejida(){ return this->operacionElejida; }
+	Operacion* getOperacionElejida();
 private:
 	void mostrar();
 	void mostrarMenu_estructuraResultado();

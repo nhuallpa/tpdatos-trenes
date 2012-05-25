@@ -33,7 +33,7 @@ BalanceStrategy* BalanceStrategyFactory::createBalanceStrategy(int operation){
 }
 
 ComposedBalanceStrategy* BalanceStrategyFactory::createComposedBalanceStrategy(int operation){
-	ComposedBalanceStrategy* strategy;
+	ComposedBalanceStrategy* strategy = NULL;
 	switch (operation) {
 		case OVERFLOW:
 			strategy=new OverflowStrategy();

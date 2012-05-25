@@ -14,9 +14,7 @@ class Operacion {
 public:
 	Operacion();
 	virtual ~Operacion();
-	void iniciar(){
-		cout<<"Operacion::iniciar() -> En proceso de construccion..."<<endl;
-	}
+	void iniciar();
 };
 
 #endif /* OPERACION_H_ */

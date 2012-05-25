@@ -28,8 +28,7 @@ public:
 	virtual ~MenuPrincipal();
 	void iniciar();
 	void mostrar();
-    KDTreeController& getKdTreeController() {return this->kdTreeController;}
-
+    KDTreeController& getKdTreeController();
     Operacion* getOperacionElejida();
 
 };

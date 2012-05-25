@@ -8,11 +8,14 @@
 #include "Operacion.h"
 
 Operacion::Operacion() {
-	// TODO Auto-generated constructor stub
 
 }
 
 Operacion::~Operacion() {
-	// TODO Auto-generated destructor stub
+
+}
+
+void Operacion::iniciar(){
+	cout<<"Operacion::iniciar() -> En proceso de construccion..."<<endl;
 }
 

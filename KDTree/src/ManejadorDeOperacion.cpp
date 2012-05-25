@@ -8,11 +8,19 @@
 #include "ManejadorDeOperacion.h"
 
 ManejadorDeOperacion::ManejadorDeOperacion() {
-	// TODO Auto-generated constructor stub
 
 }
 
 ManejadorDeOperacion::~ManejadorDeOperacion() {
-	// TODO Auto-generated destructor stub
+
 }
 
+ManejadorDeOperacion::ManejadorDeOperacion(Operacion* operacionManejar)
+{
+	this->operacionManejable = operacionManejar;
+}
+
+void ManejadorDeOperacion::iniciar(){
+	cout<<"ManejadorDeOperacion::iniciar(): En proceso de construccion..."<<endl;
+	this->operacionManejable->iniciar();
+}

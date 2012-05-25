@@ -16,16 +16,9 @@ private:
 	Operacion* operacionManejable;
 public:
 	ManejadorDeOperacion();
-	ManejadorDeOperacion(Operacion* operacionManejar)
-	{
-		this->operacionManejable = operacionManejar;
-	}
+	ManejadorDeOperacion(Operacion* operacionManejar);
 	virtual ~ManejadorDeOperacion();
-
-	void iniciar(){
-		cout<<"ManejadorDeOperacion::iniciar(): En proceso de construccion..."<<endl;
-		this->operacionManejable->iniciar();
-	}
+	void iniciar();
 };
 
 #endif /* MANEJADORDEOPERACION_H_ */
