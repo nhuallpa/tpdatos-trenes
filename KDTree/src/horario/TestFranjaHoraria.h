@@ -8,13 +8,10 @@
 #ifndef TESTFRANJAHORARIA_H_
 #define TESTFRANJAHORARIA_H_
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <list>
-#include <stdlib.h>
 #include "../utils/const.h"
 
-#define SIZE 64
 using namespace std;
 
 #include "FranjaHoraria.h"

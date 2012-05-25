@@ -7,6 +7,9 @@
  */
 
 #include "TestFranjaHoraria.h"
+#include <fstream>
+#include <stdlib.h>
+#define SIZE 32
 
 TestFranjaHoraria::TestFranjaHoraria() {
 
@@ -17,13 +20,13 @@ TestFranjaHoraria::~TestFranjaHoraria() {
 
 void TestFranjaHoraria::cargarFranjasHorarias_mediante(const char* arch_franjasHorarias){
 	char buffer[SIZE];
-    string cod;
-//    ifstream in(arch_franjasHorarias, ios::in);
-    ifstream in("../masters/franjas_horarias.org", ios::in);
-    if (in)
+    ifstream in;
+	in.open(arch_franjasHorarias, ifstream::in);
+	if (in.is_open())
     	cout<<"abrio: "<<arch_franjasHorarias<<endl;
     else
-    	cout<<"error->No abrio: "<<arch_franjasHorarias<<endl;
+    	cout<<"No abrio: "<<arch_franjasHorarias<<endl;
+
     list<FranjaHoraria*>::iterator it;
     int cont = 0;
     while (!in.eof() && cont < 2){
@@ -42,13 +45,13 @@ void TestFranjaHoraria::cargarFranjasHorarias_mediante(const char* arch_franjasH
 			int minutoFin = 	atoi(bufString.substr(16,2).c_str());
 			cout<<horaInicio_<<":"<<minutoInicio<<"-"<<horaFin_<<":"<<minutoFin<<" "<<dia<<"/"<<mes<<"/"<<anio<<endl;
 
-			Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
-			//TODO : tratar la exepcion que se la tratar al descomentar la siguiente linea
-//				Hour* horaFin = new Hour(horaFin_, minutoFin);
-//				Date* fecha = new Date(dia, mes, anio);
-//				FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
-//				cout<<*fh<<endl;
-//				this->franjasHorarias.push_back(fh);
+//			Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
+//			//TODO : tratar la exepcion que se la tratar al descomentar la siguiente linea
+//			Hour* horaFin = new Hour(horaFin_, minutoFin);
+//			Date* fecha = new Date(dia, mes, anio);
+//			FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
+//			cout<<*fh<<endl;
+//			this->franjasHorarias.push_back(fh);
 		}
 	}
     in.close();
@@ -140,9 +143,9 @@ void TestFranjaHoraria::iniciar(){
 			}
 		}
 
-		//para probar la cargar desde el archivo
-
-		this->cargarFranjasHorarias_mediante((const char*)ARCH_FRANJAS_HORARIAS);
+		//para probar la cargar desde el archivo. test
+		const char* arch = "franjas_horarias.org"; //(const char*)ARCH_FRANJAS_HORARIAS
+		this->cargarFranjasHorarias_mediante(arch);
 		this->listarFranjasHorarias();
 
 	}

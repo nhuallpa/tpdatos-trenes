@@ -49,22 +49,22 @@ void imprime_uso() {
 }
 
 void iniciarInterfase() {
-	KDTreeController kdTreeController;
-	Menu* menu_principal = new MenuPrincipal(kdTreeController);
-	menu_principal->iniciar();
-	Operacion* operacion = new Operacion();
-	operacion =  menu_principal->getOperacionElejida();
+//	KDTreeController kdTreeController;
+//	Menu* menu_principal = new MenuPrincipal(kdTreeController);
+//	menu_principal->iniciar();
+//	Operacion* operacion = new Operacion();
+//	operacion =  menu_principal->getOperacionElejida();
+//
+//	//TODO el la visualizacion del menuAlta tiene que ser igual al de menuConsulta
+//	//Ejecuto la operacion elejida por el menu principal
+//	ManejadorDeOperacion* manejador = new ManejadorDeOperacion(operacion);
+//	manejador->iniciar();
+//
+//	delete menu_principal;
+//	delete operacion;
+//	delete manejador;
 
-	//TODO el la visualizacion del menuAlta tiene que ser igual al de menuConsulta
-	//Ejecuto la operacion elejida por el menu principal
-	ManejadorDeOperacion* manejador = new ManejadorDeOperacion(operacion);
-	manejador->iniciar();
-
-	delete menu_principal;
-	delete operacion;
-	delete manejador;
-
-//		iniciartestFranajaHoraria();
+		iniciartestFranajaHoraria();
 }
 
 void iniciarCargaMasiva(const char* fichero_entrada) {
