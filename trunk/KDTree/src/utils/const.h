@@ -26,6 +26,7 @@
 #define ARCH_FRANJAS_HORARIAS "masters/franjas_horarias.org"
 
 #define SIZE_LINEA_LEVANTAR 512
+//cantidad maxima de susbelementos utilizados para armar la consulta por ejemplo, en el KDTree
 #define CANT_SUBELEMENTOS 5
 
 #endif /* CONST_H_ */
