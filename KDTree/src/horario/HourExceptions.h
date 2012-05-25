@@ -5,12 +5,12 @@
 
 class HourNonexistent : public std::runtime_error{
   public:
-    HourNonexistent(): std::runtime_error( "Non-existent hour" ) {}
+    HourNonexistent(): std::runtime_error( "No existe la hora" ) {}
 };
 
 class MinNonexistent : public std::runtime_error{
   public:
-    MinNonexistent(): std::runtime_error( "Non-existent minute" ) {}
+    MinNonexistent(): std::runtime_error( "No existe la hora" ) {}
 };
 
 #endif

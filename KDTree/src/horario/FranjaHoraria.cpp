@@ -8,12 +8,11 @@
 #include "FranjaHoraria.h"
 
 FranjaHoraria::FranjaHoraria() {
-	// TODO Auto-generated constructor stub
 
 }
 
 FranjaHoraria::~FranjaHoraria() {
-	// TODO Auto-generated destructor stub
+
 }
 
 FranjaHoraria::FranjaHoraria(Hour horaInicio, Hour horaFin, Date fecha){
@@ -58,4 +57,6 @@ ostream & operator<<(std::ostream & os, const FranjaHoraria & fh){
 		  os << setfill('0') << setw(2) << fh.horaInicio << "-" << setfill('0') << setw(2) << fh.horaFin;
 		  os << "-" << setfill('0') << setw(4)  << fh.fecha;
 		  return os;
-	}
+}
+
+

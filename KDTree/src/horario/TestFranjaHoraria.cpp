@@ -8,40 +8,28 @@
 
 #include "TestFranjaHoraria.h"
 
-TestFranjaHoraria::TestFranjaHoraria() {
 
+
+TestFranjaHoraria::TestFranjaHoraria() {
+	this->verResultadoDetallado = false;
+	this->cant_listar = 3;
 }
 
 TestFranjaHoraria::~TestFranjaHoraria() {
 }
 
+
 void TestFranjaHoraria::cargarFranjasHorarias_mediante(const char* arch_franjasHorarias){
-	char buffer[SIZE];
+	char buffer[SIZE_LINEA_LEVANTAR];
     ifstream in;
 	in.open(arch_franjasHorarias, ifstream::in);
 	if (in.is_open()){
 		list<FranjaHoraria*>::iterator it;
-		int cont = 0;
-		while (!in.eof() && cont < 1){
-			cont++;
-			in.getline(buffer, SIZE);
+		while ( !in.eof() ){
+			in.getline(buffer, SIZE_LINEA_LEVANTAR);
 			if (in.good()) {
-				//logica  de desformateo de la franja Horaria
 				string bufString(buffer);
-				cout<<bufString<<endl;
-				int anio = 			atoi(bufString.substr(0, 4).c_str());
-				int mes = 			atoi(bufString.substr(4, 2).c_str());
-				int dia = 			atoi(bufString.substr(6, 2).c_str());
-				int horaInicio_ = 	atoi(bufString.substr(9, 2).c_str());
-				int minutoInicio = 	atoi(bufString.substr(11,2).c_str());
-				int horaFin_ = 		atoi(bufString.substr(14,2).c_str());
-				int minutoFin = 	atoi(bufString.substr(16,2).c_str());
-				//
-
-				Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
-				Hour* horaFin = new Hour(horaFin_, minutoFin);
-				Date* fecha = new Date(dia, mes, anio);
-				FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
+				FranjaHoraria* fh  = this->deserealizarFranjaHoraria_segun(bufString);
 				this->franjasHorarias.push_back(fh);
 			}
 		}
@@ -51,16 +39,16 @@ void TestFranjaHoraria::cargarFranjasHorarias_mediante(const char* arch_franjasH
 	}
 }
 
-void TestFranjaHoraria::listarFranjasHorarias(){
+void TestFranjaHoraria::listarFranjasHorarias_segun(int cant_listar){
 	list<FranjaHoraria*>::iterator itFranjasHorarias;
-	for (itFranjasHorarias=this->franjasHorarias.begin(); itFranjasHorarias!=this->franjasHorarias.end(); itFranjasHorarias++){
+	int cont_listados = 0;
+	for (itFranjasHorarias=this->franjasHorarias.begin(); itFranjasHorarias!=this->franjasHorarias.end() && cont_listados < cant_listar; itFranjasHorarias++){
 		cout<<**itFranjasHorarias<<endl;
+		cont_listados++;
 	}
 }
 
 void TestFranjaHoraria::iniciar(){
-
-		this->verResultadoDetallado = false;
 
 		///////////////////////////////////////////////////////////////////////////////
 		Hour* horaInicio_siniestro_1 = new Hour(0, 0);
@@ -137,9 +125,44 @@ void TestFranjaHoraria::iniciar(){
 			}
 		}
 
-		//para probar la cargar desde el archivo. test
-//		const char* arch = "franjas_horarias.org"; //
 		this->cargarFranjasHorarias_mediante((const char*)ARCH_FRANJAS_HORARIAS);
-		this->listarFranjasHorarias();
+
+		int cant_listar_ = cant_listar;
+		this->listarFranjasHorarias_segun(cant_listar_);
+
+
+		delete horaInicio_siniestro_1;
+		delete horaFin_siniestro_1;
+		delete fecha_siniestro_1;
+		delete fh_1;
+		delete horaInicio_siniestro_4;
+		delete horaFin_siniestro_4;
+		delete fecha_siniestro_4;
+		delete fh_4;
+		delete horaInicio_siniestro_3;
+		delete horaFin_siniestro_3;
+		delete fecha_siniestro_3;
+		delete fh_3;
+		delete hora_1;
+		delete unHorario;
 
 	}
+
+FranjaHoraria* TestFranjaHoraria::deserealizarFranjaHoraria_segun(string lineaArchivo)
+{
+	int anio = 			atoi(lineaArchivo.substr(0, 4).c_str());
+	int mes = 			atoi(lineaArchivo.substr(4, 2).c_str());
+	int dia = 			atoi(lineaArchivo.substr(6, 2).c_str());
+	int horaInicio_ = 	atoi(lineaArchivo.substr(9, 2).c_str());
+	int minutoInicio = 	atoi(lineaArchivo.substr(11,2).c_str());
+	int horaFin_ = 		atoi(lineaArchivo.substr(14,2).c_str());
+	int minutoFin = 	atoi(lineaArchivo.substr(16,2).c_str());
+	//
+
+	Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
+	Hour* horaFin = new Hour(horaFin_, minutoFin);
+	Date* fecha = new Date(dia, mes, anio);
+	FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
+
+	return fh;
+}
