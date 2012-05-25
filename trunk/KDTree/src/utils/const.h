@@ -19,11 +19,11 @@
 #define RANDOM_VOTANTES 1000
 
 
-#define ARCH_LINEAS "../masters/lineas.org"
-#define ARCH_FORMACIONES "../masters/formaciones.org"
-#define ARCH_FALLAS "../masters/fallas.org"
-#define ARCH_ACCIDENTES "../masters/accidentes.org"
-#define ARCH_FRANJAS_HORARIAS "../masters/franjas_horarias.org"
+#define ARCH_LINEAS "masters/lineas.org"
+#define ARCH_FORMACIONES "masters/formaciones.org"
+#define ARCH_FALLAS "masters/fallas.org"
+#define ARCH_ACCIDENTES "masters/accidentes.org"
+#define ARCH_FRANJAS_HORARIAS "masters/franjas_horarias.org"
 
 #define SIZE_LINEA_LEVANTAR 512
 #define CANT_SUBELEMENTOS 5

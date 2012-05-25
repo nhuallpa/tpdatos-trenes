@@ -79,6 +79,8 @@ void iniciarCargaMasiva(const char* fichero_entrada) {
     			cout<<registro<<endl;
     		}
     	}
+    }else{
+    	cout<<"No se pudo abrir "<<fichero_entrada<<endl;
     }
 }
 
