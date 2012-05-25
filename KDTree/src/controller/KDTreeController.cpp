@@ -19,7 +19,8 @@ KDTreeController::~KDTreeController() {
 void KDTreeController::levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida){
 	int SIZE = 512;
 	char * buffer = new char[SIZE];
-	ifstream in(fileName_entrada, ios::in);
+    ifstream in;
+	in.open(fileName_entrada, ifstream::in);
 	if (in.is_open()) {
 		while (!in.eof()){
 			in.getline(buffer, SIZE);

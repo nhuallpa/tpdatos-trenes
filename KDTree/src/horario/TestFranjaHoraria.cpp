@@ -7,9 +7,6 @@
  */
 
 #include "TestFranjaHoraria.h"
-#include <fstream>
-#include <stdlib.h>
-#define SIZE 32
 
 TestFranjaHoraria::TestFranjaHoraria() {
 
@@ -22,45 +19,42 @@ void TestFranjaHoraria::cargarFranjasHorarias_mediante(const char* arch_franjasH
 	char buffer[SIZE];
     ifstream in;
 	in.open(arch_franjasHorarias, ifstream::in);
-	if (in.is_open())
-    	cout<<"abrio: "<<arch_franjasHorarias<<endl;
-    else
-    	cout<<"No abrio: "<<arch_franjasHorarias<<endl;
+	if (in.is_open()){
+		list<FranjaHoraria*>::iterator it;
+		int cont = 0;
+		while (!in.eof() && cont < 1){
+			cont++;
+			in.getline(buffer, SIZE);
+			if (in.good()) {
+				//logica  de desformateo de la franja Horaria
+				string bufString(buffer);
+				cout<<bufString<<endl;
+				int anio = 			atoi(bufString.substr(0, 4).c_str());
+				int mes = 			atoi(bufString.substr(4, 2).c_str());
+				int dia = 			atoi(bufString.substr(6, 2).c_str());
+				int horaInicio_ = 	atoi(bufString.substr(9, 2).c_str());
+				int minutoInicio = 	atoi(bufString.substr(11,2).c_str());
+				int horaFin_ = 		atoi(bufString.substr(14,2).c_str());
+				int minutoFin = 	atoi(bufString.substr(16,2).c_str());
+				//
 
-    list<FranjaHoraria*>::iterator it;
-    int cont = 0;
-    while (!in.eof() && cont < 2){
-    	cont++;
-		in.getline(buffer, SIZE);
-		if (in.good()) {
-			//logica  de desformateo de la franja Horaria
-			string bufString(buffer);
-			cout<<bufString<<endl;
-			int anio = 			atoi(bufString.substr(0, 4).c_str());
-			int mes = 			atoi(bufString.substr(4, 2).c_str());
-			int dia = 			atoi(bufString.substr(6, 2).c_str());
-			int horaInicio_ = 	atoi(bufString.substr(9, 2).c_str());
-			int minutoInicio = 	atoi(bufString.substr(11,2).c_str());
-			int horaFin_ = 		atoi(bufString.substr(14,2).c_str());
-			int minutoFin = 	atoi(bufString.substr(16,2).c_str());
-			cout<<horaInicio_<<":"<<minutoInicio<<"-"<<horaFin_<<":"<<minutoFin<<" "<<dia<<"/"<<mes<<"/"<<anio<<endl;
-
-//			Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
-//			//TODO : tratar la exepcion que se la tratar al descomentar la siguiente linea
-//			Hour* horaFin = new Hour(horaFin_, minutoFin);
-//			Date* fecha = new Date(dia, mes, anio);
-//			FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
-//			cout<<*fh<<endl;
-//			this->franjasHorarias.push_back(fh);
+				Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
+				Hour* horaFin = new Hour(horaFin_, minutoFin);
+				Date* fecha = new Date(dia, mes, anio);
+				FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
+				this->franjasHorarias.push_back(fh);
+			}
 		}
+		in.close();
+	} else{
+    	cout<<"No se abrio: "<<arch_franjasHorarias<<endl;
 	}
-    in.close();
 }
 
 void TestFranjaHoraria::listarFranjasHorarias(){
 	list<FranjaHoraria*>::iterator itFranjasHorarias;
 	for (itFranjasHorarias=this->franjasHorarias.begin(); itFranjasHorarias!=this->franjasHorarias.end(); itFranjasHorarias++){
-		cout<<*itFranjasHorarias<<endl;
+		cout<<**itFranjasHorarias<<endl;
 	}
 }
 
@@ -144,8 +138,8 @@ void TestFranjaHoraria::iniciar(){
 		}
 
 		//para probar la cargar desde el archivo. test
-		const char* arch = "franjas_horarias.org"; //(const char*)ARCH_FRANJAS_HORARIAS
-		this->cargarFranjasHorarias_mediante(arch);
+//		const char* arch = "franjas_horarias.org"; //
+		this->cargarFranjasHorarias_mediante((const char*)ARCH_FRANJAS_HORARIAS);
 		this->listarFranjasHorarias();
 
 	}

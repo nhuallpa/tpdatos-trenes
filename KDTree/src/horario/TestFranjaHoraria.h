@@ -10,6 +10,9 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <fstream>
+#include <stdlib.h>
+#define SIZE 64
 #include "../utils/const.h"
 
 using namespace std;
