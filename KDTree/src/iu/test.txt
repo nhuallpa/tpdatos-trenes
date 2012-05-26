@@ -1,2 +1,0 @@
-//prueba para informar commit en correo
-//otro cambio de prueba para probar con tpdatos-trenes@googlecode.com

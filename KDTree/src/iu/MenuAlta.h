@@ -16,6 +16,7 @@ private:
 	KDTreeController kdTreeController;
 	Operacion* operacionElejida;
 	bool operacion_fueCreada;
+
 public:
 	MenuAlta(KDTreeController& kdTreeController);
 	virtual ~MenuAlta();

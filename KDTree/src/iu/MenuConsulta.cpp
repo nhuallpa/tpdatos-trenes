@@ -7,13 +7,10 @@
 
 #include "MenuConsulta.h"
 
-MenuConsulta::MenuConsulta()
-{
-	// TODO Auto-generated destructor stub
+MenuConsulta::MenuConsulta(){
 }
 
 MenuConsulta::~MenuConsulta() {
-	// TODO Auto-generated destructor stub
 }
 
 void MenuConsulta::mostrar(){

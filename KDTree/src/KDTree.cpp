@@ -48,7 +48,8 @@ void imprime_uso() {
     cout<<"    -c  --carga                 Recibe como argumento un archivo para carga masiva\n"<<endl;
 }
 
-void iniciarInterfase() {
+void iniciarInterfase()
+{
 	KDTreeController kdTreeController;
 	Menu* menu_principal = new MenuPrincipal(kdTreeController);
 	menu_principal->iniciar();
