@@ -12,13 +12,14 @@
 
 class MenuConsulta: public Menu {
 private:
+	KDTreeController kdTreeController;
+	Operacion* operacionElejida;
+	bool operacion_fueCreada;
+
 	string* estructura_resultado;
 	int cant_campos_enResultado;
 	string* estructura_filtro;
 	int cant_campos_enFiltro;
-	KDTreeController kdTreeController;
-	//TODO actualizarlo
-	Operacion* operacionElejida;
 public:
 	MenuConsulta();
 	virtual ~MenuConsulta();
