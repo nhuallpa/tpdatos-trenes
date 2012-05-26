@@ -7,18 +7,8 @@
 
 #include "IEntidad.h"
 
-IEntidad::IEntidad():id(0){
+IEntidad::IEntidad(){
 
-}
-
-ID IEntidad::getID() const {
-
-	return this->id;
-}
-
-void IEntidad::setID(ID id){
-
-	this->id = id;
 }
 
 string IEntidad::toString(){
@@ -26,6 +16,13 @@ string IEntidad::toString(){
 }
 
 IEntidad::~IEntidad(){
-
 }
 
+std::string IEntidad::serialize(){
+	throw "Esta clase no deberia ser instanciada nunca";
+	return "";
+}
+
+void IEntidad::unserialize(std::string& buffer) {
+
+}

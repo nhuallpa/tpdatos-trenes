@@ -59,12 +59,12 @@ FreeSpace LeafNode::getFreeSpace() {
 	return freeSpace;
 }
 
-IElement* LeafNode::getElement(Key key) {
+IElement* LeafNode::getElement(IEntidad* key) {
 	std::vector<IElement*>::iterator it;
 
 	for (it = elements.begin(); it != elements.end(); it++) {
 		IElement* el = (IElement*) *it;
-		if (key == el->getKey())
+		if (key->equals(el->getData()))
 			return el;
 	}
 
@@ -86,7 +86,7 @@ bool LeafNode::rightBalanceWith(BNode* leftSibling) {
 		while (leftSibling->isUnderflowded() && !this->isUnderflowded()) {
 			borrowRecordCount++;
 			this->elements.erase(it);
-			myLeftSibling->insertar(elem);
+			myLeftSibling->insert(elem);
 		}
 		if (this->isUnderflowded()) {
 			//no puedo balancear asi que le devuelvo los registros pedidos
@@ -101,8 +101,8 @@ bool LeafNode::rightBalanceWith(BNode* leftSibling) {
 		} else {
 			return true;
 		}
-		return false;
 	}
+	return false;
 }
 /**
  * Balancea con el sibling, devuelve true si cambiaron ambos (this y sibling) false caso contrario.
@@ -124,7 +124,7 @@ bool LeafNode::leftBalanceWith(BNode* rightSibling) {
 			this->elements.erase(it);
 			it = this->elements.end();
 		}
-		if (this->isUnderflowded()) {// si este quedo en underflow entonces no puedo balancear
+		if (this->isUnderflowded()) { // si este quedo en underflow entonces no puedo balancear
 			for (int i = borrowRecordCount; i > 0; i--) {
 				it = myRightSibling->elements.begin();
 				this->elements.push_back(*it);
@@ -134,9 +134,10 @@ bool LeafNode::leftBalanceWith(BNode* rightSibling) {
 		} else {
 			return true;
 		}
-		return false;
 	}
+	return false;
 }
+
 /**
  * Toma los elementos de sibling y se los agrega a este nodo
  */
@@ -154,17 +155,17 @@ bool LeafNode::join(BNode* sibling) {
 }
 
 //NO USAR PARA BUSCAR EL HERMANO
-Key LeafNode::getFirstKey() {
+IEntidad* LeafNode::getFirstKey() {
 	//puede que este vacio entonces devuelveo
 	if (this->elements.size() == 0) {
 		throw ElementNotFoundException();
 	}
-	return (*(elements.begin()))->getKey();
+	return (*(elements.begin()))->getData();
 }
 /**
  * Devuleve siempre true. Arroja una exception en caso de que ya exista
  */
-bool LeafNode::insertar(IElement* elemToInsert) {
+bool LeafNode::insert(IElement* elemToInsert) {
 	std::vector<IElement*>::iterator it;
 
 	it = this->findElement(elemToInsert);
@@ -177,7 +178,7 @@ bool LeafNode::insertar(IElement* elemToInsert) {
 	//Insertamos en orden
 	for (it = elements.begin(); it != elements.end(); it++) {
 		IElement* el = (IElement*) *it;
-		if (elemToInsert->getKey() < el->getKey()) {
+		if (elemToInsert->getData() < el->getData()) {
 			elements.insert(it, elemToInsert);
 			return true;
 		}
@@ -188,15 +189,15 @@ bool LeafNode::insertar(IElement* elemToInsert) {
 	return true;
 }
 
-LeafNode *LeafNode::find(Key key) {
+LeafNode *LeafNode::find(IEntidad* key) {
 	return this;
 }
 
-IElement *LeafNode::findExact(Key key) {
+IElement *LeafNode::findExact(IEntidad* key) {
 	std::vector<IElement*>::iterator it = getElementsBegin();
 
 	while (it != getElementsEnds()) {
-		if ((*it)->getKey() == key)
+		if (key->equals((*it)->getData()))
 			return *it;
 		it++;
 	}
@@ -212,7 +213,7 @@ std::vector<IElement*>::iterator LeafNode::findElement(IElement* elemToFind) {
 	bool found = false;
 	it = this->elements.begin();
 	for (it = elements.begin(); it != elements.end() && !found;) {
-		found = (*it)->getKey() == elemToFind->getKey();
+		found = true;//(*it)->getKey() == elemToFind->getKey();
 		if (!found) {
 			it++;
 		}
@@ -229,7 +230,7 @@ bool LeafNode::modify(IElement* elemToModify) {
 		throw new ElementNotFoundException();
 	} else {
 		el = (*it);
-		cout << el->getKey() << endl;
+//		cout << el->getKey() << endl;
 		this->elements.erase(it);
 		this->elements.insert(it, elemToModify);
 		delete el;
@@ -241,11 +242,11 @@ bool LeafNode::modify(IElement* elemToModify) {
 /**
  * Elimina el elemento cuya clave es key
  */
-bool LeafNode::remove(Key key) {
+bool LeafNode::remove(IEntidad* key) {
 	vector<IElement*>::iterator it = this->elements.begin();
 	bool found = false;
 	while (it != this->elements.end() && !found) {
-		if ((*it)->getKey() == key) {
+		if ((*it)->getData() == key) {
 			delete *it;
 			this->elements.erase(it);
 			found = true;
@@ -269,7 +270,7 @@ bool LeafNode::insertarTest(IElement* elem) {
 
 	for (it = elements.begin(); it != elements.end(); it++) {
 		IElement* el = (IElement*) *it;
-		if (elem->getKey() < el->getKey()) {
+		if (elem->getData() < el->getData()) {
 			elements.insert(it, elem);
 			return true;
 		}
@@ -294,7 +295,7 @@ KeyElement* LeafNode::doSplit() {
 	p->add(newLeafNode);
 	keyElementFromMiddle->setRightNode(newLeafNode->getOffset());
 	IElement* elemen = (IElement*) (*newLeafNode->elements.begin());
-	keyElementFromMiddle->setKey(elemen->getKey());
+	keyElementFromMiddle->setKey(elemen->getData());
 	newLeafNode->nextNode = this->nextNode;
 	this->nextNode = newLeafNode->getOffset();
 
@@ -436,7 +437,7 @@ void LeafNode::exportNode() {
 		//vale para todas menos para Element
 
 		IEntidad* ientidad = NULL;
-		ientidad = EntityFactory::createEntity(elem);
+		ientidad = EntityFactory::createEntity(elem->getData());
 
 		//casteo para usar el operador que corresonde
 		//esto quedo deprecado.El arobl solo sabe mostrar element.
@@ -453,7 +454,7 @@ ostream& LeafNode::printMe(ostream& myOstream) {
 	myOstream << "Nodo: " << getOffset() << " ";
 	for (it = getElementsBegin(); it != getElementsEnds(); it++) {
 		Element* elem = (Element*) (*it);
-		IEntidad* ientidad = EntityFactory::createEntity(elem);
+		IEntidad* ientidad = EntityFactory::createEntity(elem->getData());
 		//casteo para usar el operador que corresonde
 
 		myOstream << *elem << " ";

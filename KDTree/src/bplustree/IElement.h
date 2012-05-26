@@ -8,18 +8,20 @@
 #define IELEMENT_H_
 #include "../utils/types.h"
 #include "../persistence/ISerializable.h"
+#include "../entidades/IEntidad.h"
+
 class IElement:public ISerializable {
 public:
 	/**
 	 * Longitud del dato
 	 */
-	virtual Data getData()=0;
-	virtual DataSize getElementSize()=0;
-	virtual Key getKey()=0;
-	virtual void toSrtring()=0;
-	virtual void setKey(Key key)=0;
-	IElement();
-	virtual ~IElement();
+	virtual IEntidad* getData()=0;
+	virtual void setData(IEntidad* data)=0;
+
+	virtual void toString()=0;
+
+	IElement(){}
+	~IElement(){}
 };
 
 #endif /* IELEMENT_H_ */

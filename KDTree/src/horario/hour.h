@@ -2,8 +2,9 @@
 #define HOUR_H
 #include <iostream>
 #include "HourExceptions.h"
+#include "../persistence/ISerializable.h"
 
-class Hour {
+class Hour : public ISerializable {
   unsigned int hour;
   unsigned int min;
   public:
@@ -27,6 +28,11 @@ class Hour {
     friend Hour operator+( const Hour & , int );
     friend Hour operator-( const Hour & , int ); 
     friend std::ostream & operator<<( std::ostream & os, const Hour & );
+
+	std::string serialize();
+	void unserialize(std::string& buffer);
+
+	int getDataSize();
 };
 
 #endif

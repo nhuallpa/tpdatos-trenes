@@ -1,5 +1,5 @@
 #include "Serializacion.h"
-#include "ISerializable.h"
+#include "Serializador.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -166,23 +166,23 @@ void Serializacion::IndexReset(){
 
 
 void Serializacion::addEntero(int entero){
-	*this += ISerializable::serializarEntero( entero );
+	*this += Serializador::serializarEntero( entero );
 }
 
 int Serializacion::getEntero(){
 	Serializacion serialEntero = this->substr(index,sizeof(int));
 	index += sizeof(int);
-	return ISerializable::desSerializarEntero(serialEntero);
+	return Serializador::desSerializarEntero(serialEntero);
 }
 
 float Serializacion::getFloat() {
 	Serializacion serialFloat = this->substr(index,sizeof(float));
 	index+=sizeof(float);
-	return ISerializable::desSerializarFloat(serialFloat);
+	return Serializador::desSerializarFloat(serialFloat);
 }
 
 void Serializacion::addString(string data) {
-	*this += ISerializable::serializarEntero( data.length() );
+	*this += Serializador::serializarEntero( data.length() );
 	*this += data;
 }
 
@@ -195,24 +195,14 @@ string Serializacion::getString() {
 	return (tmpSerial.toString());
 }
 
-void Serializacion::addID(ID id) {
-	*this += ISerializable::serializarID( id );
-}
-
-ID Serializacion::getID() {
-	Serializacion serialID = this->substr(index,sizeof(ID));
-	index += sizeof(ID);
-	return ISerializable::desSerializarID(serialID);
-}
-
 void Serializacion::addULong(unsigned long ul) {
-	*this += ISerializable::serializarULong(ul);
+	*this += Serializador::serializarULong(ul);
 }
 
 unsigned long Serializacion::getULong() {
 	Serializacion serialLong = this->substr(index,sizeof(unsigned long));
 	index += sizeof(unsigned long);
-	return ISerializable::desSerializarULong(serialLong);
+	return Serializador::desSerializarULong(serialLong);
 }
 
 Serializacion::~Serializacion()

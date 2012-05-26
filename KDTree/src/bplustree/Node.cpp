@@ -87,7 +87,7 @@ bool Node::doInsertOrModifyInChild(BNode* childNodeToInsert,
 	bool modified = false;
 	switch (insertOrModify) {
 	case INSERT:
-		modified = childNodeToInsert->insertar(elemToInsert);
+		modified = childNodeToInsert->insert(elemToInsert);
 		break;
 	case MODIFY:
 		modified = childNodeToInsert->modify(elemToInsert);
@@ -138,7 +138,7 @@ BNode* Node::findChild(IElement* elementToFind) {
 	}
 	KeyElement* firtKey = (*it);
 	//Caso especial donde levanto el nodo cuyo offset esta en este nodo
-	if (elementToFind->getKey() < firtKey->getKey()) {
+	if (elementToFind->getData() < firtKey->getKey()) {
 		p->load(this->leftNode, childNodeToSearch);
 		found = true;
 	}
@@ -146,7 +146,7 @@ BNode* Node::findChild(IElement* elementToFind) {
 	KeyElement* keyFromKeyElements;
 	for (it = keyElements.begin(); it != keyElements.end() && !found; it++) {
 		keyFromKeyElements = (*it);
-		if (elementToFind->getKey() < keyFromKeyElements->getKey()) {
+		if (elementToFind->getData() < keyFromKeyElements->getKey()) {
 			it--;
 			keyFromKeyElements = (*it);
 			p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
@@ -167,7 +167,7 @@ BNode* Node::findChild(IElement* elementToFind) {
 /**
  * Los Node insertan solo KeyElements, con lo cual, solo se insertara un elemento cuando exista un overflow.
  */
-bool Node::insertar(IElement* elemToInsert) {
+bool Node::insert(IElement* elemToInsert) {
 
 	BNode* childNodeToSearch = this->findChild(elemToInsert);
 
@@ -185,9 +185,8 @@ bool Node::modify(IElement* elemToModify) {
 	delete childNodeToSearch;
 	return hasChanged;
 }
-bool Node::remove(Key key) {
+bool Node::remove(IEntidad* key) {
 	Element elem;
-	elem.setKey(key);
 	BNode* childNodeToSearch = this->findChild(&elem);
 	bool hasChanged = childNodeToSearch->remove(key);
 	if (hasChanged) {
@@ -314,9 +313,8 @@ bool Node::leftBalanceWith(BNode* rightSiblingInUnderflow) {
 	return balanced;
 }
 
-LeafNode* Node::find(Key key) {
-	IElement* el = ElementFactory::createElement();
-	el->setKey(key);
+LeafNode* Node::find(IEntidad* key) {
+	IElement* el = ElementFactory::createElement(key);
 
 	BNode* returnNode = findChild(el);
 
@@ -326,7 +324,7 @@ LeafNode* Node::find(Key key) {
 	return (LeafNode*) returnNode;
 }
 
-IElement* Node::findExact(Key key) {
+IElement* Node::findExact(IEntidad* key) {
 	//TODO hacer un delete del nodo que devuelve find, y devolver una referencia y no un puntero (constructor de copia)
 	return find(key)->findExact(key);
 }
@@ -349,7 +347,7 @@ bool Node::join(BNode* sibling) {
 	BNode* node = NodeFactory::createNodeForSearch(this->getLevel());
 
 	p->load(mySiblingToJoin->leftNode, node);
-	Key newKey = node->getFirstKey();
+	IEntidad* newKey = node->getFirstKey();
 	delete node;
 	KeyElement* newKeyElement = new KeyElement(newKey,
 			mySiblingToJoin->getLeftNode());
@@ -363,7 +361,7 @@ bool Node::join(BNode* sibling) {
 	return true;
 }
 //NO USAR PARA BUSCAR EL HERMANO
-Key Node::getFirstKey() {
+IEntidad* Node::getFirstKey() {
 	if (this->keyElements.size() == 0) {
 		throw KeyNotFoundException();
 	}
@@ -469,7 +467,7 @@ void Node::changeKey(BNode* child) {
 		throw new KeyNotFoundException();
 
 }
-void Node::removeKey(Key key) {
+void Node::removeKey(IEntidad* key) {
 	std::vector<KeyElement*>::iterator it;
 	it = this->keyElements.begin();
 

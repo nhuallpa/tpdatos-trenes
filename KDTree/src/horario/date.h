@@ -3,8 +3,9 @@
 #include <iostream>
 #include <fstream>
 #include "DateExceptions.h"
+#include "../persistence/ISerializable.h"
 
-class Date {
+class Date : public ISerializable {
   unsigned int day;
   unsigned int month;
   unsigned int year;
@@ -31,6 +32,10 @@ class Date {
     Date & operator=( const Date & );
     friend std::ostream & operator<<(std::ostream & os, const Date &);
     
+	std::string serialize();
+	void unserialize(std::string& buffer);
+
+	int getDataSize();
 };
 
 #endif

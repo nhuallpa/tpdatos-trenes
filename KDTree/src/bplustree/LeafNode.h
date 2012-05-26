@@ -15,6 +15,7 @@
 #include <vector>
 #include <algorithm>
 #include "../persistence/PersistorBase.h"
+#include "../entidades/IEntidad.h"
 #include <functional>
 #include "NodeFactory.h"
 class LeafNode: public BNode {
@@ -34,22 +35,22 @@ public:
     LeafNode();
     virtual ~LeafNode();
     KeyElement *doSplit();
-    IElement *getElement(Key key);
+    IElement *getElement(IEntidad* key);
     std::vector<IElement*>::iterator getElementsBegin();
     std::vector<IElement*>::iterator getElementsEnds();
     bool rightBalanceWith(BNode *leftSibling);
     bool leftBalanceWith(BNode *rightSibling);
     bool join(BNode *sibling);
-    Key getFirstKey();
+    IEntidad* getFirstKey();
     Offset getPrevNode();
     Offset getNextNode();
     FreeSpace getFreeSpace();
-    bool insertar(IElement *elem);
-    LeafNode *find(Key key);
-    IElement *findExact(Key key);
+    bool insert(IElement *elem);
+    LeafNode *find(IEntidad* key);
+    IElement *findExact(IEntidad* key);
     bool modify(IElement *elemToModify);
     bool insertarTest(IElement *elem);
-    bool remove(Key key);
+    bool remove(IEntidad* key);
     std::string serialize();
     void unserialize(std::string & buffer);
     int getDataSize();

@@ -81,7 +81,7 @@ void BPlusTree::modify(IElement* element) {
 /**
  * Eliminar una clave implica tambien una posible contraccion del arbol.
  */
-void BPlusTree::remove(Key key) {
+void BPlusTree::remove(IEntidad* key) {
 	bool hasChanged = this->root->remove(key);
 
 	if (hasChanged) {
@@ -94,11 +94,11 @@ void BPlusTree::remove(Key key) {
 /**
  * La busqueda es aproximada, es decir, devuelve el elemento si lo encuentra y sino, el primero anterior mas cercano
  */
-LeafNode* BPlusTree::find(Key key) {
+LeafNode* BPlusTree::find(IEntidad* key) {
 	return root->find(key);
 }
 
-IElement* BPlusTree::findExact(Key key) {
+IElement* BPlusTree::findExact(IEntidad* key) {
 	return root->findExact(key);
 }
 /*LeafNode* BPlusTree::find(ID key){
@@ -168,7 +168,7 @@ void BPlusTree::insert(IElement* element, int modifyOrInsert) {
 
 	switch (modifyOrInsert) {
 	case INSERT:
-		modified = this->root->insertar(element);
+		modified = this->root->insert(element);
 		break;
 	case MODIFY:
 		modified = this->root->modify(element);

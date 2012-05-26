@@ -23,8 +23,6 @@ typedef unsigned long AUTONUMERIC_ID;
 typedef char ENTITY_TYPE;
 typedef int Offset;
 typedef unsigned long ID;
-typedef unsigned int Key;
-typedef unsigned int KeySize;
 typedef unsigned int Level;
 typedef unsigned int RegisterCounter;
 typedef unsigned int BlockSize;

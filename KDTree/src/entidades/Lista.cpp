@@ -18,13 +18,14 @@ Lista::~Lista() {
 
 int Lista::getDataSize()
 {
+	return sizeof(int)*2+nombre.length();
 }
 
 void Lista::unserialize(std::string & buffer)
 {
 	Serializacion serial(buffer);
 
-	id_eleccion=serial.getID();
+	id_eleccion=serial.getEntero();
 	nombre=serial.getString();
 }
 
@@ -32,7 +33,7 @@ std::string Lista::serialize()
 {
 	Serializacion serial;
 
-	serial.addID(id_eleccion);
+	serial.addEntero(id_eleccion);
 	serial.addString(nombre);
 	return serial.toString();
 }

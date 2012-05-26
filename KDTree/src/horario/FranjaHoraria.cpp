@@ -6,6 +6,7 @@
  */
 
 #include "FranjaHoraria.h"
+#include "../persistence/Serializacion.h"
 
 FranjaHoraria::FranjaHoraria() {
 
@@ -59,4 +60,35 @@ ostream & operator<<(std::ostream & os, const FranjaHoraria & fh){
 		  return os;
 }
 
+void FranjaHoraria::copiar(FranjaHoraria *unaFranjaHoraria){
+	this->fecha = unaFranjaHoraria->getFecha();
+	this->horaInicio = unaFranjaHoraria->getHoraInicio();
+	this->horaFin <= unaFranjaHoraria->getHoraFin();
+}
 
+std::string FranjaHoraria::serialize()
+{
+	Serializacion serial;
+	serial.addString(this->fecha.serialize());
+	serial.addString(this->horaInicio.serialize());
+	serial.addString(this->horaFin.serialize());
+
+	return serial.toString();
+}
+void FranjaHoraria::unserialize(std::string& buffer)
+{
+	Serializacion serial(buffer);
+
+	std::string fecha = serial.getString();
+	this->fecha.unserialize(fecha);
+	std::string horaInicio = serial.getString();
+	this->horaInicio.unserialize(horaInicio);
+	std::string horaFin = serial.getString();
+	this->horaFin.unserialize(horaFin);
+
+}
+
+int FranjaHoraria::getDataSize()
+{
+	return (this->fecha.getDataSize()+this->horaInicio.getDataSize()+this->horaFin.getDataSize());
+}
