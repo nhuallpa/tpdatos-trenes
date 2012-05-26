@@ -21,8 +21,7 @@
 #include "iu/Menu.h"
 #include "iu/MenuPrincipal.h"
 #include "horario/TestFranjaHoraria.h"
-#include "Operacion.h"
-#include "ManejadorDeOperacion.h"
+#include "controller/Operacion.h"
 
 using std::cout;
 using std::endl;
@@ -53,17 +52,13 @@ void iniciarInterfase()
 	KDTreeController kdTreeController;
 	Menu* menu_principal = new MenuPrincipal(kdTreeController);
 	menu_principal->iniciar();
-	Operacion* operacion = new Operacion();
-	operacion =  menu_principal->getOperacionElejida();
+	Operacion* operacionElejida = new Operacion();
+	operacionElejida =  menu_principal->getOperacionElejida();
 
-	//TODO el la visualizacion del menuAlta tiene que ser igual al de menuConsulta
-	//Ejecuto la operacion elejida por el menu principal
-	ManejadorDeOperacion* manejador = new ManejadorDeOperacion(operacion);
-	manejador->iniciar();
+	operacionElejida->iniciar();
 
 	delete menu_principal;
-	delete operacion;
-	delete manejador;
+	delete operacionElejida;
 
 //		iniciarTestFranjaHoraria();
 }

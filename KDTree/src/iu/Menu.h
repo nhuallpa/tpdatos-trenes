@@ -15,7 +15,7 @@ using namespace std;
 
 #include "UtilMenu.h"
 #include "../controller/KDTreeController.h"
-#include "../Operacion.h"
+#include "../controller/Operacion.h"
 
 class Menu {
 public:
