@@ -8,24 +8,25 @@
 
 #include "../utils/types.h"
 #include "../persistence/ISerializable.h"
+#include "../entidades/IEntidad.h"
 #include <string>
 #include <iostream>
 
 using namespace std;
 class KeyElement: public ISerializable {
 private:
-	Key key;
+	IEntidad* key;
 	Offset rightNode;
 public:
 	KeyElement();
-	KeyElement(Key key,Offset rightNode);
+	KeyElement(IEntidad* key,Offset rightNode);
 	virtual ~KeyElement();
 
 	Offset getrightNode();
 	void setRightNode(Offset rightNode);
 
-	void setKey(Key key);
-	Key getKey();
+	void setKey(IEntidad* key);
+	IEntidad* getKey();
     bool operator== (KeyElement k) {   // sobrecarga operador ==
        return this->key==k.key ;
      }

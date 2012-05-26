@@ -243,3 +243,28 @@ string Date::getDate()
   sout << "/" << setfill('0') << setw(4)  << this->year;
   return sout.str();
 }
+
+std::string Date::serialize()
+{
+	Serializacion serial;
+	serial.addEntero(this->year);
+	serial.addEntero(this->month);
+	serial.addEntero(this->day);
+
+	return serial.toString();
+}
+
+void Date::unserialize(std::string& buffer)
+{
+	Serializacion serial(buffer);
+
+	this->year = serial.getEntero();
+	this->month = serial.getEntero();
+	this->day = serial.getEntero();
+}
+
+
+int Date::getDataSize()
+{
+	return sizeof(int)*3;
+}

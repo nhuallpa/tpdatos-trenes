@@ -21,8 +21,8 @@ public:
 	BNode();
 	virtual ~BNode();
 
-	virtual LeafNode *find(Key key) = 0;
-	virtual IElement *findExact(Key key) = 0;
+	virtual LeafNode *find(IEntidad* key) = 0;
+	virtual IElement *findExact(IEntidad* key) = 0;
 
 	/**
 	 * Devuelve el ultimo key element.
@@ -44,7 +44,7 @@ public:
 	 * Se puede arrojar una excepcion. Lo implemente con excepcion una vez y no quedo bien.
 	 *
 	 */
-	virtual bool insertar(IElement* elem)=0;
+	virtual bool insert(IElement* elem)=0;
 
 	/**
 	 * Modifica el elemento cuya clave coincide con el que se pasa. En el caso de overflow el nodo inserta el elemento y es
@@ -57,7 +57,7 @@ public:
 	/**
 	 * Elimina el elemento cuya clave es Key
 	 */
-	virtual bool remove(Key key)=0;
+	virtual bool remove(IEntidad* key)=0;
 	/**
 	 *Realiza el split. Nunca deja a este nodo (this) en underlfow.
 	 */
@@ -85,7 +85,7 @@ public:
 	/**
 	 * Devuelve la primer clave
 	 */
-	virtual Key getFirstKey()=0;
+	virtual IEntidad* getFirstKey()=0;
 
 
 	/********************************************

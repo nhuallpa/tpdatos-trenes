@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <sstream>
 #include "HourExceptions.h"
+#include "../persistence/Serializacion.h"
 
 Hour::Hour(unsigned int h,unsigned  int m): hour(h) , min(m) {
   try
@@ -159,4 +160,27 @@ std::string Hour::getHour() const
   std::ostringstream sout;
   sout << std::setfill('0') << std::setw(2) << this->hour << ":" << std::setfill('0') << std::setw(2) << this->min;
   return sout.str();
+}
+
+std::string Hour::serialize()
+{
+	Serializacion serial;
+	serial.addEntero(this->hour);
+	serial.addEntero(this->min);
+
+	return serial.toString();
+}
+
+void Hour::unserialize(std::string& buffer)
+{
+	Serializacion serial(buffer);
+
+	this->hour = serial.getEntero();
+	this->min = serial.getEntero();
+}
+
+
+int Hour::getDataSize()
+{
+	return sizeof(int)*2;
 }

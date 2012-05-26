@@ -18,25 +18,21 @@ class IEntidad: public ISerializable {
 
 public:
 	IEntidad();
-	virtual ID getID() const;
-	virtual void setID(ID id);
-
 	virtual ~IEntidad();
 
-	virtual string toString();
+	virtual std::string toString();
 
-	std::string serialize() {
-		throw "Esta clase no deberia ser instanciada nunca";
-		return "";
+	virtual std::string serialize();
+	virtual void unserialize(std::string& buffer);
+
+	virtual bool equals(IEntidad* entidad){
+		return false;
 	}
 
 	//no virtual para subclases hasta que sea necesario
 	virtual int getDataSize() {
 		return this->serialize().length();
 	}
-
-protected:
-	ID id;
 
 };
 

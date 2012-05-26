@@ -68,7 +68,7 @@ class BPlusTree {
 	 * En el caso que la clave no se encuentre en el arbol, este
 	 * metodo lanzará una excepcion.
 	 */
-    void remove(Key key);
+    void remove(IEntidad* key);
     /*void remove(ID key);*/
 
 	/**
@@ -80,10 +80,8 @@ class BPlusTree {
 	/**
 	 * Buscador del árbol. Devuelve el Nodo contenedor de la clave buscada.
 	 */
-    LeafNode* find(Key key);
-    IElement* findExact(Key key);
-   /* LeafNode* find(ID key);
-    IElement* findExact(ID key);*/
+    LeafNode* find(IEntidad* key);
+    IElement* findExact(IEntidad* key);
 	/**
 	 * Navega por la lista secuencial de los nodos
 	 * hojas hacia adelante.

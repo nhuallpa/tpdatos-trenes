@@ -9,15 +9,12 @@
 #define ELEMENTFACTORY_H_
 #include "Element.h"
 #include "../utils/types.h"
+#include "../persistence/ISerializable.h"
 
 class ElementFactory {
 public:
-	static Element* createElement(Key id,ISerializable* ser){
-		Element* element=new Element(id,ser);
-		return element;
-	}
-	static Element* createElement(Key i, Data data, DataSize dataSize){
-		Element* element= new Element(i, data, dataSize);
+	static Element* createElement(ISerializable* ser){
+		Element* element=new Element((IEntidad*)ser);
 		return element;
 	}
 	static Element* createElement(){

@@ -83,14 +83,12 @@ public:
 
     void addString(string data); //agrega string (size+contenido)
     void addEntero(int entero); //agrega entero
-    void addID(ID id); //agrega id (como unsigned int)
     void addULong(unsigned long ul);
 
 
     //---
     //Estos metodos devuelven el dato a partir de un index y lo incrementan.
     int getEntero();
-    ID getID();
     float getFloat();
     string getString(); //recupera string (size+contenido)
     unsigned long getULong();

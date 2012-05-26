@@ -7,6 +7,7 @@
 #define NODE_H_
 
 #include "BNode.h"
+#include "../entidades/IEntidad.h"
 #include "../utils/types.h"
 #include "KeyElement.h"
 #include <string.h>
@@ -24,7 +25,7 @@ private:
     bool doInsertOrModifyInChild(BNode * childNodeToSearch, IElement * elemToInsert,int insertOrModify);
 
     BNode* findChild(IElement* element);
-    void removeKey(Key key);
+    void removeKey(IEntidad* key);
     void insertFirstKey(KeyElement* keyelement);
 
 public:
@@ -34,12 +35,12 @@ public:
     /**
      * Devuelve true si al insertar se modifico el estado del este nodo o false en caso contrario
      */
-    bool insertar(IElement *elem);
+    bool insert(IElement *elem);
     /**
      * Devuelve true si al modificar fue modificado este o false en caso contrario.
      */
     bool modify(IElement* elemToModify);
-    bool remove(Key key);
+    bool remove(IEntidad* key);
     Offset getLeftNode();
     void setLeftNode(Offset leftNode);
 
@@ -60,14 +61,14 @@ public:
    	/**
    	 * Devuelve el nodo hoja que contiene la clave (o el valor)
    	 */
-   	LeafNode *find(Key key);
-   	IElement *findExact(Key key);
+   	LeafNode *find(IEntidad* key);
+   	IElement *findExact(IEntidad* key);
    	/**
    	 * Agrega todos los elementos de siblin a este nodo
    	 */
    	bool join(BNode* sibling);
-	Key getFirstKey();
-    KeyElement *doSplit();
+   	IEntidad* getFirstKey();
+	KeyElement *doSplit();
     void doSplit(IElement *elem);
     std::vector<KeyElement*>::iterator getKeyElementsBegin();
 	std::vector<KeyElement*>::iterator getKeyElementsEnds();

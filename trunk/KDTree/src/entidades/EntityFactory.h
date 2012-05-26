@@ -12,13 +12,13 @@
 #include "../utils/const.h"
 #include "../entidades/Lista.h"
 #include "../bplustree/IElement.h"
-#include "../index/SimpleSecondaryIndex.h"
+
 class EntityFactory {
 public:
 	EntityFactory();
 	virtual ~EntityFactory();
 	static IEntidad* createEntity();
-	static IEntidad* createEntity(IElement* element);
+	static IEntidad* createEntity(IEntidad* toCopy);
 };
 
 #endif /* ENTITYFACTORY_H_ */

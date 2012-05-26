@@ -8,10 +8,7 @@
 #include "ElementFactory.h"
 
 ElementFactory::ElementFactory() {
-	// TODO Auto-generated constructor stub
-
 }
 
 ElementFactory::~ElementFactory() {
-	// TODO Auto-generated destructor stub
 }
