@@ -8,12 +8,11 @@
 #include "KDTreeController.h"
 
 KDTreeController::KDTreeController() {
-	// TODO Auto-generated constructor stub
 
 }
 
 KDTreeController::~KDTreeController() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void KDTreeController::levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida){
