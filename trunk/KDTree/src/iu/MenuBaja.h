@@ -19,7 +19,7 @@ private:
 public:
 	MenuBaja();
 	virtual ~MenuBaja();
-	void iniciar();
+	bool iniciar();
 	void mostrar();
 	Operacion* getOperacionElejida();
 };

@@ -12,7 +12,7 @@ UtilMenu::UtilMenu() {
 }
 
 UtilMenu::~UtilMenu() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void UtilMenu::separador_menu(){

@@ -9,26 +9,28 @@
 #define MENUALTA_H_
 
 #include "Menu.h"
+#include "../controller/OperacionAlta.h"
 
 class MenuAlta: public Menu {
 
 private:
 	KDTreeController kdTreeController;
-	Operacion* operacionElejida;
+	OperacionAlta* operacionElejida;
 	bool operacion_fueCreada;
 
 public:
 	MenuAlta(KDTreeController& kdTreeController);
 	virtual ~MenuAlta();
-	void iniciar();
+	bool iniciar();
 	void mostrar();
 	KDTreeController& getController();
-	Operacion* getOperacionElejida();
+	OperacionAlta* getOperacionElejida();
 
 private:
-	void insertar_elemento();
+	void elejir_elemento();
 	void mostrarLista(list<string>& lista);
 	string elejir_subElemento_segun(string tipo_deSubElemento, list<string>& lista);
+	void verAlta();
 
 };
 

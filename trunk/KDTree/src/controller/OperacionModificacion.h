@@ -13,6 +13,9 @@ class OperacionModificacion: public Operacion {
 public:
 	OperacionModificacion();
 	virtual ~OperacionModificacion();
+	void inicializar(string linea, string formacion, string falla, string accidente, string franjaHoraria);
+	int iniciar();
+	void mostrar();
 };
 
 #endif /* OPERACIONMODIFICACION_H_ */

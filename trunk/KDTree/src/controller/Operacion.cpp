@@ -15,7 +15,7 @@ Operacion::~Operacion() {
 
 }
 
-void Operacion::iniciar(){
-	cout<<"Operacion::iniciar() -> En proceso de construccion..."<<endl;
+void Operacion::inicializar(string linea, string formacion, string falla, string accidente, string franjaHoraria){
+
 }
 

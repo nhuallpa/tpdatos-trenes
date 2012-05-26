@@ -29,4 +29,13 @@
 //cantidad maxima de susbelementos utilizados para armar la consulta por ejemplo, en el KDTree
 #define CANT_SUBELEMENTOS 5
 
+
+//estados de las operaciones realizadas
+#define OPERACION_ALTA_OK 7
+#define OPERACION_BAJA_OK 8
+#define OPERACION_MODIFICACION_OK 9
+#define OPERACION_CONSULTA_OK  10
+#define OPERACION_CARGA_OK 11
+#define OPERACION_OK 12
+
 #endif /* CONST_H_ */

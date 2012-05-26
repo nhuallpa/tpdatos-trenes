@@ -26,7 +26,7 @@ private:
 public:
 	MenuPrincipal(KDTreeController& kdTreeController);
 	virtual ~MenuPrincipal();
-	void iniciar();
+	bool iniciar();
 	void mostrar();
     KDTreeController& getKdTreeController();
     Operacion* getOperacionElejida();
