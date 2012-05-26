@@ -70,7 +70,13 @@ void MenuConsulta::crear_filtroSalida()
         nroCampo++;
 	}
 	UtilMenu::limpiar_pantalla();
-
+	/**
+	 * TODO: Corregir en post a esta salida de consola
+	 * 	filtro de salida:
+		(formacion,linea)
+		Violación de segmento (`core' generado)
+	 *
+	 */
 	////////////////////////////////////////////////////////////////////////////
 	cout<<"filtro de salida:"<<endl;
 	UtilMenu::verEstructraResultado(filtroSalida, tamanio_filtroSalida);
