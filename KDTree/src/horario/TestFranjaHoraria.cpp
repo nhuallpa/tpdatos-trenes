@@ -150,13 +150,14 @@ void TestFranjaHoraria::iniciar(){
 
 FranjaHoraria* TestFranjaHoraria::deserealizarFranjaHoraria_segun(string lineaArchivo)
 {
-	int anio = 			atoi(lineaArchivo.substr(0, 4).c_str());
-	int mes = 			atoi(lineaArchivo.substr(4, 2).c_str());
-	int dia = 			atoi(lineaArchivo.substr(6, 2).c_str());
-	int horaInicio_ = 	atoi(lineaArchivo.substr(9, 2).c_str());
-	int minutoInicio = 	atoi(lineaArchivo.substr(11,2).c_str());
-	int horaFin_ = 		atoi(lineaArchivo.substr(14,2).c_str());
-	int minutoFin = 	atoi(lineaArchivo.substr(16,2).c_str());
+	int offset_id = 3;
+	int anio = 			atoi(lineaArchivo.substr(0+offset_id, 4).c_str());
+	int mes = 			atoi(lineaArchivo.substr(4+offset_id, 2).c_str());
+	int dia = 			atoi(lineaArchivo.substr(6+offset_id, 2).c_str());
+	int horaInicio_ = 	atoi(lineaArchivo.substr(9+offset_id, 2).c_str());
+	int minutoInicio = 	atoi(lineaArchivo.substr(11+offset_id,2).c_str());
+	int horaFin_ = 		atoi(lineaArchivo.substr(14+offset_id,2).c_str());
+	int minutoFin = 	atoi(lineaArchivo.substr(16+offset_id,2).c_str());
 	//
 
 	Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
