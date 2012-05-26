@@ -8,11 +8,24 @@
 #include "OperacionModificacion.h"
 
 OperacionModificacion::OperacionModificacion() {
-	// TODO Auto-generated constructor stub
 
 }
 
 OperacionModificacion::~OperacionModificacion() {
-	// TODO Auto-generated destructor stub
+
 }
 
+int OperacionModificacion::iniciar(){
+	cout<<"Inicia la Modificacion de: ";
+	cout<<"(...)"<<endl;
+
+	cout<<"procesando..."<<endl;
+	//...
+	int operacion_ok = OPERACION_MODIFICACION_OK;
+
+	return operacion_ok;
+}
+
+void OperacionModificacion::mostrar(){
+	cout<<"(...)"<<endl;
+}

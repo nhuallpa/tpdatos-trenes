@@ -20,9 +20,10 @@ void MenuBaja::mostrar(){
 	cout<<"menu baja::"<<endl;
 }
 
-void MenuBaja::iniciar(){
+bool MenuBaja::iniciar(){
    this->mostrar();
    cout<<"En proceso de construccion..."<<endl;
+   return true;
 }
 
 Operacion* MenuBaja::getOperacionElejida(){

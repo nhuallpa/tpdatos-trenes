@@ -8,11 +8,24 @@
 #include "OperacionBaja.h"
 
 OperacionBaja::OperacionBaja() {
-	// TODO Auto-generated constructor stub
 
 }
 
 OperacionBaja::~OperacionBaja() {
-	// TODO Auto-generated destructor stub
+
 }
 
+int OperacionBaja::iniciar(){
+	cout<<"Inicio la Baja de: ";
+	cout<<"(...)"<<endl;
+
+	cout<<"procesando..."<<endl;
+	//...
+	int operacion_ok = OPERACION_BAJA_OK;
+
+	return operacion_ok;
+}
+
+void OperacionBaja::mostrar(){
+	cout<<"(...)"<<endl;
+}

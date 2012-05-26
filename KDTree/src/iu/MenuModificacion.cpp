@@ -19,9 +19,10 @@ MenuModificacion::~MenuModificacion() {
 void MenuModificacion::mostrar(){
 	cout<<"menu modificacion::"<<endl;
 }
-void MenuModificacion::iniciar(){
+bool MenuModificacion::iniciar(){
    this->mostrar();
    cout<<"En proceso de construccion..."<<endl;
+   return true;
 }
 
 Operacion* MenuModificacion::getOperacionElejida(){

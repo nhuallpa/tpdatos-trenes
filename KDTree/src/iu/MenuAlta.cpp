@@ -9,7 +9,7 @@
 
 MenuAlta::MenuAlta(KDTreeController& kdTreeController){
 	this->kdTreeController = kdTreeController;
-	this->operacionElejida = new Operacion();
+	this->operacionElejida = new OperacionAlta();
 	this->operacion_fueCreada = true;
 }
 
@@ -19,54 +19,58 @@ MenuAlta::~MenuAlta() {
 
 void MenuAlta::mostrar(){
     UtilMenu::separador_menu();
-    cout<<"menu alta::"<<endl;
-    cout<<"1-insertar elemento"<<endl;
-    cout<<"2-salir del menu de Altas"<<endl;
+    cout<<"Menu Alta::"<<endl;
+    cout<<"1-elejir elemento para el Alta"<<endl;
+    cout<<"2-mostrar el alta"<<endl;
+    cout<<"3-salir del menu de Altas"<<endl;
 }
 
-void MenuAlta::iniciar(){
+bool MenuAlta::iniciar(){
     bool salir_alta = false;
+    bool elemento_esElejido = false;
     while(!salir_alta)
     {
     	this->mostrar();
         char opcion_elejida = '0';
         cout<<"elejir opcion del menu: ";
         cin>>opcion_elejida;
+        UtilMenu::limpiar_pantalla();
         switch(opcion_elejida){
-            case '1' :  UtilMenu::limpiar_pantalla(); this->insertar_elemento(); break;
-            case '2' :  UtilMenu::limpiar_pantalla(); salir_alta = true; break;
+            case '1' :	{
+							this->elejir_elemento();
+							elemento_esElejido = true;
+							break;
+						}
+            case '2' :  {
+            				if (elemento_esElejido)
+            					this->verAlta();
+            				else
+            					cout<<"debe elejir un elemento"<<endl;
+            				break;
+            			}
+            case '3' :  UtilMenu::limpiar_pantalla(); salir_alta = true; break;
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
     }
+    return elemento_esElejido;
 }
 
-void MenuAlta::insertar_elemento()
+void MenuAlta::elejir_elemento()
 {
-    string linea = "";
-    string formacion = "";
-    string falla = "";
-    string accidente = "";
-    string franjaHoraria = "";
+    string linea = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(0), this->getController().getLineas());
+    string formacion = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(1), this->getController().getFormaciones());
+    string falla = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(2), this->getController().getFallas());
+    string accidente = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(3), this->getController().getAccidentes());
+    string franjaHoraria = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(4), this->getController().getFranjasHorarias());
 
-    linea = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(0), this->getController().getLineas());
-    formacion = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(1), this->getController().getFormaciones());
-    falla = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(2), this->getController().getFallas());
-    accidente = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(3), this->getController().getAccidentes());
-    franjaHoraria = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(4), this->getController().getFranjasHorarias());
-
-    //TODO tengo que estructurar estos sub elementos en un elemento encapsulado por una interfax
-    cout<<"::Datos Insertados::"<<endl;
-    cout<<"linea: "<<linea<<endl;
-    cout<<"formacion: "<<formacion<<endl;
-    cout<<"falla: "<<falla<<endl;
-    cout<<"accidente: "<<accidente<<endl;
-    cout<<"franjaHoraria: "<<franjaHoraria<<endl;
+    //cargo la operacion
+    this->operacionElejida->inicializar(linea, formacion, falla, accidente, franjaHoraria);
 }
 
 string MenuAlta::elejir_subElemento_segun(string tipo_deSubElemento, list<string>& lista)
 {
     this->mostrarLista(lista);
-    string nroSubElemento;
+    string nroSubElemento = "";
     bool valida = true;
     do {
 		cout<<"Insertar nro de "<<tipo_deSubElemento<<": ";
@@ -84,8 +88,8 @@ void MenuAlta::mostrarLista(list<string> & lista) {
 	}
 }
 
-Operacion* MenuAlta::getOperacionElejida(){
-	Operacion* operacionVacia = new Operacion();
+OperacionAlta* MenuAlta::getOperacionElejida(){
+	OperacionAlta* operacionVacia = new OperacionAlta();
 	if (this->operacion_fueCreada)
 		return this->operacionElejida;
 	else
@@ -94,4 +98,8 @@ Operacion* MenuAlta::getOperacionElejida(){
 
 KDTreeController& MenuAlta::getController() {
 	return this->kdTreeController;
+}
+
+void MenuAlta::verAlta(){
+	this->operacionElejida->mostrar();
 }

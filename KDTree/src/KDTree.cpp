@@ -49,15 +49,56 @@ void imprime_uso() {
 
 void iniciarInterfase()
 {
-	KDTreeController kdTreeController;
-	Menu* menu_principal = new MenuPrincipal(kdTreeController);
-	menu_principal->iniciar();
-	Operacion* operacionElejida = new Operacion();
-	operacionElejida =  menu_principal->getOperacionElejida();
+	Operacion* operacionElejida;
+	Menu* menu_principal;
+	bool operacion_esElejida = false;
+    bool salir_programa= false;
+    while(!salir_programa)
+    {
+        UtilMenu::separador_menu();
+        cout<<"1-elejir operacion para KDTree"<<endl;
+        cout<<"2-mostrar operacion"<<endl;
+        cout<<"3-ejecutar operacion"<<endl;
+        cout<<"4-salir"<<endl;
 
-	operacionElejida->iniciar();
+        char opcion_elejida = '0';
+        cout<<"elejir opcion: ";
+        cin>>opcion_elejida;
+        UtilMenu::limpiar_pantalla();
+        switch(opcion_elejida){
+            case '1' :  {
+            				KDTreeController kdTreeController;
+            				menu_principal = new MenuPrincipal(kdTreeController);
+            				operacion_esElejida = menu_principal->iniciar();
+            				operacionElejida =  menu_principal->getOperacionElejida();
+            				break;
+            			}
+            case '2' :  {
+            				if (operacion_esElejida)
+            					operacionElejida->mostrar();
+            				else
+            					cout<<"debe elejir una operacion"<<endl;
+							break;
+            			}
 
-	delete menu_principal;
+            case '3' :  {
+							if (operacion_esElejida)
+								operacionElejida->iniciar();
+							else
+								cout<<"debe elejir una operacion"<<endl;
+							break;
+        				}
+            case '4' :  {
+            				operacionElejida->iniciar();
+            				salir_programa = true;
+            				UtilMenu::limpiar_pantalla();
+            				delete menu_principal;
+							break;
+        				}
+            default : cout<<"opcion de menu invalida"<<endl; break;
+        }
+    }
+
 	delete operacionElejida;
 
 //		iniciarTestFranjaHoraria();

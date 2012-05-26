@@ -9,27 +9,23 @@
 #define MENUCONSULTA_H_
 
 #include "Menu.h"
+#include "../controller/OperacionConsulta.h"
 
 class MenuConsulta: public Menu {
 private:
 	KDTreeController kdTreeController;
-	Operacion* operacionElejida;
+	OperacionConsulta* operacionElejida;
 	bool operacion_fueCreada;
-
-	string* estructura_resultado;
-	int cant_campos_enResultado;
-	string* estructura_filtro;
-	int cant_campos_enFiltro;
 public:
-	MenuConsulta();
+	MenuConsulta(KDTreeController& kdTreeController);
 	virtual ~MenuConsulta();
-	void iniciar();
-	Operacion* getOperacionElejida();
+	bool iniciar();
+	OperacionConsulta* getOperacionElejida();
 private:
 	void mostrar();
 	void mostrarMenu_estructuraResultado();
-	void crearEstructura_deResulado();
-	void crearFiltro_deConsulta();
+	void crear_filtroSalida();
+	void crear_filtroEntrada();
 	void verConsulta();
 	void ejecutar_consulta();
 	void elejir_cantCamposResultado();

@@ -19,7 +19,7 @@ private:
 public:
 	MenuModificacion();
 	virtual ~MenuModificacion();
-	void iniciar();
+	bool iniciar();
 	void mostrar();
 	Operacion* getOperacionElejida();
 };
