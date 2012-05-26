@@ -75,7 +75,7 @@ void TestFranjaHoraria::iniciar(){
 		FranjaHoraria* fh_3 = new FranjaHoraria(*horaInicio_siniestro_3, *horaFin_siniestro_3, *fecha_siniestro_3);
 		FranjaHoraria* fh_4 = new FranjaHoraria(*horaInicio_siniestro_4, *horaFin_siniestro_4, *fecha_siniestro_4);
 
-		if (fh_3->intersectaCompletaCon(*fh_4)){
+		if ( *fh_3 == *fh_4 ){
 			cout<<"test_2 OK"<<endl;
 			if (this->verResultadoDetallado){
 				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
@@ -95,7 +95,7 @@ void TestFranjaHoraria::iniciar(){
 		fh_3 = new FranjaHoraria(*horaInicio_siniestro_3, *horaFin_siniestro_3, *fecha_siniestro_3);
 		fh_4 = new FranjaHoraria(*horaInicio_siniestro_4, *horaFin_siniestro_4, *fecha_siniestro_4);
 
-		if (fh_3->intersectaCompletaCon(*fh_4)){
+		if ( *fh_3 == *fh_4 ){
 			cout<<"test_3 ERROR"<<endl;
 		}else{
 			cout<<"test_3 ok"<<endl;
@@ -107,15 +107,15 @@ void TestFranjaHoraria::iniciar(){
 
 		///////////////////////////////////////////////////////////////////////////////
 		horaInicio_siniestro_3 = new Hour(12, 0);
-		horaInicio_siniestro_4 = new Hour(12, 30);
+		horaInicio_siniestro_4 = new Hour(11, 00);
 		horaFin_siniestro_3 = new Hour(13, 0);
-		horaFin_siniestro_4 = new Hour(13, 30);
+		horaFin_siniestro_4 = new Hour(11, 30);
 		fecha_siniestro_3 = new Date(3, 3, 2012);
 		fecha_siniestro_4 = new Date(3, 3, 2012);
 		fh_3 = new FranjaHoraria(*horaInicio_siniestro_3, *horaFin_siniestro_3, *fecha_siniestro_3);
 		fh_4 = new FranjaHoraria(*horaInicio_siniestro_4, *horaFin_siniestro_4, *fecha_siniestro_4);
 
-		if (fh_3->intersectaCompletaCon(*fh_4)){
+		if ( *fh_3 == *fh_4 ){
 			cout<<"test_4 ERROR"<<endl;
 		}else{
 			cout<<"test_4 ok"<<endl;
@@ -128,8 +128,38 @@ void TestFranjaHoraria::iniciar(){
 		this->cargarFranjasHorarias_mediante((const char*)ARCH_FRANJAS_HORARIAS);
 
 		int cant_listar_ = cant_listar;
+		cout<<"Primeros "<<cant_listar_<< "elementos a listar: "<<endl;
 		this->listarFranjasHorarias_segun(cant_listar_);
 
+		//comparando operadores
+		if ( *fh_3 <= *fh_4 ){
+			cout<<"test_5 ERROR"<<endl;
+		}else{
+			cout<<"test_5 OK"<<endl;
+			if (this->verResultadoDetallado){
+				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
+				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
+			}
+		}
+
+		if ( *fh_3 >= *fh_4 ){
+			cout<<"test_6 OK"<<endl;
+			if (this->verResultadoDetallado){
+				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
+				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
+			}
+		}else{
+			cout<<"test_6 ERROR"<<endl;
+		}
+		if ( *fh_3 >= *fh_3 ){
+			cout<<"test_7 OK"<<endl;
+			if (this->verResultadoDetallado){
+				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
+				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
+			}
+		}else{
+			cout<<"test_7 ERROR"<<endl;
+		}
 
 		delete horaInicio_siniestro_1;
 		delete horaFin_siniestro_1;

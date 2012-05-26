@@ -27,15 +27,14 @@ public:
 		FranjaHoraria();
 		FranjaHoraria(Hour horaInicio, Hour horaFin, Date fecha);
 		bool intersectaCon(Horario& horario);
-		bool intersectaCompletaCon(FranjaHoraria& unaFranjaHoraria);
 		Hour getHoraInicio() const;
 		Hour getHoraFin() const;
 		Date getFecha() const;
 		friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh);
 		virtual ~FranjaHoraria();
-	    bool operator<=( const FranjaHoraria& unaFranjaHoraria) const;
-	    bool operator>=( const FranjaHoraria& unaFranjaHoraria) const;
-	    bool operator==( const FranjaHoraria& unaFranjaHoraria) const;
+	    bool operator<=(FranjaHoraria& unaFranjaHoraria);
+	    bool operator>=(FranjaHoraria& unaFranjaHoraria);
+	    bool operator==(FranjaHoraria& unaFranjaHoraria);
 
 	void copiar(FranjaHoraria *unaFranjaHoraria);
 
@@ -47,6 +46,8 @@ public:
 	* Es el TOTAL del elemento
 	**/
 	int getDataSize();
+private:
+	bool intersectaCompletaCon(FranjaHoraria& unaFranjaHoraria);
 };
 
 #endif /* FRANJAHORARIA_H_ */

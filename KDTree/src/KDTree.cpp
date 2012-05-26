@@ -97,9 +97,9 @@ void iniciarInterfase()
         				}
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
-    }
 
-	delete operacionElejida;
+        delete operacionElejida;
+    }
 
 //		iniciarTestFranjaHoraria();
 }
