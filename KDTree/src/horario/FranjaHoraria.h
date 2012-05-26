@@ -33,6 +33,9 @@ public:
 		Date getFecha() const;
 		friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh);
 		virtual ~FranjaHoraria();
+	    bool operator<=( const FranjaHoraria& unaFranjaHoraria) const;
+	    bool operator>=( const FranjaHoraria& unaFranjaHoraria) const;
+	    bool operator==( const FranjaHoraria& unaFranjaHoraria) const;
 
 	void copiar(FranjaHoraria *unaFranjaHoraria);
 

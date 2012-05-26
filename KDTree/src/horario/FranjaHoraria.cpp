@@ -60,6 +60,24 @@ ostream & operator<<(std::ostream & os, const FranjaHoraria & fh){
 		  return os;
 }
 
+bool FranjaHoraria::operator==(const FranjaHoraria& unaFranjaHoraria) const{
+	bool esIgual = true;
+	//	esMayorIgual = this->intersectaCompletaCon(unaFranjaHoraria);
+	return esIgual;
+}
+
+bool FranjaHoraria::operator<=(const FranjaHoraria& unaFranjaHoraria) const{
+	bool esMenorIgual = true;
+	//TODO implementar(ariel)
+	return esMenorIgual;
+}
+
+bool FranjaHoraria::operator>=(const FranjaHoraria& unaFranjaHoraria) const{
+	bool esMayorIgual = true;
+	//TODO implementar(ariel)
+	return esMayorIgual;
+}
+
 void FranjaHoraria::copiar(FranjaHoraria *unaFranjaHoraria){
 	this->fecha = unaFranjaHoraria->getFecha();
 	this->horaInicio = unaFranjaHoraria->getHoraInicio();
