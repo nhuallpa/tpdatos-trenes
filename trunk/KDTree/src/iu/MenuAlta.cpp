@@ -10,7 +10,7 @@
 MenuAlta::MenuAlta(KDTreeController& kdTreeController){
 	this->kdTreeController = kdTreeController;
 	this->operacionElejida = new OperacionAlta();
-	this->operacion_fueCreada = true;
+	this->operacion_fueCreada = false;
 }
 
 MenuAlta::~MenuAlta() {
@@ -27,7 +27,6 @@ void MenuAlta::mostrar(){
 
 bool MenuAlta::iniciar(){
     bool salir_alta = false;
-    bool elemento_esElejido = false;
     while(!salir_alta)
     {
     	this->mostrar();
@@ -38,49 +37,53 @@ bool MenuAlta::iniciar(){
         switch(opcion_elejida){
             case '1' :	{
 							this->elejir_elemento();
-							elemento_esElejido = true;
+							this->operacion_fueCreada = true;
 							break;
 						}
             case '2' :  {
-            				if (elemento_esElejido)
-            					this->verAlta();
+            				if (this->operacion_fueCreada)
+            					cout<<*this->operacionElejida<<endl;
             				else
             					cout<<"debe elejir un elemento"<<endl;
             				break;
             			}
-            case '3' :  UtilMenu::limpiar_pantalla(); salir_alta = true; break;
+            case '3' :  salir_alta = true; break;
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
     }
-    return elemento_esElejido;
+    return this->operacion_fueCreada;
 }
 
 void MenuAlta::elejir_elemento()
 {
-    string linea = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(0), this->getController().getLineas());
-    string formacion = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(1), this->getController().getFormaciones());
-    string falla = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(2), this->getController().getFallas());
-    string accidente = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(3), this->getController().getAccidentes());
+    int idLinea = this->elejir_subElemento(UtilMenu::getNombreSubElemento(0), this->getController().getLineas());
+    int idFormacion = this->elejir_subElemento(UtilMenu::getNombreSubElemento(1), this->getController().getFormaciones());
+    int idFalla = this->elejir_subElemento(UtilMenu::getNombreSubElemento(2), this->getController().getFallas());
+    int idAccidente = this->elejir_subElemento(UtilMenu::getNombreSubElemento(3), this->getController().getAccidentes());
+//    int idFranjaHoraria = this->elejir_subElemento(UtilMenu::getNombreSubElemento(4), this->getController().getFranjasHorarias());
 
-    // todo: pasar a objeto, sin usar Ids
-    string franjaHoraria = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(4), this->getController().getFranjasHorarias());
+    //TODO: cargar franja horaria segun su id
+    FranjaHoraria* unaFranjaHoraria = new FranjaHoraria(12,0,13,0,1,1,2012);
+    //...
 
     //cargo la operacion
-    this->operacionElejida->inicializar(linea, formacion, falla, accidente, franjaHoraria);
+    this->operacionElejida->inicializar(idLinea, idFormacion, idFalla, idAccidente, unaFranjaHoraria);
 }
 
-string MenuAlta::elejir_subElemento_segun(string tipo_deSubElemento, list<string>& lista)
+int MenuAlta::elejir_subElemento(string tipo_deSubElemento, list<string>& lista)
 {
     this->mostrarLista(lista);
-    string nroSubElemento = "";
+    string idSubElemento;
+    int idSubElemento_num;
     bool valida = true;
     do {
 		cout<<"Insertar nro de "<<tipo_deSubElemento<<": ";
-		cin>>nroSubElemento;
-		valida = this->getController().validarNroSubElemento(tipo_deSubElemento, nroSubElemento);
+		cin>>idSubElemento;
+		idSubElemento_num = Util::toInt(idSubElemento);
+		valida = this->getController().validarIdSubElemento(tipo_deSubElemento, idSubElemento_num);
     } while (!valida);
     UtilMenu::limpiar_pantalla();
-    return nroSubElemento;
+    return idSubElemento_num;
 }
 
 void MenuAlta::mostrarLista(list<string> & lista) {
@@ -100,8 +103,4 @@ OperacionAlta* MenuAlta::getOperacionElejida(){
 
 KDTreeController& MenuAlta::getController() {
 	return this->kdTreeController;
-}
-
-void MenuAlta::verAlta(){
-	this->operacionElejida->mostrar();
 }

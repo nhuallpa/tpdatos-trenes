@@ -28,6 +28,11 @@
 #define SIZE_LINEA_LEVANTAR 512
 //cantidad maxima de susbelementos utilizados para armar la consulta por ejemplo, en el KDTree
 #define CANT_SUBELEMENTOS 5
+#define NOMBRE_LINEA "linea"
+#define NOMBRE_FORMACION "formacion"
+#define NOMBRE_FALLA "falla"
+#define NOMBRE_ACCIDENTE "accidente"
+#define NOMBRE_FRANJAHORARIA "franjaHoraria"
 
 
 //estados de las operaciones realizadas

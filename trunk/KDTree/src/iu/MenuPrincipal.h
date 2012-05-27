@@ -20,7 +20,6 @@ class MenuPrincipal: public Menu {
 
 private:
 	KDTreeController kdTreeController;
-	//TODO actualizarlo
 	Operacion* operacionElejida;
 
 public:

@@ -17,33 +17,34 @@ using namespace std;
 
 #include <stdlib.h>
 #include <string.h>
-
+/**
+ * Inicializado mediante los archivos maestros y tambien para validad el ingreso
+ * del usuario en base a esos maestros
+ */
 class KDTreeController {
 
 private:
-	//listas de subElementos...
+	//listas de subElementos que seran caragadas con los archivos maestros
 	list<string> listLineas;
 	list<string> listFormaciones;
 	list<string> listFallas;
 	list<string> listAccidentes;
 	list<string> listFranjasHorarias;
 
-	//para validar los numeros elejidos de los subElementos
+	//para validar los numeros elejidos de los subElementos. TODO: utilizar otra tecnica
 	int cantidades_enListas[CANT_SUBELEMENTOS];
 
 public:
 	KDTreeController();
 	virtual ~KDTreeController();
-	void init();
-
-	list<string>& getLineas() { return this->listLineas;}
-	list<string>& getFormaciones() { return this->listFormaciones;}
-	list<string>& getFallas() { return this->listFallas;}
-	list<string>& getAccidentes() { return this->listAccidentes;}
-	list<string>& getFranjasHorarias() { return this->listFranjasHorarias;}
-
-	// TODO: (Ariel) terminar de implementar la validacion...
-	bool validarNroSubElemento(string& tipo_deSubElemento, string& subElemento);
+	//TODO la logica de validacion tiene que se corregida cuando se ejecute la operacion 'eliminar' un elemento del arbol
+	void inicializar();
+	list<string>& getLineas();
+	list<string>& getFormaciones();
+	list<string>& getFallas();
+	list<string>& getAccidentes();
+	list<string>& getFranjasHorarias();
+	bool validarIdSubElemento(string& tipo_deSubElemento, int idSubElemento);
 
 private:
 	void levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida);

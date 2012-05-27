@@ -23,38 +23,37 @@ void UtilMenu::limpiar_pantalla(){
     system("clear");
 }
 
-string UtilMenu::getNombreCampo_segun(int idNombreCampo)
+string UtilMenu::getNombreSubElemento(int idSubElemento)
 {
-	int cantCampos = 5;
-	string nombresCampos[] = {"linea", "formacion", "falla", "accidente", "franjaHoraria" };
+	string nombresCampos[] = {NOMBRE_LINEA, NOMBRE_FORMACION, NOMBRE_FALLA, NOMBRE_ACCIDENTE, NOMBRE_FRANJAHORARIA };
 
 	string nombreCampo_elejido = "";
-	for(int i=0 ; i < cantCampos ; i++){
-		if (idNombreCampo == i)
+	for(int i=0 ; i < CANT_SUBELEMENTOS ; i++){
+		if (idSubElemento == i)
 			nombreCampo_elejido = nombresCampos[i];
 	}
 
 	return nombreCampo_elejido;
 }
 
-void UtilMenu::verEstructraResultado(string* estructura_resultado, int cant_campos_resultado){
+void UtilMenu::verEstructraResultado(string* filtro_salida, int cant_campos_resultado){
 	string separador = ",";
 	cout<<"(";
 	for(int i=0 ; i<cant_campos_resultado ; i++){
 		if ((i+1) ==  cant_campos_resultado)
 			separador = "";
-		cout<<estructura_resultado[i]<<separador;
+		cout<<filtro_salida[i]<<separador;
 	}
 	cout<<") ";
 }
 
-void UtilMenu::verEstructuraFiltro(string* estructura_filtro, int cant_campos_enFiltro){
+void UtilMenu::verEstructuraFiltro(string* filtro_entrada, int cant_campos_enFiltro){
 	string separador = ",";
 	cout<<"(";
 	for(int i=0 ; i<cant_campos_enFiltro ; i++){
 		if ((i+1) ==  cant_campos_enFiltro)
 			separador = "";
-		cout<<estructura_filtro[i]<<separador;
+		cout<<filtro_entrada[i]<<separador;
 	}
 	cout<<") ";
 }

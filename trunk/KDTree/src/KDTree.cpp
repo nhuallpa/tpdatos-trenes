@@ -75,8 +75,9 @@ void iniciarInterfase()
             				break;
             			}
             case '2' :  {
-            				if (operacion_esElejida)
-            					operacionElejida->mostrar();
+            				if (operacion_esElejida){
+//            					cout<<*operacionElejida<<endl;
+            				}
             				else
             					cout<<"debe elejir una operacion"<<endl;
 							break;

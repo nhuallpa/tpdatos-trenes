@@ -7,7 +7,8 @@
 
 #include "MenuConsulta.h"
 
-MenuConsulta::MenuConsulta(KDTreeController& kdTreeController){
+MenuConsulta::MenuConsulta(KDTreeController& kdTreeController)
+{
 	this->kdTreeController = kdTreeController;
 	this->operacionElejida = new OperacionConsulta();
 }
@@ -38,11 +39,11 @@ void MenuConsulta::crear_filtroSalida()
 {
 	////////////////////////////////////////////////////////////////////////////
 	cout<<"Los campos posibles son: (";
-	cout<<UtilMenu::getNombreCampo_segun(0)<<", ";
-	cout<<UtilMenu::getNombreCampo_segun(1)<<", ";
-	cout<<UtilMenu::getNombreCampo_segun(2)<<", ";
-	cout<<UtilMenu::getNombreCampo_segun(3)<<", ";
-	cout<<UtilMenu::getNombreCampo_segun(4)<<")"<<endl;
+	cout<<UtilMenu::getNombreSubElemento(0)<<", ";
+	cout<<UtilMenu::getNombreSubElemento(1)<<", ";
+	cout<<UtilMenu::getNombreSubElemento(2)<<", ";
+	cout<<UtilMenu::getNombreSubElemento(3)<<", ";
+	cout<<UtilMenu::getNombreSubElemento(4)<<")"<<endl;
 
 	string cant_campos;
 	cout<<"Elejir la cantidad de campos utilizados en el resultado de la consulta: ";
@@ -60,11 +61,11 @@ void MenuConsulta::crear_filtroSalida()
 		cout<<"elejir el numero de campo "<<nroCampo + 1<<" de "<<tamanio_filtroSalida<<" : ";
         cin>>opcion_campo_elejido;
         switch(opcion_campo_elejido){
-            case '1' :   filtroSalida[nroCampo] = UtilMenu::getNombreCampo_segun(0); break;
-            case '2' :   filtroSalida[nroCampo] = UtilMenu::getNombreCampo_segun(1); break;
-            case '3' :   filtroSalida[nroCampo] = UtilMenu::getNombreCampo_segun(2); break;
-            case '4' :   filtroSalida[nroCampo] = UtilMenu::getNombreCampo_segun(3); break;
-            case '5' :   filtroSalida[nroCampo] = UtilMenu::getNombreCampo_segun(4); break;
+            case '1' :   filtroSalida[nroCampo] = UtilMenu::getNombreSubElemento(0); break;
+            case '2' :   filtroSalida[nroCampo] = UtilMenu::getNombreSubElemento(1); break;
+            case '3' :   filtroSalida[nroCampo] = UtilMenu::getNombreSubElemento(2); break;
+            case '4' :   filtroSalida[nroCampo] = UtilMenu::getNombreSubElemento(3); break;
+            case '5' :   filtroSalida[nroCampo] = UtilMenu::getNombreSubElemento(4); break;
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
         nroCampo++;
@@ -102,10 +103,6 @@ void MenuConsulta::crear_filtroEntrada()
 	this->operacionElejida->inicializar_filtroEntrada(filtroEntrada, tamanio_filtroEntrada);
 }
 
-void MenuConsulta::verConsulta(){
-	this->operacionElejida->mostrar();
-}
-
 bool MenuConsulta::iniciar(){
     bool salir_consulta = false;
     bool filtroEntrada_esCreado= false;
@@ -130,8 +127,10 @@ bool MenuConsulta::iniciar(){
             				break;
             			}
             case '3' :  {
-							if (filtroEntrada_esCreado && filtroSalida_esCreado)
-								this->verConsulta();
+							if (filtroEntrada_esCreado && filtroSalida_esCreado){
+								//TODO implementar OperacionConsulta::inicializacion
+								//y llamar al <<
+							}
 							else{
 								if (!filtroEntrada_esCreado)
 									cout<<"debe crear el filtro de entrada"<<endl;

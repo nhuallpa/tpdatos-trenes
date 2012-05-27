@@ -8,49 +8,31 @@
 #include "OperacionAlta.h"
 
 OperacionAlta::OperacionAlta(){
-	this->linea = "";
-	this->formacion = "";
-	this->falla = "";
-	this->accidente = "";
-	this->franjaHoraria = "";
+	this->reporte = new Reporte();
 }
 
 OperacionAlta::~OperacionAlta() {
 
 }
 
-void OperacionAlta::inicializar(string linea, string formacion, string falla, string accidente, string franjaHoraria) {
-	this->linea = linea;
-	this->formacion = formacion;
-	this->falla = falla;
-	this->accidente = accidente;
-	this->franjaHoraria = franjaHoraria;
+void OperacionAlta::inicializar(int idLinea, int idFormacion, int idFalla, int idAccidente, FranjaHoraria* unaFranjaHoraria) {
+
+	this->reporte->setIdLinea(idLinea);
+	this->reporte->setIdFormacion(idFormacion);
+	this->reporte->setIdFalla(idFalla);
+	this->reporte->setIdAccidente(idAccidente);
+	this->reporte->setFranjaHoraria(unaFranjaHoraria);
 }
 
 int OperacionAlta::iniciar(){
 
-	int idLinea_elejida = Util::toInt(this->linea);
-	int idFormacion_elejida = Util::toInt(this->formacion);
-	int idFalla_elejida = Util::toInt(this->falla);
-	int idAccidente_elejida = Util::toInt(this->accidente);
-//	int idFranjaHoraria_elejida = Util::toInt(this->franjaHoraria);
-
 	int operacion_ok = OPERACION_ALTA_OK;
 
-	FranjaHoraria* unaFranjaHoraria = new FranjaHoraria();
-
-	Reporte* unReporte = new Reporte();
-	unReporte->setIdLinea(idLinea_elejida);
-	unReporte->setIdFalla(idFalla_elejida);
-	unReporte->setIdAccidente(idAccidente_elejida);
-	unReporte->setIdFormacion(idFormacion_elejida);
-	unReporte->setFranjaHoraria(unaFranjaHoraria);
-
-	cout<<"Alta para el KDTree: "<<*unReporte<<endl;
+	cout<<"Alta para el KDTree: "<<*this->reporte<<endl;
 	cout<<"Inicio Operacion."<<endl;
 	cout<<"procesando..."<<endl;
 
-	IElement* elementoArbol = new Element(unReporte);
+	IElement* elementoArbol = new Element(this->reporte);
 	//todo: lograr imprimir este elemento
 
 	//todo por ahora no usar el bplustree
@@ -58,12 +40,12 @@ int OperacionAlta::iniciar(){
 //	bplustree.insert();
 
 	cout<<"Termino Operacion."<<endl;
-	delete unReporte;
 	delete elementoArbol;
 	return operacion_ok;
 }
 
-void OperacionAlta::mostrar(){
-	cout<<"Operacion Alta: ";
-	cout<<"("<<this->linea<<","<<this->formacion<<","<<this->falla<<","<<this->accidente<<","<<this->franjaHoraria<<")"<<endl;
+std::ostream & operator << ( std::ostream & os , const OperacionAlta & operacion )
+{
+  os <<"La Operacion Alta es:"<< *operacion.reporte;
+  return os;
 }
