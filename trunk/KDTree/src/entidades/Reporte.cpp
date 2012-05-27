@@ -103,7 +103,6 @@ int Reporte::getDataSize()
 	return (sizeof(int)*4 + this->franjaHoraria->getDataSize());
 }
 
-
 ostream & operator<<(std::ostream & os, const Reporte & reporte){
 		  os <<"("<< reporte.idLinea << ","
 				  << reporte.idFormacion<<","

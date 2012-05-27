@@ -28,13 +28,12 @@ void OperacionAlta::inicializar(string linea, string formacion, string falla, st
 }
 
 int OperacionAlta::iniciar(){
-	cout<<"Ejecutando Alta de: ";
 
 	int idLinea_elejida = Util::toInt(this->linea);
 	int idFormacion_elejida = Util::toInt(this->formacion);
 	int idFalla_elejida = Util::toInt(this->falla);
 	int idAccidente_elejida = Util::toInt(this->accidente);
-	int idFranjaHoraria_elejida = Util::toInt(this->franjaHoraria);
+//	int idFranjaHoraria_elejida = Util::toInt(this->franjaHoraria);
 
 	int operacion_ok = OPERACION_ALTA_OK;
 
@@ -46,7 +45,9 @@ int OperacionAlta::iniciar(){
 	unReporte->setIdAccidente(idAccidente_elejida);
 	unReporte->setIdFormacion(idFormacion_elejida);
 	unReporte->setFranjaHoraria(unaFranjaHoraria);
-	cout<<*unReporte<<endl;
+
+	cout<<"Alta para el KDTree: "<<*unReporte<<endl;
+	cout<<"Inicio Operacion."<<endl;
 	cout<<"procesando..."<<endl;
 
 	IElement* elementoArbol = new Element(unReporte);
@@ -56,7 +57,7 @@ int OperacionAlta::iniciar(){
 //	BPlusTree bplustree;
 //	bplustree.insert();
 
-	cout<<"Termino operacion."<<endl;
+	cout<<"Termino Operacion."<<endl;
 	delete unReporte;
 	delete elementoArbol;
 	return operacion_ok;
