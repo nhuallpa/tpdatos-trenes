@@ -10,22 +10,18 @@
 #include "Operacion.h"
 #include "../bplustree/Element.h"
 #include "../utils/utiles.h"
+#include "../horario/FranjaHoraria.h"
 
 class OperacionAlta: public Operacion {
 private:
-	//TODO: tendria que ser cargado con la estructura de la data del elemento del arbol KD
-	string linea;
-	string formacion;
-	string falla;
-	string accidente;
-	string franjaHoraria;
+	Reporte* reporte;
 
 public:
 	OperacionAlta();
 	virtual ~OperacionAlta();
-	void inicializar(string linea, string formacion, string falla, string accidente, string franjaHoraria);
+	void inicializar(int idLinea, int idFormacion, int idFalla, int idAccidente, FranjaHoraria* franjaHoraria);
 	int iniciar();
-	void mostrar();
+	friend std::ostream & operator<<( std::ostream & os, const OperacionAlta & );
 };
 
 #endif /* OPERACIONALTA_H_ */

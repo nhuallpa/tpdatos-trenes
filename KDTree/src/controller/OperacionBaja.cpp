@@ -25,7 +25,3 @@ int OperacionBaja::iniciar(){
 
 	return operacion_ok;
 }
-
-void OperacionBaja::mostrar(){
-	cout<<"(...)"<<endl;
-}

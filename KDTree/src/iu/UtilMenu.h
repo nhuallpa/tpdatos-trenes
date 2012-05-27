@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include "../utils/const.h"
 
 using namespace std;
 
@@ -20,9 +21,9 @@ public:
 	virtual ~UtilMenu();
 	static void separador_menu();
 	static void limpiar_pantalla();
-	static string getNombreCampo_segun(int idNombreCampo);
-	static void verEstructraResultado(string* estructura_resultado, int cant_campos_resultado);
-	static void verEstructuraFiltro(string* estructura_filtro, int cant_campos_enFiltro);
+	static string getNombreSubElemento(int idSubElemento);
+	static void verEstructraResultado(string* filtro_salida, int cant_campos_resultado);
+	static void verEstructuraFiltro(string* filtro_entrada, int cant_campos_enFiltro);
 };
 
 #endif /* UTILMENU_H_ */

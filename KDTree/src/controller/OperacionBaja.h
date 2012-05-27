@@ -15,7 +15,6 @@ public:
 	virtual ~OperacionBaja();
 	void inicializar(string linea, string formacion, string falla, string accidente, string franjaHoraria);
 	int iniciar();
-	void mostrar();
 };
 
 #endif /* OPERACIONBAJA_H_ */

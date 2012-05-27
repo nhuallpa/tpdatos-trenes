@@ -8,6 +8,10 @@
 #include "Reporte.h"
 
 Reporte::Reporte() {
+	this->idLinea = 0;
+	this->idFormacion = 0;
+	this->idFalla = 0;
+	this->idAccidente = 0;
 	this->franjaHoraria = new FranjaHoraria();
 }
 

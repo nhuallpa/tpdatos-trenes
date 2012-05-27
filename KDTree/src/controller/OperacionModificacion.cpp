@@ -26,6 +26,3 @@ int OperacionModificacion::iniciar(){
 	return operacion_ok;
 }
 
-void OperacionModificacion::mostrar(){
-	cout<<"(...)"<<endl;
-}

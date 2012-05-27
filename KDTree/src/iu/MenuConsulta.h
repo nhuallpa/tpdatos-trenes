@@ -26,7 +26,6 @@ private:
 	void mostrarMenu_estructuraResultado();
 	void crear_filtroSalida();
 	void crear_filtroEntrada();
-	void verConsulta();
 	void ejecutar_consulta();
 	void elejir_cantCamposResultado();
 	void elejir_losCamposResultado();

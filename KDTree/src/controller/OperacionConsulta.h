@@ -20,11 +20,10 @@ private:
 public:
 	OperacionConsulta();
 	virtual ~OperacionConsulta();
-	void inicializar(string linea, string formacion, string falla, string accidente, string franjaHoraria);
+	void inicializar(int idLinea, int idFormacion, int idFalla, int idAccidente, FranjaHoraria* franjaHoraria);
 	void inicializar_filtroEntrada(string* filtroEntrada, int tamanio);
 	void inicializar_filtroSalida(string* filtroSalida, int tamanio);
 	int iniciar();
-	void mostrar();
 };
 
 #endif /* OPERACIONCONSULTA_H_ */

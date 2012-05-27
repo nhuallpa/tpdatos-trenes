@@ -27,11 +27,12 @@ public:
 	OperacionAlta* getOperacionElejida();
 
 private:
+	/**
+	 * elije segun los archivos maestros cargados por el controlador del KDTree
+	 */
 	void elejir_elemento();
 	void mostrarLista(list<string>& lista);
-	string elejir_subElemento_segun(string tipo_deSubElemento, list<string>& lista);
-	void verAlta();
-
+	int elejir_subElemento(string tipo_deSubElemento, list<string>& lista);
 };
 
 #endif /* MENUALTA_H_ */

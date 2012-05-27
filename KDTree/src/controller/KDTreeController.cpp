@@ -15,16 +15,31 @@ KDTreeController::~KDTreeController() {
 
 }
 
-void KDTreeController::levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida){
-	int SIZE = 512;
-	char * buffer = new char[SIZE];
+void KDTreeController::inicializar()
+{
+	this->levantar_datosMaestros_segun((const char*)ARCH_LINEAS, &this->listLineas);
+	this->levantar_datosMaestros_segun((const char*)ARCH_FORMACIONES, &this->listFormaciones);
+	this->levantar_datosMaestros_segun((const char*)ARCH_FALLAS, &this->listFallas);
+	this->levantar_datosMaestros_segun((const char*)ARCH_ACCIDENTES, &this->listAccidentes);
+	this->levantar_datosMaestros_segun((const char*)ARCH_FRANJAS_HORARIAS, &this->listFranjasHorarias);
+
+	//cargo los tamanios de cada lista
+	this->cantidades_enListas[0] = (int)this->listLineas.size();
+	this->cantidades_enListas[1] = (int)this->listFormaciones.size();
+	this->cantidades_enListas[2] = (int)this->listFallas.size();
+	this->cantidades_enListas[3] = (int)this->listAccidentes.size();
+	this->cantidades_enListas[4] = (int)this->listFranjasHorarias.size();
+}
+
+void KDTreeController::levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida)
+{
+	char * buffer = new char[SIZE_LINEA_LEVANTAR];
     ifstream in;
 	in.open(fileName_entrada, ifstream::in);
 	if (in.is_open()) {
 		while (!in.eof()){
-			in.getline(buffer, SIZE);
+			in.getline(buffer, SIZE_LINEA_LEVANTAR);
 			if (in.good()) {
-				//cod = getCodigo(buffer);
 				string linea(buffer);
 				lista_salida->push_back(buffer);
 			}
@@ -36,43 +51,21 @@ void KDTreeController::levantar_datosMaestros_segun(const char* fileName_entrada
 	delete(buffer);
 }
 
-void KDTreeController::init(){
+list<string>& KDTreeController::getLineas(){ return this->listLineas;}
+list<string>& KDTreeController::getFormaciones(){ return this->listFormaciones;}
+list<string>& KDTreeController::getFallas(){ return this->listFallas;}
+list<string>& KDTreeController::getAccidentes(){ return this->listAccidentes;}
+list<string>& KDTreeController::getFranjasHorarias(){ return this->listFranjasHorarias;}
 
-	this->levantar_datosMaestros_segun((const char*)ARCH_LINEAS, &this->listLineas);
-	this->levantar_datosMaestros_segun((const char*)ARCH_FORMACIONES, &this->listFormaciones);
-	this->levantar_datosMaestros_segun((const char*)ARCH_FALLAS, &this->listFallas);
-	this->levantar_datosMaestros_segun((const char*)ARCH_ACCIDENTES, &this->listAccidentes);
-	this->levantar_datosMaestros_segun((const char*)ARCH_FRANJAS_HORARIAS, &this->listFranjasHorarias);
-
-}
-
-/*
- * TODO la logica de validacion tiene que se corregida cuando se ejecute la operacion 'eliminar' un elemento del arbol
- */
-bool KDTreeController::validarNroSubElemento(string& tipo_deSubElemento, string& nroSubElemento)
+bool KDTreeController::validarIdSubElemento(string& nombreSubElemento, int idSubElemento)
 {
-	bool nroSubElemento_validado = false;
-	int nroSubElem = atoi(nroSubElemento.c_str());
-
-	if ( nroSubElem >= 1 ){
-		if ( strcmp(UtilMenu::getNombreCampo_segun(0).c_str(), tipo_deSubElemento.c_str()) == 0){
-			nroSubElemento_validado = nroSubElem <= (int)this->listLineas.size();
-
-		}else if( strcmp(UtilMenu::getNombreCampo_segun(1).c_str(), tipo_deSubElemento.c_str()) == 0){
-			nroSubElemento_validado = nroSubElem <= (int)this->listFormaciones.size();
-
-		}else if( strcmp(UtilMenu::getNombreCampo_segun(2).c_str(), tipo_deSubElemento.c_str()) == 0){
-			nroSubElemento_validado = nroSubElem <= (int)this->listFallas.size();
-
-		}else if( strcmp(UtilMenu::getNombreCampo_segun(3).c_str(), tipo_deSubElemento.c_str()) == 0){
-			nroSubElemento_validado = nroSubElem <= (int)this->listAccidentes.size();
-
-		}else if( strcmp(UtilMenu::getNombreCampo_segun(4).c_str(), tipo_deSubElemento.c_str()) == 0){
-			nroSubElemento_validado = nroSubElem <= (int)this->listFranjasHorarias.size();
-		}else{
-			cout<<"ERROR INFRAGANTI!!!"<<endl;
+	bool idSubElemento_validado = false;
+	if ( idSubElemento >= 1 ){
+		for(int i = 0; i < CANT_SUBELEMENTOS ; i++){
+			if (nombreSubElemento.compare(UtilMenu::getNombreSubElemento(i)) == 0)
+				idSubElemento_validado = ( idSubElemento <= this->cantidades_enListas[i] );
 		}
 	}
-	return nroSubElemento_validado;
+	return idSubElemento_validado;
 }
 

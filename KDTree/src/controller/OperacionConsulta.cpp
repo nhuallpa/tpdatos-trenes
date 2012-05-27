@@ -15,6 +15,10 @@ OperacionConsulta::~OperacionConsulta() {
 
 }
 
+void OperacionConsulta::inicializar(int idLinea, int idFormacion, int idFalla,
+		int idAccidente, FranjaHoraria* franjaHoraria) {
+}
+
 int OperacionConsulta::iniciar(){
 	cout<<"Inicia la Consulta de: ";
 	cout<<"(...)"<<endl;
@@ -25,21 +29,21 @@ int OperacionConsulta::iniciar(){
 
 	return operacion_ok;
 }
-
-void OperacionConsulta::mostrar(){
-	cout<<"La consulta es(tipo MySql):"<<endl;
-	cout<<"SELECT ";
-	if (this->tamanio_salida < 1)
-		cout<<"* ";
-	else
-		UtilMenu::verEstructraResultado(this->filtroSalida, this->tamanio_salida);
-	cout<<"FROM tabla-arbolKD WHERE ";
-	if (this->tamanio_entrada < 1)
-		cout<<"1";
-	else
-		UtilMenu::verEstructuraFiltro(this->filtroEntrada, this->tamanio_entrada);
-	cout<<";"<<endl;
-}
+//
+//void OperacionConsulta::mostrar(){
+//	cout<<"La consulta es(tipo MySql):"<<endl;
+//	cout<<"SELECT ";
+//	if (this->tamanio_salida < 1)
+//		cout<<"* ";
+//	else
+//		UtilMenu::verEstructraResultado(this->filtroSalida, this->tamanio_salida);
+//	cout<<"FROM tabla-arbolKD WHERE ";
+//	if (this->tamanio_entrada < 1)
+//		cout<<"1";
+//	else
+//		UtilMenu::verEstructuraFiltro(this->filtroEntrada, this->tamanio_entrada);
+//	cout<<";"<<endl;
+//}
 
 void OperacionConsulta::inicializar_filtroEntrada(string* filtroEntrada, int tamanio){
 	for(int i=0 ; i<tamanio ; i++)

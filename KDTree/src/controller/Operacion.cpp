@@ -14,8 +14,3 @@ Operacion::Operacion() {
 Operacion::~Operacion() {
 
 }
-
-void Operacion::inicializar(string linea, string formacion, string falla, string accidente, string franjaHoraria){
-
-}
-

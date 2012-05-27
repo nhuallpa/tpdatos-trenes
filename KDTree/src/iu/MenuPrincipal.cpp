@@ -9,6 +9,7 @@
 
 MenuPrincipal::MenuPrincipal(KDTreeController &kdTreeController) {
 	this->kdTreeController = kdTreeController;
+	this->kdTreeController.inicializar();
 }
 
 MenuPrincipal::~MenuPrincipal() {
@@ -27,8 +28,6 @@ void MenuPrincipal::mostrar(){
 
 bool MenuPrincipal::iniciar()
 {
-	this->getKdTreeController().init();
-
 	Menu* menu_alta          = new MenuAlta(this->getKdTreeController());
 	Menu* menu_baja          = new MenuBaja();
 	Menu* menu_modifcacion   = new MenuModificacion();
@@ -48,6 +47,7 @@ bool MenuPrincipal::iniciar()
         {
             case '1' :  {
             				operacion_esElejida = menu_alta->iniciar();
+            				this->operacionElejida = new OperacionAlta();
 							this->operacionElejida = menu_alta->getOperacionElejida();
 							break;
             			}
@@ -68,7 +68,6 @@ bool MenuPrincipal::iniciar()
             				break;
             			}
             case '5' :  {
-            				UtilMenu::limpiar_pantalla();
             				salir = true;
             				break;
             			}
@@ -83,11 +82,11 @@ bool MenuPrincipal::iniciar()
     return operacion_esElejida;
 }
 
+KDTreeController& MenuPrincipal::getKdTreeController() {
+	return this->kdTreeController;
+}
+
 Operacion* MenuPrincipal::getOperacionElejida()
 {
 	return this->operacionElejida;
-}
-
-KDTreeController& MenuPrincipal::getKdTreeController() {
-	return this->kdTreeController;
 }
