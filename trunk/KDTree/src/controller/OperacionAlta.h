@@ -8,6 +8,8 @@
 #ifndef OPERACIONALTA_H_
 #define OPERACIONALTA_H_
 #include "Operacion.h"
+#include "../bplustree/Element.h"
+#include "../utils/utiles.h"
 
 class OperacionAlta: public Operacion {
 private:

@@ -33,4 +33,6 @@ typedef char* Data;
 typedef unsigned short PrecisionInt;
 typedef unsigned long EnteroLargo;
 
+typedef unsigned int uint;
+
 #endif /* TYPES_H_ */

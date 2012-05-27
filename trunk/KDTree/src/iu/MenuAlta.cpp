@@ -61,6 +61,8 @@ void MenuAlta::elejir_elemento()
     string formacion = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(1), this->getController().getFormaciones());
     string falla = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(2), this->getController().getFallas());
     string accidente = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(3), this->getController().getAccidentes());
+
+    // todo: pasar a objeto, sin usar Ids
     string franjaHoraria = this->elejir_subElemento_segun(UtilMenu::getNombreCampo_segun(4), this->getController().getFranjasHorarias());
 
     //cargo la operacion

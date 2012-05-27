@@ -28,17 +28,41 @@ void OperacionAlta::inicializar(string linea, string formacion, string falla, st
 }
 
 int OperacionAlta::iniciar(){
-	cout<<"Inicio Alta de: ";
-	cout<<"("<<this->linea<<","<<this->formacion<<","<<this->falla<<","<<this->accidente<<","<<this->franjaHoraria<<")"<<endl;
+	cout<<"Ejecutando Alta de: ";
 
-	cout<<"procesando..."<<endl;
-	//...
+	int idLinea_elejida = Util::toInt(this->linea);
+	int idFormacion_elejida = Util::toInt(this->formacion);
+	int idFalla_elejida = Util::toInt(this->falla);
+	int idAccidente_elejida = Util::toInt(this->accidente);
+	int idFranjaHoraria_elejida = Util::toInt(this->franjaHoraria);
+
 	int operacion_ok = OPERACION_ALTA_OK;
 
+	FranjaHoraria* unaFranjaHoraria = new FranjaHoraria();
+
+	Reporte* unReporte = new Reporte();
+	unReporte->setIdLinea(idLinea_elejida);
+	unReporte->setIdFalla(idFalla_elejida);
+	unReporte->setIdAccidente(idAccidente_elejida);
+	unReporte->setIdFormacion(idFormacion_elejida);
+	unReporte->setFranjaHoraria(unaFranjaHoraria);
+	cout<<*unReporte<<endl;
+	cout<<"procesando..."<<endl;
+
+	IElement* elementoArbol = new Element(unReporte);
+	//todo: lograr imprimir este elemento
+
+	//todo por ahora no usar el bplustree
+//	BPlusTree bplustree;
+//	bplustree.insert();
+
+	cout<<"Termino operacion."<<endl;
+	delete unReporte;
+	delete elementoArbol;
 	return operacion_ok;
 }
 
 void OperacionAlta::mostrar(){
-	cout<<"El alta es: ";
+	cout<<"Operacion Alta: ";
 	cout<<"("<<this->linea<<","<<this->formacion<<","<<this->falla<<","<<this->accidente<<","<<this->franjaHoraria<<")"<<endl;
 }
