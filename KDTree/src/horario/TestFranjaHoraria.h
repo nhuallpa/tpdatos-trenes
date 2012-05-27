@@ -13,10 +13,11 @@
 #include <fstream>
 #include <stdlib.h>
 
-#include "../utils/const.h"
 #include "FranjaHoraria.h"
 #include "hour.h"
 #include "date.h"
+#include "../utils/const.h"
+#include "../utils/utiles.h"
 
 class TestFranjaHoraria {
 private:

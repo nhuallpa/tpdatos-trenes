@@ -10,6 +10,7 @@
 #include <iostream>
 using namespace std;
 #include "../utils/const.h"
+#include "../entidades/Reporte.h"
 
 class Operacion {
 public:

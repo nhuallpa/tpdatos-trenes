@@ -41,7 +41,7 @@ public:
 	 * Element deberia ser definido como const, pero para que compile
 	 * Los accesores tambien deberian ser definidos como const.
 	 */
-	friend ostream& operator<<(ostream&, Element&);
+	friend ostream& operator<<(ostream&, IElement&);
 
 	virtual void toString(){
 		cout<<"Data: "<<data->toString()<<" ";

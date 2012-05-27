@@ -8,16 +8,15 @@
 
 #include "TestFranjaHoraria.h"
 
-
-
-TestFranjaHoraria::TestFranjaHoraria() {
-	this->verResultadoDetallado = false;
+TestFranjaHoraria::TestFranjaHoraria()
+{
 	this->cant_listar = 3;
 }
 
-TestFranjaHoraria::~TestFranjaHoraria() {
-}
+TestFranjaHoraria::~TestFranjaHoraria()
+{
 
+}
 
 void TestFranjaHoraria::cargarFranjasHorarias_mediante(const char* arch_franjasHorarias){
 	char buffer[SIZE_LINEA_LEVANTAR];
@@ -50,150 +49,44 @@ void TestFranjaHoraria::listarFranjasHorarias_segun(int cant_listar){
 
 void TestFranjaHoraria::iniciar(){
 
-		///////////////////////////////////////////////////////////////////////////////
-		Hour* horaInicio_siniestro_1 = new Hour(0, 0);
-		Hour* horaFin_siniestro_1 = new Hour(0, 30);
-		Date* fecha_siniestro_1 = new Date(21, 2, 2012);
-		FranjaHoraria* fh_1 = new FranjaHoraria(*horaInicio_siniestro_1, *horaFin_siniestro_1, *fecha_siniestro_1);
+		FranjaHoraria* franja_1 = new FranjaHoraria(12,0,13,0, 3,4,2012); //12:00-13:00-03/04/2012
+		FranjaHoraria* franja_2 = new FranjaHoraria(12,0,13,0, 3,4,2012); //12:00-13:00-03/04/2012
+		FranjaHoraria* franja_3 = new FranjaHoraria(12,0,12,30,3,4,2012); //12:00-12:30-03/04/2012
+		FranjaHoraria* franja_4 = new FranjaHoraria(11,0,11,30,3,4,2012); //11:00-11:30-03/04/2012
+		FranjaHoraria* franja_5 = new FranjaHoraria(12,0,13,0, 4,4,2012); //9:00-11:00-04/04/2012
 
-		Date* fecha_1 = new Date(21, 2, 2012);
-		Hour* hora_1 = new Hour(0, 25);
-		Horario* unHorario = new Horario(*hora_1, *fecha_1);
-		if (fh_1->intersectaCon(*unHorario)){
-			cout<<"test_1 OK"<<endl;
-		}else{
-			cout<<"test_1 ERROR"<<endl;
-		}
-
-		///////////////////////////////////////////////////////////////////////////////
-		Hour* horaInicio_siniestro_3 = new Hour(12, 0);
-		Hour* horaInicio_siniestro_4 = new Hour(12, 0);
-		Hour* horaFin_siniestro_3 = new Hour(12, 30);
-		Hour* horaFin_siniestro_4 = new Hour(13, 0);
-		Date* fecha_siniestro_3 = new Date(3, 4, 2012);
-		Date* fecha_siniestro_4 = new Date(3, 4, 2012);
-		FranjaHoraria* fh_3 = new FranjaHoraria(*horaInicio_siniestro_3, *horaFin_siniestro_3, *fecha_siniestro_3);
-		FranjaHoraria* fh_4 = new FranjaHoraria(*horaInicio_siniestro_4, *horaFin_siniestro_4, *fecha_siniestro_4);
-
-		if ( *fh_3 == *fh_4 ){
-			cout<<"test_2 OK"<<endl;
-			if (this->verResultadoDetallado){
-				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
-				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
-			}
-		}else{
-			cout<<"test_2 ERROR"<<endl;
-		}
-
-		///////////////////////////////////////////////////////////////////////////////
-		horaInicio_siniestro_3 = new Hour(12, 0);
-		horaInicio_siniestro_4 = new Hour(12, 0);
-		horaFin_siniestro_3 = new Hour(13, 0);
-		horaFin_siniestro_4 = new Hour(13, 0);
-		fecha_siniestro_3 = new Date(3, 3, 2012);
-		fecha_siniestro_4 = new Date(4, 4, 2012);
-		fh_3 = new FranjaHoraria(*horaInicio_siniestro_3, *horaFin_siniestro_3, *fecha_siniestro_3);
-		fh_4 = new FranjaHoraria(*horaInicio_siniestro_4, *horaFin_siniestro_4, *fecha_siniestro_4);
-
-		if ( *fh_3 == *fh_4 ){
-			cout<<"test_3 ERROR"<<endl;
-		}else{
-			cout<<"test_3 ok"<<endl;
-			if (this->verResultadoDetallado){
-				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
-				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
-			}
-		}
-
-		///////////////////////////////////////////////////////////////////////////////
-		horaInicio_siniestro_3 = new Hour(12, 0);
-		horaInicio_siniestro_4 = new Hour(11, 00);
-		horaFin_siniestro_3 = new Hour(13, 0);
-		horaFin_siniestro_4 = new Hour(11, 30);
-		fecha_siniestro_3 = new Date(3, 3, 2012);
-		fecha_siniestro_4 = new Date(3, 3, 2012);
-		fh_3 = new FranjaHoraria(*horaInicio_siniestro_3, *horaFin_siniestro_3, *fecha_siniestro_3);
-		fh_4 = new FranjaHoraria(*horaInicio_siniestro_4, *horaFin_siniestro_4, *fecha_siniestro_4);
-
-		if ( *fh_3 == *fh_4 ){
-			cout<<"test_4 ERROR"<<endl;
-		}else{
-			cout<<"test_4 ok"<<endl;
-			if (this->verResultadoDetallado){
-				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
-				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
-			}
-		}
+		if ( *franja_1 == *franja_2 ) cout<<"test_1 OK"<<endl;
+		if ( *franja_3 == *franja_1 ) cout<<"test_2 OK"<<endl; //franja_3 esta contenido dentro de franja_1
+		if ( *franja_1 > *franja_4  ) cout<<"test_3 OK"<<endl;
+		if ( *franja_4 < *franja_1  ) cout<<"test_4 OK"<<endl;
+		if ( *franja_1 < *franja_5  ) cout<<"test_5 OK"<<endl;
 
 		this->cargarFranjasHorarias_mediante((const char*)ARCH_FRANJAS_HORARIAS);
 
-		int cant_listar_ = cant_listar;
-		cout<<"Primeros "<<cant_listar_<< "elementos a listar: "<<endl;
-		this->listarFranjasHorarias_segun(cant_listar_);
+		cout<<"Primeros "<<this->cant_listar<<" del archivo franjas_horarias.org: "<<endl;
+		this->listarFranjasHorarias_segun(this->cant_listar);
 
-		//comparando operadores
-		if ( *fh_3 <= *fh_4 ){
-			cout<<"test_5 ERROR"<<endl;
-		}else{
-			cout<<"test_5 OK"<<endl;
-			if (this->verResultadoDetallado){
-				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
-				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
-			}
-		}
 
-		if ( *fh_3 >= *fh_4 ){
-			cout<<"test_6 OK"<<endl;
-			if (this->verResultadoDetallado){
-				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
-				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
-			}
-		}else{
-			cout<<"test_6 ERROR"<<endl;
-		}
-		if ( *fh_3 >= *fh_3 ){
-			cout<<"test_7 OK"<<endl;
-			if (this->verResultadoDetallado){
-				cout<<"franja horaria contenida: \t"<<*fh_3<<endl;
-				cout<<"franja horaria contenedora: \t"<<*fh_4<<endl;
-			}
-		}else{
-			cout<<"test_7 ERROR"<<endl;
-		}
-
-		delete horaInicio_siniestro_1;
-		delete horaFin_siniestro_1;
-		delete fecha_siniestro_1;
-		delete fh_1;
-		delete horaInicio_siniestro_4;
-		delete horaFin_siniestro_4;
-		delete fecha_siniestro_4;
-		delete fh_4;
-		delete horaInicio_siniestro_3;
-		delete horaFin_siniestro_3;
-		delete fecha_siniestro_3;
-		delete fh_3;
-		delete hora_1;
-		delete unHorario;
+		delete franja_1;
+		delete franja_2;
+		delete franja_3;
+		delete franja_4;
+		delete franja_5;
 
 	}
 
 FranjaHoraria* TestFranjaHoraria::deserealizarFranjaHoraria_segun(string lineaArchivo)
 {
-	int offset_id = 3;
-	int anio = 			atoi(lineaArchivo.substr(0+offset_id, 4).c_str());
-	int mes = 			atoi(lineaArchivo.substr(4+offset_id, 2).c_str());
-	int dia = 			atoi(lineaArchivo.substr(6+offset_id, 2).c_str());
-	int horaInicio_ = 	atoi(lineaArchivo.substr(9+offset_id, 2).c_str());
-	int minutoInicio = 	atoi(lineaArchivo.substr(11+offset_id,2).c_str());
-	int horaFin_ = 		atoi(lineaArchivo.substr(14+offset_id,2).c_str());
-	int minutoFin = 	atoi(lineaArchivo.substr(16+offset_id,2).c_str());
-	//
+	uint offset_id = 3;
+	uint anio = 			Util::toInt(lineaArchivo.substr(0+offset_id, 4));
+	uint mes = 				Util::toInt(lineaArchivo.substr(4+offset_id, 2));
+	uint dia = 				Util::toInt(lineaArchivo.substr(6+offset_id, 2));
+	uint horaInicio = 		Util::toInt(lineaArchivo.substr(9+offset_id, 2));
+	uint minutoInicio = 	Util::toInt(lineaArchivo.substr(11+offset_id,2));
+	uint horaFin = 			Util::toInt(lineaArchivo.substr(14+offset_id,2));
+	uint minutoFin = 		Util::toInt(lineaArchivo.substr(16+offset_id,2));
 
-	Hour* horaInicio = new Hour(horaInicio_, minutoInicio);
-	Hour* horaFin = new Hour(horaFin_, minutoFin);
-	Date* fecha = new Date(dia, mes, anio);
-	FranjaHoraria* fh = new FranjaHoraria(*horaInicio, *horaFin, *fecha);
+	FranjaHoraria* franjaDesformateada = new FranjaHoraria(horaInicio, minutoInicio, horaFin, minutoFin, dia, mes, anio);
 
-	return fh;
+	return franjaDesformateada;
 }

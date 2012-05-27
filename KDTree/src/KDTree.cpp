@@ -45,6 +45,7 @@ void imprime_uso() {
     cout<<"    -h  --help                  Enseña esta ayuda\n"<<endl;
     cout<<"    -i  --interfaxe             Modo interfase con usuario\n"<<endl;
     cout<<"    -c  --carga                 Recibe como argumento un archivo para carga masiva\n"<<endl;
+    cout<<"    -t  --test                  Se ejecutan los test\n"<<endl;
 }
 
 void iniciarInterfase()
@@ -70,7 +71,7 @@ void iniciarInterfase()
             				KDTreeController kdTreeController;
             				menu_principal = new MenuPrincipal(kdTreeController);
             				operacion_esElejida = menu_principal->iniciar();
-            				operacionElejida =  menu_principal->getOperacionElejida();
+            				operacionElejida = menu_principal->getOperacionElejida();
             				break;
             			}
             case '2' :  {
@@ -97,11 +98,8 @@ void iniciarInterfase()
         				}
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
-
-        delete operacionElejida;
     }
-
-//		iniciarTestFranjaHoraria();
+    delete operacionElejida;
 }
 
 void iniciarCargaMasiva(const char* fichero_entrada) {
@@ -127,14 +125,15 @@ int main(int argc, char** argv){
 	int siguiente_opcion;
 
 	/* Una cadena que lista las opciones cortas válidas */
-	const char* const op_cortas = "hic:" ;
+	const char* const op_cortas = "hict:" ;
 
 	/* Una estructura de varios arrays describiendo los valores largos */
 	const struct option op_largas[] =
 	{
 	  { "help",         0,  NULL,  'h'},
 	  { "interfaxe",    0,  NULL,  'i'},
-	  { "carga",        1,  NULL,  'c'},
+	  { "carga",        0,  NULL,  'c'},
+	  { "test",         0,  NULL,  't'},
 	  { NULL,           0,  NULL,   0 }
 	};
 
@@ -142,6 +141,7 @@ int main(int argc, char** argv){
 	const char* fichero_entrada = NULL ;
 
 	bool activaInterfase = 0;
+	bool activarTest = 0;
 
 	/* Guardar el nombre del programa para incluirlo a la salida */
 	nombre_programa = argv[0];
@@ -153,8 +153,6 @@ int main(int argc, char** argv){
 	  exit(0);
 	}
 
-
-
 	 while (1)
 	  {
 	      /* Llamamos a la función getopt */
@@ -162,12 +160,14 @@ int main(int argc, char** argv){
 
 	      if (siguiente_opcion == -1)
 	          break; /* No hay más opciones. Rompemos el bucle */
-
 	      switch (siguiente_opcion)
 	      {
 	          case 'h' : /* -h o --help */
-	              imprime_uso();
-	              exit(EXIT_SUCCESS);
+//	              imprime_uso();
+//	              exit(EXIT_SUCCESS);
+	              //porque no  anda la opcion 't'
+	              activarTest = true;
+	              break;
 
 	          case 'i' : /* -i o --interfase */
 	        	  activaInterfase = true;
@@ -176,6 +176,10 @@ int main(int argc, char** argv){
 	          case 'c' : /* -c 	ó --carga */
 
 	              fichero_entrada = optarg;
+	              break;
+
+	          case 't' : /* -t 	ó --test */
+	              activarTest = true;
 	              break;
 
 	          case '?' : /* opción no valida */
@@ -195,6 +199,8 @@ int main(int argc, char** argv){
 	if (fichero_entrada) {
 		iniciarCargaMasiva(fichero_entrada);
 	}
-
+	if (activarTest) {
+		iniciarTestFranjaHoraria();
+	}
 	return 0;
 }

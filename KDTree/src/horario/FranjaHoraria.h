@@ -11,43 +11,47 @@
 #include "../persistence/ISerializable.h"
 #include "hour.h"
 #include "date.h"
-#include "Horario.h"
-
-using namespace std;
+#include "../utils/types.h"
 
 #include <iomanip>
 #include <sstream>
+using namespace std;
+
+/**
+ * Comparacion considerando fechas iguales, segun lo que esta en parentesis es una franja horaria y
+ * lo que esta entre corchetes es otra franja horaria:
+ * [  ( )  ]  esta interseccion indica: ==
+ * [   ] ( )  esta interseccion indica: >
+ * ( ) [   ]  esta interseccion indica: <
+ * [   ( ] )  esta interseccion indica: ==
+ * (  [ )  ]  esta interseccion indica: ==
+ * (  [  ] )  esta interseccion indica: ==
+ * y considerando fechas distintas se usa la fecha para comparar
+ *
+ */
 
 class FranjaHoraria : public ISerializable {
 private:
-        Hour horaInicio;
-        Hour horaFin;
-        Date fecha;
+	Hour* horaInicio;
+	Hour* horaFin;
+	Date* fecha;
 public:
-		FranjaHoraria();
-		FranjaHoraria(Hour horaInicio, Hour horaFin, Date fecha);
-		bool intersectaCon(Horario& horario);
-		Hour getHoraInicio() const;
-		Hour getHoraFin() const;
-		Date getFecha() const;
-		friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh);
-		virtual ~FranjaHoraria();
-	    bool operator<=(FranjaHoraria& unaFranjaHoraria);
-	    bool operator>=(FranjaHoraria& unaFranjaHoraria);
-	    bool operator==(FranjaHoraria& unaFranjaHoraria);
-
+	FranjaHoraria();
+	FranjaHoraria(uint horaInicio, uint minutoInicio,uint horaFin, uint minutoFin, uint dia, uint mes, uint anio);
+	Hour* getHoraInicio() const;
+	Hour* getHoraFin() const;
+	Date* getFecha() const;
+	bool operator==(FranjaHoraria& unaFranjaHoraria);
+	bool operator<(FranjaHoraria& unaFranjaHoraria);
+	bool operator>(FranjaHoraria& unaFranjaHoraria);
 	void copiar(FranjaHoraria *unaFranjaHoraria);
-
-	std::string serialize();
+	string serialize();
 	void unserialize(std::string& buffer);
-
-	/*
-	* Cantidad de bytes que ocupará cuando sea serializado.
-	* Es el TOTAL del elemento
-	**/
+	//Cantidad de bytes que ocupará cuando sea serializado.Es el TOTAL del elemento
 	int getDataSize();
-private:
-	bool intersectaCompletaCon(FranjaHoraria& unaFranjaHoraria);
+
+	friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh);
+	virtual ~FranjaHoraria();
 };
 
 #endif /* FRANJAHORARIA_H_ */

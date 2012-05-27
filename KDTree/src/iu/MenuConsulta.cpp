@@ -126,6 +126,7 @@ bool MenuConsulta::iniciar(){
             case '2' :  {
             				this->crear_filtroSalida();
             				filtroSalida_esCreado = true;
+            				cout<<"paao_ariel_2"<<endl;
             				break;
             			}
             case '3' :  {

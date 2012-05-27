@@ -45,6 +45,8 @@ public:
 
 	int getDataSize();
 
+	friend std::ostream & operator<<(std::ostream & os, const Reporte &);
+
 };
 
 #endif /* REPORTE_H_ */
