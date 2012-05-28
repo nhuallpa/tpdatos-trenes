@@ -27,7 +27,8 @@ public:
 	static string getFiltroEntrada(string* filtro_entrada, int cant_campos_enFiltro);
 	static string getFiltroSalida(string* filtro_salida, int cant_campos_resultado);
 	static void mostrarLista(list<string> & lista);
-	static  int elejir_subElemento_(string tipo_deSubElemento, list<string>& lista, KDTreeController& kdTreeController);
+	static int elejir_subElemento_(string tipo_deSubElemento, list<string>& lista, KDTreeController& kdTreeController);
 };
 
+//recordatorio Ariel: si corro en la consola windows7(trabajo) en C:\MinGW\include\c++\cwchar comente la linea 61 y 68
 #endif /* UTILMENU_H_ */
