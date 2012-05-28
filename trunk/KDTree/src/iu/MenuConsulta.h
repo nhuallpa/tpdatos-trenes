@@ -20,14 +20,14 @@ private:
 public:
 	MenuConsulta(KDTreeController& kdTreeController);
 	virtual ~MenuConsulta();
-	bool iniciar();
+	void iniciar();
 	OperacionConsulta* getOperacionElejida();
+	bool getOperacion_fueCreada();
 private:
 	void mostrar();
 	void mostrarMenu_estructuraResultado();
 	void crear_filtroSalida();
 	void crear_filtroEntrada();
-	void ejecutar_consulta();
 	void elejir_cantCamposResultado();
 	void elejir_losCamposResultado();
 };

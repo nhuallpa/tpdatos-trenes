@@ -25,7 +25,7 @@ void MenuAlta::mostrar(){
     cout<<"3-salir del menu de Altas"<<endl;
 }
 
-bool MenuAlta::iniciar(){
+void MenuAlta::iniciar(){
     bool salir_alta = false;
     while(!salir_alta)
     {
@@ -36,8 +36,7 @@ bool MenuAlta::iniciar(){
         UtilMenu::limpiar_pantalla();
         switch(opcion_elejida){
             case '1' :	{
-							this->elejir_elemento();
-							this->operacion_fueCreada = true;
+							this->crearOperacion();
 							break;
 						}
             case '2' :  {
@@ -51,10 +50,9 @@ bool MenuAlta::iniciar(){
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
     }
-    return this->operacion_fueCreada;
 }
 
-void MenuAlta::elejir_elemento()
+void MenuAlta::crearOperacion()
 {
     int idLinea = this->elejir_subElemento(UtilMenu::getNombreSubElemento(0), this->getController().getLineas());
     int idFormacion = this->elejir_subElemento(UtilMenu::getNombreSubElemento(1), this->getController().getFormaciones());
@@ -68,11 +66,12 @@ void MenuAlta::elejir_elemento()
 
     //cargo la operacion
     this->operacionElejida->inicializar(idLinea, idFormacion, idFalla, idAccidente, unaFranjaHoraria);
+    this->operacion_fueCreada = true;
 }
 
 int MenuAlta::elejir_subElemento(string tipo_deSubElemento, list<string>& lista)
 {
-    this->mostrarLista(lista);
+	UtilMenu::mostrarLista(lista);
     string idSubElemento;
     int idSubElemento_num;
     bool valida = true;
@@ -86,21 +85,15 @@ int MenuAlta::elejir_subElemento(string tipo_deSubElemento, list<string>& lista)
     return idSubElemento_num;
 }
 
-void MenuAlta::mostrarLista(list<string> & lista) {
-	list<string>::iterator it;
-	for (it=lista.begin(); it!=lista.end(); it++){
-		cout<<*it<<endl;
-	}
+OperacionAlta* MenuAlta::getOperacionElejida(){
+		return this->operacionElejida;
 }
 
-OperacionAlta* MenuAlta::getOperacionElejida(){
-	OperacionAlta* operacionVacia = new OperacionAlta();
-	if (this->operacion_fueCreada)
-		return this->operacionElejida;
-	else
-		return operacionVacia;
+bool MenuAlta::getOperacion_fueCreada(){
+	return this->operacion_fueCreada;
 }
 
 KDTreeController& MenuAlta::getController() {
 	return this->kdTreeController;
 }
+

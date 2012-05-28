@@ -21,17 +21,17 @@ private:
 public:
 	MenuAlta(KDTreeController& kdTreeController);
 	virtual ~MenuAlta();
-	bool iniciar();
+	void iniciar();
 	void mostrar();
 	KDTreeController& getController();
 	OperacionAlta* getOperacionElejida();
+	bool getOperacion_fueCreada();
 
 private:
 	/**
 	 * elije segun los archivos maestros cargados por el controlador del KDTree
 	 */
-	void elejir_elemento();
-	void mostrarLista(list<string>& lista);
+	void crearOperacion();
 	int elejir_subElemento(string tipo_deSubElemento, list<string>& lista);
 };
 

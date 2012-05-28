@@ -19,12 +19,15 @@ MenuModificacion::~MenuModificacion() {
 void MenuModificacion::mostrar(){
 	cout<<"menu modificacion::"<<endl;
 }
-bool MenuModificacion::iniciar(){
+void MenuModificacion::iniciar(){
    this->mostrar();
    cout<<"En proceso de construccion..."<<endl;
-   return true;
 }
 
 Operacion* MenuModificacion::getOperacionElejida(){
 	return this->operacionElejida;
+}
+
+bool MenuModificacion::getOperacion_fueCreada(){
+	return this->operacion_fueCreada;
 }

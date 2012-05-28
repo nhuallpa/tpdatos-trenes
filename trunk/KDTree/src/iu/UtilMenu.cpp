@@ -36,6 +36,20 @@ string UtilMenu::getNombreSubElemento(int idSubElemento)
 	return nombreCampo_elejido;
 }
 
+string UtilMenu::getFiltroEntrada(string* filtro_entrada, int cant_campos_enFiltro){
+	string os = "";
+	string separador = ",";
+	os.append("(");
+	for(int i=0 ; i<cant_campos_enFiltro ; i++){
+		if ((i+1) ==  cant_campos_enFiltro)
+			separador = "";
+		os.append(filtro_entrada[i]);
+		os.append(separador);
+	}
+	os.append(") ");
+	return os;
+}
+
 string UtilMenu::getFiltroSalida(string* filtro_salida, int cant_campos_resultado){
 	string os = "";
 	string separador = ",";
@@ -50,16 +64,9 @@ string UtilMenu::getFiltroSalida(string* filtro_salida, int cant_campos_resultad
 	return os;
 }
 
-string UtilMenu::getFiltroEntrada(string* filtro_entrada, int cant_campos_enFiltro){
-	string os = "";
-	string separador = ",";
-	os.append("(");
-	for(int i=0 ; i<cant_campos_enFiltro ; i++){
-		if ((i+1) ==  cant_campos_enFiltro)
-			separador = "";
-		os.append(filtro_entrada[i]);
-		os.append(separador);
+void UtilMenu::mostrarLista(list<string> & lista) {
+	list<string>::iterator it;
+	for (it=lista.begin(); it!=lista.end(); it++){
+		cout<<*it<<endl;
 	}
-	os.append(") ");
-	return os;
 }

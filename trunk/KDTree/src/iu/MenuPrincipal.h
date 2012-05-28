@@ -21,14 +21,16 @@ class MenuPrincipal: public Menu {
 private:
 	KDTreeController kdTreeController;
 	Operacion* operacionElejida;
+	bool operacion_fueCreada;
 
 public:
 	MenuPrincipal(KDTreeController& kdTreeController);
 	virtual ~MenuPrincipal();
-	bool iniciar();
+	void iniciar();
 	void mostrar();
     KDTreeController& getKdTreeController();
     Operacion* getOperacionElejida();
+    bool getOperacion_fueCreada();
 
 };
 

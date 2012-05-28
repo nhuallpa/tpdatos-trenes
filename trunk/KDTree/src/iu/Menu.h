@@ -22,8 +22,9 @@ class Menu {
 public:
 	Menu();
 	virtual ~Menu();
-	virtual bool iniciar() = 0;
+	virtual void iniciar() = 0;
 	virtual Operacion* getOperacionElejida() = 0;
+	virtual bool getOperacion_fueCreada() = 0;
 private:
 	virtual void mostrar() = 0;
 };

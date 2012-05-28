@@ -15,13 +15,15 @@ private:
 	KDTreeController kdTreeController;
 	//TODO actualizarlo
 	Operacion* operacionElejida;
+	bool operacion_fueCreada;
 
 public:
 	MenuBaja();
 	virtual ~MenuBaja();
-	bool iniciar();
+	void iniciar();
 	void mostrar();
 	Operacion* getOperacionElejida();
+	bool getOperacion_fueCreada();
 };
 
 #endif /* MENUBAJA_H_ */
