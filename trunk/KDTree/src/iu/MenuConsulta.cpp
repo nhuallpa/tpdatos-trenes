@@ -76,13 +76,22 @@ void MenuConsulta::crear_filtroSalida()
 
 void MenuConsulta::crear_filtroEntrada()
 {
-	int tamanio_filtroEntrada = 1;
-	string* filtroEntrada = new string[tamanio_filtroEntrada];
-	filtroEntrada[0] = "en construccion";
+	string* filtroEntrada = new string[CANT_SUBELEMENTOS];
+    int idLinea = UtilMenu::elejir_subElemento_(UtilMenu::getNombreSubElemento(0), this->kdTreeController.getLineas(), this->kdTreeController);
+    int idFormacion = UtilMenu::elejir_subElemento_(UtilMenu::getNombreSubElemento(1), this->kdTreeController.getFormaciones(), this->kdTreeController);
+    int idFalla = UtilMenu::elejir_subElemento_(UtilMenu::getNombreSubElemento(2), this->kdTreeController.getFallas(), this->kdTreeController);
+    int idAccidente = UtilMenu::elejir_subElemento_(UtilMenu::getNombreSubElemento(3), this->kdTreeController.getAccidentes(), this->kdTreeController);
+    int idFranjaHoraria = UtilMenu::elejir_subElemento_(UtilMenu::getNombreSubElemento(4), this->kdTreeController.getFranjasHorarias(), this->kdTreeController);
+
+    filtroEntrada[0] = Util::toString(idLinea);
+	filtroEntrada[1] = Util::toString(idFormacion);
+	filtroEntrada[2] = Util::toString(idFalla);
+	filtroEntrada[3] = Util::toString(idAccidente);
+	filtroEntrada[4] = Util::toString(idFranjaHoraria);
 
 	UtilMenu::limpiar_pantalla();
 	////////////////////////////////////////////////////////////////////////////
-	this->operacionElejida->inicializar_filtroEntrada(filtroEntrada, tamanio_filtroEntrada);
+	this->operacionElejida->inicializar_filtroEntrada(filtroEntrada, CANT_SUBELEMENTOS);
 }
 
 void MenuConsulta::iniciar(){

@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <list>
 #include "../utils/const.h"
+#include "../controller/KDTreeController.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
 	static string getFiltroEntrada(string* filtro_entrada, int cant_campos_enFiltro);
 	static string getFiltroSalida(string* filtro_salida, int cant_campos_resultado);
 	static void mostrarLista(list<string> & lista);
+	static  int elejir_subElemento_(string tipo_deSubElemento, list<string>& lista, KDTreeController& kdTreeController);
 };
 
 #endif /* UTILMENU_H_ */
