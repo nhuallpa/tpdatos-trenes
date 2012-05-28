@@ -32,7 +32,7 @@ class Hour : public ISerializable {
 	std::string serialize();
 	void unserialize(std::string& buffer);
 
-	int getDataSize();
+	DataSize getDataSize();
 };
 
 #endif

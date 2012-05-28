@@ -178,7 +178,7 @@ bool LeafNode::insert(IElement* elemToInsert) {
 	//Insertamos en orden
 	for (it = elements.begin(); it != elements.end(); it++) {
 		IElement* el = (IElement*) *it;
-		if (elemToInsert->getData() < el->getData()) {
+		if (elemToInsert->getData() < el->getData()) {//TODO cambiar por compareTO()
 			elements.insert(it, elemToInsert);
 			return true;
 		}
@@ -197,7 +197,7 @@ IElement *LeafNode::findExact(IEntidad* key) {
 	std::vector<IElement*>::iterator it = getElementsBegin();
 
 	while (it != getElementsEnds()) {
-		if (key->equals((*it)->getData()))
+		if (key->equals((*it)->getData()))//TODO chequear que llegue al Reporte;
 			return *it;
 		it++;
 	}
@@ -213,7 +213,7 @@ std::vector<IElement*>::iterator LeafNode::findElement(IElement* elemToFind) {
 	bool found = false;
 	it = this->elements.begin();
 	for (it = elements.begin(); it != elements.end() && !found;) {
-		found = true;//(*it)->getKey() == elemToFind->getKey();
+		found = (*it)->getData()->equals(elemToFind->getData());
 		if (!found) {
 			it++;
 		}
@@ -230,7 +230,6 @@ bool LeafNode::modify(IElement* elemToModify) {
 		throw new ElementNotFoundException();
 	} else {
 		el = (*it);
-//		cout << el->getKey() << endl;
 		this->elements.erase(it);
 		this->elements.insert(it, elemToModify);
 		delete el;
@@ -246,7 +245,7 @@ bool LeafNode::remove(IEntidad* key) {
 	vector<IElement*>::iterator it = this->elements.begin();
 	bool found = false;
 	while (it != this->elements.end() && !found) {
-		if ((*it)->getData() == key) {
+		if (key->equals((*it)->getData())) {
 			delete *it;
 			this->elements.erase(it);
 			found = true;
@@ -270,7 +269,7 @@ bool LeafNode::insertarTest(IElement* elem) {
 
 	for (it = elements.begin(); it != elements.end(); it++) {
 		IElement* el = (IElement*) *it;
-		if (elem->getData() < el->getData()) {
+		if (elem->getData() < el->getData()) {//TODO cambiar por compareTO()
 			elements.insert(it, elem);
 			return true;
 		}
@@ -422,7 +421,7 @@ int LeafNode::getDataElementsSize(std::vector<IElement*> vector) {
 	return size;
 }
 
-int LeafNode::getDataSize() {
+DataSize LeafNode::getDataSize() {
 	return (2 * sizeof(Offset) + sizeof(FreeSpace) + getDataElementsSize(
 			elements) + BNode::getDataSize());
 }
@@ -431,13 +430,12 @@ void LeafNode::exportNode() {
 
 	std::vector<IElement*>::iterator it;
 	cout << "Leaf Nodo: " << this->getOffset() << " cantidad Elementos "
-			<< this->elements.size();
+			<< this->elements.size() << endl;
 	for (it = this->elements.begin(); it != elements.end(); it++) {
 		Element* elem = (Element*) (*it);
 		//vale para todas menos para Element
 
-		IEntidad* ientidad = NULL;
-		ientidad = EntityFactory::createEntity(elem->getData());
+		IEntidad* ientidad = elem->getData();
 
 		//casteo para usar el operador que corresonde
 		//esto quedo deprecado.El arobl solo sabe mostrar element.

@@ -53,7 +53,7 @@ public:
     bool remove(IEntidad* key);
     std::string serialize();
     void unserialize(std::string & buffer);
-    int getDataSize();
+    DataSize getDataSize();
 
 	bool isOverflowded(int modifyOrInsert);
 	bool isUnderflowded();

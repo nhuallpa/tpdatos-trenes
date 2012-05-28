@@ -35,7 +35,7 @@ public:
 
 	virtual std::string serialize();
 	virtual void unserialize(std::string &buffer);
-	virtual int getDataSize();
+	virtual DataSize getDataSize();
 
 	/**
 	 * Element deberia ser definido como const, pero para que compile

@@ -47,7 +47,7 @@ public:
 	 *
 	 ****************************************************/
 	void unserialize(std::string &buffer);
-	int getDataSize();
+	DataSize getDataSize();
 	std::string serialize();
 
 

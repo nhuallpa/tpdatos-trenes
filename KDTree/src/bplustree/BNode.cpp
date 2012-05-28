@@ -17,7 +17,7 @@ Level BNode::getLevel() {
 	return level;
 }
 
-int BNode::getDataSize() {
+DataSize BNode::getDataSize() {
 	return sizeof(Level) + sizeof(RegisterCounter);
 }
 

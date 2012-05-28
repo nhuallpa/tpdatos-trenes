@@ -77,7 +77,7 @@ public:
 
 	/* devuelve el tamannoo de los datos:
 	 * LeftOffset + Tamannoo de todos los elementos + tamannoo del Bnode (Level y RegisterCount)*/
-	int getDataSize();
+	DataSize getDataSize();
 	/**
 	 * Hay que buscar en la lista, si es el ultimo elemento de la lista
 	 * entonces hay que devolver NULL, porque no le pedimos al primo. Solo se balancea con los hermanos

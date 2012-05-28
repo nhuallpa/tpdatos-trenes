@@ -122,7 +122,7 @@ void FranjaHoraria::unserialize(std::string& buffer)
 
 }
 
-int FranjaHoraria::getDataSize()
+DataSize FranjaHoraria::getDataSize()
 {
 	return (this->fecha->getDataSize()+this->horaInicio->getDataSize()+this->horaFin->getDataSize());
 }

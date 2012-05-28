@@ -69,7 +69,7 @@ std::string Element::serialize() {
 }
 
 void Element::unserialize(std::string &buffer) {
-	Serializacion serial;
+	Serializacion serial(buffer);
 
 	std::string tmpBuffer;
 	tmpBuffer.append(serial.getString());
@@ -77,7 +77,7 @@ void Element::unserialize(std::string &buffer) {
 	data->unserialize(tmpBuffer);
 }
 
-int Element::getDataSize() {
+DataSize Element::getDataSize() {
     return ( sizeof(int) + data->getDataSize());
 }
 

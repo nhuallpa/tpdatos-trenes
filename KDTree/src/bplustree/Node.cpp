@@ -69,7 +69,7 @@ void Node::appendKeyElementInOrder(KeyElement* keyElementToInsert) {
 
 	for (it = keyElements.begin(); it != keyElements.end(); it++) {
 		KeyElement* el = *it;
-		if (keyElementToInsert->getKey() < el->getKey()) {
+		if (keyElementToInsert->getKey() < el->getKey()) { //TODO cambiar por compareTO()
 			keyElements.insert(it, keyElementToInsert);
 			return;
 		}
@@ -138,7 +138,7 @@ BNode* Node::findChild(IElement* elementToFind) {
 	}
 	KeyElement* firtKey = (*it);
 	//Caso especial donde levanto el nodo cuyo offset esta en este nodo
-	if (elementToFind->getData() < firtKey->getKey()) {
+	if (elementToFind->getData() < firtKey->getKey()) { //TODO cambiar por compareTO()
 		p->load(this->leftNode, childNodeToSearch);
 		found = true;
 	}
@@ -146,7 +146,7 @@ BNode* Node::findChild(IElement* elementToFind) {
 	KeyElement* keyFromKeyElements;
 	for (it = keyElements.begin(); it != keyElements.end() && !found; it++) {
 		keyFromKeyElements = (*it);
-		if (elementToFind->getData() < keyFromKeyElements->getKey()) {
+		if (elementToFind->getData() < keyFromKeyElements->getKey()) { //TODO cambiar por compareTO()
 			it--;
 			keyFromKeyElements = (*it);
 			p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
@@ -435,8 +435,8 @@ bool Node::isUnderflowded() {
 	//El tamano del BlockSize exclusivo para elementos
 	blockSize = blockSize - BNode::getDataSize() - sizeof(Offset);
 	//calculo de la cantidad maxima de bytes que puedo tener
-	int dataSize=this->getDataSize();
-	unsigned int minCantidadBytes = blockSize / 2;
+	DataSize dataSize=this->getDataSize();
+	DataSize minCantidadBytes = blockSize / 2;
 	if (minCantidadBytes > dataSize)
 		return true;
 	else
@@ -474,7 +474,7 @@ void Node::removeKey(IEntidad* key) {
 	bool found = false;
 	KeyElement* keyElement;
 	while (!found && it != this->keyElements.end()) {
-		if (key == (*it)->getKey()) {
+		if (key->equals((*it)->getKey())) {
 			found = true;
 			keyElement = (*it);
 			delete keyElement;
@@ -595,7 +595,7 @@ BNode* Node::getLeftSibling(BNode* child) {
 
 }
 
-int Node::getDataSize() {
+DataSize Node::getDataSize() {
 	std::vector<KeyElement*>::iterator it;
 
 	int size = 0;

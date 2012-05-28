@@ -19,7 +19,7 @@ public:
 		* Cantidad de bytes que ocupará cuando sea serializado.
 		* Es el TOTAL del elemento
 		**/
-		virtual int getDataSize() = 0;
+		virtual DataSize getDataSize() = 0;
 };
 
 #endif /* ISERIALIZABLE_H_ */

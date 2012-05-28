@@ -70,7 +70,7 @@ ConfigurationMananger::ConfigurationMananger() {
 int ConfigurationMananger::getMaxNodeLoadForInsert() {
 	return this->maxNodeLoadForInsert;
 }
-int ConfigurationMananger::getBufferSizeTree() {
+unsigned int ConfigurationMananger::getBufferSizeTree() {
 	return this->bufferSizeTree;
 }
 

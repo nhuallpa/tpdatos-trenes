@@ -79,7 +79,8 @@ void Reporte::setFranjaHoraria(FranjaHoraria *franjaHoraria)
 {
 //	this->franjaHoraria->copiar(franjaHoraria);
 	this->franjaHoraria = franjaHoraria;
-	}
+}
+
 FranjaHoraria* Reporte::getFranjaHoraria()
 {
 	return this->franjaHoraria;
@@ -116,17 +117,24 @@ void Reporte::unserialize(std::string& buffer)
 
 }
 
-int Reporte::getDataSize()
+DataSize Reporte::getDataSize()
 {
 	return (sizeof(int)*4 + this->franjaHoraria->getDataSize());
 }
 
+std::string Reporte::toString() const{
+
+	std::stringstream flujo;
+	flujo <<"("<< this->idLinea << ", "
+		  << this->idFalla <<", "
+		  << this->idAccidente <<", "
+		  << this->idFormacion <<", "
+		  << *this->franjaHoraria <<");";
+	return flujo.str();
+}
+
 ostream & operator<<(std::ostream & os, const Reporte & reporte){
-		  os <<"("<< reporte.idLinea << ","
-				  << reporte.idFalla<<","
-				  << reporte.idAccidente<<","
-				  << reporte.idFormacion<<","
-				  << *reporte.franjaHoraria<<")";
+		  os << reporte.toString();
 		  return os;
 }
 

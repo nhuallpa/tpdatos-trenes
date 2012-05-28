@@ -43,10 +43,12 @@ public:
 
 	bool equals(Reporte* entidad);
 
+	std::string toString () const;
+	
 	std::string serialize();
 	void unserialize(std::string& buffer);
 
-	int getDataSize();
+	DataSize getDataSize();
 
 	friend std::ostream & operator<<(std::ostream & os, const Reporte &);
 

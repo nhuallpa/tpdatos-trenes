@@ -99,7 +99,6 @@ class BPlusTree {
 	 */
     void deleteTree();
 
-
 };
 
 
