@@ -124,5 +124,5 @@ void FranjaHoraria::unserialize(std::string& buffer)
 
 DataSize FranjaHoraria::getDataSize()
 {
-	return (this->fecha->getDataSize()+this->horaInicio->getDataSize()+this->horaFin->getDataSize());
+	return (sizeof(int)*3 + this->fecha->getDataSize()+this->horaInicio->getDataSize()+this->horaFin->getDataSize());
 }

@@ -86,8 +86,44 @@ FranjaHoraria* Reporte::getFranjaHoraria()
 	return this->franjaHoraria;
 }
 
-bool Reporte::equals(Reporte* entidad){
-	return false;
+int Reporte::compareTo(IEntidad* entidad)
+{
+	Reporte* reporte = (Reporte*)entidad;
+	int resultadoComparacion = -1;
+
+	bool mayor = false;
+	bool menor = false;
+	bool igual = false;
+
+    mayor = this->getIdLinea() > reporte->getIdLinea();
+    menor = this->getIdLinea() < reporte->getIdLinea();
+    igual = this->getIdLinea() == reporte->getIdLinea();
+
+    mayor &= this->getIdFormacion() > reporte->getIdFormacion();
+    menor &= this->getIdFormacion() < reporte->getIdFormacion();
+    igual &= this->getIdFormacion() == reporte->getIdFormacion();
+
+    mayor &= this->getIdFalla() > reporte->getIdFalla();
+    menor &= this->getIdFalla() < reporte->getIdFalla();
+    igual &= this->getIdFalla() == reporte->getIdFalla();
+
+    mayor &= this->getIdAccidente() > reporte->getIdAccidente();
+    menor &= this->getIdAccidente() < reporte->getIdAccidente();
+    igual &= this->getIdAccidente() == reporte->getIdAccidente();
+
+    mayor &= *this->getFranjaHoraria() > *reporte->getFranjaHoraria();
+	menor &= *this->getFranjaHoraria() < *reporte->getFranjaHoraria();
+	igual &= *this->getFranjaHoraria() == *reporte->getFranjaHoraria();
+
+	if (mayor){
+		resultadoComparacion = 	MAYOR;
+	}else if (menor){
+		resultadoComparacion = MENOR;
+	}else if (igual){
+		resultadoComparacion = IGUAL;
+	}
+
+	return resultadoComparacion;
 }
 
 int Reporte::compareTo(Reporte* entidad, int dimension){
@@ -168,7 +204,7 @@ void Reporte::unserialize(std::string& buffer)
 
 DataSize Reporte::getDataSize()
 {
-	return (sizeof(int)*4 + this->franjaHoraria->getDataSize());
+	return (sizeof(int)*4 + sizeof(int) +this->franjaHoraria->getDataSize());
 }
 
 std::string Reporte::toString() const{

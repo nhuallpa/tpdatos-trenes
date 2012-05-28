@@ -64,7 +64,7 @@ IElement* LeafNode::getElement(IEntidad* key) {
 
 	for (it = elements.begin(); it != elements.end(); it++) {
 		IElement* el = (IElement*) *it;
-		if (key->equals(el->getData()))
+		if (key->compareTo(el->getData()) == IGUAL)
 			return el;
 	}
 
@@ -178,7 +178,7 @@ bool LeafNode::insert(IElement* elemToInsert) {
 	//Insertamos en orden
 	for (it = elements.begin(); it != elements.end(); it++) {
 		IElement* el = (IElement*) *it;
-		if (elemToInsert->getData() < el->getData()) {//TODO cambiar por compareTO()
+		if (elemToInsert->getData()->compareTo(el->getData()) == MENOR) {
 			elements.insert(it, elemToInsert);
 			return true;
 		}
@@ -197,7 +197,7 @@ IElement *LeafNode::findExact(IEntidad* key) {
 	std::vector<IElement*>::iterator it = getElementsBegin();
 
 	while (it != getElementsEnds()) {
-		if (key->equals((*it)->getData()))//TODO chequear que llegue al Reporte;
+		if (key->compareTo((*it)->getData()) == IGUAL)
 			return *it;
 		it++;
 	}
@@ -213,7 +213,7 @@ std::vector<IElement*>::iterator LeafNode::findElement(IElement* elemToFind) {
 	bool found = false;
 	it = this->elements.begin();
 	for (it = elements.begin(); it != elements.end() && !found;) {
-		found = (*it)->getData()->equals(elemToFind->getData());
+		found = (*it)->getData()->compareTo(elemToFind->getData()) == IGUAL;
 		if (!found) {
 			it++;
 		}
@@ -245,7 +245,7 @@ bool LeafNode::remove(IEntidad* key) {
 	vector<IElement*>::iterator it = this->elements.begin();
 	bool found = false;
 	while (it != this->elements.end() && !found) {
-		if (key->equals((*it)->getData())) {
+		if (key->compareTo((*it)->getData()) == IGUAL) {
 			delete *it;
 			this->elements.erase(it);
 			found = true;
@@ -269,7 +269,7 @@ bool LeafNode::insertarTest(IElement* elem) {
 
 	for (it = elements.begin(); it != elements.end(); it++) {
 		IElement* el = (IElement*) *it;
-		if (elem->getData() < el->getData()) {//TODO cambiar por compareTO()
+		if (elem->getData()->compareTo(el->getData()) == MENOR) {
 			elements.insert(it, elem);
 			return true;
 		}
@@ -402,6 +402,7 @@ void LeafNode::unserialize(std::string &buffer) {
 	for (RegisterCounter i = 0; i < registerCounter; i++) {
 		IElement* el = ElementFactory::createElement();
 		el->unserialize(buffer);
+		buffer.erase(0, el->getDataSize());
 		elements.push_back(el);
 	}
 }

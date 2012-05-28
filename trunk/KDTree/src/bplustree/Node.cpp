@@ -69,7 +69,7 @@ void Node::appendKeyElementInOrder(KeyElement* keyElementToInsert) {
 
 	for (it = keyElements.begin(); it != keyElements.end(); it++) {
 		KeyElement* el = *it;
-		if (keyElementToInsert->getKey() < el->getKey()) { //TODO cambiar por compareTO()
+		if (keyElementToInsert->getKey()->compareTo(el->getKey()) == MENOR) {
 			keyElements.insert(it, keyElementToInsert);
 			return;
 		}
@@ -138,7 +138,7 @@ BNode* Node::findChild(IElement* elementToFind) {
 	}
 	KeyElement* firtKey = (*it);
 	//Caso especial donde levanto el nodo cuyo offset esta en este nodo
-	if (elementToFind->getData() < firtKey->getKey()) { //TODO cambiar por compareTO()
+	if (elementToFind->getData()->compareTo(firtKey->getKey()) == MENOR) {
 		p->load(this->leftNode, childNodeToSearch);
 		found = true;
 	}
@@ -146,7 +146,7 @@ BNode* Node::findChild(IElement* elementToFind) {
 	KeyElement* keyFromKeyElements;
 	for (it = keyElements.begin(); it != keyElements.end() && !found; it++) {
 		keyFromKeyElements = (*it);
-		if (elementToFind->getData() < keyFromKeyElements->getKey()) { //TODO cambiar por compareTO()
+		if (elementToFind->getData()->compareTo(keyFromKeyElements->getKey()) == MENOR) {
 			it--;
 			keyFromKeyElements = (*it);
 			p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
@@ -415,9 +415,11 @@ void Node::unserialize(std::string &buffer) {
 
 	buffer.copy((char*) &leftNode, sizeof(Offset));
 	buffer.erase(0, sizeof(Offset));
+
 	for (RegisterCounter i = 0; i < registerCounter; i++) {
 		KeyElement *ke = new KeyElement();
 		ke->unserialize(buffer);
+		buffer.erase(0,ke->getDataSize());
 		keyElements.push_back(ke);
 	}
 }
@@ -474,7 +476,7 @@ void Node::removeKey(IEntidad* key) {
 	bool found = false;
 	KeyElement* keyElement;
 	while (!found && it != this->keyElements.end()) {
-		if (key->equals((*it)->getKey())) {
+		if (key->compareTo((*it)->getKey()) == IGUAL) {
 			found = true;
 			keyElement = (*it);
 			delete keyElement;

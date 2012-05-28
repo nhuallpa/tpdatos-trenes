@@ -21,15 +21,13 @@ public:
 	IEntidad();
 	virtual ~IEntidad();
 
-	virtual std::string toString();
+	virtual std::string toString() const;
 	friend std::ostream & operator<<(std::ostream & os, const IEntidad & rp);
 
 	virtual std::string serialize();
 	virtual void unserialize(std::string& buffer);
 
-	virtual bool equals(IEntidad* entidad){
-		return false;
-	}
+	virtual int compareTo(IEntidad* entidad)=0;
 
 	//no virtual para subclases hasta que sea necesario
 	virtual DataSize getDataSize() {
