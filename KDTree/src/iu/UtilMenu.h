@@ -22,8 +22,8 @@ public:
 	static void separador_menu();
 	static void limpiar_pantalla();
 	static string getNombreSubElemento(int idSubElemento);
-	static void verEstructraResultado(string* filtro_salida, int cant_campos_resultado);
-	static void verEstructuraFiltro(string* filtro_entrada, int cant_campos_enFiltro);
+	static string getFiltroEntrada(string* filtro_entrada, int cant_campos_enFiltro);
+	static string getFiltroSalida(string* filtro_salida, int cant_campos_resultado);
 };
 
 #endif /* UTILMENU_H_ */

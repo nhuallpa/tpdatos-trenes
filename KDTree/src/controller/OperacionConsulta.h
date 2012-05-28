@@ -24,6 +24,24 @@ public:
 	void inicializar_filtroEntrada(string* filtroEntrada, int tamanio);
 	void inicializar_filtroSalida(string* filtroSalida, int tamanio);
 	int iniciar();
+	friend std::ostream & operator<<( std::ostream & os, const OperacionConsulta & );
+
+	string* getFiltroEntrada(){
+		return filtroEntrada;
+	}
+
+	string* getFiltroSalida(){
+		return filtroSalida;
+	}
+
+	int getTamanioEntrada(){
+		return tamanio_entrada;
+	}
+
+	int getTamanioSalida(){
+		return tamanio_salida;
+	}
+
 };
 
 #endif /* OPERACIONCONSULTA_H_ */
