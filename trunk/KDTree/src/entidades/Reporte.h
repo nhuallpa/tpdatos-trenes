@@ -10,6 +10,8 @@
 
 #include "IEntidad.h"
 #include "../horario/FranjaHoraria.h"
+#include "../utils/StringUtils.h"
+#include "../utils/utiles.h"
 
 class Reporte: public IEntidad {
 private:
@@ -21,6 +23,7 @@ private:
 public:
 	Reporte();
 	Reporte(IEntidad* copy);
+	Reporte(string tupla);
 	virtual ~Reporte();
 
 	int getIdLinea();

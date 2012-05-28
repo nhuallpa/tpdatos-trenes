@@ -15,6 +15,19 @@ Reporte::Reporte() {
 	this->franjaHoraria = new FranjaHoraria();
 }
 
+Reporte::Reporte(string tupla) {
+	list<string> lista = Util::parsear(tupla);
+	list<string>::iterator it;
+	it = lista.begin();
+	this->setIdLinea(StringUtils::convertStringToInt(*(it++)));
+	this->setIdFalla(StringUtils::convertStringToInt(*(it++)));
+	this->setIdAccidente(StringUtils::convertStringToInt(*(it++)));
+	this->setIdFormacion(StringUtils::convertStringToInt(*(it++)));
+	FranjaHoraria* fh = new FranjaHoraria(*(it++));
+	this->setFranjaHoraria(fh);
+	delete fh;
+}
+
 Reporte::Reporte(IEntidad* copy) {
 	this->franjaHoraria = new FranjaHoraria();
 	std::string buffer = copy->serialize();

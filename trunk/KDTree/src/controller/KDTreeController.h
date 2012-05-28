@@ -21,11 +21,14 @@ using namespace std;
 
 #include <stdlib.h>
 #include <string.h>
+#include "../bplustree/BPlusTree.h"
 /**
  * Inicializado mediante los archivos maestros y tambien para validad el ingreso
  * del usuario en base a esos maestros
  */
 class KDTreeController {
+
+	BPlusTree* BTree;
 
 private:
 	//listas de subElementos que seran caragadas con los archivos maestros
@@ -51,6 +54,9 @@ public:
 	bool validarIdSubElemento(string& tipo_deSubElemento, int idSubElemento);
 
 	void insertar(string registro);
+	void eliminar(string registro);
+	void modificar(string registro);
+	void consultar(string registro);
 
 private:
 	void levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida);

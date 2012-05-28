@@ -11,12 +11,11 @@
 using std::cout;
 using std::endl;
 KDTreeController::KDTreeController() {
-
-	//todo: Aqui se inicializaria el ArbolKd
+	this->BTree = new BPlusTree(256, "arbol");
 }
 
 KDTreeController::~KDTreeController() {
-
+	delete this->BTree;
 }
 
 void KDTreeController::inicializar()
@@ -74,19 +73,19 @@ bool KDTreeController::validarIdSubElemento(string& nombreSubElemento, int idSub
 }
 
 void KDTreeController::insertar(string registro) {
-	list<string> lista = Util::parsear(registro);
-	Reporte rp;
-	list<string>::iterator it;
-	it = lista.begin();
-	rp.setIdLinea(StringUtils::convertStringToInt(*(it++)));
-	rp.setIdFalla(StringUtils::convertStringToInt(*(it++)));
-	rp.setIdAccidente(StringUtils::convertStringToInt(*(it++)));
-	rp.setIdFormacion(StringUtils::convertStringToInt(*(it++)));
-	FranjaHoraria* fh = new FranjaHoraria(*(it++));
-	rp.setFranjaHoraria(fh);
+	Reporte rp(registro);
+	IElement* elem = new Element(&rp);
+	this->BTree->insert(elem);
 	cout<<rp<<endl;
-	delete fh;
 }
-
+void KDTreeController::eliminar(string registro) {
+	//this->BTree->remove(entidad);
+}
+void KDTreeController::modificar(string registro) {
+	//this->BTree->modify(entidad);
+}
+void KDTreeController::consultar(string registro) {
+	//this->BTree->find(entidad);
+}
 
 
