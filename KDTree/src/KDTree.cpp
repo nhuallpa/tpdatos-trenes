@@ -52,7 +52,6 @@ void iniciarInterfase()
 {
 	Operacion* operacionElejida;
 	Menu* menu_principal;
-	bool operacion_esElejida = false;
     bool salir_programa= false;
     while(!salir_programa)
     {
@@ -70,12 +69,13 @@ void iniciarInterfase()
             case '1' :  {
             				KDTreeController kdTreeController;
             				menu_principal = new MenuPrincipal(kdTreeController);
-            				operacion_esElejida = menu_principal->iniciar();
-            				operacionElejida = menu_principal->getOperacionElejida();
+            				menu_principal->iniciar();
+            				if (menu_principal->getOperacion_fueCreada())
+            					operacionElejida = menu_principal->getOperacionElejida();
             				break;
             			}
             case '2' :  {
-            				if (operacion_esElejida){
+            				if (menu_principal->getOperacion_fueCreada()){
 //            					cout<<*operacionElejida<<endl;
             				}
             				else
@@ -84,16 +84,14 @@ void iniciarInterfase()
             			}
 
             case '3' :  {
-							if (operacion_esElejida)
+							if (menu_principal->getOperacion_fueCreada())
 								operacionElejida->iniciar();
 							else
 								cout<<"debe elejir una operacion"<<endl;
 							break;
         				}
             case '4' :  {
-            				operacionElejida->iniciar();
             				salir_programa = true;
-            				UtilMenu::limpiar_pantalla();
             				delete menu_principal;
 							break;
         				}

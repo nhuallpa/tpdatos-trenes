@@ -10,6 +10,7 @@
 MenuPrincipal::MenuPrincipal(KDTreeController &kdTreeController) {
 	this->kdTreeController = kdTreeController;
 	this->kdTreeController.inicializar();
+	this->operacion_fueCreada = false;
 }
 
 MenuPrincipal::~MenuPrincipal() {
@@ -26,7 +27,7 @@ void MenuPrincipal::mostrar(){
     cout<<"5-salir del menu Principal"<<endl;
 }
 
-bool MenuPrincipal::iniciar()
+void MenuPrincipal::iniciar()
 {
 	Menu* menu_alta          = new MenuAlta(this->getKdTreeController());
 	Menu* menu_baja          = new MenuBaja();
@@ -34,7 +35,6 @@ bool MenuPrincipal::iniciar()
 	Menu* menu_consulta      = new MenuConsulta(this->getKdTreeController());
 
     bool salir = false;
-    bool operacion_esElejida = false;
     while(!salir)
     {
     	this->mostrar();
@@ -46,25 +46,32 @@ bool MenuPrincipal::iniciar()
         switch(opcion_elejida)
         {
             case '1' :  {
-            				operacion_esElejida = menu_alta->iniciar();
-            				this->operacionElejida = new OperacionAlta();
-							this->operacionElejida = menu_alta->getOperacionElejida();
+            				menu_alta->iniciar();
+            				if ( menu_alta->getOperacion_fueCreada() )
+            					this->operacionElejida = menu_alta->getOperacionElejida();
+							this->operacion_fueCreada = menu_alta->getOperacion_fueCreada();
 							break;
             			}
 
             case '2' :  {
-            				operacion_esElejida = menu_baja->iniciar();
-            				this->operacionElejida = menu_baja->getOperacionElejida();
+            				menu_baja->iniciar();
+            				if (menu_baja->getOperacion_fueCreada())
+            					this->operacionElejida = menu_baja->getOperacionElejida();
+            				this->operacion_fueCreada = menu_baja->getOperacion_fueCreada();
             				break;
             			}
             case '3' :  {
-            				operacion_esElejida = menu_modifcacion->iniciar();
-            				this->operacionElejida = menu_modifcacion->getOperacionElejida();
+            				menu_modifcacion->iniciar();
+            				if ( menu_modifcacion->getOperacion_fueCreada() )
+            					this->operacionElejida = menu_modifcacion->getOperacionElejida();
+            				this->operacion_fueCreada = menu_modifcacion->getOperacion_fueCreada();
             				break;
             			}
             case '4' :  {
-            				operacion_esElejida = menu_consulta->iniciar();
-            				this->operacionElejida = menu_consulta->getOperacionElejida();
+            				menu_consulta->iniciar();
+            				if ( menu_consulta->getOperacion_fueCreada() )
+            						this->operacionElejida = menu_consulta->getOperacionElejida();
+            				this->operacion_fueCreada = menu_consulta->getOperacion_fueCreada();
             				break;
             			}
             case '5' :  {
@@ -74,19 +81,21 @@ bool MenuPrincipal::iniciar()
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
     }
+
     delete menu_alta;
     delete menu_baja;
     delete menu_modifcacion;
     delete menu_consulta;
-
-    return operacion_esElejida;
 }
 
 KDTreeController& MenuPrincipal::getKdTreeController() {
 	return this->kdTreeController;
 }
 
-Operacion* MenuPrincipal::getOperacionElejida()
-{
+Operacion* MenuPrincipal::getOperacionElejida(){
 	return this->operacionElejida;
+}
+
+bool MenuPrincipal::getOperacion_fueCreada(){
+	return this->operacion_fueCreada;
 }

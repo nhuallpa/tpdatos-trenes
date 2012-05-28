@@ -85,7 +85,7 @@ void MenuConsulta::crear_filtroEntrada()
 	this->operacionElejida->inicializar_filtroEntrada(filtroEntrada, tamanio_filtroEntrada);
 }
 
-bool MenuConsulta::iniciar(){
+void MenuConsulta::iniciar(){
     bool salir_consulta = false;
     bool filtroEntrada_esCreado= false;
     bool filtroSalida_esCreado= false;
@@ -125,7 +125,7 @@ bool MenuConsulta::iniciar(){
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
     }
-    return (filtroEntrada_esCreado && filtroSalida_esCreado);
+    this->operacion_fueCreada = filtroEntrada_esCreado && filtroSalida_esCreado;
 }
 
 OperacionConsulta* MenuConsulta::getOperacionElejida(){
@@ -136,3 +136,6 @@ OperacionConsulta* MenuConsulta::getOperacionElejida(){
 		return operacionVacia;
 }
 
+bool MenuConsulta::getOperacion_fueCreada(){
+	return this->operacion_fueCreada;
+}
