@@ -44,7 +44,10 @@ public:
 	bool equals(Reporte* entidad);
 
 	//TODO estudiar criterios de compararcion!!! (¡¡¡muy importante!!!)
-	int compareTo(Reporte* entidad);
+  /**
+   * compara segun 'numCampo'
+   */ 
+	int compareTo(Reporte* entidad, int numCampo);
 
 	std::string toString () const;
 	
