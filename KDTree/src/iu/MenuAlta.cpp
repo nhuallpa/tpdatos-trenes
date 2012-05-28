@@ -71,18 +71,9 @@ void MenuAlta::crearOperacion()
 
 int MenuAlta::elejir_subElemento(string tipo_deSubElemento, list<string>& lista)
 {
-	UtilMenu::mostrarLista(lista);
-    string idSubElemento;
-    int idSubElemento_num;
-    bool valida = true;
-    do {
-		cout<<"Insertar nro de "<<tipo_deSubElemento<<": ";
-		cin>>idSubElemento;
-		idSubElemento_num = Util::toInt(idSubElemento);
-		valida = this->getController().validarIdSubElemento(tipo_deSubElemento, idSubElemento_num);
-    } while (!valida);
-    UtilMenu::limpiar_pantalla();
-    return idSubElemento_num;
+	int idSubElemento = UtilMenu::elejir_subElemento_(tipo_deSubElemento, lista, this->kdTreeController);
+
+    return idSubElemento;
 }
 
 OperacionAlta* MenuAlta::getOperacionElejida(){

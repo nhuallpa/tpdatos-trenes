@@ -92,13 +92,13 @@ void iniciarInterfase()
         				}
             case '4' :  {
             				salir_programa = true;
-            				delete menu_principal;
 							break;
         				}
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
     }
-    delete operacionElejida;
+//    delete operacionElejida;
+//    delete menu_principal;
 }
 
 void iniciarCargaMasiva(const char* fichero_entrada) {
