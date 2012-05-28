@@ -45,9 +45,18 @@ public:
 
 	//TODO estudiar criterios de compararcion!!! (¡¡¡muy importante!!!)
   /**
-   * compara segun 'numCampo'
+   * compara con la entidad segun la dimension pasada por parametro. 
+   * Las dimensiones posibles son:
+   * 1: para la linea
+   * 2: para la formacion
+   * 3: para la falla
+   * 4: para la accidente
+   * 5: para la franaja horaria
+   *
+   * @return
+   * 	MAYOR, MENOR, IGUAL indicando segun su nombre valga la redundancia
    */ 
-	int compareTo(Reporte* entidad, int numCampo);
+	int compareTo(Reporte* entidad, int dimension);
 
 	std::string toString () const;
 	
