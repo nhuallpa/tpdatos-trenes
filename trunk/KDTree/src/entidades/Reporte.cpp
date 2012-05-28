@@ -109,9 +109,10 @@ int Reporte::getDataSize()
 
 ostream & operator<<(std::ostream & os, const Reporte & reporte){
 		  os <<"("<< reporte.idLinea << ","
-				  << reporte.idFormacion<<","
 				  << reporte.idFalla<<","
 				  << reporte.idAccidente<<","
+				  << reporte.idFormacion<<","
 				  << *reporte.franjaHoraria<<")";
 		  return os;
 }
+

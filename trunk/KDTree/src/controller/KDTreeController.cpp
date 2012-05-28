@@ -7,8 +7,12 @@
 
 #include "KDTreeController.h"
 
+
+using std::cout;
+using std::endl;
 KDTreeController::KDTreeController() {
 
+	//todo: Aqui se inicializaria el ArbolKd
 }
 
 KDTreeController::~KDTreeController() {
@@ -68,4 +72,21 @@ bool KDTreeController::validarIdSubElemento(string& nombreSubElemento, int idSub
 	}
 	return idSubElemento_validado;
 }
+
+void KDTreeController::insertar(string registro) {
+	list<string> lista = Util::parsear(registro);
+	Reporte rp;
+	list<string>::iterator it;
+	it = lista.begin();
+	rp.setIdLinea(StringUtils::convertStringToInt(*(it++)));
+	rp.setIdFalla(StringUtils::convertStringToInt(*(it++)));
+	rp.setIdAccidente(StringUtils::convertStringToInt(*(it++)));
+	rp.setIdFormacion(StringUtils::convertStringToInt(*(it++)));
+	FranjaHoraria* fh = new FranjaHoraria(*(it++));
+	rp.setFranjaHoraria(fh);
+	cout<<rp<<endl;
+	delete fh;
+}
+
+
 

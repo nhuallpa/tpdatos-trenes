@@ -13,6 +13,10 @@
 #include <list>
 #include "../utils/const.h"
 #include "../iu/UtilMenu.h"
+#include "../utils/utiles.h"
+#include "../entidades/Reporte.h"
+#include "../utils/StringUtils.h"
+
 using namespace std;
 
 #include <stdlib.h>
@@ -45,6 +49,8 @@ public:
 	list<string>& getAccidentes();
 	list<string>& getFranjasHorarias();
 	bool validarIdSubElemento(string& tipo_deSubElemento, int idSubElemento);
+
+	void insertar(string registro);
 
 private:
 	void levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida);
