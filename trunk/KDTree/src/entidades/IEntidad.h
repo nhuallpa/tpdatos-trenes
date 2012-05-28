@@ -10,6 +10,7 @@
 
 #include "../persistence/ISerializable.h"
 #include "../utils/types.h"
+#include "../utils/const.h"
 #include <string>
 
 using namespace std;

@@ -90,6 +90,37 @@ bool Reporte::equals(Reporte* entidad){
 	return false;
 }
 
+int Reporte::compareTo(Reporte* entidad){
+	int resultadoComparacion = MAYOR;
+	bool mayor = (this->getIdLinea() > entidad->getIdLinea() &&
+					this->getIdFormacion() > entidad->getIdFormacion() &&
+					this->getIdFalla() > entidad->getIdFalla() &&
+					this->getIdAccidente() > entidad->getIdAccidente() &&
+					*this->getFranjaHoraria() > *entidad->getFranjaHoraria()
+					);
+	bool menor = (this->getIdLinea() < entidad->getIdLinea() &&
+					this->getIdFormacion() < entidad->getIdFormacion() &&
+					this->getIdFalla() < entidad->getIdFalla() &&
+					this->getIdAccidente() < entidad->getIdAccidente() &&
+					*this->getFranjaHoraria() < *entidad->getFranjaHoraria()
+					);
+	bool igual = (this->getIdLinea() == entidad->getIdLinea() &&
+					this->getIdFormacion() == entidad->getIdFormacion() &&
+					this->getIdFalla() == entidad->getIdFalla() &&
+					this->getIdAccidente() == entidad->getIdAccidente() &&
+					*this->getFranjaHoraria() == *entidad->getFranjaHoraria()
+					);
+	if (mayor){
+		resultadoComparacion = 	MAYOR;
+	}else if (menor){
+		resultadoComparacion = MENOR;
+	}else if (igual){
+		resultadoComparacion = IGUAL;
+	}
+
+	return resultadoComparacion;
+}
+
 std::string Reporte::serialize()
 {
 

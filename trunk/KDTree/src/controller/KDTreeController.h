@@ -28,7 +28,7 @@ using namespace std;
  */
 class KDTreeController {
 
-	BPlusTree* BTree;
+//	BPlusTree* BTree;
 
 private:
 	//listas de subElementos que seran caragadas con los archivos maestros

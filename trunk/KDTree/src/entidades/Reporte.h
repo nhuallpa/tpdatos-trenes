@@ -43,6 +43,9 @@ public:
 
 	bool equals(Reporte* entidad);
 
+	//TODO estudiar criterios de compararcion!!! (¡¡¡muy importante!!!)
+	int compareTo(Reporte* entidad);
+
 	std::string toString () const;
 	
 	std::string serialize();
