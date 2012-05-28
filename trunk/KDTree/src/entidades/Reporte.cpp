@@ -90,26 +90,34 @@ bool Reporte::equals(Reporte* entidad){
 	return false;
 }
 
-int Reporte::compareTo(Reporte* entidad){
-	int resultadoComparacion = MAYOR;
-	bool mayor = (this->getIdLinea() > entidad->getIdLinea() &&
-					this->getIdFormacion() > entidad->getIdFormacion() &&
-					this->getIdFalla() > entidad->getIdFalla() &&
-					this->getIdAccidente() > entidad->getIdAccidente() &&
-					*this->getFranjaHoraria() > *entidad->getFranjaHoraria()
-					);
-	bool menor = (this->getIdLinea() < entidad->getIdLinea() &&
-					this->getIdFormacion() < entidad->getIdFormacion() &&
-					this->getIdFalla() < entidad->getIdFalla() &&
-					this->getIdAccidente() < entidad->getIdAccidente() &&
-					*this->getFranjaHoraria() < *entidad->getFranjaHoraria()
-					);
-	bool igual = (this->getIdLinea() == entidad->getIdLinea() &&
-					this->getIdFormacion() == entidad->getIdFormacion() &&
-					this->getIdFalla() == entidad->getIdFalla() &&
-					this->getIdAccidente() == entidad->getIdAccidente() &&
-					*this->getFranjaHoraria() == *entidad->getFranjaHoraria()
-					);
+int Reporte::compareTo(Reporte* entidad, int numCampo){
+	int resultadoComparacion = -1;
+  bool mayor = false;
+  bool menor = false;
+  bool igual = false;
+  
+   if (numCampo == 1){
+     mayor = this->getIdLinea() > entidad->getIdLinea();
+     menor = this->getIdLinea() < entidad->getIdLinea();
+     igual = this->getIdLinea() == entidad->getIdLinea();
+   }else if (numCampo == 2){
+     mayor =   this->getIdFormacion() > entidad->getIdFormacion();
+     menor =   this->getIdFormacion() < entidad->getIdFormacion();
+     igual = this->getIdFormacion() == entidad->getIdFormacion();
+   }else if (numCampo == 3){
+     mayor = this->getIdFalla() > entidad->getIdFalla();
+     menor = this->getIdFalla() < entidad->getIdFalla();
+     igual = this->getIdFalla() == entidad->getIdFalla();
+   }else if (numCampo == 4){
+     mayor = this->getIdAccidente() > entidad->getIdAccidente();
+     menor = this->getIdAccidente() < entidad->getIdAccidente();
+     igual = this->getIdAccidente() == entidad->getIdAccidente();
+   }else if (numCampo == 5){
+      mayor = *this->getFranjaHoraria() > *entidad->getFranjaHoraria();
+      menor = *this->getFranjaHoraria() < *entidad->getFranjaHoraria();
+      igual = *this->getFranjaHoraria() == *entidad->getFranjaHoraria();
+   }
+      
 	if (mayor){
 		resultadoComparacion = 	MAYOR;
 	}else if (menor){
