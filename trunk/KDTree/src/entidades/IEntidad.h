@@ -21,6 +21,7 @@ public:
 	virtual ~IEntidad();
 
 	virtual std::string toString();
+	friend std::ostream & operator<<(std::ostream & os, const IEntidad & rp);
 
 	virtual std::string serialize();
 	virtual void unserialize(std::string& buffer);
@@ -30,7 +31,7 @@ public:
 	}
 
 	//no virtual para subclases hasta que sea necesario
-	virtual int getDataSize() {
+	virtual DataSize getDataSize() {
 		return this->serialize().length();
 	}
 

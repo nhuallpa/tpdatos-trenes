@@ -71,7 +71,7 @@ public:
 	 */
 	int getBufferSize();
 
-	int getBufferSizeTree();
+	unsigned int getBufferSizeTree();
 
 	/**
 	 * Devuelve el tama�o minimo de underflow permitido

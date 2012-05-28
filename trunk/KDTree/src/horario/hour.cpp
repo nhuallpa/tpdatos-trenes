@@ -180,7 +180,7 @@ void Hour::unserialize(std::string& buffer)
 }
 
 
-int Hour::getDataSize()
+DataSize Hour::getDataSize()
 {
 	return sizeof(int)*2;
 }

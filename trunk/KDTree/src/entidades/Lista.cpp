@@ -16,7 +16,7 @@ Lista::~Lista() {
 	// TODO Auto-generated destructor stub
 }
 
-int Lista::getDataSize()
+DataSize Lista::getDataSize()
 {
 	return sizeof(int)*2+nombre.length();
 }

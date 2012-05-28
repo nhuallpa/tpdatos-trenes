@@ -16,7 +16,7 @@ public:
     virtual ~Lista();
     virtual std::string serialize();
     virtual void unserialize(std::string & buffer);
-    virtual int getDataSize();
+    virtual DataSize getDataSize();
     ID getIdEleccion() const;
     std::string getNombre() const;
     void setIdEleccion(ID idEleccion);

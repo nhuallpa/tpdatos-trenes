@@ -50,7 +50,7 @@ public:
 	string serialize();
 	void unserialize(std::string& buffer);
 	//Cantidad de bytes que ocupará cuando sea serializado.Es el TOTAL del elemento
-	int getDataSize();
+	DataSize getDataSize();
 
 	friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh);
 	virtual ~FranjaHoraria();

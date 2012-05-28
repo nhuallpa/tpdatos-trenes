@@ -203,7 +203,7 @@ void BPlusTree::insert(IElement* element, int modifyOrInsert) {
 void BPlusTree::validateElementSize(IElement* elm) {
 
 	ConfigurationMananger* c = ConfigurationMananger::getInstance();
-	int maxRecordSize =c->getMaxRecordSizeTree();
+	unsigned int maxRecordSize =c->getMaxRecordSizeTree();
 
 	if (elm->getDataSize() > maxRecordSize) {
 		string mensaje;

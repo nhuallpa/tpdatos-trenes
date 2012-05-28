@@ -264,7 +264,7 @@ void Date::unserialize(std::string& buffer)
 }
 
 
-int Date::getDataSize()
+DataSize Date::getDataSize()
 {
 	return sizeof(int)*3;
 }

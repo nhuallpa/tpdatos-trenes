@@ -71,6 +71,6 @@ void KeyElement::unserialize(std::string &buffer) {
 	buffer.erase(0,sizeof(Offset));
 }
 
-int KeyElement::getDataSize(){
+DataSize KeyElement::getDataSize(){
 	return (sizeof(this->key) + sizeof(Offset));
 }

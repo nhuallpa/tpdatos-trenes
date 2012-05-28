@@ -98,7 +98,7 @@ public:
 	virtual void unserialize(std::string &buffer);
 
 	/* Devuelve el tamanio de los datos del nodo: Level y RegisterCount */
-	virtual int getDataSize();
+	virtual DataSize getDataSize();
 	friend ostream& operator<<(ostream&,BNode&);
 	virtual ostream& printMe(ostream&)=0;
 	virtual void exportNode()=0;
