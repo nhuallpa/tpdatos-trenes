@@ -43,4 +43,8 @@
 #define OPERACION_CARGA_OK 11
 #define OPERACION_OK 12
 
+#define MAYOR 1
+#define MENOR 2
+#define IGUAL 3
+
 #endif /* CONST_H_ */
