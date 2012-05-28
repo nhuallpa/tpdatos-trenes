@@ -41,9 +41,8 @@ public:
 	FranjaHoraria* getFranjaHoraria();
 	void setFranjaHoraria(FranjaHoraria* franjaHoraria);
 
-	bool equals(Reporte* entidad);
-
 	//TODO estudiar criterios de compararcion!!! (¡¡¡muy importante!!!)
+	int compareTo(IEntidad* entidad);
   /**
    * compara con la entidad segun la dimension pasada por parametro. 
    * Las dimensiones posibles son:

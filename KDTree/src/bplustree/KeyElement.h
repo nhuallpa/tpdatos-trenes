@@ -40,7 +40,7 @@ public:
      friend ostream& operator<<(ostream&, KeyElement&);
 
      void toString(){
-    	 cout<<"Key "<<this->key<<" RightOffSet: "<<rightNode<<" ";
+    	 cout<<"Key "<<this->key->toString()<<" RightOffSet: "<<rightNode<<" ";
      }
 	/******************************************************
 	 * 					PERSISTENCIA

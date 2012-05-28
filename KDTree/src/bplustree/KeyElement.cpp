@@ -4,9 +4,11 @@
  */
 
 #include "KeyElement.h"
+#include "../entidades/EntityFactory.h"
 
 KeyElement::KeyElement() {
 	this->rightNode=-1;
+	this->key = EntityFactory::createEntity();
 }
 
 KeyElement::KeyElement(IEntidad* key,Offset rightNode) {
@@ -37,7 +39,7 @@ IEntidad* KeyElement::getKey(){
 
 ostream& operator<<(ostream& myOstream, KeyElement& elem){
 
-	myOstream<<elem.getKey()<<" RightOffSet: "<<elem.getrightNode()<<" ";
+	myOstream << elem.getKey()->toString()<<" RightOffSet: "<<elem.getrightNode()<<" ";
 
 	return myOstream;
 }
@@ -53,12 +55,12 @@ ostream& operator<<(ostream& myOstream, KeyElement& elem){
  * KeySize|key|offset|
  */
 std::string KeyElement::serialize() {
-	//Para claves enteras
-	std::string buffer = "";
+	Serializacion serial;
+	serial.addEntero(this->rightNode);
+	std::string buffer = this->key->serialize();
+	serial.addString(buffer);
 
-	buffer.append((char*)&rightNode,sizeof(Offset));
-
-	return buffer;
+	return serial.toString();
 }
 
 /**
@@ -66,11 +68,15 @@ std::string KeyElement::serialize() {
  */
 void KeyElement::unserialize(std::string &buffer) {
 
-	//unserialize del node
-	buffer.copy((char*)&rightNode,sizeof(Offset));
-	buffer.erase(0,sizeof(Offset));
+	Serializacion serial(buffer);
+
+	rightNode = serial.getEntero();
+	std::string tmpBuffer;
+	tmpBuffer.append(serial.getString());
+
+	this->key->unserialize(tmpBuffer);
 }
 
 DataSize KeyElement::getDataSize(){
-	return (sizeof(this->key) + sizeof(Offset));
+	return (this->key->getDataSize()+ sizeof(int) + sizeof(Offset));
 }

@@ -2,8 +2,8 @@
 # ARCHIVO DE CONFIGURACION  #
 #############################
 filename            =datos.tree
-treeBlockSize       =512
-blockSize           =512
+treeBlockSize       =1024
+blockSize           =1024
 minRecordSizeTree   =0
 chargePercent       =0.8
 maxRecordPercent    =0.2

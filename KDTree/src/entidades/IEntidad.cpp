@@ -11,7 +11,7 @@ IEntidad::IEntidad(){
 
 }
 
-string IEntidad::toString(){
+string IEntidad::toString() const{
 	return "Entidad";
 }
 
