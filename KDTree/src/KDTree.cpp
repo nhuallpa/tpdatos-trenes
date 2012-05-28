@@ -108,11 +108,12 @@ void iniciarCargaMasiva(const char* fichero_entrada) {
     ifstream in;
     in.open(fichero_entrada, ifstream::in);
     if (in.is_open()) {
+    	KDTreeController kdTreeController;
     	while (!in.eof()) {
     		string registro("");
     		in>>registro;
     		if (in.good()) {
-    			cout<<registro<<endl;
+    			kdTreeController.insertar(registro);
     		}
     	}
     }else{
@@ -126,14 +127,14 @@ int main(int argc, char** argv){
 	int siguiente_opcion;
 
 	/* Una cadena que lista las opciones cortas válidas */
-	const char* const op_cortas = "hict:" ;
+	const char* const op_cortas = "hitc:" ;
 
 	/* Una estructura de varios arrays describiendo los valores largos */
 	const struct option op_largas[] =
 	{
 	  { "help",         0,  NULL,  'h'},
 	  { "interfaxe",    0,  NULL,  'i'},
-	  { "carga",        0,  NULL,  'c'},
+	  { "carga",        1,  NULL,  'c'},
 	  { "test",         0,  NULL,  't'},
 	  { NULL,           0,  NULL,   0 }
 	};
@@ -164,9 +165,8 @@ int main(int argc, char** argv){
 	      switch (siguiente_opcion)
 	      {
 	          case 'h' : /* -h o --help */
-//	              imprime_uso();
+	              imprime_uso();
 //	              exit(EXIT_SUCCESS);
-	              //porque no  anda la opcion 't'
 	              activarTest = true;
 	              break;
 

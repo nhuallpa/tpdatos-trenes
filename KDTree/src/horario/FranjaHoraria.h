@@ -12,6 +12,7 @@
 #include "hour.h"
 #include "date.h"
 #include "../utils/types.h"
+#include "../utils/StringUtils.h"
 
 #include <iomanip>
 #include <sstream>
@@ -37,6 +38,7 @@ private:
 	Date* fecha;
 public:
 	FranjaHoraria();
+	FranjaHoraria(string cadena);
 	FranjaHoraria(uint horaInicio, uint minutoInicio,uint horaFin, uint minutoFin, uint dia, uint mes, uint anio);
 	Hour* getHoraInicio() const;
 	Hour* getHoraFin() const;

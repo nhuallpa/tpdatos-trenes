@@ -253,7 +253,35 @@ string Util::strdate()
 	   return date;
 }
 
+// parsea (1,3,4,6,6)
+list<string> Util::parsear(string registro) {
+	int posI = registro.find_first_of("(");
+	int posF = registro.find_first_of(")");
+	string relleno = registro.substr(posI+1,posF-posI-1);
 
+	list<string> idList;
+	char* token;
+	char* auxStr;
+
+	//creo un string auxiliar en estilo c
+	auxStr = new char[relleno.length() + 1];
+
+	//copio el string compuesto por ids al string auxiliar
+	strcpy(auxStr, relleno.c_str());
+
+	//parseo el primer id
+	token = strtok(auxStr, ID_SEPARATOR);
+	string tokenString(token);
+	idList.push_front(tokenString);
+
+	//parseo el resto de los ids
+	while( ( token = strtok(NULL, ID_SEPARATOR) ) != NULL){
+		string valor(token);
+		idList.push_back(valor);
+	}
+
+	return idList;
+}
 
 
 

@@ -10,6 +10,7 @@
 #include <sstream>
 #include "types.h"
 #include <time.h>
+#include <list>
 
 
 enum cacheStrategy {writeback, writetrhough};
@@ -58,6 +59,8 @@ public:
 
 	/* Devuelve la fecha de hoy en formato DD/MM/YYYY */
 	static string strdate();
+
+	static list<string> parsear(string registro);
 };
 
 #endif /* UTILES_H_ */

@@ -42,6 +42,22 @@ string StringUtils::convertIntToString(int numero) {
 	return retorno;
 }
 
+int StringUtils::convertStringToInt(string nro) {
+	int nroInt;
+	stringstream stream;
+	stream << nro;
+	stream >> nroInt;
+	return nroInt;
+}
+
+uint StringUtils::convertStringToUint(string nro) {
+	uint nroInt;
+	stringstream stream;
+	stream << nro;
+	stream >> nroInt;
+	return nroInt;
+}
+
 std::string StringUtils::convertirAString(int numero) {
 	std::stringstream flujo;
 	flujo << numero;
@@ -87,6 +103,7 @@ list<ID>* StringUtils::extractIDs(const string& strIdSet){
 	//devuelvo la lista
 	return idList;
 }
+
 
 string StringUtils::glueIds(const vector<ID>& ids){
 	vector<ID>::const_iterator itIds;

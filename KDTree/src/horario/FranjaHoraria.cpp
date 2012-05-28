@@ -8,6 +8,7 @@
 #include "FranjaHoraria.h"
 #include "../persistence/Serializacion.h"
 
+
 FranjaHoraria::FranjaHoraria() {
 	this->horaInicio = new Hour(0, 0) ;
 	this->horaFin = new Hour(0, 0);
@@ -16,6 +17,24 @@ FranjaHoraria::FranjaHoraria() {
 
 FranjaHoraria::~FranjaHoraria() {
 
+}
+// yyyymmddhhmmhhmm
+FranjaHoraria::FranjaHoraria(string cadena) {
+
+	uint anio = StringUtils::convertStringToUint(cadena.substr(0, 4));
+	uint mes = StringUtils::convertStringToUint(cadena.substr(4, 2));
+	uint dia = StringUtils::convertStringToUint(cadena.substr(6, 2));
+
+	uint horaInicio = StringUtils::convertStringToUint(cadena.substr(8, 2));
+	uint minutoInicio = StringUtils::convertStringToUint(cadena.substr(10, 2));
+
+	uint horaFin = StringUtils::convertStringToUint(cadena.substr(12, 2));
+	uint minutoFin = StringUtils::convertStringToUint(cadena.substr(14, 2));
+
+
+	this->horaInicio = new Hour(horaInicio, minutoInicio);
+	this->horaFin = new Hour(horaFin, minutoFin);
+	this->fecha = new Date(dia, mes, anio);
 }
 
 FranjaHoraria::FranjaHoraria(uint horaInicio, uint minutoInicio,uint horaFin

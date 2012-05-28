@@ -33,6 +33,10 @@ public:
 	 */
 	static string convertIntToString(int numero);
 
+	static int convertStringToInt(string nro);
+
+	static uint convertStringToUint(string nro);
+
 	static  std::string convertirAString( int numero);
 
 	/**
