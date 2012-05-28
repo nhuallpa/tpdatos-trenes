@@ -25,7 +25,7 @@ Reporte::Reporte(string tupla) {
 	this->setIdFormacion(StringUtils::convertStringToInt(*(it++)));
 	FranjaHoraria* fh = new FranjaHoraria(*(it++));
 	this->setFranjaHoraria(fh);
-	delete fh;
+//	delete fh;
 }
 
 Reporte::Reporte(IEntidad* copy) {
@@ -77,8 +77,9 @@ int Reporte::getIdAccidente()
 
 void Reporte::setFranjaHoraria(FranjaHoraria *franjaHoraria)
 {
-	this->franjaHoraria->copiar(franjaHoraria);
-}
+//	this->franjaHoraria->copiar(franjaHoraria);
+	this->franjaHoraria = franjaHoraria;
+	}
 FranjaHoraria* Reporte::getFranjaHoraria()
 {
 	return this->franjaHoraria;

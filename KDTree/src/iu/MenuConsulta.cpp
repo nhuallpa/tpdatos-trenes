@@ -125,15 +125,11 @@ void MenuConsulta::iniciar(){
             default : cout<<"opcion de menu invalida"<<endl; break;
         }
     }
-    this->operacion_fueCreada = filtroEntrada_esCreado && filtroSalida_esCreado;
+    this->operacion_fueCreada = (filtroEntrada_esCreado && filtroSalida_esCreado);
 }
 
 OperacionConsulta* MenuConsulta::getOperacionElejida(){
-	OperacionConsulta* operacionVacia = new OperacionConsulta();
-	if (this->operacion_fueCreada)
 		return this->operacionElejida;
-	else
-		return operacionVacia;
 }
 
 bool MenuConsulta::getOperacion_fueCreada(){

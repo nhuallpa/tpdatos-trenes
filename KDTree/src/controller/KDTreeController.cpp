@@ -11,11 +11,11 @@
 using std::cout;
 using std::endl;
 KDTreeController::KDTreeController() {
-	this->BTree = new BPlusTree(256, "arbol");
+//	this->BTree = new BPlusTree(256, "arbol");
 }
 
 KDTreeController::~KDTreeController() {
-	delete this->BTree;
+//	delete this->BTree;
 }
 
 void KDTreeController::inicializar()
@@ -75,7 +75,7 @@ bool KDTreeController::validarIdSubElemento(string& nombreSubElemento, int idSub
 void KDTreeController::insertar(string registro) {
 	Reporte rp(registro);
 	IElement* elem = new Element(&rp);
-	this->BTree->insert(elem);
+//	this->BTree->insert(elem);
 	cout<<rp<<endl;
 }
 void KDTreeController::eliminar(string registro) {
