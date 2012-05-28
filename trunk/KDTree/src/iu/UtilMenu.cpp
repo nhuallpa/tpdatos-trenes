@@ -36,24 +36,30 @@ string UtilMenu::getNombreSubElemento(int idSubElemento)
 	return nombreCampo_elejido;
 }
 
-void UtilMenu::verEstructraResultado(string* filtro_salida, int cant_campos_resultado){
+string UtilMenu::getFiltroSalida(string* filtro_salida, int cant_campos_resultado){
+	string os = "";
 	string separador = ",";
-	cout<<"(";
+	os.append("(");
 	for(int i=0 ; i<cant_campos_resultado ; i++){
 		if ((i+1) ==  cant_campos_resultado)
 			separador = "";
-		cout<<filtro_salida[i]<<separador;
+		os.append(filtro_salida[i]);
+		os.append(separador);
 	}
-	cout<<") ";
+	os.append(") ");
+	return os;
 }
 
-void UtilMenu::verEstructuraFiltro(string* filtro_entrada, int cant_campos_enFiltro){
+string UtilMenu::getFiltroEntrada(string* filtro_entrada, int cant_campos_enFiltro){
+	string os = "";
 	string separador = ",";
-	cout<<"(";
+	os.append("(");
 	for(int i=0 ; i<cant_campos_enFiltro ; i++){
 		if ((i+1) ==  cant_campos_enFiltro)
 			separador = "";
-		cout<<filtro_entrada[i]<<separador;
+		os.append(filtro_entrada[i]);
+		os.append(separador);
 	}
-	cout<<") ";
+	os.append(") ");
+	return os;
 }

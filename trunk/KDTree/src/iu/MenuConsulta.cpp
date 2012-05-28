@@ -48,7 +48,7 @@ void MenuConsulta::crear_filtroSalida()
 	string cant_campos;
 	cout<<"Elejir la cantidad de campos utilizados en el resultado de la consulta: ";
 	cin>>cant_campos;
-	int tamanio_filtroSalida= atoi(cant_campos.c_str());
+	int tamanio_filtroSalida= Util::toInt(cant_campos);
 	UtilMenu::limpiar_pantalla();
 
 	////////////////////////////////////////////////////////////////////////////
@@ -71,35 +71,17 @@ void MenuConsulta::crear_filtroSalida()
         nroCampo++;
 	}
 	UtilMenu::limpiar_pantalla();
-	/**
-	 * TODO: Corregir en post a esta salida de consola
-	 * 	filtro de salida:
-		(formacion,linea)
-		Violación de segmento (`core' generado)
-	 *
-	 */
-	////////////////////////////////////////////////////////////////////////////
-	cout<<"filtro de salida:"<<endl;
-	UtilMenu::verEstructraResultado(filtroSalida, tamanio_filtroSalida);
-	cout<<endl;
-
 	this->operacionElejida->inicializar_filtroSalida(filtroSalida, tamanio_filtroSalida);
 }
 
 void MenuConsulta::crear_filtroEntrada()
 {
-	//TODO filtro en proceso de construccion
 	int tamanio_filtroEntrada = 1;
 	string* filtroEntrada = new string[tamanio_filtroEntrada];
-	filtroEntrada[0] = "filtro_1";
+	filtroEntrada[0] = "en construccion";
+
 	UtilMenu::limpiar_pantalla();
-
 	////////////////////////////////////////////////////////////////////////////
-	cout<<"filtro de entrada:"<<endl;
-	UtilMenu::verEstructraResultado(filtroEntrada, tamanio_filtroEntrada);
-	cout<<endl;
-	cout<<"en proceso de construccion..."<<endl;
-
 	this->operacionElejida->inicializar_filtroEntrada(filtroEntrada, tamanio_filtroEntrada);
 }
 
@@ -123,13 +105,12 @@ bool MenuConsulta::iniciar(){
             case '2' :  {
             				this->crear_filtroSalida();
             				filtroSalida_esCreado = true;
-            				cout<<"paao_ariel_2"<<endl;
             				break;
             			}
             case '3' :  {
 							if (filtroEntrada_esCreado && filtroSalida_esCreado){
 								//TODO implementar OperacionConsulta::inicializacion
-								//y llamar al <<
+								cout<<*this->operacionElejida<<endl;
 							}
 							else{
 								if (!filtroEntrada_esCreado)
