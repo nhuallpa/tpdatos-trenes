@@ -10,7 +10,10 @@
 
 #include "Menu.h"
 #include "../controller/OperacionConsulta.h"
-
+/**
+ * produce consultas tal como(no se lo va a parser):
+ * SELECT (linea,formacion,falla) FROM tabla-arbolKD WHERE (idLinea='1' formacion='2' falla='3' accidente='3' franajHoraria='2')
+ */
 class MenuConsulta: public Menu {
 private:
 	KDTreeController kdTreeController;

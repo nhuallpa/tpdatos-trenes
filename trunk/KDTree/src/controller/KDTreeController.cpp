@@ -74,7 +74,7 @@ bool KDTreeController::validarIdSubElemento(string& nombreSubElemento, int idSub
 
 void KDTreeController::insertar(string registro) {
 	Reporte rp(registro);
-	IElement* elem = new Element(&rp);
+//	IElement* elem = new Element(&rp);
 //	this->BTree->insert(elem);
 	cout<<rp<<endl;
 }
