@@ -15,6 +15,7 @@
 #include "../utils/utiles.h"
 #include "../entidades/Reporte.h"
 #include "../utils/StringUtils.h"
+#include "../bplustree/KDTreeFactory.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ using namespace std;
  */
 class KDTreeController {
 
-//	BPlusTree* BTree;
+	BPlusTree* BTree;
 
 private:
 	//listas de subElementos que seran caragadas con los archivos maestros
@@ -56,6 +57,8 @@ public:
 	void eliminar(string registro);
 	void modificar(string registro);
 	void consultar(string registro);
+
+	void mostrarEstado();
 
 private:
 	void levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida);

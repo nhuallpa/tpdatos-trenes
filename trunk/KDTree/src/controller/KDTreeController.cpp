@@ -8,14 +8,15 @@
 #include "KDTreeController.h"
 #include "../iu/UtilMenu.h"
 
+
 using std::cout;
 using std::endl;
 KDTreeController::KDTreeController() {
-//	this->BTree = new BPlusTree(256, "arbol");
+	this->BTree = KDTreeFactory::createKDTree();
 }
 
 KDTreeController::~KDTreeController() {
-//	delete this->BTree;
+	delete this->BTree;
 }
 
 void KDTreeController::inicializar()
@@ -74,9 +75,8 @@ bool KDTreeController::validarIdSubElemento(string& nombreSubElemento, int idSub
 
 void KDTreeController::insertar(string registro) {
 	Reporte rp(registro);
-//	IElement* elem = new Element(&rp);
-//	this->BTree->insert(elem);
-	cout<<rp<<endl;
+	IElement* elem = new Element(&rp);
+	this->BTree->insert(elem);
 }
 void KDTreeController::eliminar(string registro) {
 	//this->BTree->remove(entidad);
@@ -87,5 +87,11 @@ void KDTreeController::modificar(string registro) {
 void KDTreeController::consultar(string registro) {
 	//this->BTree->find(entidad);
 }
+
+void KDTreeController::mostrarEstado(){
+	this->BTree->exportTree();
+}
+
+
 
 
