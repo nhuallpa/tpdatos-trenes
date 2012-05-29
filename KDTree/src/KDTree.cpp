@@ -42,10 +42,16 @@ void imprime_uso() {
 	cout<<"Uso: "<<nombre_programa<<" opciones [ argumentos ...] \n"<<endl;
     cout<<"    Opciones                    Comentarios"<<endl;
     cout<<"    ---------------             -------------------"<<endl;
-    cout<<"    -h  --help                  Enseña esta ayuda\n"<<endl;
-    cout<<"    -i  --interfaxe             Modo interfase con usuario\n"<<endl;
-    cout<<"    -c  --carga                 Recibe como argumento un archivo para carga masiva\n"<<endl;
-    cout<<"    -t  --test                  Se ejecutan los test\n"<<endl;
+    cout<<"    -h  --help                  Enseña esta ayuda"<<endl;
+    cout<<"    -i  --interfaxe             Modo interfase con usuario"<<endl;
+    cout<<"    -a  --agregar               Agrega un registro. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
+    cout<<"    -r  --remover               Remueve un registro puntual. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
+    cout<<"    -m  --modificar             Modifica un registro. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
+    cout<<"    -q  --consultar             Realiza consulta. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
+    cout<<"    				               Realiza consulta"<<endl;
+    cout<<"    -v  --ver             	   Muestra el estado del arbol"<<endl;
+    cout<<"    -c  --carga                 Recibe como argumento un archivo para carga masiva"<<endl;
+    cout<<"    -t  --test                  Se ejecutan los test"<<endl;
 }
 
 void iniciarInterfase()
@@ -121,6 +127,10 @@ void iniciarCargaMasiva(const char* fichero_entrada) {
     	cout<<"No se pudo abrir "<<fichero_entrada<<endl;
     }
 }
+void mostrarEstadoArbol(){
+	KDTreeController kdTreeController;
+	kdTreeController.mostrarEstado();
+}
 
 int main(int argc, char** argv){
 
@@ -128,13 +138,14 @@ int main(int argc, char** argv){
 	int siguiente_opcion;
 
 	/* Una cadena que lista las opciones cortas válidas */
-	const char* const op_cortas = "hitc:" ;
+	const char* const op_cortas = "hivtc:" ;
 
 	/* Una estructura de varios arrays describiendo los valores largos */
 	const struct option op_largas[] =
 	{
 	  { "help",         0,  NULL,  'h'},
 	  { "interfaxe",    0,  NULL,  'i'},
+	  { "ver",    		0,  NULL,  'v'},
 	  { "carga",        1,  NULL,  'c'},
 	  { "test",         0,  NULL,  't'},
 	  { NULL,           0,  NULL,   0 }
@@ -142,10 +153,11 @@ int main(int argc, char** argv){
 
 	/* El nombre del fichero que recibe la salida del programa */
 	const char* fichero_entrada = NULL ;
+	//const char* registro_entrada = NULL ;
 
 	bool activaInterfase = 0;
 	bool activarTest = 0;
-
+	bool mostrarEstado = 0;
 	/* Guardar el nombre del programa para incluirlo a la salida */
 	nombre_programa = argv[0];
 
@@ -184,6 +196,9 @@ int main(int argc, char** argv){
 	              activarTest = true;
 	              break;
 
+	          case 'v' : /* -t 	ó --test */
+				  mostrarEstado = true;
+				  break;
 	          case '?' : /* opción no valida */
 	              imprime_uso(); /* código de salida 1 */
 	              exit(1);
@@ -197,6 +212,9 @@ int main(int argc, char** argv){
 	  }
 	if (activaInterfase) {
 		iniciarInterfase();
+	}
+	if (mostrarEstado) {
+		mostrarEstadoArbol();
 	}
 	if (fichero_entrada) {
 		iniciarCargaMasiva(fichero_entrada);
