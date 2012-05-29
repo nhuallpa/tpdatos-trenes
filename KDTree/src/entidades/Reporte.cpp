@@ -91,36 +91,12 @@ int Reporte::compareTo(IEntidad* entidad)
 	Reporte* reporte = (Reporte*)entidad;
 	int resultadoComparacion = -1;
 
-	bool mayor = false;
-	bool menor = false;
-	bool igual = false;
+	for (int i = 1; i <= 5; i++) {
+		resultadoComparacion = this->compareTo(reporte, i);
 
-    mayor = this->getIdLinea() > reporte->getIdLinea();
-    menor = this->getIdLinea() < reporte->getIdLinea();
-    igual = this->getIdLinea() == reporte->getIdLinea();
-
-    mayor &= this->getIdFormacion() > reporte->getIdFormacion();
-    menor &= this->getIdFormacion() < reporte->getIdFormacion();
-    igual &= this->getIdFormacion() == reporte->getIdFormacion();
-
-    mayor &= this->getIdFalla() > reporte->getIdFalla();
-    menor &= this->getIdFalla() < reporte->getIdFalla();
-    igual &= this->getIdFalla() == reporte->getIdFalla();
-
-    mayor &= this->getIdAccidente() > reporte->getIdAccidente();
-    menor &= this->getIdAccidente() < reporte->getIdAccidente();
-    igual &= this->getIdAccidente() == reporte->getIdAccidente();
-
-    mayor &= *this->getFranjaHoraria() > *reporte->getFranjaHoraria();
-	menor &= *this->getFranjaHoraria() < *reporte->getFranjaHoraria();
-	igual &= *this->getFranjaHoraria() == *reporte->getFranjaHoraria();
-
-	if (mayor){
-		resultadoComparacion = 	MAYOR;
-	}else if (menor){
-		resultadoComparacion = MENOR;
-	}else if (igual){
-		resultadoComparacion = IGUAL;
+		if (resultadoComparacion != IGUAL){
+			break;
+		}
 	}
 
 	return resultadoComparacion;
@@ -132,37 +108,41 @@ int Reporte::compareTo(Reporte* entidad, int dimension){
 	bool menor = false;
 	bool igual = false;
   
-   if (dimension == 1){
-   
-	 mayor = this->getIdLinea() > entidad->getIdLinea();
-	 menor = this->getIdLinea() < entidad->getIdLinea();
-	 igual = this->getIdLinea() == entidad->getIdLinea();
-	 
-   }else if (dimension == 2){
-   
-     mayor =   this->getIdFormacion() > entidad->getIdFormacion();
-     menor =   this->getIdFormacion() < entidad->getIdFormacion();
-     igual = this->getIdFormacion() == entidad->getIdFormacion();
-	 
-   }else if (dimension == 3){
-   
-     mayor = this->getIdFalla() > entidad->getIdFalla();
-     menor = this->getIdFalla() < entidad->getIdFalla();
-     igual = this->getIdFalla() == entidad->getIdFalla();
-	 
-   }else if (dimension == 4){
-   
-     mayor = this->getIdAccidente() > entidad->getIdAccidente();
-     menor = this->getIdAccidente() < entidad->getIdAccidente();
-     igual = this->getIdAccidente() == entidad->getIdAccidente();
-	 
-   }else if (dimension == 5){
-   
-      mayor = *this->getFranjaHoraria() > *entidad->getFranjaHoraria();
-      menor = *this->getFranjaHoraria() < *entidad->getFranjaHoraria();
-      igual = *this->getFranjaHoraria() == *entidad->getFranjaHoraria();
-	  
-   }
+	switch(dimension){
+		case 1:
+			 mayor = this->getIdLinea() > entidad->getIdLinea();
+			 menor = this->getIdLinea() < entidad->getIdLinea();
+			 igual = this->getIdLinea() == entidad->getIdLinea();
+			 break;
+		case 2:
+			mayor = this->getIdFormacion() > entidad->getIdFormacion();
+			menor = this->getIdFormacion() < entidad->getIdFormacion();
+			igual = this->getIdFormacion() == entidad->getIdFormacion();
+
+			break;
+		case 3:
+			mayor = this->getIdFalla() > entidad->getIdFalla();
+			menor = this->getIdFalla() < entidad->getIdFalla();
+			igual = this->getIdFalla() == entidad->getIdFalla();
+
+			break;
+		case 4:
+		    mayor = this->getIdAccidente() > entidad->getIdAccidente();
+		    menor = this->getIdAccidente() < entidad->getIdAccidente();
+		    igual = this->getIdAccidente() == entidad->getIdAccidente();
+
+		    break;
+		case 5:
+			mayor = *this->getFranjaHoraria() > *entidad->getFranjaHoraria();
+			menor = *this->getFranjaHoraria() < *entidad->getFranjaHoraria();
+			igual = *this->getFranjaHoraria() == *entidad->getFranjaHoraria();
+
+			break;
+		default:
+			mayor = false;
+			menor = false;
+			igual = false;
+	}
       
 	if (mayor){
 		resultadoComparacion = 	MAYOR;
