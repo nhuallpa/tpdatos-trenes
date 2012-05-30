@@ -59,6 +59,7 @@ public:
 	void consultar(string registro);
 
 	void mostrarEstado();
+	void iniciarUserInterfax();
 
 private:
 	void levantar_datosMaestros_segun(const char* fileName_entrada, list<string>* lista_salida);
