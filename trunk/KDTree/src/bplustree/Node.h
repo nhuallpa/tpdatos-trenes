@@ -24,7 +24,8 @@ private:
 	vector<KeyElement*> splitKeyElements();
     bool doInsertOrModifyInChild(BNode * childNodeToSearch, IElement * elemToInsert,int insertOrModify);
 
-    BNode* findChild(IElement* element);
+    BNode* findChild(IElement* key);
+    void findChilds(IElement* elementToFind, std::vector<BNode*> &returnNodes);
     void removeKey(IEntidad* key);
     void insertFirstKey(KeyElement* keyelement);
 
@@ -61,7 +62,8 @@ public:
    	/**
    	 * Devuelve el nodo hoja que contiene la clave (o el valor)
    	 */
-   	LeafNode *find(IEntidad* key);
+   	LeafNode* find(IEntidad* key);
+   	void findElements(IEntidad* key, std::vector<BNode*> &founds);
    	IElement *findExact(IEntidad* key);
    	/**
    	 * Agrega todos los elementos de siblin a este nodo

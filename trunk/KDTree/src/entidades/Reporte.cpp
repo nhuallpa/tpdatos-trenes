@@ -118,7 +118,6 @@ int Reporte::compareTo(Reporte* entidad, int dimension){
 			mayor = this->getIdFormacion() > entidad->getIdFormacion();
 			menor = this->getIdFormacion() < entidad->getIdFormacion();
 			igual = this->getIdFormacion() == entidad->getIdFormacion();
-
 			break;
 		case 3:
 			mayor = this->getIdFalla() > entidad->getIdFalla();
@@ -191,9 +190,9 @@ std::string Reporte::toString() const{
 
 	std::stringstream flujo;
 	flujo <<"("<< this->idLinea << ", "
+		  << this->idFormacion <<", "
 		  << this->idFalla <<", "
 		  << this->idAccidente <<", "
-		  << this->idFormacion <<", "
 		  << *this->franjaHoraria <<");";
 	return flujo.str();
 }

@@ -164,6 +164,61 @@ BNode* Node::findChild(IElement* elementToFind) {
 	}
 	return childNodeToSearch;
 }
+
+void Node::findChilds(IElement* elementToFind, std::vector<BNode*> &returnNodes) {
+	//como es un nodo no hoja, tengo que buscar el donde esta el hijo
+	//Se asumen que los elementos (KeyElement estan ordenados, asi que hago una busqueda secuencial,
+	//La busqueda puede optimizarse.
+
+	//para de buscar cuando, encuentro el elemento, obtengo uno mayor (entonces es el anterior) o es el ultimo elemento y es menor.
+
+	//Menores a izquiera y mayores o iguales a derecha
+	string mensaje = "NODE: :";
+	mensaje.append(StringUtils::convertIntToString(this->getOffset()));
+	mensaje.append(" buscando un hijo en un nodo interno en :");
+	Logger::getInstance()->debug(mensaje);
+	vector<KeyElement*>::iterator it;
+
+	bool found = false;
+
+	PersistorBTree* p = PersistorBTree::getInstance();
+	it = keyElements.begin();
+	if (it == keyElements.end()) {
+		Logger::getInstance()->info(
+				"linea 129 node.cpp: no deberia pasar por aca. Hay un nodo sin hijos");
+		ProgramException("no es posible que exista un nodo interno sin hijos");
+	}
+	BNode* childNodeToSearch = NULL;
+	KeyElement* firtKey = (*it);
+	//Caso especial donde levanto el nodo cuyo offset esta en este nodo
+	if (elementToFind->getData()->compareTo(firtKey->getKey()) == MENOR) {
+		childNodeToSearch = NodeFactory::createNodeForSearch(this->getLevel());
+		p->load(this->leftNode, childNodeToSearch);
+		returnNodes.push_back(childNodeToSearch);
+	}
+
+	KeyElement* keyFromKeyElements;
+	for (it = keyElements.begin(); it != keyElements.end() && !found; it++) {
+		keyFromKeyElements = (*it);
+		if (elementToFind->getData()->compareTo(keyFromKeyElements->getKey()) == MENOR) {
+			keyFromKeyElements = (*it);
+			childNodeToSearch = NodeFactory::createNodeForSearch(this->getLevel());
+			cout << keyFromKeyElements->getrightNode() << endl;
+			p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
+			returnNodes.push_back(childNodeToSearch);
+		}
+	}
+
+	if (!found) {
+		it = this->keyElements.end();
+		it--;
+		keyFromKeyElements = (*it);
+		//como no lo encuentra implica que el elemento a insertar es mayor a todos entonces bajo por el de la derecha
+		childNodeToSearch = NodeFactory::createNodeForSearch(this->getLevel());
+		p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
+		returnNodes.push_back(childNodeToSearch);
+	}
+}
 /**
  * Los Node insertan solo KeyElements, con lo cual, solo se insertara un elemento cuando exista un overflow.
  */
@@ -322,6 +377,23 @@ LeafNode* Node::find(IEntidad* key) {
 		returnNode = returnNode->find(key);
 	delete el;
 	return (LeafNode*) returnNode;
+}
+
+void Node::findElements(IEntidad* key, std::vector<BNode*> &founds) {
+	IElement* el = ElementFactory::createElement(key);
+
+	std::vector<BNode*> returnNodes;
+	findChilds(el, returnNodes);
+
+	std::vector<BNode*>::iterator it;
+	for (it = returnNodes.begin(); it != returnNodes.end(); it++) {
+		if ((*it)->getLevel() > 0){
+			((Node*)(*it))->findElements(key, founds);
+		} else {
+			founds.push_back(*it);
+		}
+	}
+	delete el;
 }
 
 IElement* Node::findExact(IEntidad* key) {

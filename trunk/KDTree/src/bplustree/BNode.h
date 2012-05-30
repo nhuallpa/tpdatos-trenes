@@ -6,6 +6,7 @@
 #include "../utils/types.h"
 #include "IElement.h"
 #include <string>
+#include <vector>
 #include "KeyElement.h"
 #include "../utils/ConfigurationMananger.h"
 #include "../utils/types.h"
@@ -21,7 +22,8 @@ public:
 	BNode();
 	virtual ~BNode();
 
-	virtual LeafNode *find(IEntidad* key) = 0;
+	virtual LeafNode* find(IEntidad* key) = 0;
+	virtual void findElements(IEntidad* key, std::vector<BNode*> &founds) = 0;
 	virtual IElement *findExact(IEntidad* key) = 0;
 
 	/**
