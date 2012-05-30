@@ -29,111 +29,19 @@ using std::ios;
 using std::ifstream;
 using std::string;
 
-void iniciarTestFranjaHoraria(){
-	//para testear la clase FranjaHoraria
-	TestFranjaHoraria* testFranajaHoraria = new TestFranjaHoraria();
-	testFranajaHoraria->iniciar();
-}
-
-
-const char* nombre_programa = "KDTree";
-
 void imprime_uso() {
-	cout<<"Uso: "<<nombre_programa<<" opciones [ argumentos ...] \n"<<endl;
+	cout<<"USAGE"<<endl;
     cout<<"    Opciones                    Comentarios"<<endl;
     cout<<"    ---------------             -------------------"<<endl;
-    cout<<"    -h  --help                  EnseÃ±a esta ayuda"<<endl;
-    cout<<"    -i  --interfaxe             Modo interfase con usuario"<<endl;
-    cout<<"    -a  --agregar               Agrega un registro. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
+    cout<<"    -i  --insertar              Insertar un registro. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
     cout<<"    -r  --remover               Remueve un registro puntual. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
     cout<<"    -m  --modificar             Modifica un registro. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
     cout<<"    -q  --consultar             Realiza consulta. Recibe parametro con estructura (linea,falla,accidente,formacion,aaaammddhhmmhhmm)"<<endl;
-    cout<<"    				               Realiza consulta"<<endl;
     cout<<"    -v  --ver             	   Muestra el estado del arbol"<<endl;
     cout<<"    -c  --carga                 Recibe como argumento un archivo para carga masiva"<<endl;
     cout<<"    -t  --test                  Se ejecutan los test"<<endl;
-}
-
-void iniciarInterfase()
-{
-	Operacion* operacionElejida;
-	Menu* menu_principal;
-    bool salir_programa= false;
-    bool operacion_fueCreada = false;
-    while(!salir_programa)
-    {
-        UtilMenu::separador_menu();
-        cout<<"1-elejir operacion para KDTree"<<endl;
-        cout<<"2-mostrar operacion"<<endl;
-        cout<<"3-ejecutar operacion"<<endl;
-        cout<<"4-salir"<<endl;
-
-        char opcion_elejida = '0';
-        cout<<"elejir opcion: ";
-        cin>>opcion_elejida;
-        UtilMenu::limpiar_pantalla();
-        switch(opcion_elejida){
-            case '1' :  {
-            				KDTreeController kdTreeController;
-            				menu_principal = new MenuPrincipal(kdTreeController);
-            				menu_principal->iniciar();
-            				if (menu_principal->getOperacion_fueCreada()){
-            					operacion_fueCreada = true;
-            					operacionElejida = menu_principal->getOperacionElejida();
-            				}
-            				break;
-            			}
-            case '2' :  {
-            				if (operacion_fueCreada){
-//            					cout<<*operacionElejida<<endl;
-            				}
-            				else
-            					cout<<"debe elejir una operacion"<<endl;
-							break;
-            			}
-
-            case '3' :  {
-							if (operacion_fueCreada)
-								operacionElejida->iniciar();
-							else
-								cout<<"debe elejir una operacion"<<endl;
-							break;
-        				}
-            case '4' :  {
-            				salir_programa = true;
-							break;
-        				}
-            default : cout<<"opcion de menu invalida"<<endl; break;
-        }
-    }
-//    delete operacionElejida;
-//    delete menu_principal;
-}
-
-void remover(const char* registro_entrada) {
-	KDTreeController kdTreeController;
-	kdTreeController.remover(registro_entrada);
-}
-
-void iniciarCargaMasiva(const char* fichero_entrada) {
-    ifstream in;
-    in.open(fichero_entrada, ifstream::in);
-    if (in.is_open()) {
-    	KDTreeController kdTreeController;
-    	while (!in.eof()) {
-    		string registro("");
-    		in>>registro;
-    		if (in.good()) {
-    			kdTreeController.insertar(registro);
-    		}
-    	}
-    }else{
-    	cout<<"No se pudo abrir "<<fichero_entrada<<endl;
-    }
-}
-void mostrarEstadoArbol(){
-	KDTreeController kdTreeController;
-	kdTreeController.mostrarEstado();
+    cout<<"    -u  --userinterfaxe         Modo interfase con usuario"<<endl;
+    cout<<"    -h  --help                  Enseña esta ayuda"<<endl;
 }
 
 int main(int argc, char** argv){
@@ -141,100 +49,114 @@ int main(int argc, char** argv){
 
 	int siguiente_opcion;
 
-	/* Una cadena que lista las opciones cortas vÃ¡lidas */
-	const char* const op_cortas = "hir:vtc:" ;
+	/* Una cadena que lista las opciones cortas válidas */
+	const char* const op_cortas = "i:r:m:q:vc:tuh" ;
 
 	/* Una estructura de varios arrays describiendo los valores largos */
 	const struct option op_largas[] =
 	{
-	  { "help",         0,  NULL,  'h'},
-	  { "interfaxe",    0,  NULL,  'i'},
-	  { "ver",    		0,  NULL,  'v'},
-	  { "remover",    	1,  NULL,  'r'},
-	  { "carga",        1,  NULL,  'c'},
-	  { "test",         0,  NULL,  't'},
-	  { NULL,           0,  NULL,   0 }
+	  { "insertar",    	  1,  NULL,  'i'},
+	  { "remover",    	  1,  NULL,  'r'},
+	  { "modificar",      1,  NULL,  'm'},
+	  { "consultar",      1,  NULL,  'q'},
+	  { "ver",    		  0,  NULL,  'v'},
+	  { "carga",          1,  NULL,  'c'},
+	  { "test",           0,  NULL,  't'},
+	  { "userinterfaxe",  0,  NULL,  'u'},
+	  { "help",           0,  NULL,  'h'},
+	  { NULL,             0,  NULL,   0 }
 	};
 
 	/* El nombre del fichero que recibe la salida del programa */
 	const char* fichero_entrada = NULL ;
 	const char* registro_entrada = NULL ;
 
-	bool activaInterfase = 0;
-	bool activarTest = 0;
-	bool mostrarEstado = 0;
-	bool removerRegistro = 0;
-	/* Guardar el nombre del programa para incluirlo a la salida */
-	nombre_programa = argv[0];
 
-	/* Si se ejecuta sin parÃ¡metros ni opciones */
+	/* Si se ejecuta sin parámetros ni opciones */
 	if (argc == 1)
 	{
 	  imprime_uso();
 	  exit(0);
 	}
+	KDTreeController kdTreeController;
 
 	 while (1)
 	  {
-	      /* Llamamos a la funciÃ³n getopt */
+	      /* Llamamos a la función getopt */
 	      siguiente_opcion = getopt_long (argc, argv, op_cortas, op_largas, NULL);
 
 	      if (siguiente_opcion == -1)
-	          break; /* No hay mÃ¡s opciones. Rompemos el bucle */
+	          break; /* No hay más opciones. Rompemos el bucle */
 	      switch (siguiente_opcion)
 	      {
-	          case 'h' : /* -h o --help */
-	              imprime_uso();
-//	              exit(EXIT_SUCCESS);
-	              activarTest = true;
-	              break;
 
-	          case 'i' : /* -i o --interfase */
-	        	  activaInterfase = true;
-	              break;
+			  case 'i' :  /* -i 	ó --insertat */
+						  registro_entrada = optarg;
+						  kdTreeController.insertar(registro_entrada);
+						  break;
 
-	          case 'c' : /* -c 	Ã³ --carga */
+			  case 'r' :  /* -r 	ó --remover */
+						  registro_entrada = optarg;
+						  kdTreeController.remover(registro_entrada);
+						  break;
 
-	              fichero_entrada = optarg;
-	              break;
+			  case 'm' :  /* -m 	ó --modifcacion */
+						  registro_entrada = optarg;
+						  kdTreeController.modificar(registro_entrada);
+						  break;
 
-	          case 't' : /* -t 	Ã³ --test */
-	              activarTest = true;
-	              break;
+	          case 'q' :  /* -q 	ó --consultart */
+						  registro_entrada = optarg;
+						  kdTreeController.consultar(registro_entrada);
+						  break;
 
-	          case 'r' : /* -t 	Ã³ --test */
-	        	  removerRegistro = true;
-				  registro_entrada = optarg;
-				  break;
+	          case 'v' :  /* -v 	ó --ver */
+	        	  	  	  kdTreeController.mostrarEstado();
+						  break;
 
-	          case 'v' : /* -t 	Ã³ --test */
-				  mostrarEstado = true;
-				  break;
-	          case '?' : /* opciÃ³n no valida */
-	              imprime_uso(); /* cÃ³digo de salida 1 */
-	              exit(1);
+	          case 'c' :  /* -c 	ó --carga */
+	          	  	  	  {
+							  fichero_entrada = optarg;
+							  std::ifstream in;
+							  in.open(fichero_entrada, ifstream::in);
+							  if (in.is_open()) {
+								while (!in.eof()) {
+									string registro("");
+									in>>registro;
+									if (in.good()) {
+										kdTreeController.insertar(registro);
+									}
+								}
+							  }
+							  break;
+	      	  	  	  	  }
 
-	          case -1 : /* No hay mÃ¡s opciones */
-	              break;
+	          case 't' :  /* -t 	ó --test */
+						  TestFranjaHoraria* testFranajaHoraria = new TestFranjaHoraria();
+						  testFranajaHoraria->iniciar();
+						  break;
 
-	          default : /* Algo mÃ¡s? No esperado. Abortamos */
-	              abort();
+	          case 'u' :  /* -u o --interfase */
+	        	  	  	  kdTreeController.iniciarUserInterfax();
+						  break;
+
+	          case 'h' :  /* -h o --help */
+						  imprime_uso();
+		//	              exit(EXIT_SUCCESS);
+						  break;
+
+	          case '?' :  /* opción no valida */
+						  imprime_uso(); /* código de salida 1 */
+						  exit(1);
+
+	          case -1 :   /* No hay más opciones */
+
+	        	  	  	  break;
+
+	          default :   /* Algo más? No esperado. Abortamos */
+	              	  	  abort();
 	          }
 	  }
-	if (activaInterfase) {
-		iniciarInterfase();
-	}
-	if (mostrarEstado) {
-		mostrarEstadoArbol();
-	}
-	if (fichero_entrada) {
-		iniciarCargaMasiva(fichero_entrada);
-	}
-	if (removerRegistro) {
-		remover(registro_entrada);
-	}
-	if (activarTest) {
-		iniciarTestFranjaHoraria();
-	}
+
 	return 0;
 }
