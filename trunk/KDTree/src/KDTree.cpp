@@ -110,8 +110,12 @@ void iniciarInterfase()
 //    delete menu_principal;
 }
 
+void remover(const char* registro_entrada) {
+	KDTreeController kdTreeController;
+	kdTreeController.remover(registro_entrada);
+}
+
 void iniciarCargaMasiva(const char* fichero_entrada) {
-    cout<<"Carga Masiva de : "<<fichero_entrada<<endl;
     ifstream in;
     in.open(fichero_entrada, ifstream::in);
     if (in.is_open()) {
@@ -138,7 +142,7 @@ int main(int argc, char** argv){
 	int siguiente_opcion;
 
 	/* Una cadena que lista las opciones cortas válidas */
-	const char* const op_cortas = "hivtc:" ;
+	const char* const op_cortas = "hir:vtc:" ;
 
 	/* Una estructura de varios arrays describiendo los valores largos */
 	const struct option op_largas[] =
@@ -146,6 +150,7 @@ int main(int argc, char** argv){
 	  { "help",         0,  NULL,  'h'},
 	  { "interfaxe",    0,  NULL,  'i'},
 	  { "ver",    		0,  NULL,  'v'},
+	  { "remover",    	1,  NULL,  'r'},
 	  { "carga",        1,  NULL,  'c'},
 	  { "test",         0,  NULL,  't'},
 	  { NULL,           0,  NULL,   0 }
@@ -153,11 +158,12 @@ int main(int argc, char** argv){
 
 	/* El nombre del fichero que recibe la salida del programa */
 	const char* fichero_entrada = NULL ;
-	//const char* registro_entrada = NULL ;
+	const char* registro_entrada = NULL ;
 
 	bool activaInterfase = 0;
 	bool activarTest = 0;
 	bool mostrarEstado = 0;
+	bool removerRegistro = 0;
 	/* Guardar el nombre del programa para incluirlo a la salida */
 	nombre_programa = argv[0];
 
@@ -196,6 +202,11 @@ int main(int argc, char** argv){
 	              activarTest = true;
 	              break;
 
+	          case 'r' : /* -t 	ó --test */
+	        	  removerRegistro = true;
+				  registro_entrada = optarg;
+				  break;
+
 	          case 'v' : /* -t 	ó --test */
 				  mostrarEstado = true;
 				  break;
@@ -218,6 +229,9 @@ int main(int argc, char** argv){
 	}
 	if (fichero_entrada) {
 		iniciarCargaMasiva(fichero_entrada);
+	}
+	if (removerRegistro) {
+		remover(registro_entrada);
 	}
 	if (activarTest) {
 		iniciarTestFranjaHoraria();
