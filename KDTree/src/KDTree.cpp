@@ -41,7 +41,7 @@ void imprime_uso() {
     cout<<"    -c  --carga                 Recibe como argumento un archivo para carga masiva"<<endl;
     cout<<"    -t  --test                  Se ejecutan los test"<<endl;
     cout<<"    -u  --userinterfaxe         Modo interfase con usuario"<<endl;
-    cout<<"    -h  --help                  Enseña esta ayuda"<<endl;
+    cout<<"    -h  --help                  Enseï¿½a esta ayuda"<<endl;
 }
 
 int main(int argc, char** argv){
@@ -49,7 +49,7 @@ int main(int argc, char** argv){
 
 	int siguiente_opcion;
 
-	/* Una cadena que lista las opciones cortas válidas */
+	/* Una cadena que lista las opciones cortas vï¿½lidas */
 	const char* const op_cortas = "i:r:m:q:vc:tuh" ;
 
 	/* Una estructura de varios arrays describiendo los valores largos */
@@ -72,50 +72,54 @@ int main(int argc, char** argv){
 	const char* registro_entrada = NULL ;
 
 
-	/* Si se ejecuta sin parámetros ni opciones */
+	/* Si se ejecuta sin parï¿½metros ni opciones */
 	if (argc == 1)
 	{
 	  imprime_uso();
 	  exit(0);
 	}
+
 	KDTreeController kdTreeController;
 
 	 while (1)
 	  {
-	      /* Llamamos a la función getopt */
+	      /* Llamamos a la funciï¿½n getopt */
 	      siguiente_opcion = getopt_long (argc, argv, op_cortas, op_largas, NULL);
 
 	      if (siguiente_opcion == -1)
-	          break; /* No hay más opciones. Rompemos el bucle */
+	          break; /* No hay mï¿½s opciones. Rompemos el bucle */
 	      switch (siguiente_opcion)
 	      {
 
-			  case 'i' :  /* -i 	ó --insertat */
-						  registro_entrada = optarg;
-						  kdTreeController.insertar(registro_entrada);
-						  break;
+			  case 'i' :  {/* -i 	ï¿½ --insertat */
+							  registro_entrada = optarg;
+							  kdTreeController.insertar(registro_entrada);
+							  break;
+			  	  	  	  }
 
-			  case 'r' :  /* -r 	ó --remover */
-						  registro_entrada = optarg;
-						  kdTreeController.remover(registro_entrada);
-						  break;
+			  case 'r' :  {/* -r 	ï¿½ --remover */
+							  registro_entrada = optarg;
+							  kdTreeController.remover(registro_entrada);
+							  break;
+			  	  	  	  }
 
-			  case 'm' :  /* -m 	ó --modifcacion */
-						  registro_entrada = optarg;
-						  kdTreeController.modificar(registro_entrada);
-						  break;
+			  case 'm' :  {/* -m 	ï¿½ --modifcacion */
+							  registro_entrada = optarg;
+							  kdTreeController.modificar(registro_entrada);
+							  break;
+			  	  	  	  }
 
-	          case 'q' :  /* -q 	ó --consultart */
-						  registro_entrada = optarg;
-						  kdTreeController.consultar(registro_entrada);
-						  break;
+	          case 'q' :  {/* -q 	ï¿½ --consultart */
+							  registro_entrada = optarg;
+							  kdTreeController.consultar(registro_entrada);
+							  break;
+	          	  	  	  }
 
-	          case 'v' :  /* -v 	ó --ver */
-	        	  	  	  kdTreeController.mostrarEstado();
-						  break;
-
-	          case 'c' :  /* -c 	ó --carga */
-	          	  	  	  {
+	          case 'v' :  {/* -v 	ï¿½ --ver */
+							  kdTreeController.mostrarEstado();
+							  break;
+	          	  	  	  }
+	          case 'c' :  {/* -c 	ï¿½ --carga */
 							  fichero_entrada = optarg;
 							  std::ifstream in;
 							  in.open(fichero_entrada, ifstream::in);
@@ -131,30 +135,37 @@ int main(int argc, char** argv){
 							  break;
 	      	  	  	  	  }
 
-	          case 't' :  /* -t 	ó --test */
-						  TestFranjaHoraria* testFranajaHoraria = new TestFranjaHoraria();
-						  testFranajaHoraria->iniciar();
-						  break;
+	          case 't' :  {/* -t 	ï¿½ --test */
+							  TestFranjaHoraria* testFranajaHoraria = new TestFranjaHoraria();
+							  testFranajaHoraria->iniciar();
+							  break;
+	          	  	  	  }
 
-	          case 'u' :  /* -u o --interfase */
-	        	  	  	  kdTreeController.iniciarUserInterfax();
-						  break;
+	          case 'u' :  {/* -u o --userinterfase */
+							  kdTreeController.iniciarUserInterfax();
+							  break;
+	          	  	  	  }
 
-	          case 'h' :  /* -h o --help */
-						  imprime_uso();
-		//	              exit(EXIT_SUCCESS);
-						  break;
+	          case 'h' :  {/* -h o --help */
+							  imprime_uso();
+			//	              exit(EXIT_SUCCESS);
+							  break;
+	          	  	  	  }
 
-	          case '?' :  /* opción no valida */
-						  imprime_uso(); /* código de salida 1 */
-						  exit(1);
+	          case '?' :  {/* opciï¿½n no valida */
+							  imprime_uso(); /* cï¿½digo de salida 1 */
+							  exit(1);
+	          	  	  	  }
 
-	          case -1 :   /* No hay más opciones */
+	          case -1 :  {/* No hay mï¿½s opciones */
 
-	        	  	  	  break;
+	        	  	  	  	  break;
+						  }
 
-	          default :   /* Algo más? No esperado. Abortamos */
-	              	  	  abort();
+	          default :   {/* Algo mï¿½s? No esperado. Abortamos */
+	              	  	  	  abort();
+							  break;
+	          	  	  	  }
 	          }
 	  }
 
