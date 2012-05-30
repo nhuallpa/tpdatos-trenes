@@ -186,7 +186,7 @@ bool Node::modify(IElement* elemToModify) {
 	return hasChanged;
 }
 bool Node::remove(IEntidad* key) {
-	Element elem;
+	Element elem(key);
 	BNode* childNodeToSearch = this->findChild(&elem);
 	bool hasChanged = childNodeToSearch->remove(key);
 	if (hasChanged) {
