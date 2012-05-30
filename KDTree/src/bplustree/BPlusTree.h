@@ -5,6 +5,7 @@
 #include "BNode.h"
 #include "Node.h"
 #include "LeafNode.h"
+#include <vector>
 #include <string>
 #include "Element.h"
 #include "../persistence/PersistorBTree.h"
@@ -80,7 +81,7 @@ class BPlusTree {
 	/**
 	 * Buscador del árbol. Devuelve el Nodo contenedor de la clave buscada.
 	 */
-    LeafNode* find(IEntidad* key);
+    vector<BNode*> find(IEntidad* key);
     IElement* findExact(IEntidad* key);
 	/**
 	 * Navega por la lista secuencial de los nodos

@@ -46,7 +46,8 @@ public:
     Offset getNextNode();
     FreeSpace getFreeSpace();
     bool insert(IElement *elem);
-    LeafNode *find(IEntidad* key);
+    LeafNode* find(IEntidad* key);
+    void findElements(IEntidad* key, std::vector<BNode*> &founds);
     IElement *findExact(IEntidad* key);
     bool modify(IElement *elemToModify);
     bool insertarTest(IElement *elem);

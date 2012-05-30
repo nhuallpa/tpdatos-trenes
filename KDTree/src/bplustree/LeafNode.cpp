@@ -189,8 +189,12 @@ bool LeafNode::insert(IElement* elemToInsert) {
 	return true;
 }
 
-LeafNode *LeafNode::find(IEntidad* key) {
+LeafNode* LeafNode::find(IEntidad* key) {
 	return this;
+}
+
+void LeafNode::findElements(IEntidad* key, std::vector<BNode*> &founds) {
+	founds.push_back(this);
 }
 
 IElement *LeafNode::findExact(IEntidad* key) {

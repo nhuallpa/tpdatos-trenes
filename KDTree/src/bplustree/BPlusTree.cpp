@@ -94,8 +94,12 @@ void BPlusTree::remove(IEntidad* key) {
 /**
  * La busqueda es aproximada, es decir, devuelve el elemento si lo encuentra y sino, el primero anterior mas cercano
  */
-LeafNode* BPlusTree::find(IEntidad* key) {
-	return root->find(key);
+std::vector<BNode*> BPlusTree::find(IEntidad* key) {
+	std::vector<BNode*> founds;
+
+	root->findElements(key, founds);
+
+	return founds;
 }
 
 IElement* BPlusTree::findExact(IEntidad* key) {
