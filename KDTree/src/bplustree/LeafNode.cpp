@@ -288,6 +288,7 @@ KeyElement* LeafNode::doSplit() {
 	LeafNode* newLeafNode = NodeFactory::createLeafNode();
 	PersistorBTree* p = PersistorBTree::getInstance();
 	newLeafNode->elements = this->splitElements();
+	newLeafNode->nextNode = this->nextNode;
 
 	vector<IElement*>::iterator it;
 
@@ -295,7 +296,6 @@ KeyElement* LeafNode::doSplit() {
 	keyElementFromMiddle->setRightNode(newLeafNode->getOffset());
 	IElement* elemen = (IElement*) (*newLeafNode->elements.begin());
 	keyElementFromMiddle->setKey(elemen->getData());
-	newLeafNode->nextNode = this->nextNode;
 	this->nextNode = newLeafNode->getOffset();
 
 	return keyElementFromMiddle;
