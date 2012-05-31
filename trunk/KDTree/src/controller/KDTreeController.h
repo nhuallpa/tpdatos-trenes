@@ -56,7 +56,7 @@ public:
 	void insertar(string registro);
 	void remover(string registro);
 	void modificar(string registro);
-	void consultar(string registro);
+	std::vector<BNode*> consultar(string registro);
 
 	void mostrarEstado();
 	void iniciarUserInterfax();

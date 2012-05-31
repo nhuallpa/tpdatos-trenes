@@ -88,9 +88,9 @@ void KDTreeController::modificar(string registro) {
 	cout<<"en proceso de construccion"<<endl;
 	//this->BTree->modify(entidad);
 }
-void KDTreeController::consultar(string registro) {
-	cout<<"en proceso de construccion"<<endl;
-	//this->BTree->find(entidad);
+std::vector<BNode*> KDTreeController::consultar(string registro) {
+	Reporte rp(registro);
+	return ( this->BTree->find(&rp) );
 }
 
 void KDTreeController::mostrarEstado(){

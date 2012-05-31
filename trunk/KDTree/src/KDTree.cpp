@@ -70,7 +70,8 @@ int main(int argc, char** argv){
 	/* El nombre del fichero que recibe la salida del programa */
 	const char* fichero_entrada = NULL ;
 	string registro_entrada("");
-
+	std::vector<BNode*> resultado_consulta;
+	std::vector<BNode*>::iterator it_query;
 
 	/* Si se ejecuta sin par�metros ni opciones */
 	if (argc == 1)
@@ -108,9 +109,18 @@ int main(int argc, char** argv){
 							  break;
 			  	  	  	  }
 
-	          case 'q' :  {/* -q 	� --consultart */
+	          case 'q' :  {/* -q 	� --consultar */
 	        	  	  	  	  registro_entrada = string(optarg);
-							  kdTreeController.consultar(registro_entrada);
+	        	  	  	  	  resultado_consulta = kdTreeController.consultar(registro_entrada);
+
+	        	  	  	  	  //muestro el resultado de la consulta:
+							  for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
+							  {
+								  (*it_query)->exportNode();
+							  }
+
+							  //TODO: como hacer las consultas con rango de fecha?..
+
 							  break;
 	          	  	  	  }
 
