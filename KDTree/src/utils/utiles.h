@@ -61,6 +61,7 @@ public:
 	static string strdate();
 
 	static list<string> parsear(string registro);
+	static list<string> parsearConsulta(string contenidoConsulta);
 };
 
 #endif /* UTILES_H_ */

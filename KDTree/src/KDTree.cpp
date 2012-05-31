@@ -110,6 +110,7 @@ int main(int argc, char** argv){
 			  	  	  	  }
 
 	          case 'q' :  {/* -q 	� --consultar */
+	        	  	  	  	  //supuesto registro que no lo es, sino un mezcla
 	        	  	  	  	  registro_entrada = string(optarg);
 	        	  	  	  	  resultado_consulta = kdTreeController.consultar(registro_entrada);
 
