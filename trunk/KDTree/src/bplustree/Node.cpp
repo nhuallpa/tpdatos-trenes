@@ -264,7 +264,7 @@ vector<KeyElement*> Node::splitKeyElements() {
 
 	int initialSize = this->keyElements.size();
 
-	unsigned int finalSizeFirstHalf = floor(initialSize / 2);
+	unsigned int finalSizeFirstHalf = (unsigned int)floor(initialSize / 2);
 	vector<KeyElement*>::iterator it;
 
 	it = this->keyElements.end();
