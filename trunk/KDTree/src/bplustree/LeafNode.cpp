@@ -87,6 +87,7 @@ bool LeafNode::rightBalanceWith(BNode* leftSibling) {
 			borrowRecordCount++;
 			this->elements.erase(it);
 			myLeftSibling->insert(elem);
+			elem = (*it);
 		}
 		if (this->isUnderflowded()) {
 			//no puedo balancear asi que le devuelvo los registros pedidos
