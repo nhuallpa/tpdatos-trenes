@@ -179,8 +179,6 @@ void Node::findChilds(IElement* elementToFind, std::vector<BNode*> &returnNodes)
 	Logger::getInstance()->debug(mensaje);
 	vector<KeyElement*>::iterator it;
 
-	bool found = false;
-
 	PersistorBTree* p = PersistorBTree::getInstance();
 	it = keyElements.begin();
 	if (it == keyElements.end()) {
@@ -189,32 +187,35 @@ void Node::findChilds(IElement* elementToFind, std::vector<BNode*> &returnNodes)
 		ProgramException("no es posible que exista un nodo interno sin hijos");
 	}
 	BNode* childNodeToSearch = NULL;
-	KeyElement* firtKey = (*it);
+	KeyElement* firstKey = (*it);
 	//Caso especial donde levanto el nodo cuyo offset esta en este nodo
-	if (elementToFind->getData()->compareTo(firtKey->getKey()) == MENOR) {
+	if (elementToFind->getData()->compareTo(firstKey->getKey()) == MENOR) {
 		childNodeToSearch = NodeFactory::createNodeForSearch(this->getLevel());
 		p->load(this->leftNode, childNodeToSearch);
 		returnNodes.push_back(childNodeToSearch);
 	}
 
 	KeyElement* keyFromKeyElements;
-	for (it = keyElements.begin(); it != keyElements.end() && !found; it++) {
+	for (it = keyElements.begin(); it != keyElements.end(); it++) {
 		keyFromKeyElements = (*it);
 		if (elementToFind->getData()->compareTo(keyFromKeyElements->getKey()) == MENOR) {
-			keyFromKeyElements = (*it);
+			if( it != keyElements.begin() ) {
+				it--;
+				keyFromKeyElements = (*it);
+				it++;
+			}
 			childNodeToSearch = NodeFactory::createNodeForSearch(this->getLevel());
 			cout << keyFromKeyElements->getrightNode() << endl;
 			p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
 			returnNodes.push_back(childNodeToSearch);
 		}
 	}
-
-	if (!found) {
-		it = this->keyElements.end();
-		it--;
-		keyFromKeyElements = (*it);
-		//como no lo encuentra implica que el elemento a insertar es mayor a todos entonces bajo por el de la derecha
+	it = keyElements.end();
+	it--;
+	keyFromKeyElements = (*it);
+	if (elementToFind->getData()->compareTo(keyFromKeyElements->getKey()) == MAYOR) {
 		childNodeToSearch = NodeFactory::createNodeForSearch(this->getLevel());
+		cout << keyFromKeyElements->getrightNode() << endl;
 		p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
 		returnNodes.push_back(childNodeToSearch);
 	}
@@ -390,7 +391,11 @@ void Node::findElements(IEntidad* key, std::vector<BNode*> &founds) {
 		if ((*it)->getLevel() > 0){
 			((Node*)(*it))->findElements(key, founds);
 		} else {
-			founds.push_back(*it);
+			IEntidad* entidad = ((LeafNode*)(*it))->getFirstKey();
+			cout << "---------------------------" << entidad->toString() << endl;
+			if (key->compareTo(entidad) != MENOR){
+				founds.push_back(*it);
+			}
 		}
 	}
 	delete el;
