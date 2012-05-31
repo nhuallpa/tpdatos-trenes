@@ -88,8 +88,21 @@ void KDTreeController::modificar(string registro) {
 	cout<<"en proceso de construccion"<<endl;
 	//this->BTree->modify(entidad);
 }
-std::vector<BNode*> KDTreeController::consultar(string registro) {
-	string resultadoConsulta_parseada = Util::parsearConsulta(registro);
+std::vector<BNode*> KDTreeController::consultar(string contenidoConsulta) {
+	list<string> resultadoConsulta_parseada = Util::parsearConsulta(contenidoConsulta);
+	list<string>::iterator it;
+	//los componentes de la consulta son los argumentos del 'comando consulta'
+	int cant_componentesConsulta = (int)resultadoConsulta_parseada.size();
+	string registro = "";
+	//obtengo los componentes...
+	if (cant_componentesConsulta > 0){
+		//asignacion por la linea que pincha dentro del for
+		registro = contenidoConsulta;
+		//TODO: obtener los componentes...
+//		for(it = resultadoConsulta_parseada.begin() ; it != resultadoConsulta_parseada.end(); ++it){
+//			registro = it; //pincha aca
+//		}
+	}
 	Reporte rp(registro);
 	return ( this->BTree->find(&rp) );
 }
