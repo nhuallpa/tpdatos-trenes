@@ -2,7 +2,14 @@ rm datos.tree -f
 rm datos.tree.fs -f
 echo
 #Test/test_consultas.sh
-#
+
+#Estructura de Reporte es:
+#idLinea;
+#idFormacion;
+#idFalla;
+#idAccidente;
+#FranjaHoraria* franjaHoraria;
+
 #Objetivos:
 #obtener las siguientes filtraciones
 #01) Todos las formaciones que tiene cierta falla.
@@ -29,18 +36,20 @@ idFormacion=2
 fechaDesde=09\:00-04\/03\/2012 
 fechaHasta=09\:00-04\/03\/2012
 
-#01) ../kdtree -q '(,,$idFalla,,)' -o ‘formacion’
-#02) ../kdtree -q '(,,,$idAccidente,)' -o ‘formacion’
-#03) ../kdtree -q '(,$idFormacion,,,)' -o ‘falla’
-#04) ../kdtree -q '(,$idFormacion,,,)' -o‘ accidente’
-#05) ../kdtree -q '(,,X,,)'
-#06) ../kdtree -q '(,,,X,)'
-#07) ../kdtree -q '(,X,,,)'
-#08) ../kdtree -q '(,X,,,)'
-#09)  ../kdtree -q '(,,’$idFalla’,,)'  -o ‘formacion’ -f  $fechaDesde $fechaHasta
-#10)  ../kdtree -q '(,,,$idAccidente,)'  -o ‘formacion’ -f  $fechaDesde $fechaHasta
-#11)  ../kdtree -q '(,’$idFormacion’,,,)'  -o fallas -f  $fechaDesde $fechaHasta
-#12)  ../kdtree -q '(,,’$idFalla’,,)'  -o accidentes -f  $fechaDesde $fechaHasta
+#claramente voy a tener que parsear los parametros, pero es mas facil de considerar multiples
+#opciones de comando
+#01) ../kdtree -q "(,,$idFalla,,) --formacion"
+#02) ../kdtree -q "(,,,$idAccidente,) --formacion"
+#03) ../kdtree -q "(,$idFormacion,,,) --falla"
+#04) ../kdtree -q "(,$idFormacion,,,) --accidente"
+#05) ../kdtree -q "(,,X,,)"
+#06) ../kdtree -q "(,,,X,)"
+#07) ../kdtree -q "(,X,,,)"
+#08) ../kdtree -q "(,X,,,)"
+#09)  ../kdtree -q "(,,’$idFalla’,,) --formacion -f $fechaDesde $fechaHasta"
+#10)  ../kdtree -q "(,,,$idAccidente,) --formacion -f  $fechaDesde $fechaHasta"
+#11)  ../kdtree -q "(,’$idFormacion’,,,) --fallas -f  $fechaDesde $fechaHasta"
+#12)  ../kdtree -q "(,,’$idFalla’,,) --accidentes -f  $fechaDesde $fechaHasta"
 
 echo pruebas de las consultas
 echo -------------------------------------------------------------------------------------------------

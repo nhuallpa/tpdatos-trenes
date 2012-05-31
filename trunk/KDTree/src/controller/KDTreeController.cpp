@@ -89,6 +89,7 @@ void KDTreeController::modificar(string registro) {
 	//this->BTree->modify(entidad);
 }
 std::vector<BNode*> KDTreeController::consultar(string registro) {
+	string resultadoConsulta_parseada = Util::parsearConsulta(registro);
 	Reporte rp(registro);
 	return ( this->BTree->find(&rp) );
 }

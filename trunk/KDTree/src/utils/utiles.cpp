@@ -283,5 +283,11 @@ list<string> Util::parsear(string registro) {
 	return idList;
 }
 
+list<string> Util::parsearConsulta(string contenidoConsulta){
+	list<string>* consulta = new list();
 
+	//todo...implementar
+
+	return contenidoConsulta;
+}
 
