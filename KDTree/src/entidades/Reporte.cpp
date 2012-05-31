@@ -20,9 +20,9 @@ Reporte::Reporte(string tupla) {
 	list<string>::iterator it;
 	it = lista.begin();
 	this->setIdLinea(StringUtils::convertStringToInt(*(it++)));
+	this->setIdFormacion(StringUtils::convertStringToInt(*(it++)));
 	this->setIdFalla(StringUtils::convertStringToInt(*(it++)));
 	this->setIdAccidente(StringUtils::convertStringToInt(*(it++)));
-	this->setIdFormacion(StringUtils::convertStringToInt(*(it++)));
 	FranjaHoraria* fh = new FranjaHoraria(*(it++));
 	this->setFranjaHoraria(fh);
 //	delete fh;
