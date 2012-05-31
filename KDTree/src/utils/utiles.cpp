@@ -284,10 +284,11 @@ list<string> Util::parsear(string registro) {
 }
 
 list<string> Util::parsearConsulta(string contenidoConsulta){
-	list<string>* consulta = new list();
+	list<string> contenidoConsulta_parseada;
+	contenidoConsulta_parseada.push_back(contenidoConsulta);
 
-	//todo...implementar
+	//todo...implementar el parseo
 
-	return contenidoConsulta;
+	return contenidoConsulta_parseada;
 }
 
