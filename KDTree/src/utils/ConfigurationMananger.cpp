@@ -45,9 +45,9 @@ ConfigurationMananger::ConfigurationMananger() {
 	maxRecordPercent = (1 - chargeFactor) / 2;
 
 	//Tamanno maximo que puede tener un registro.
-	this->maxRecordSizeTree = (this->bufferSizeTree * maxRecordPercent);
+	this->maxRecordSizeTree = (int)(this->bufferSizeTree * maxRecordPercent);
 
-	this->maxNodeLoadForInsert = floor(getChargeFactor() * getBufferSizeTree());
+	this->maxNodeLoadForInsert = (int)floor(getChargeFactor() * getBufferSizeTree());
 
 	// 50% del tamanioo maximo del bloque - el tamanio maximo del registro
 	this->minUnderflowSizeTree = ((this->bufferSizeTree / 2)

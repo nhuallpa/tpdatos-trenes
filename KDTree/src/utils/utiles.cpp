@@ -116,7 +116,7 @@ unsigned int Util::getBit(unsigned int number,unsigned int position) {
 	return bit;
 }
 unsigned int Util::getBits(unsigned int number,unsigned int msPos,unsigned int lsPos) {
-	unsigned int mask = pow(2,msPos-lsPos+1)-1;
+	unsigned int mask = (unsigned int)pow(2,msPos-lsPos+1)-1;
 	number >>= lsPos;
 	number &= mask;
 
@@ -125,7 +125,7 @@ unsigned int Util::getBits(unsigned int number,unsigned int msPos,unsigned int l
 
 
 void Util::setBit(unsigned int &number,unsigned int position,short unsigned int value) {
-	unsigned int numerPos = pow(2,position);
+	unsigned int numerPos = (unsigned int)pow(2,position);
 	if(value == 1)
 		number |= numerPos;
 	else
@@ -133,8 +133,8 @@ void Util::setBit(unsigned int &number,unsigned int position,short unsigned int 
 }
 
 void Util::setBit(unsigned char * buffer,unsigned int bufferSize, unsigned int position, short unsigned int value) {
-	unsigned int posBuffer =  floor((double)position / 8);
-	unsigned int numerPos = pow(2,position);
+	unsigned int posBuffer =  (unsigned int)floor((double)position / 8);
+	unsigned int numerPos = (unsigned int)pow(2,position);
 	if(posBuffer < bufferSize) {
 		unsigned char bufferChar = buffer[posBuffer];
 		if(value == 1)

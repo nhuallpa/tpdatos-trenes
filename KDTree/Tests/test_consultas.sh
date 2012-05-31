@@ -24,40 +24,44 @@ echo
 #10) Todos las formaciones que tiene cierto accidente que ocurrieron dentro de una franja horaria.
 #11) Todas las fallas de una formación determinada que ocurrieron dentro de una franja horaria.
 #12) Todos los accidentes de una formación determinada que ocurrieron dentro de una franja horaria.
-#
-#Representación en formato de comando unix:
-#-o: outputFilter
-#’X’: indica que devuelve todo lo correspondiente al campo en e cual esta ‘X’
-idFalla=1
-idAccidente=2
-idFormacion=2
 
+################################################################################
+#formato de la consulta:
+#Programa -q "--[parametro de consulta] --[parametro de consulta]=[valor de parametro]"
+#
+#los pararametros de consulta posibles son:
+#lines, formacion, falla, accidente, fechaDesde, fechaHasta
+#
+################################################################################
+#valores posibles para los parametros en cuestion:
+idFalla=1
+idAccidente=1
+idFormacion=1
 #ESCAPEO CON LA CONTRABA BARRA
 fechaDesde=09\:00-04\/03\/2012 
 fechaHasta=09\:00-04\/03\/2012
 
-#claramente voy a tener que parsear los parametros, pero es mas facil de considerar multiples
-#opciones de comando
-#01) ../kdtree -q "(,,$idFalla,,) --formacion"
-#02) ../kdtree -q "(,,,$idAccidente,) --formacion"
-#03) ../kdtree -q "(,$idFormacion,,,) --falla"
-#04) ../kdtree -q "(,$idFormacion,,,) --accidente"
-#05) ../kdtree -q "(,,X,,)"
-#06) ../kdtree -q "(,,,X,)"
-#07) ../kdtree -q "(,X,,,)"
-#08) ../kdtree -q "(,X,,,)"
-#09)  ../kdtree -q "(,,’$idFalla’,,) --formacion -f $fechaDesde $fechaHasta"
-#10)  ../kdtree -q "(,,,$idAccidente,) --formacion -f  $fechaDesde $fechaHasta"
-#11)  ../kdtree -q "(,’$idFormacion’,,,) --fallas -f  $fechaDesde $fechaHasta"
-#12)  ../kdtree -q "(,,’$idFalla’,,) --accidentes -f  $fechaDesde $fechaHasta"
+#ejemplos de corrida de los comandoS
+#01) ../kdtree -q "--formacion --falla=$idFalla"
+#02) ../kdtree -q "--formacion --accidente=$idFormacion"
+#03) ../kdtree -q "--falla --formacion=$idFormacion"
+#04) ../kdtree -q "--accidente --formacion=$idFormacion"
+#05) ../kdtree -q "--falla"
+#06) ../kdtree -q "--formacion"
+#07) ../kdtree -q "--linea"
+#08) ../kdtree -q "--accidente"
+#09)  ../kdtree -q "--formacion --falla=$idFalla --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
+#10)  ../kdtree -q "--formacion --accidente=$idFormacion --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
+#11)  ../kdtree -q "--falla --formacion=$idFormacion --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
+#12)  ../kdtree -q "--accidente --formacion=$idFormacion --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
 
 echo pruebas de las consultas
 echo -------------------------------------------------------------------------------------------------
 echo -------------------------------------------------------------------------------------------------
 rm datos.tree -f
-rm datos.tree.fs -f
-echo PRUEBA1: 
-# comando...
+rm datos.tree.fs -f 
+# comandos a ejecutar van aqui:
+#...
 echo 
 echo Presione enter para continuar...
 read
