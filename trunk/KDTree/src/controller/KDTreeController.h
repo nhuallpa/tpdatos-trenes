@@ -54,7 +54,7 @@ public:
 	bool validarIdSubElemento(string& tipo_deSubElemento, int idSubElemento);
 
 	void insertar(string registro);
-	void remover(const char* registro_entrada);
+	void remover(string registro);
 	void modificar(string registro);
 	void consultar(string registro);
 

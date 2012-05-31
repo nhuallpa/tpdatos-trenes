@@ -80,8 +80,7 @@ void KDTreeController::insertar(string registro) {
 	IElement* elem = new Element(&rp);
 	this->BTree->insert(elem);
 }
-void KDTreeController::remover(const char* registro_entrada) {
-	string registro(registro_entrada);
+void KDTreeController::remover(string registro) {
 	Reporte rp(registro);
 	this->BTree->remove(&rp);
 }

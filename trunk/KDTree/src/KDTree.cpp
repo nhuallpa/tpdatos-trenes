@@ -69,7 +69,7 @@ int main(int argc, char** argv){
 
 	/* El nombre del fichero que recibe la salida del programa */
 	const char* fichero_entrada = NULL ;
-	const char* registro_entrada = NULL ;
+	string registro_entrada("");
 
 
 	/* Si se ejecuta sin par�metros ni opciones */
@@ -80,7 +80,6 @@ int main(int argc, char** argv){
 	}
 
 	KDTreeController kdTreeController;
-
 	 while (1)
 	  {
 	      /* Llamamos a la funci�n getopt */
@@ -92,25 +91,25 @@ int main(int argc, char** argv){
 	      {
 
 			  case 'i' :  {/* -i 	� --insertat */
-							  registro_entrada = optarg;
-							  kdTreeController.insertar(registro_entrada);
-							  break;
+							registro_entrada = string(optarg);
+							kdTreeController.insertar(registro_entrada);
+							break;
 			  	  	  	  }
 
 			  case 'r' :  {/* -r 	� --remover */
-							  registro_entrada = optarg;
+				  	  	  	  registro_entrada = string(optarg);
 							  kdTreeController.remover(registro_entrada);
 							  break;
 			  	  	  	  }
 
 			  case 'm' :  {/* -m 	� --modifcacion */
-							  registro_entrada = optarg;
+				  	  	  	  registro_entrada = string(optarg);
 							  kdTreeController.modificar(registro_entrada);
 							  break;
 			  	  	  	  }
 
 	          case 'q' :  {/* -q 	� --consultart */
-							  registro_entrada = optarg;
+	        	  	  	  	  registro_entrada = string(optarg);
 							  kdTreeController.consultar(registro_entrada);
 							  break;
 	          	  	  	  }
@@ -125,10 +124,9 @@ int main(int argc, char** argv){
 							  in.open(fichero_entrada, ifstream::in);
 							  if (in.is_open()) {
 								while (!in.eof()) {
-									string registro("");
-									in>>registro;
+									in>>registro_entrada;
 									if (in.good()) {
-										kdTreeController.insertar(registro);
+										kdTreeController.insertar(registro_entrada);
 									}
 								}
 							  }
@@ -158,7 +156,6 @@ int main(int argc, char** argv){
 	          	  	  	  }
 
 	          case -1 :  {/* No hay m�s opciones */
-
 	        	  	  	  	  break;
 						  }
 

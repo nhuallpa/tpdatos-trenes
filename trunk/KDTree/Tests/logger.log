@@ -2014,3 +2014,527 @@
 30/05/2012 18:59:11 INFO : leyendo nodo 4
 30/05/2012 18:59:11 INFO : leyendo nodo 1
 30/05/2012 18:59:11 INFO : leyendo nodo 3
+30/05/2012 20:25:02 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:02 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 20:25:02 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:02 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:02 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:02 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:02 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:06 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:06 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : PersistorBase.add: agregando el bloque en el offset 1
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:06 DEBUG : PersistorBase.add: agregando el bloque en el offset 2
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:06 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 cantidad de keyElements serializados 1 tamanno total de los elementos 68 tamanno total de nodo serializado 72 tamano del buffer 80
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:06 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:06 INFO : leyendo nodo 1
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:06 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:06 INFO : leyendo nodo 1
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:06 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:06 INFO : leyendo nodo 1
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:06 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:06 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:06 INFO : leyendo nodo 2
+30/05/2012 20:25:06 INFO : leyendo nodo 1
+30/05/2012 20:25:08 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:08 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : PersistorBase.add: agregando el bloque en el offset 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : PersistorBase.add: agregando el bloque en el offset 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 cantidad de keyElements serializados 1 tamanno total de los elementos 68 tamanno total de nodo serializado 72 tamano del buffer 80
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 1
+30/05/2012 20:25:08 DEBUG : PersistorBase.add: agregando el bloque en el offset 3
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 INFO : leyendo nodo 3
+30/05/2012 20:25:08 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 tamanno del buffer con con key element 148 cantidad de keyElements serializados 2 tamanno total de los elementos 136 tamanno total de nodo serializado 140 tamano del buffer 148
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : PersistorBase.add: agregando el bloque en el offset 4
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 INFO : leyendo nodo 4
+30/05/2012 20:25:08 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 tamanno del buffer con con key element 148 tamanno del buffer con con key element 216 cantidad de keyElements serializados 3 tamanno total de los elementos 204 tamanno total de nodo serializado 208 tamano del buffer 216
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 4
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 3
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 3
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 3
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:08 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:08 INFO : leyendo nodo 4
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:08 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:08 INFO : leyendo nodo 2
+30/05/2012 20:25:08 INFO : leyendo nodo 4
+30/05/2012 20:25:08 INFO : leyendo nodo 1
+30/05/2012 20:25:08 INFO : leyendo nodo 3
+30/05/2012 20:25:41 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:41 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:41 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:41 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : PersistorBase.add: agregando el bloque en el offset 1
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:41 DEBUG : PersistorBase.add: agregando el bloque en el offset 2
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:41 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 cantidad de keyElements serializados 1 tamanno total de los elementos 68 tamanno total de nodo serializado 72 tamano del buffer 80
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:41 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:41 INFO : leyendo nodo 1
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:41 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:41 INFO : leyendo nodo 1
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:41 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:41 INFO : leyendo nodo 1
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:41 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:41 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:41 INFO : leyendo nodo 2
+30/05/2012 20:25:41 INFO : leyendo nodo 1
+30/05/2012 20:25:43 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:43 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : PersistorBase.add: agregando el bloque en el offset 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : PersistorBase.add: agregando el bloque en el offset 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 cantidad de keyElements serializados 1 tamanno total de los elementos 68 tamanno total de nodo serializado 72 tamano del buffer 80
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 1
+30/05/2012 20:25:43 DEBUG : PersistorBase.add: agregando el bloque en el offset 3
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 INFO : leyendo nodo 3
+30/05/2012 20:25:43 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 tamanno del buffer con con key element 148 cantidad de keyElements serializados 2 tamanno total de los elementos 136 tamanno total de nodo serializado 140 tamano del buffer 148
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : PersistorBase.add: agregando el bloque en el offset 4
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 INFO : leyendo nodo 4
+30/05/2012 20:25:43 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 tamanno del buffer con con key element 148 tamanno del buffer con con key element 216 cantidad de keyElements serializados 3 tamanno total de los elementos 204 tamanno total de nodo serializado 208 tamano del buffer 216
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 4
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 3
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 3
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 3
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 20:25:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 20:25:43 INFO : leyendo nodo 4
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:43 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 20:25:43 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 20:25:43 INFO : leyendo nodo 2
+30/05/2012 20:25:43 INFO : leyendo nodo 4
+30/05/2012 20:25:43 INFO : leyendo nodo 1
+30/05/2012 20:25:43 INFO : leyendo nodo 3
+30/05/2012 21:34:56 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:34:56 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 21:34:56 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:34:56 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:34:56 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:34:56 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:34:56 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:08 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:08 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 21:35:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:08 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:08 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:11 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:11 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : PersistorBase.add: agregando el bloque en el offset 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : PersistorBase.add: agregando el bloque en el offset 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 cantidad de keyElements serializados 1 tamanno total de los elementos 68 tamanno total de nodo serializado 72 tamano del buffer 80
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 1
+30/05/2012 21:35:11 DEBUG : PersistorBase.add: agregando el bloque en el offset 3
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 INFO : leyendo nodo 3
+30/05/2012 21:35:11 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 tamanno del buffer con con key element 148 cantidad de keyElements serializados 2 tamanno total de los elementos 136 tamanno total de nodo serializado 140 tamano del buffer 148
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : PersistorBase.add: agregando el bloque en el offset 4
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 INFO : leyendo nodo 4
+30/05/2012 21:35:11 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 tamanno del buffer con con key element 148 tamanno del buffer con con key element 216 cantidad de keyElements serializados 3 tamanno total de los elementos 204 tamanno total de nodo serializado 208 tamano del buffer 216
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 4
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 3
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 3
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 3
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 3
+30/05/2012 21:35:11 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:11 INFO : leyendo nodo 4
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 21:35:11 DEBUG : Persisotor Base.modify: persistiendo el bloque 4
+30/05/2012 21:35:11 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:11 INFO : leyendo nodo 2
+30/05/2012 21:35:11 INFO : leyendo nodo 4
+30/05/2012 21:35:11 INFO : leyendo nodo 1
+30/05/2012 21:35:11 INFO : leyendo nodo 3
+30/05/2012 21:35:19 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:19 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : PersistorBase.add: agregando el bloque en el offset 1
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:19 DEBUG : PersistorBase.add: agregando el bloque en el offset 2
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 2
+30/05/2012 21:35:19 DEBUG : NODO :0 tamanno del buffer antes de serializar keys (info administrativa) 8 tamanno del buffer con offSet izq 12 tamanno del buffer con con key element 80 cantidad de keyElements serializados 1 tamanno total de los elementos 68 tamanno total de nodo serializado 72 tamano del buffer 80
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+30/05/2012 21:35:19 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:19 INFO : leyendo nodo 1
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:19 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:19 INFO : leyendo nodo 1
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:19 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:19 INFO : leyendo nodo 1
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:19 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:19 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:19 INFO : leyendo nodo 2
+30/05/2012 21:35:19 INFO : leyendo nodo 1
+30/05/2012 21:35:25 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:25 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:25 INFO : leyendo nodo 2
+30/05/2012 21:35:25 INFO : leyendo nodo 1
+30/05/2012 21:35:26 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:26 INFO : leyendo nodo 2
+30/05/2012 21:35:26 INFO : leyendo nodo 1
+30/05/2012 21:35:40 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:40 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:40 INFO : leyendo nodo 1
+30/05/2012 21:35:40 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:40 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:40 INFO : leyendo nodo 2
+30/05/2012 21:35:40 INFO : leyendo nodo 1
+30/05/2012 21:35:43 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:43 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:43 INFO : leyendo nodo 2
+30/05/2012 21:35:43 INFO : leyendo nodo 1
+30/05/2012 21:35:43 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:43 INFO : leyendo nodo 2
+30/05/2012 21:35:43 INFO : leyendo nodo 1
+30/05/2012 21:35:45 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:45 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:45 INFO : leyendo nodo 1
+30/05/2012 21:35:45 DEBUG : Persisotor Base.modify: persistiendo el bloque 1
+30/05/2012 21:35:45 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:45 INFO : leyendo nodo 2
+30/05/2012 21:35:45 INFO : leyendo nodo 1
+30/05/2012 21:35:46 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:46 DEBUG : NODE: :0 buscando un hijo en un nodo interno en :
+30/05/2012 21:35:46 INFO : leyendo nodo 2
+30/05/2012 21:35:46 INFO : leyendo nodo 1
+30/05/2012 21:35:47 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+30/05/2012 21:35:47 INFO : leyendo nodo 2
+30/05/2012 21:35:47 INFO : leyendo nodo 1
