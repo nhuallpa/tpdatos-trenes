@@ -61,7 +61,7 @@ int main(int argc, char** argv){
 	  { "consultar",      1,  NULL,  'q'},
 	  { "ver",    		  0,  NULL,  'v'},
 	  { "carga",          1,  NULL,  'c'},
-	  { "test",           1,  NULL,  't'},
+	  { "test",           0,  NULL,  't'},
 	  { "userinterfaxe",  0,  NULL,  'u'},
 	  { "help",           0,  NULL,  'h'},
 	  { NULL,             0,  NULL,   0 }
