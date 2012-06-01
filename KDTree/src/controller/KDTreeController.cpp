@@ -125,7 +125,7 @@ std::vector<BNode*> KDTreeController::consultar(string contenidoConsulta) {
 		cout<<parametros_3.substr(2,parametros_3.size()-1)<<endl;
 		cout<<parametros_4.substr(2,parametros_4.size()-1)<<endl;
 	}
-	cout<<"Inicio Test: Inicio KDTreeController::consultar..."<<endl<<endl;
+	cout<<"Final Test: Inicio KDTreeController::consultar..."<<endl<<endl;
 	//test
 	Reporte rp("(2,1,4,6,2012030113001500)");
 	return ( this->BTree->find(&rp) );
