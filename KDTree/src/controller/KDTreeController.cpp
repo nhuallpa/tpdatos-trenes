@@ -88,22 +88,46 @@ void KDTreeController::modificar(string registro) {
 	cout<<"en proceso de construccion"<<endl;
 	//this->BTree->modify(entidad);
 }
+
+//casos posibles de contenidoConsulta son:
+// "--formacion --falla=idFalla"
+// "--falla"
+// "--formacion --falla=idFalla --fechaDesde=fechaDesde --fechaHasta=fechaHasta"
+//TODO: falta terminar de parsear los '='
 std::vector<BNode*> KDTreeController::consultar(string contenidoConsulta) {
 	list<string> resultadoConsulta_parseada = Util::parsearConsulta(contenidoConsulta);
-	list<string>::iterator it;
-	//los componentes de la consulta son los argumentos del 'comando consulta'
-	int cant_componentesConsulta = (int)resultadoConsulta_parseada.size();
-	string registro = "";
-	//obtengo los componentes...
-	if (cant_componentesConsulta > 0){
-		//asignacion por la linea que pincha dentro del for
-		registro = contenidoConsulta;
-		//TODO: obtener los componentes...
-//		for(it = resultadoConsulta_parseada.begin() ; it != resultadoConsulta_parseada.end(); ++it){
-//			registro = it; //pincha aca
-//		}
+	list<string>::iterator it = resultadoConsulta_parseada.begin();
+	cout<<endl<<"Inicio Test: Inicio KDTreeController::consultar..."<<endl;
+	int cantParametros = (int)resultadoConsulta_parseada.size();
+	string parametros_1 = "";
+	string parametros_2 = "";
+	string parametros_3 = "";
+	string parametros_4 = "";
+
+	if (cantParametros == 2){
+		parametros_1 = *(it++);
+		parametros_2 = *(it++);
+		//test
+		cout<<parametros_1.substr(2,parametros_1.size()-1)<<endl;
+		cout<<parametros_2.substr(2,parametros_2.size()-1)<<endl;
+	}else if (cantParametros == 1){
+		parametros_1 = *(it++);
+		//test
+		cout<<parametros_1.substr(2,parametros_1.size()-1)<<endl;
+	}else if (cantParametros == 4){
+		parametros_1 = *(it++);
+		parametros_2 = *(it++);
+		parametros_3 = *(it++);
+		parametros_4 = *(it++);
+		//test
+		cout<<parametros_1.substr(2,parametros_1.size()-1)<<endl;
+		cout<<parametros_2.substr(2,parametros_2.size()-1)<<endl;
+		cout<<parametros_3.substr(2,parametros_3.size()-1)<<endl;
+		cout<<parametros_4.substr(2,parametros_4.size()-1)<<endl;
 	}
-	Reporte rp(registro);
+	cout<<"Inicio Test: Inicio KDTreeController::consultar..."<<endl<<endl;
+	//test
+	Reporte rp("(2,1,4,6,2012030113001500)");
 	return ( this->BTree->find(&rp) );
 }
 
