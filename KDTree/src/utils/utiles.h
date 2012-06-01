@@ -62,7 +62,11 @@ public:
 
 	static list<string> parsear(string registro);
 	static list<string> parsearConsulta(string contenidoConsulta);
-	vector<string> split(char separador, const string& cadena);
+	static vector<string> split(char separador, const string& cadena);
+	static string getNombreSubElemento(int idSubElemento);
+	static int getPosicionSubElemento(string nombreSubElemento);
+	//en principio son 1 , 2 y 3
+	static string crearEntradaDeReporte(string parametro, int cantSubParametros);
 };
 
 #endif /* UTILES_H_ */

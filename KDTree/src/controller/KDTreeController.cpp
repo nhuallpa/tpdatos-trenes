@@ -90,39 +90,67 @@ void KDTreeController::modificar(string registro) {
 }
 
 //casos posibles de contenidoConsulta son:
-// "--formacion --falla=idFalla"
-// "--falla"
-// "--formacion --falla=idFalla --fechaDesde=fechaDesde --fechaHasta=fechaHasta"
+//1) "--formacion --falla=idFalla"
+//2) "--falla"
+//3) "--formacion --falla=idFalla --fechaDesde=fechaDesde --fechaHasta=fechaHasta"
 //TODO: falta terminar de parsear los '='
-std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_parseada) {
+std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_parseada, int* idPosCampo_parafiltrar) {
 	list<string>::iterator it = contenidoConsulta_parseada.begin();
 	cout<<endl<<"Inicio Test: Inicio KDTreeController::consultar..."<<endl;
 	int cantParametros = (int)contenidoConsulta_parseada.size();
-	string parametros_1 = "";
-	string parametros_2 = "";
-	string parametros_3 = "";
-	string parametros_4 = "";
+	string parametro_1 = "";
+	string parametro_2 = "";
+	string parametro_3 = "";
+	string parametro_4 = "";
+	//lo que por lo general aparece primero en el parametro
+	string subElem = "";
+	string clave_subElem = "";
+	string entrada_reporte = "";
 
+	//Ejemplo de caso1: contenidoConsulta_parseada = ("--formacion", "--falla=idFalla")
 	if (cantParametros == 2){
-		parametros_1 = *(it++);
-		parametros_2 = *(it++);
-		//test
-		cout<<parametros_1.substr(2,parametros_1.size()-1)<<endl;
-		cout<<parametros_2.substr(2,parametros_2.size()-1)<<endl;
+		parametro_1 = *(it++);
+		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
+		parametro_2 = *(it++);
+		entrada_reporte = Util::crearEntradaDeReporte(parametro_2,cantParametros-1);
+		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
+
+		//test:ver que se parseo bien...
+		cout<<"parametro con este formato: \"--formacion --falla=idFalla\""<<endl;
+		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = "(,,idFalla,,)"
+		cout<<"filtro: "<<parametro_1<<endl;
+
+	//Ejemplo de caso2: contenidoConsulta_parseada = ("--falla")
 	}else if (cantParametros == 1){
-		parametros_1 = *(it++);
-		//test
-		cout<<parametros_1.substr(2,parametros_1.size()-1)<<endl;
+		parametro_1 = *(it++);
+		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
+		entrada_reporte = "(,,,,,)";
+		//test:ver que se parseo bien...
+		cout<<"parametro con este formato: \"--falla\""<<endl;
+		cout<<"filtro: "<<parametro_1<<endl;
+		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = ""
+
+		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
+
+	//Ejemplo de caso3: contenidoConsulta_parseada = ("--formacion", "--falla=idFalla", "--fechaDesde=fechaDesde", " --fechaHasta=fechaHasta")
 	}else if (cantParametros == 4){
-		parametros_1 = *(it++);
-		parametros_2 = *(it++);
-		parametros_3 = *(it++);
-		parametros_4 = *(it++);
-		//test
-		cout<<parametros_1.substr(2,parametros_1.size()-1)<<endl;
-		cout<<parametros_2.substr(2,parametros_2.size()-1)<<endl;
-		cout<<parametros_3.substr(2,parametros_3.size()-1)<<endl;
-		cout<<parametros_4.substr(2,parametros_4.size()-1)<<endl;
+		parametro_1 = *(it++);
+		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
+		parametro_2 = *(it++);
+		parametro_3 = *(it++);
+		parametro_4 = *(it++);
+		string parametro = "";
+		parametro.append(parametro_2);
+		parametro.append(parametro_3);
+		parametro.append(parametro_4);
+		entrada_reporte = Util::crearEntradaDeReporte(parametro,cantParametros-1);
+		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
+
+		//test:ver que se parseo bien...
+		cout<<"parametro con este formato: \"--formacion --falla=idFalla --fechaDesde=fechaDesde --fechaHasta=fechaHasta\""<<endl;
+		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = "(,,idFalla,,franjaHOraria)"  #la franja es creada dentro de crearReporte
+		cout<<"filtro: "<<parametro_1<<endl;
+
 	}
 	cout<<"Final Test: Inicio KDTreeController::consultar..."<<endl<<endl;
 	//test

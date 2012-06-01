@@ -113,13 +113,18 @@ int main(int argc, char** argv){
 
 	          case 'q' :  {/* -q 	� --consultar */
 	        	  	  	  	  contenidoConsulta = string(optarg);
+	        	  	  	  	  int* idPosCampo_parafiltrar;
+	        	  	  	  	  *idPosCampo_parafiltrar = -1;
 	        	  	  	  	  contenidoConsulta_parseada =  Util::parsearConsulta(contenidoConsulta);
-	        	  	  	  	  resultado_consulta = kdTreeController.consultar(contenidoConsulta_parseada);
-
+	        	  	  	  	  resultado_consulta = kdTreeController.consultar(contenidoConsulta_parseada, idPosCampo_parafiltrar);
+	        	  	  	  	  //test
+	        	  	  	  	  cout<<"idPosCampo_parafiltrar: "<<*idPosCampo_parafiltrar<<endl;
 	        	  	  	  	  //muestro el resultado de la consulta:
 							  for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
 							  {
 								  (*it_query)->exportNode();
+								  //TODO: para cada elemento vector 'resultado_consulta' listar lo que esta en el campo 'idPosCampo_parafiltrar'
+								  //en un archivo de texto, mas alla que se lo pueda listar en la consola.
 							  }
 
 							  break;

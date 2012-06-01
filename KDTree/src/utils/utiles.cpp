@@ -11,6 +11,8 @@
 #include "StringUtils.h"
 #include "../utils/StringUtils.h"
 #include <fstream>
+#include "../utils/const.h"
+#include "../horario/FranjaHoraria.h"
 
 Util::Util() {
 
@@ -286,9 +288,8 @@ list<string> Util::parsear(string registro) {
 
 list<string> Util::parsearConsulta(string contenidoConsulta){
 	list<string> contenidoConsulta_parseada;
-	Util util;
 	vector<string> vector_parseado;
-	vector_parseado = util.split(' ',contenidoConsulta);
+	vector_parseado = Util::split(' ',contenidoConsulta);
 
 	for(vector<string>::iterator it=vector_parseado.begin() ; it != vector_parseado.end() ; ++it){
 		contenidoConsulta_parseada.push_back(*it);
@@ -315,4 +316,113 @@ vector<string> Util::split(char separador, const string& cadena)
 
 	out.push_back(aux);
 	return out;
+}
+
+string Util::getNombreSubElemento(int idSubElemento)
+{
+	string nombresCampos[] = {NOMBRE_LINEA, NOMBRE_FORMACION, NOMBRE_FALLA, NOMBRE_ACCIDENTE, NOMBRE_FRANJAHORARIA };
+
+	string nombreCampo_elejido = "";
+	for(int i=0 ; i < CANT_SUBELEMENTOS ; i++){
+		if (idSubElemento == i)
+			nombreCampo_elejido = nombresCampos[i];
+	}
+
+	return nombreCampo_elejido;
+}
+
+int Util::getPosicionSubElemento(string nombreSubElemento)
+{
+	int pos = 0;
+	if (nombreSubElemento == Util::getNombreSubElemento(1)) 		pos = 1;
+	else if (nombreSubElemento == Util::getNombreSubElemento(2))	pos = 2;
+	else if (nombreSubElemento == Util::getNombreSubElemento(3))	pos = 3;
+	else if (nombreSubElemento == Util::getNombreSubElemento(4))	pos = 4;
+	else if (nombreSubElemento == NOMBRE_FECHADESDE || nombreSubElemento == NOMBRE_FECHAHASTA) pos = 5;
+	else pos=-1;
+
+	return pos;
+}
+
+string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
+	string entradaDeReporte = "";
+
+	if (cantSubParametros == 1){
+		//le quito el '--'
+		string parametro_1 = parametro.substr(2,parametro.size()-1);
+		//separo clave valor
+		vector<string> parametro_1_parseado = Util::split('=',parametro_1);
+		vector<string>::iterator it_param2 = parametro_1_parseado.begin();
+
+		string clave1_ = *(it_param2++);
+		string valor1_ = *(it_param2++);
+		int posSubElem = Util::getPosicionSubElemento(clave1_);
+
+		//empiezo a definir la entrada del reporte
+		string separador = ",";
+		entradaDeReporte.append("(");
+		for(int i=0 ; i<5 ; i++){
+			if ((i+1) ==  5)
+				separador = "";
+			if ((i+1) ==  posSubElem)
+				entradaDeReporte.append(valor1_);
+			entradaDeReporte.append(separador);
+		}
+		entradaDeReporte.append(") ");
+
+	}else if (cantSubParametros == 3){
+		vector<string> parametro_parseado = Util::split(' ',parametro);
+		vector<string>::iterator it = parametro_parseado.begin();
+		string parametro_2 = *(it++);
+		string parametro_3 = *(it++);
+		string parametro_4 = *(it++);
+		//le quito el '--'
+		parametro_2 = parametro_2.substr(2,parametro_2.size()-1);
+		parametro_3 = parametro_3.substr(2,parametro_3.size()-1);
+		parametro_4 = parametro_4.substr(2,parametro_4.size()-1);
+
+		//separo clave valor
+		vector<string> parametro_2_parseado = Util::split('=',parametro_2);
+		vector<string> parametro_3_parseado = Util::split('=',parametro_3);
+		vector<string> parametro_4_parseado = Util::split('=',parametro_4);
+		vector<string>::iterator it_param2 = parametro_2_parseado.begin();
+		vector<string>::iterator it_param3 = parametro_3_parseado.begin();
+		vector<string>::iterator it_param4 = parametro_4_parseado.begin();
+		string clave1 = *(it_param2++);
+		string clave2 = *(it_param3++);
+		string clave3 = *(it_param4++);
+		string valor1 = *(it_param2++);
+		string valor2 = *(it_param3++);
+		string valor3 = *(it_param4++);
+		int posSubElem_1 = Util::getPosicionSubElemento(clave1);
+		int posSubElem_2 = Util::getPosicionSubElemento(clave2);
+		int posSubElem_3 = Util::getPosicionSubElemento(clave3);
+		bool considerarComoRango = false;
+		//creo le cadena para la franja horaria
+		//fechaDesde="2012030113001300" #(13:00-13:00-01/03/2012)
+		//fechaHasta="2012090121002100" #(21:00-21:00-01/09/2012)
+//		FranjaHoraria* fechaDesde = new FranjaHoraria(valor2);
+//		FranjaHoraria* fechaHasta = new FranjaHoraria(valor3);
+		//TODO: CONSIDERO EN PRINCIPIO 'fechaDesde', pero tengo que considerar el rango: {'fechaDesde'-'fechaHasta'}
+		if (posSubElem_2 == posSubElem_3){
+			considerarComoRango = true;
+		}
+
+		//empiezo a definir la entrada del reporte
+		string separador = ",";
+		entradaDeReporte.append("(");
+		for(int i=0 ; i<5 ; i++){
+			if ((i+1) ==  5)
+				separador = "";
+			if ((i+1) ==  posSubElem_1)
+				entradaDeReporte.append(valor1);
+			else if ((i+1) ==  posSubElem_2)
+					entradaDeReporte.append(valor2);
+			entradaDeReporte.append(separador);
+		}
+		entradaDeReporte.append(") ");
+
+	}
+
+	return entradaDeReporte;
 }
