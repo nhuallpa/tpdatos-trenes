@@ -11,7 +11,6 @@
 #include "StringUtils.h"
 #include "../utils/StringUtils.h"
 #include <fstream>
-#include "../utils/const.h"
 #include "../horario/FranjaHoraria.h"
 
 Util::Util() {
@@ -396,17 +395,17 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
 		string valor3 = *(it_param4++);
 		int posSubElem_1 = Util::getPosicionSubElemento(clave1);
 		int posSubElem_2 = Util::getPosicionSubElemento(clave2);
-		int posSubElem_3 = Util::getPosicionSubElemento(clave3);
-		bool considerarComoRango = false;
+//		int posSubElem_3 = Util::getPosicionSubElemento(clave3);
+//		bool considerarComoRango = false;
 		//creo le cadena para la franja horaria
 		//fechaDesde="2012030113001300" #(13:00-13:00-01/03/2012)
 		//fechaHasta="2012090121002100" #(21:00-21:00-01/09/2012)
 //		FranjaHoraria* fechaDesde = new FranjaHoraria(valor2);
 //		FranjaHoraria* fechaHasta = new FranjaHoraria(valor3);
 		//TODO: CONSIDERO EN PRINCIPIO 'fechaDesde', pero tengo que considerar el rango: {'fechaDesde'-'fechaHasta'}
-		if (posSubElem_2 == posSubElem_3){
-			considerarComoRango = true;
-		}
+//		if (posSubElem_2 == posSubElem_3){
+//			considerarComoRango = true;
+//		}
 
 		//empiezo a definir la entrada del reporte
 		string separador = ",";

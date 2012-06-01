@@ -96,7 +96,6 @@ void KDTreeController::modificar(string registro) {
 //TODO: falta terminar de parsear los '='
 std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_parseada, int* idPosCampo_parafiltrar) {
 	list<string>::iterator it = contenidoConsulta_parseada.begin();
-	cout<<endl<<"Inicio Test: Inicio KDTreeController::consultar..."<<endl;
 	int cantParametros = (int)contenidoConsulta_parseada.size();
 	string parametro_1 = "";
 	string parametro_2 = "";
@@ -152,7 +151,6 @@ std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_p
 		cout<<"filtro: "<<parametro_1<<endl;
 
 	}
-	cout<<"Final Test: Inicio KDTreeController::consultar..."<<endl<<endl;
 	//test
 	Reporte rp("(2,1,4,6,2012030113001500)");
 	return ( this->BTree->find(&rp) );
