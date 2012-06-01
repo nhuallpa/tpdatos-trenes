@@ -53,7 +53,7 @@ void TestFranjaHoraria::iniciar(){
 		FranjaHoraria* franja_2 = new FranjaHoraria(12,0,13,0, 3,4,2012); //12:00-13:00-03/04/2012
 		FranjaHoraria* franja_3 = new FranjaHoraria(12,0,12,30,3,4,2012); //12:00-12:30-03/04/2012
 		FranjaHoraria* franja_4 = new FranjaHoraria(11,0,11,30,3,4,2012); //11:00-11:30-03/04/2012
-		FranjaHoraria* franja_5 = new FranjaHoraria(12,0,13,0, 4,4,2012); //9:00-11:00-04/04/2012
+		FranjaHoraria* franja_5 = new FranjaHoraria(12,0,13,0, 4,4,2012); //12:00-13:00-04/04/2012
 
 		if ( *franja_1 == *franja_2 ) cout<<"test_1 OK"<<endl;
 		if ( *franja_3 == *franja_1 ) cout<<"test_2 OK"<<endl; //franja_3 esta contenido dentro de franja_1
@@ -73,6 +73,14 @@ void TestFranjaHoraria::iniciar(){
 		delete franja_4;
 		delete franja_5;
 
+		cout<<"Pruebas en post de seguir completando test_consultas.sh:"<<endl;
+
+		FranjaHoraria* franja_6 = new FranjaHoraria(12,0,12,0, 4,4,2012);
+		FranjaHoraria* franja_7 = new FranjaHoraria(12,1,12,1, 4,4,2012);
+		if( ( *franja_6 < *franja_7 ) && ( *franja_7 > *franja_6 ) && !( *franja_6 == *franja_7 )) cout<<"test_6 OK"<<endl;
+
+		delete franja_6;
+		delete franja_7;
 	}
 
 FranjaHoraria* TestFranjaHoraria::deserealizarFranjaHoraria_segun(string lineaArchivo)
