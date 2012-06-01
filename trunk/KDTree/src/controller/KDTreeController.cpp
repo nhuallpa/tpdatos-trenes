@@ -94,11 +94,10 @@ void KDTreeController::modificar(string registro) {
 // "--falla"
 // "--formacion --falla=idFalla --fechaDesde=fechaDesde --fechaHasta=fechaHasta"
 //TODO: falta terminar de parsear los '='
-std::vector<BNode*> KDTreeController::consultar(string contenidoConsulta) {
-	list<string> resultadoConsulta_parseada = Util::parsearConsulta(contenidoConsulta);
-	list<string>::iterator it = resultadoConsulta_parseada.begin();
+std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_parseada) {
+	list<string>::iterator it = contenidoConsulta_parseada.begin();
 	cout<<endl<<"Inicio Test: Inicio KDTreeController::consultar..."<<endl;
-	int cantParametros = (int)resultadoConsulta_parseada.size();
+	int cantParametros = (int)contenidoConsulta_parseada.size();
 	string parametros_1 = "";
 	string parametros_2 = "";
 	string parametros_3 = "";

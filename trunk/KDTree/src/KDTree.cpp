@@ -72,6 +72,8 @@ int main(int argc, char** argv){
 	string registro_entrada("");
 	std::vector<BNode*> resultado_consulta;
 	std::vector<BNode*>::iterator it_query;
+	string contenidoConsulta("");
+	list<string> contenidoConsulta_parseada;
 
 	/* Si se ejecuta sin par�metros ni opciones */
 	if (argc == 1)
@@ -110,11 +112,9 @@ int main(int argc, char** argv){
 			  	  	  	  }
 
 	          case 'q' :  {/* -q 	� --consultar */
-	        	  	  	  	  //supuesto registro que no lo es, sino un mezcla
-	        	  	  	  	  registro_entrada = string(optarg);
-	        	  	  	  	  //lo interpreto como tiene que ser...
-	        	  	  	  	  string contenidoConsulta(registro_entrada);
-	        	  	  	  	  resultado_consulta = kdTreeController.consultar(contenidoConsulta);
+	        	  	  	  	  contenidoConsulta = string(optarg);
+	        	  	  	  	  contenidoConsulta_parseada =  Util::parsearConsulta(contenidoConsulta);
+	        	  	  	  	  resultado_consulta = kdTreeController.consultar(contenidoConsulta_parseada);
 
 	        	  	  	  	  //muestro el resultado de la consulta:
 							  for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
