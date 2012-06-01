@@ -122,8 +122,6 @@ int main(int argc, char** argv){
 								  (*it_query)->exportNode();
 							  }
 
-							  //TODO: como hacer las consultas con rango de fecha?..
-
 							  break;
 	          	  	  	  }
 
@@ -142,6 +140,8 @@ int main(int argc, char** argv){
 										kdTreeController.insertar(registro_entrada);
 									}
 								}
+							  }else{
+								  cout<<"No se pudo abrir el archivo "<<fichero_entrada<<endl;
 							  }
 							  break;
 	      	  	  	  	  }

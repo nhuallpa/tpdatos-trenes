@@ -11,6 +11,7 @@
 #include "StringUtils.h"
 #include "../utils/StringUtils.h"
 #include <fstream>
+
 Util::Util() {
 
 }
@@ -285,10 +286,33 @@ list<string> Util::parsear(string registro) {
 
 list<string> Util::parsearConsulta(string contenidoConsulta){
 	list<string> contenidoConsulta_parseada;
-	contenidoConsulta_parseada.push_back(contenidoConsulta);
+	Util util;
+	vector<string> vector_parseado;
+	vector_parseado = util.split(' ',contenidoConsulta);
 
-	//todo...implementar el parseo
+	for(vector<string>::iterator it=vector_parseado.begin() ; it != vector_parseado.end() ; ++it){
+		contenidoConsulta_parseada.push_back(*it);
+	}
 
 	return contenidoConsulta_parseada;
 }
 
+vector<string> Util::split(char separador, const string& cadena)
+{
+	vector<string> out;
+	string aux;
+	for (string::const_iterator i = cadena.begin(); i != cadena.end(); i++)
+	{
+	const char& k = *i;
+	if (k == separador)
+	{
+	out.push_back(aux);
+	aux.clear();
+	}
+	else
+	aux.push_back(k);
+	}
+
+	out.push_back(aux);
+	return out;
+}

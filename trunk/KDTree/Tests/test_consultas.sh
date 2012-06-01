@@ -55,16 +55,20 @@ fechaHasta=09\:00-04\/03\/2012
 #11)  ../kdtree -q "--falla --formacion=$idFormacion --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
 #12)  ../kdtree -q "--accidente --formacion=$idFormacion --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
 
-echo pruebas de las consultas
+echo pruebas de las consultas contra el KDTree
 echo -------------------------------------------------------------------------------------------------
 echo -------------------------------------------------------------------------------------------------
 rm datos.tree -f
 rm datos.tree.fs -f 
-# comandos a ejecutar van aqui:
+echo Test#09: Todos las formaciones que tiene cierta falla  que ocurrieron dentro de una franja horaria.
+../kdtree -q "--formacion --falla=$idFalla --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
+
 #...
 echo 
 echo Presione enter para continuar...
 read
+echo Test#10: Todos las formaciones que tiene cierto accidente que ocurrieron dentro de una franja horaria.
+echo TODO: seguir poniendo los casos de pruebas...
 rm datos.tree -f
 rm datos.tree.fs -f
 #

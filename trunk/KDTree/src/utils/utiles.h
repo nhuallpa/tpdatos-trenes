@@ -11,7 +11,7 @@
 #include "types.h"
 #include <time.h>
 #include <list>
-
+#include <vector>
 
 enum cacheStrategy {writeback, writetrhough};
 
@@ -62,6 +62,7 @@ public:
 
 	static list<string> parsear(string registro);
 	static list<string> parsearConsulta(string contenidoConsulta);
+	vector<string> split(char separador, const string& cadena);
 };
 
 #endif /* UTILES_H_ */
