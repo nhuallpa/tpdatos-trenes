@@ -56,7 +56,11 @@ public:
 	void insertar(string registro);
 	void remover(string registro);
 	void modificar(string registro);
-	std::vector<BNode*> consultar(list<string> contenidoConsulta_parseada);
+	/**
+	 * si idPosCampo_parafiltrar==2 entonces se va poder obtener desde el resultado de la consulta
+	 * todos los id de las formacion.
+	 */
+	std::vector<BNode*> consultar(list<string> contenidoConsulta_parseada, int* idPosCampo_parafiltrar);
 
 	void mostrarEstado();
 	void iniciarUserInterfax();

@@ -33,6 +33,8 @@
 #define NOMBRE_FALLA "falla"
 #define NOMBRE_ACCIDENTE "accidente"
 #define NOMBRE_FRANJAHORARIA "franjaHoraria"
+#define NOMBRE_FECHADESDE "fechaDesde"
+#define NOMBRE_FECHAHASTA "fechaHasta"
 
 
 //estados de las operaciones realizadas
