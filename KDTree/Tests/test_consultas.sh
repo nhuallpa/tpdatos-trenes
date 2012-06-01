@@ -38,8 +38,8 @@ idFalla=1
 idAccidente=1
 idFormacion=1
 #ESCAPEO CON LA CONTRABA BARRA
-fechaDesde=09\:00-04\/03\/2012 
-fechaHasta=09\:00-04\/03\/2012
+fechaDesde="2012030113001300" #(13:00-13:00-01/03/2012)
+fechaHasta="2012090121002100" #(21:00-21:00-01/09/2012)
 
 #ejemplos de corrida de los comandoS
 #01) ../kdtree -q "--formacion --falla=$idFalla"
