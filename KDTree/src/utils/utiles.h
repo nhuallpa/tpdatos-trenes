@@ -12,6 +12,7 @@
 #include <time.h>
 #include <list>
 #include <vector>
+#include "../utils/const.h"
 
 enum cacheStrategy {writeback, writetrhough};
 
