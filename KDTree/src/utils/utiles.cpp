@@ -343,7 +343,7 @@ int Util::getPosicionSubElemento(string nombreSubElemento)
 	return pos;
 }
 
-string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
+string Util::crearEntradaDeReporte(string parametro, int cantSubParametros, bool conRangoFecha){
 	string entradaDeReporte = "";
 
 	if (cantSubParametros == 1){
@@ -408,7 +408,11 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
 //		if (posSubElem_2 == posSubElem_3){
 //			considerarComoRango = true;
 //		}
-
+		string fecha="";
+		if (!conRangoFecha)
+			fecha = valor2;
+		else
+			fecha = valor3;
 		//empiezo a definir la entrada del reporte
 		string separador = ",";
 		entradaDeReporte.append("(");
@@ -418,7 +422,7 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
 			if ((i+1) ==  posSubElem_1)
 				entradaDeReporte.append(valor1);
 			else if ((i+1) ==  posSubElem_2)
-					entradaDeReporte.append(valor2);
+					entradaDeReporte.append(fecha);
 			entradaDeReporte.append(separador);
 		}
 		entradaDeReporte.append(") ");

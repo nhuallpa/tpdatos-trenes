@@ -3,7 +3,7 @@ rm datos.tree.fs -f
 #echo
 #Test/testSimple_consultas.sh
 ################################################################################
-echo Estructura de Reporte es: (idLinea,idFormacion,idFalla,idAccidente,franjaHoraria)
+echo "Estructura de Reporte es: (idLinea,idFormacion,idFalla,idAccidente,franjaHoraria)"
 ################################################################################
 #los pararametros de consulta posibles son:
 #lineas, formacion, falla, accidente, fechaDesde, fechaHasta
@@ -26,9 +26,8 @@ function continuarCon
 ################################################################################
 #echo Inicio de ejecucion de Consultas en KDTree:
 #echo
-echo Test#09: Todas las formaciones que tienen falla $idFalla que ocurrieron desde $fechaDesde hasta $fechaHasta.
+#echo Test#09: Todas las formaciones que tienen falla $idFalla que ocurrieron desde $fechaDesde hasta $fechaHasta.
 ../kdtree -q "--formacion --falla=$idFalla --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
-continuarCon
 #continuarCon
 
 rm datos.tree -f

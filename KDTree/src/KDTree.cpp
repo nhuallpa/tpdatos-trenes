@@ -115,10 +115,6 @@ int main(int argc, char** argv){
 	        	  	  	  	  contenidoConsulta = string(optarg);
 	        	  	  	  	  int idPosCampo_parafiltrar = -1;
 	        	  	  	  	  contenidoConsulta_parseada =  Util::parsearConsulta(contenidoConsulta);
-//	        	  	  	  	  list<string>::iterator it;
-//	        	  	  	  	  for ( it = contenidoConsulta_parseada.begin(); it != contenidoConsulta_parseada.end();++it){
-//	        	  	  	  		  cout<<*it<<endl;
-//	        	  	  	  	  }
 	        	  	  	  	  resultado_consulta = kdTreeController.consultar(contenidoConsulta_parseada, &idPosCampo_parafiltrar);
 	        	  	  	  	  //test
 //	        	  	  	  	  cout<<"idPosCampo_parafiltrar: "<<idPosCampo_parafiltrar<<endl;
