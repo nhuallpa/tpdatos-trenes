@@ -73,6 +73,7 @@ continuarCon
 echo Test#12: Todos los accidentes que tienen formacion $idFormacion que ocurrieron desde $fechaDesde hasta $fechaHasta.
 ../kdtree -q "--accidente --formacion=$idFormacion --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
 
-
+rm datos.tree -f
+rm datos.tree.fs -f
 
 
