@@ -333,10 +333,10 @@ string Util::getNombreSubElemento(int idSubElemento)
 int Util::getPosicionSubElemento(string nombreSubElemento)
 {
 	int pos = 0;
-	if (nombreSubElemento == Util::getNombreSubElemento(1)) 		pos = 1;
-	else if (nombreSubElemento == Util::getNombreSubElemento(2))	pos = 2;
-	else if (nombreSubElemento == Util::getNombreSubElemento(3))	pos = 3;
-	else if (nombreSubElemento == Util::getNombreSubElemento(4))	pos = 4;
+	if (nombreSubElemento == Util::getNombreSubElemento(0)) 		pos = 1;
+	else if (nombreSubElemento == Util::getNombreSubElemento(1))	pos = 2;
+	else if (nombreSubElemento == Util::getNombreSubElemento(2))	pos = 3;
+	else if (nombreSubElemento == Util::getNombreSubElemento(3))	pos = 4;
 	else if (nombreSubElemento == NOMBRE_FECHADESDE || nombreSubElemento == NOMBRE_FECHAHASTA) pos = 5;
 	else pos=-1;
 
@@ -349,14 +349,16 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
 	if (cantSubParametros == 1){
 		//le quito el '--'
 		string parametro_1 = parametro.substr(2,parametro.size()-1);
+//		cout<<"cadena1: "<<parametro_1<<endl;
 		//separo clave valor
 		vector<string> parametro_1_parseado = Util::split('=',parametro_1);
 		vector<string>::iterator it_param2 = parametro_1_parseado.begin();
 
 		string clave1_ = *(it_param2++);
 		string valor1_ = *(it_param2++);
-		int posSubElem = Util::getPosicionSubElemento(clave1_);
 
+		int posSubElem = Util::getPosicionSubElemento(clave1_);
+//		cout<<"clave|valor|pos: "<<clave1_<<valor1_<<posSubElem<<endl;
 		//empiezo a definir la entrada del reporte
 		string separador = ",";
 		entradaDeReporte.append("(");
