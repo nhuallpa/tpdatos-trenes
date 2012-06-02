@@ -112,7 +112,7 @@ std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_p
 		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
 		parametro_2 = *(it++);
 //		cout<<"parametro_2: "<<parametro_2<<endl;
-		entrada_reporte = Util::crearEntradaDeReporte(parametro_2,cantParametros-1);
+		entrada_reporte = Util::crearEntradaDeReporte(parametro_2,cantParametros-1, false);
 		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
 
 		//test:ver que se parseo bien...
@@ -139,18 +139,21 @@ std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_p
 		parametro_4 = *(it++);
 		string parametro = "";
 		parametro.append(parametro_2);
+		parametro.append(" ");
 		parametro.append(parametro_3);
+		parametro.append(" ");
 		parametro.append(parametro_4);
-		entrada_reporte = Util::crearEntradaDeReporte(parametro,cantParametros-1);
+		entrada_reporte = Util::crearEntradaDeReporte(parametro,cantParametros-1, false);
+		string entrada_reporteFinal = Util::crearEntradaDeReporte(parametro,cantParametros-1, true);
 		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
 
 		//test:ver que se parseo bien...
-		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = "(,,idFalla,,franjaHOraria)"  #la franja es creada dentro de crearReporte
+		cout<<"entrada_reporte: "<<entrada_reporte<<entrada_reporteFinal<<endl;
 		cout<<"filtro: "<<parametro_1<<endl;
 
 	}
 	//test
-	Reporte rp("(2,1,4,6,2012030113001500)");
+	Reporte rp("(6,2,2,5,2012030416001800)");
 	return ( this->BTree->find(&rp) );
 }
 
