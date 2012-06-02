@@ -349,23 +349,20 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros, bool
 	if (cantSubParametros == 1){
 		//le quito el '--'
 		string parametro_1 = parametro.substr(2,parametro.size()-1);
-//		cout<<"cadena1: "<<parametro_1<<endl;
-		//separo clave valor
+
+		//separo clave y valor
 		vector<string> parametro_1_parseado = Util::split('=',parametro_1);
 		vector<string>::iterator it_param2 = parametro_1_parseado.begin();
-
 		string clave1_ = *(it_param2++);
 		string valor1_ = *(it_param2++);
 
-		int posSubElem = Util::getPosicionSubElemento(clave1_);
-//		cout<<"clave|valor|pos: "<<clave1_<<valor1_<<posSubElem<<endl;
 		//empiezo a definir la entrada del reporte
 		string separador = ",";
 		entradaDeReporte.append("(");
 		for(int i=0 ; i<5 ; i++){
 			if ((i+1) ==  5)
 				separador = "";
-			if ((i+1) ==  posSubElem)
+			if ((i+1) ==  Util::getPosicionSubElemento(clave1_))
 				entradaDeReporte.append(valor1_);
 			entradaDeReporte.append(separador);
 		}
@@ -408,11 +405,13 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros, bool
 //		if (posSubElem_2 == posSubElem_3){
 //			considerarComoRango = true;
 //		}
+
 		string fecha="";
 		if (!conRangoFecha)
 			fecha = valor2;
 		else
 			fecha = valor3;
+
 		//empiezo a definir la entrada del reporte
 		string separador = ",";
 		entradaDeReporte.append("(");
@@ -427,6 +426,8 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros, bool
 		}
 		entradaDeReporte.append(") ");
 
+	}else if (cantSubParametros == 0){
+		entradaDeReporte = "(,,,,)";
 	}
 
 	return entradaDeReporte;
