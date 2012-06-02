@@ -1,17 +1,17 @@
 rm datos.tree -f
 rm datos.tree.fs -f
-echo
+#echo
 #Test/testSimple_consultas.sh
 ################################################################################
-#Estructura de Reporte es: idLinea|idFormacion|idFalla|idAccidente|franjaHoraria
+echo Estructura de Reporte es: (idLinea,idFormacion,idFalla,idAccidente,franjaHoraria)
 ################################################################################
 #los pararametros de consulta posibles son:
 #lineas, formacion, falla, accidente, fechaDesde, fechaHasta
 ################################################################################
 #valores utilizados en los comandos(recursos):
 idLinea=1
-idFormacion=1
-idFalla=1
+idFormacion=3
+idFalla=12
 idAccidente=1
 franjaHoraria="2012030112001300" #(12:00-13:00-01/03/2012)
 fechaDesde="2012030113001300" #(13:00-13:00-01/03/2012)
@@ -24,11 +24,12 @@ function continuarCon
 	echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 }
 ################################################################################
-echo Inicio de ejecucion de Consultas en KDTree:
-echo
-echo Test#01: Todas las formaciones que tienen falla $idFalla.
-../kdtree -q "--formacion --falla=$idFalla"
+#echo Inicio de ejecucion de Consultas en KDTree:
+#echo
+echo Test#09: Todas las formaciones que tienen falla $idFalla que ocurrieron desde $fechaDesde hasta $fechaHasta.
+../kdtree -q "--formacion --falla=$idFalla --fechaDesde=$fechaDesde --fechaHasta=$fechaHasta"
 continuarCon
+#continuarCon
 
 rm datos.tree -f
 rm datos.tree.fs -f

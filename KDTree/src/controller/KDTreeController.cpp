@@ -111,11 +111,11 @@ std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_p
 		parametro_1 = *(it++);
 		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
 		parametro_2 = *(it++);
+//		cout<<"parametro_2: "<<parametro_2<<endl;
 		entrada_reporte = Util::crearEntradaDeReporte(parametro_2,cantParametros-1);
 		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
 
 		//test:ver que se parseo bien...
-		cout<<"parametro con este formato: \"--formacion --falla=idFalla\""<<endl;
 		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = "(,,idFalla,,)"
 		cout<<"filtro: "<<parametro_1<<endl;
 
@@ -125,9 +125,8 @@ std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_p
 		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
 		entrada_reporte = "(,,,,,)";
 		//test:ver que se parseo bien...
-		cout<<"parametro con este formato: \"--falla\""<<endl;
-		cout<<"filtro: "<<parametro_1<<endl;
 		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = ""
+		cout<<"filtro: "<<parametro_1<<endl;
 
 		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
 
@@ -146,7 +145,6 @@ std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_p
 		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
 
 		//test:ver que se parseo bien...
-		cout<<"parametro con este formato: \"--formacion --falla=idFalla --fechaDesde=fechaDesde --fechaHasta=fechaHasta\""<<endl;
 		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = "(,,idFalla,,franjaHOraria)"  #la franja es creada dentro de crearReporte
 		cout<<"filtro: "<<parametro_1<<endl;
 
