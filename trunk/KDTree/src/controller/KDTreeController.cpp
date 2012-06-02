@@ -89,70 +89,49 @@ void KDTreeController::modificar(string registro) {
 	//this->BTree->modify(entidad);
 }
 
-//casos posibles de contenidoConsulta son:
-//1) "--formacion --falla=idFalla"
-//2) "--falla"
-//3) "--formacion --falla=idFalla --fechaDesde=fechaDesde --fechaHasta=fechaHasta"
-//TODO: falta terminar de parsear los '='
-std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_parseada, int* idPosCampo_parafiltrar) {
+std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_parseada)
+{
 	list<string>::iterator it = contenidoConsulta_parseada.begin();
 	int cantParametros = (int)contenidoConsulta_parseada.size();
-	string parametro_1 = "";
-	string parametro_2 = "";
-	string parametro_3 = "";
-	string parametro_4 = "";
-	//lo que por lo general aparece primero en el parametro
-	string subElem = "";
-	string clave_subElem = "";
+
+	//subParametros encontrados en 'contenidoConsulta_parseada'
+	string filtro = "";
+	string parametro_reporte = "";
 	string entrada_reporte = "";
+	string entrada_reporte2 = "";
+	bool verTest_entradaReporte = true;
 
 	//Ejemplo de caso1: contenidoConsulta_parseada = ("--formacion", "--falla=idFalla")
 	if (cantParametros == 2){
-		parametro_1 = *(it++);
-		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
-		parametro_2 = *(it++);
-//		cout<<"parametro_2: "<<parametro_2<<endl;
-		entrada_reporte = Util::crearEntradaDeReporte(parametro_2,cantParametros-1, false);
-		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
-
-		//test:ver que se parseo bien...
-		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = "(,,idFalla,,)"
-		cout<<"filtro: "<<parametro_1<<endl;
+		filtro = *(it++);
+		filtro = filtro.substr(2,filtro.size()-1);
+		parametro_reporte = *(it++);
+		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros-1, false);
 
 	//Ejemplo de caso2: contenidoConsulta_parseada = ("--falla")
 	}else if (cantParametros == 1){
-		parametro_1 = *(it++);
-		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
-		entrada_reporte = "(,,,,,)";
-		//test:ver que se parseo bien...
-		cout<<"entrada_reporte: "<<entrada_reporte<<endl; //entrada_reporte = ""
-		cout<<"filtro: "<<parametro_1<<endl;
-
-		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
+		filtro = *(it++);
+		filtro = filtro.substr(2,filtro.size()-1);
+		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros-1, false);
 
 	//Ejemplo de caso3: contenidoConsulta_parseada = ("--formacion", "--falla=idFalla", "--fechaDesde=fechaDesde", " --fechaHasta=fechaHasta")
 	}else if (cantParametros == 4){
-		parametro_1 = *(it++);
-		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
-		parametro_2 = *(it++);
-		parametro_3 = *(it++);
-		parametro_4 = *(it++);
-		string parametro = "";
-		parametro.append(parametro_2);
-		parametro.append(" ");
-		parametro.append(parametro_3);
-		parametro.append(" ");
-		parametro.append(parametro_4);
-		entrada_reporte = Util::crearEntradaDeReporte(parametro,cantParametros-1, false);
-		string entrada_reporteFinal = Util::crearEntradaDeReporte(parametro,cantParametros-1, true);
-		*idPosCampo_parafiltrar = Util::getPosicionSubElemento(parametro_1);
-
-		//test:ver que se parseo bien...
-		cout<<"entrada_reporte: "<<entrada_reporte<<entrada_reporteFinal<<endl;
-		cout<<"filtro: "<<parametro_1<<endl;
+		filtro = *(it++);
+		filtro = filtro.substr(2,filtro.size()-1);
+		parametro_reporte.append(*(it++)+" ");
+		parametro_reporte.append(*(it++)+" ");
+		parametro_reporte.append(*(it++));
+		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros-1, false);
+		entrada_reporte2 = Util::crearEntradaDeReporte(parametro_reporte,cantParametros-1, true);
 
 	}
-	//test
+
+	if (verTest_entradaReporte){
+		//test:ver que se parseo bien...
+		cout<<"entrada_reporte: "<<entrada_reporte<<entrada_reporte2<<endl;
+//		cout<<"filtro: "<<filtro<<endl;
+	}
+
 	Reporte rp("(6,2,2,5,2012030416001800)");
 	return ( this->BTree->find(&rp) );
 }
