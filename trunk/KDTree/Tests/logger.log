@@ -1579,3 +1579,17 @@
 02/06/2012 16:01:53 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
 02/06/2012 16:02:00 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
 02/06/2012 16:02:20 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:20 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:20 DEBUG : PersistorBase.add: agregando el bloque en el offset 0
+05/06/2012 01:37:20 DEBUG : Persisotor Base.modify: persistiendo el bloque 0
+05/06/2012 01:37:41 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:53 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:55 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:56 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:57 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:57 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:58 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:37:59 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:38:00 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:38:02 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
+05/06/2012 01:38:03 DEBUG : ConfigurationMannager name: filename: datos.treetreeBlockSize 1024 maxRecordPercent: 0.1 maxRecordSizeTree: 102 maxLoadForInsert: 819 minUnderflowSizeTree 410 nombre de la secuencia :
