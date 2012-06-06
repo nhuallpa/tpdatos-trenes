@@ -117,19 +117,9 @@ int main(int argc, char** argv){
 	        	  	  	  	  resultado_consulta = kdTreeController.consultar(contenidoConsulta_parseada);
 							  for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
 							  {
-								  //exportando en la consola
-								  cout<<"////Inicio: Resultado de la consulta"<<endl;
+								  cout<<"Resultados Consulta:"<<endl;
 								  (*it_query)->exportNode();
-								  cout<<"////Final: Resultado de la consulta"<<endl;
-								  //TODO: para cada elemento de 'resultado_consulta' listar lo que esta en el
-								  //campo numero 'idPosCampo_parafiltrar' en un archivo de texto.
-
 							  }
-
-	        	  	  	  	  string filtro = *(contenidoConsulta_parseada.begin());
-	        	  	  	  	  filtro = filtro.substr(2,filtro.size()-1);
-	        	  	  	  	  int idCampo_filtrar = Util::getPosicionSubElemento(filtro);
-	        	  	  	  	  cout<<"(idFiltro,filtro)="<<"("<<idCampo_filtrar<<","<<filtro<<")"<<endl;
 
 							  break;
 	          	  	  	  }

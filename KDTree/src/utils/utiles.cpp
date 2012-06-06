@@ -343,38 +343,75 @@ int Util::getPosicionSubElemento(string nombreSubElemento)
 	return pos;
 }
 
-string Util::crearEntradaDeReporte(string parametro, int cantSubParametros, bool conRangoFecha){
-	string entradaDeReporte = "";
 
-	if (cantSubParametros == 1){
+string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
+	string entradaDeReporte = "";
+	bool errores_formatoDeConsulta = false;
+
+	string elem_vacio = "0";
+	string elem_todo = "*";
+	string separador = ",";
+
+	if (cantSubParametros == 2){
+		vector<string> parametro_parseado = Util::split(' ',parametro);
+		vector<string>::iterator it = parametro_parseado.begin();
+		string parametro_1 = *(it++);
+		string parametro_2 = *(it);
+
 		//le quito el '--'
-		string parametro_1 = parametro.substr(2,parametro.size()-1);
+		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
+		parametro_2 = parametro_2.substr(2,parametro_2.size()-1);
 
 		//separo clave y valor
-		vector<string> parametro_1_parseado = Util::split('=',parametro_1);
-		vector<string>::iterator it_param2 = parametro_1_parseado.begin();
+		vector<string> parametro_2_parseado = Util::split('=',parametro_2);
+		vector<string>::iterator it_param2 = parametro_2_parseado.begin();
 		string clave1_ = *(it_param2++);
 		string valor1_ = *(it_param2++);
 
 		//empiezo a definir la entrada del reporte
-		string separador = ",";
 		entradaDeReporte.append("(");
 		for(int i=0 ; i<5 ; i++){
 			if ((i+1) ==  5)
 				separador = "";
 			if ((i+1) ==  Util::getPosicionSubElemento(clave1_))
 				entradaDeReporte.append(valor1_);
+			else if ((i+1) ==  Util::getPosicionSubElemento(parametro_1))
+				entradaDeReporte.append(elem_todo);
+			else
+				entradaDeReporte.append(elem_vacio);
+
 			entradaDeReporte.append(separador);
 		}
 		entradaDeReporte.append(") ");
 
-	}else if (cantSubParametros == 3){
+	}	if (cantSubParametros == 1){
+		string parametro_1 = parametro;
+		//le quito el '--'
+		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
+
+		//empiezo a definir la entrada del reporte
+		entradaDeReporte.append("(");
+		for(int i=0 ; i<5 ; i++){
+			if ((i+1) ==  5)
+				separador = "";
+			if ((i+1) ==  Util::getPosicionSubElemento(parametro_1))
+				entradaDeReporte.append(elem_todo);
+			else
+				entradaDeReporte.append(elem_vacio);
+
+			entradaDeReporte.append(separador);
+		}
+		entradaDeReporte.append(") ");
+
+	} else if (cantSubParametros == 4){
 		vector<string> parametro_parseado = Util::split(' ',parametro);
 		vector<string>::iterator it = parametro_parseado.begin();
+		string parametro_1 = *(it++);
 		string parametro_2 = *(it++);
 		string parametro_3 = *(it++);
-		string parametro_4 = *(it++);
+		string parametro_4 = *(it);
 		//le quito el '--'
+		parametro_1 = parametro_1.substr(2,parametro_1.size()-1);
 		parametro_2 = parametro_2.substr(2,parametro_2.size()-1);
 		parametro_3 = parametro_3.substr(2,parametro_3.size()-1);
 		parametro_4 = parametro_4.substr(2,parametro_4.size()-1);
@@ -392,43 +429,33 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros, bool
 		string valor1 = *(it_param2++);
 		string valor2 = *(it_param3++);
 		string valor3 = *(it_param4++);
-		int posSubElem_1 = Util::getPosicionSubElemento(clave1);
-		int posSubElem_2 = Util::getPosicionSubElemento(clave2);
-//		int posSubElem_3 = Util::getPosicionSubElemento(clave3);
-//		bool considerarComoRango = false;
-		//creo le cadena para la franja horaria
-		//fechaDesde="2012030113001300" #(13:00-13:00-01/03/2012)
-		//fechaHasta="2012090121002100" #(21:00-21:00-01/09/2012)
-//		FranjaHoraria* fechaDesde = new FranjaHoraria(valor2);
-//		FranjaHoraria* fechaHasta = new FranjaHoraria(valor3);
-		//TODO: CONSIDERO EN PRINCIPIO 'fechaDesde', pero tengo que considerar el rango: {'fechaDesde'-'fechaHasta'}
-//		if (posSubElem_2 == posSubElem_3){
-//			considerarComoRango = true;
-//		}
-
-		string fecha="";
-		if (!conRangoFecha)
-			fecha = valor2;
-		else
-			fecha = valor3;
 
 		//empiezo a definir la entrada del reporte
-		string separador = ",";
 		entradaDeReporte.append("(");
 		for(int i=0 ; i<5 ; i++){
 			if ((i+1) ==  5)
 				separador = "";
-			if ((i+1) ==  posSubElem_1)
+
+			if ((i+1) ==  Util::getPosicionSubElemento(clave1))
 				entradaDeReporte.append(valor1);
-			else if ((i+1) ==  posSubElem_2)
-					entradaDeReporte.append(fecha);
+			else if ((i+1) ==  Util::getPosicionSubElemento(clave2)){
+				entradaDeReporte.append(valor2);
+				entradaDeReporte.append("-");
+				entradaDeReporte.append(valor3);
+			}
+			else if ((i+1) ==  Util::getPosicionSubElemento(parametro_1))
+				entradaDeReporte.append(elem_todo);
+			else
+				entradaDeReporte.append(elem_vacio);
+
 			entradaDeReporte.append(separador);
 		}
 		entradaDeReporte.append(") ");
 
-	}else if (cantSubParametros == 0){
-		entradaDeReporte = "(,,,,)";
 	}
+
+	if (errores_formatoDeConsulta)
+		cout<<"ocurrio un error en formato de consulta[utile.cpp]"<<endl;
 
 	return entradaDeReporte;
 }
