@@ -103,35 +103,31 @@ std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_p
 
 	//Ejemplo de caso1: contenidoConsulta_parseada = ("--formacion", "--falla=idFalla")
 	if (cantParametros == 2){
-		filtro = *(it++);
-		filtro = filtro.substr(2,filtro.size()-1);
-		parametro_reporte = *(it++);
-		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros-1, false);
+		parametro_reporte.append(*(it++)+" ");
+		parametro_reporte.append(*(it));
+		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros);
 
 	//Ejemplo de caso2: contenidoConsulta_parseada = ("--falla")
 	}else if (cantParametros == 1){
-		filtro = *(it++);
-		filtro = filtro.substr(2,filtro.size()-1);
-		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros-1, false);
+		parametro_reporte.append(*(it));
+		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros);
 
 	//Ejemplo de caso3: contenidoConsulta_parseada = ("--formacion", "--falla=idFalla", "--fechaDesde=fechaDesde", " --fechaHasta=fechaHasta")
 	}else if (cantParametros == 4){
-		filtro = *(it++);
-		filtro = filtro.substr(2,filtro.size()-1);
 		parametro_reporte.append(*(it++)+" ");
 		parametro_reporte.append(*(it++)+" ");
-		parametro_reporte.append(*(it++));
-		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros-1, false);
-		entrada_reporte2 = Util::crearEntradaDeReporte(parametro_reporte,cantParametros-1, true);
+		parametro_reporte.append(*(it++)+" ");
+		parametro_reporte.append(*(it));
+		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros);
 
 	}
 
 	if (verTest_entradaReporte){
 		//test:ver que se parseo bien...
-		cout<<"entrada_reporte: "<<entrada_reporte<<entrada_reporte2<<endl;
-//		cout<<"filtro: "<<filtro<<endl;
+		cout<<"entrada_reporte: "<<entrada_reporte<<endl;
 	}
 
+	//TODO: hacer que reporte pueda resivir la estructura cargada en la variable 'entrada_reporte'
 	Reporte rp("(6,2,2,5,2012030416001800)");
 	return ( this->BTree->find(&rp) );
 }

@@ -67,7 +67,7 @@ public:
 	static string getNombreSubElemento(int idSubElemento);
 	static int getPosicionSubElemento(string nombreSubElemento);
 	//en principio son 1 , 2 y 3
-	static string crearEntradaDeReporte(string parametro, int cantSubParametros, bool conRangoFecha);
+	static string crearEntradaDeReporte(string parametro, int cantSubParametros);
 };
 
 #endif /* UTILES_H_ */
