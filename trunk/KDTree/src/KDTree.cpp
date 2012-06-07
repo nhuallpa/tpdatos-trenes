@@ -112,7 +112,7 @@ int main(int argc, char** argv){
 
 	          case 'q' :  {/* -q 	� --consultar */
 	        	  	  	  	  contenidoConsulta = string(optarg);
-	        	  	  	  	  bool consulta_porArchivo = true;
+	        	  	  	  	  bool consulta_porArchivo = false;
 	        	  	  	  	  if (consulta_porArchivo){
 	        	  	  	  		  resultado_consulta = kdTreeController.consultar(contenidoConsulta);
 	        	  	  	  	  }else{

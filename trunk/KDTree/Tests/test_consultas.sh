@@ -6,7 +6,20 @@
 #       Descripcion: prueba las operaciones de consultas en el arbol KDTree    #
 #                                                                              #
 ################################################################################
-
+#nota: correr este script solo cuando Reporte soporta contruirse con estas entrada:
+# (0,*,10,0,0)
+# (0,*,0,15,0)
+# (0,3,*,0,0)
+# (0,3,0,*,0)
+# (0,0,*,0,0)
+# (0,*,0,0,0)
+# (*,0,0,0,0)
+# (0,0,0,*,0)
+# (0,*,10,0,2012030113001300-2012090121002100)
+# (0,*,0,15,2012030113001300-2012090121002100)
+# (0,3,*,0,2012030113001300-2012090121002100)
+# (0,3,0,*,2012030113001300-2012090121002100)
+#... y tambien cuando en KDTree.cpp este el siguiente seteo: consulta_porArchivo = false
 
 ################################################################################
 function continuar_siguienteTest
