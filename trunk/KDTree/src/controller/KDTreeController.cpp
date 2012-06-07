@@ -89,6 +89,12 @@ void KDTreeController::modificar(string registro) {
 	//this->BTree->modify(entidad);
 }
 
+std::vector<BNode*> KDTreeController::consultar(string contenidoConsulta){
+
+	Reporte rp(contenidoConsulta);
+	return ( this->BTree->find(&rp) );
+}
+
 std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_parseada)
 {
 	list<string>::iterator it = contenidoConsulta_parseada.begin();
@@ -128,7 +134,7 @@ std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_p
 	}
 
 	//TODO: hacer que reporte pueda resivir la estructura cargada en la variable 'entrada_reporte'
-	Reporte rp("(6,2,2,5,2012030416001800)");
+	Reporte rp("(6,2,2,10,2012030416001800)");
 	return ( this->BTree->find(&rp) );
 }
 
