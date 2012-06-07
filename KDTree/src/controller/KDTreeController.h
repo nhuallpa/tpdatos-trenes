@@ -56,6 +56,8 @@ public:
 	void insertar(string registro);
 	void remover(string registro);
 	void modificar(string registro);
+	//consultar mediante un archivo
+	std::vector<BNode*> consultar(string contenidoConsulta);
 	std::vector<BNode*> consultar(list<string> contenidoConsulta);
 
 	void mostrarEstado();
