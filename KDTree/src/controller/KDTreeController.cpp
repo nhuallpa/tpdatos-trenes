@@ -6,10 +6,8 @@
  */
 
 #include "KDTreeController.h"
-#include "../iu/UtilMenu.h"
-#include "../controller/Operacion.h"
-#include "../iu/Menu.h"
-#include "../iu/MenuPrincipal.h"
+#include "../entidades/EntityFactory.h"
+#include "../entidades/ReporteRango.h"
 
 using std::cout;
 using std::endl;
@@ -68,7 +66,7 @@ bool KDTreeController::validarIdSubElemento(string& nombreSubElemento, int idSub
 	bool idSubElemento_validado = false;
 	if ( idSubElemento >= 1 ){
 		for(int i = 0; i < CANT_SUBELEMENTOS ; i++){
-			if (nombreSubElemento.compare(UtilMenu::getNombreSubElemento(i)) == 0)
+			if (nombreSubElemento.compare(Util::getNombreSubElemento(i)) == 0)
 				idSubElemento_validado = ( idSubElemento <= this->cantidades_enListas[i] );
 		}
 	}
@@ -76,123 +74,36 @@ bool KDTreeController::validarIdSubElemento(string& nombreSubElemento, int idSub
 }
 
 void KDTreeController::insertar(string registro) {
-	Reporte rp(registro);
-	IElement* elem = new Element(&rp);
+	Reporte* reporteSimple = (Reporte*)EntityFactory::createEntity();
+	reporteSimple->inicializar(registro);
+	IElement* elem = new Element(reporteSimple);
 	this->BTree->insert(elem);
 }
 void KDTreeController::remover(string registro) {
-	Reporte rp(registro);
-	this->BTree->remove(&rp);
+	Reporte* reporteSimple = (Reporte*)EntityFactory::createEntity();
+	reporteSimple->inicializar(registro);
+	this->BTree->remove(reporteSimple);
 }
 void KDTreeController::modificar(string registro) {
 	cout<<"en proceso de construccion"<<endl;
 	//this->BTree->modify(entidad);
 }
 
-std::vector<BNode*> KDTreeController::consultar(string contenidoConsulta){
-
-	Reporte rp(contenidoConsulta);
-	return ( this->BTree->find(&rp) );
-}
-
-std::vector<BNode*> KDTreeController::consultar(list<string> contenidoConsulta_parseada)
+std::vector<BNode*> KDTreeController::consultar(string registro)
 {
-	list<string>::iterator it = contenidoConsulta_parseada.begin();
-	int cantParametros = (int)contenidoConsulta_parseada.size();
-
-	//subParametros encontrados en 'contenidoConsulta_parseada'
-	string filtro = "";
-	string parametro_reporte = "";
-	string entrada_reporte = "";
-	string entrada_reporte2 = "";
-	bool verTest_entradaReporte = true;
-
-	//Ejemplo de caso1: contenidoConsulta_parseada = ("--formacion", "--falla=idFalla")
-	if (cantParametros == 2){
-		parametro_reporte.append(*(it++)+" ");
-		parametro_reporte.append(*(it));
-		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros);
-
-	//Ejemplo de caso2: contenidoConsulta_parseada = ("--falla")
-	}else if (cantParametros == 1){
-		parametro_reporte.append(*(it));
-		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros);
-
-	//Ejemplo de caso3: contenidoConsulta_parseada = ("--formacion", "--falla=idFalla", "--fechaDesde=fechaDesde", " --fechaHasta=fechaHasta")
-	}else if (cantParametros == 4){
-		parametro_reporte.append(*(it++)+" ");
-		parametro_reporte.append(*(it++)+" ");
-		parametro_reporte.append(*(it++)+" ");
-		parametro_reporte.append(*(it));
-		entrada_reporte = Util::crearEntradaDeReporte(parametro_reporte,cantParametros);
-
+	Reporte* unReporte = (Reporte*)EntityFactory::createEntity();
+	bool esConRango = Util::esRegistroConRango(registro);
+	if (esConRango){
+		cout<<"en construccion..."<<endl;
+		unReporte = (ReporteRango*)EntityFactory::createEntity();
+	}else{
+		unReporte->inicializar(registro);
+//		cout<<*unReporte<<endl;
 	}
 
-	if (verTest_entradaReporte){
-		//test:ver que se parseo bien...
-		cout<<"entrada_reporte: "<<entrada_reporte<<endl;
-	}
-
-	//TODO: hacer que reporte pueda resivir la estructura cargada en la variable 'entrada_reporte'
-	Reporte rp("(6,2,2,10,2012030416001800)");
-	return ( this->BTree->find(&rp) );
+	return ( this->BTree->find(unReporte) );
 }
 
 void KDTreeController::mostrarEstado(){
 	this->BTree->exportTree();
-}
-
-void KDTreeController::iniciarUserInterfax() {
-	Operacion* operacionElejida;
-	Menu* menu_principal = new MenuPrincipal(*this);
-
-	bool salir_programa= false;
-	bool operacion_fueCreada = false;
-
-	while(!salir_programa)
-	{
-		UtilMenu::separador_menu();
-		cout<<"1-elejir operacion para KDTree"<<endl;
-		cout<<"2-mostrar operacion"<<endl;
-		cout<<"3-ejecutar operacion"<<endl;
-		cout<<"4-salir"<<endl;
-
-		char opcion_elejida = '0';
-		cout<<"elejir opcion: ";
-		cin>>opcion_elejida;
-		UtilMenu::limpiar_pantalla();
-		switch(opcion_elejida){
-			case '1' :  {
-							menu_principal->iniciar();
-							if (menu_principal->getOperacion_fueCreada()){
-								operacion_fueCreada = true;
-								operacionElejida = menu_principal->getOperacionElejida();
-							}
-							break;
-						}
-			case '2' :  {
-							if (operacion_fueCreada){
-//            					cout<<*operacionElejida<<endl;
-							}
-							else
-								cout<<"debe elejir una operacion"<<endl;
-							break;
-						}
-
-			case '3' :  {
-							if (operacion_fueCreada)
-								operacionElejida->iniciar();
-							else
-								cout<<"debe elejir una operacion"<<endl;
-							break;
-						}
-			case '4' :  {
-							salir_programa = true;
-							break;
-						}
-			default : cout<<"opcion de menu invalida"<<endl; break;
-		}
-	}
-//    delete operacionElejida;
-//    delete menu_principal;
 }

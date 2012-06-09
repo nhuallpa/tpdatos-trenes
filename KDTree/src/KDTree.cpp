@@ -18,10 +18,8 @@
 
 #include "utils/util_main.h"
 
-#include "iu/Menu.h"
-#include "iu/MenuPrincipal.h"
 #include "horario/TestFranjaHoraria.h"
-#include "controller/Operacion.h"
+#include "controller/KDTreeController.h"
 
 using std::cout;
 using std::endl;
@@ -40,7 +38,7 @@ void imprime_uso() {
     cout<<"    -v  --ver             	   Muestra el estado del arbol"<<endl;
     cout<<"    -c  --carga                 Recibe como argumento un archivo para carga masiva"<<endl;
     cout<<"    -t  --test                  Se ejecutan los test"<<endl;
-    cout<<"    -u  --userinterfaxe         Modo interfase con usuario"<<endl;
+    cout<<"    -f  --file                  Realiza consultas mediantes los registros en el archivo pasado como parametro"<<endl;
     cout<<"    -h  --help                  Ense�a esta ayuda"<<endl;
 }
 
@@ -50,7 +48,7 @@ int main(int argc, char** argv){
 	int siguiente_opcion;
 
 	/* Una cadena que lista las opciones cortas v�lidas */
-	const char* const op_cortas = "i:r:m:q:vc:tuh" ;
+	const char* const op_cortas = "i:r:m:q:vc:thf:" ;
 
 	/* Una estructura de varios arrays describiendo los valores largos */
 	const struct option op_largas[] =
@@ -62,8 +60,8 @@ int main(int argc, char** argv){
 	  { "ver",    		  0,  NULL,  'v'},
 	  { "carga",          1,  NULL,  'c'},
 	  { "test",           0,  NULL,  't'},
-	  { "userinterfaxe",  0,  NULL,  'u'},
 	  { "help",           0,  NULL,  'h'},
+	  { "file",           0,  NULL,  'f'},
 	  { NULL,             0,  NULL,   0 }
 	};
 
@@ -73,6 +71,7 @@ int main(int argc, char** argv){
 	std::vector<BNode*> resultado_consulta;
 	std::vector<BNode*>::iterator it_query;
 	string contenidoConsulta("");
+	list<string> contenidoConsulta_parseada;
 
 	/* Si se ejecuta sin par�metros ni opciones */
 	if (argc == 1)
@@ -111,14 +110,28 @@ int main(int argc, char** argv){
 			  	  	  	  }
 
 	          case 'q' :  {/* -q 	� --consultar */
+	        	  	  	  	  //todo: hacer soportar estos dos tipos de argumentos para la consulta:
+	        	  	  	  	  //1) (0,*,10,0,0) y (0,*,10,0,2012030113001300-2012090121002100)
+	        	  	  	  	  //2) "--formacion --falla=$idFalla" ... y demas(ver test_consultas.sh)
 	        	  	  	  	  contenidoConsulta = string(optarg);
-	        	  	  	  	  bool consulta_porArchivo = false;
-	        	  	  	  	  if (consulta_porArchivo){
-	        	  	  	  		  resultado_consulta = kdTreeController.consultar(contenidoConsulta);
+	        	  	  	  	  //para diferenciar entre estos dos formatos:
+	        	  	  	  	  //(0,*,10,0,0) y "--formacion --falla=$idFalla"
+	        	  	  	  	  bool esConParametro = Util::consulta_esConParametro(contenidoConsulta);
+	        	  	  	  	  bool esConRango = false; //todo
+	        	  	  	  	  if (esConParametro){
+	        	  	  	  		  if (esConRango){
+	        	  	  	  			  //todo contenidoConsulta =
+	        	  	  	  		  }else{
+										int cantParametros = (int)(Util::split(' ',contenidoConsulta).size());
+										contenidoConsulta = Util::calcularEntradaReporte(contenidoConsulta, cantParametros);
+	        	  	  	  		  }
 	        	  	  	  	  }else{
-		        	  	  	  	  list<string> contenidoConsulta_parseada =  Util::parsearConsulta(contenidoConsulta);
-		        	  	  	  	  resultado_consulta = kdTreeController.consultar(contenidoConsulta_parseada);
+	        	  	  	  		  if (esConRango){
+	        	  	  	  			//todo contenidoConsulta =
+	        	  	  	  		  }
 	        	  	  	  	  }
+
+							  resultado_consulta = kdTreeController.consultar(contenidoConsulta);
 
 							  for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
 							  {
@@ -129,6 +142,29 @@ int main(int argc, char** argv){
 							  break;
 	          	  	  	  }
 
+	          case 'f' :  {/* -f 	� --fileQuery */
+							  fichero_entrada = optarg;
+							  std::ifstream in;
+							  in.open(fichero_entrada, ifstream::in);
+							  if (in.is_open()) {
+								  int nro = 1	;
+								while (!in.eof()) {
+									in>>registro_entrada;
+									if (in.good()) {
+										cout<<endl<<nro++<<"): ";
+										resultado_consulta = kdTreeController.consultar(registro_entrada);
+										for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
+										{
+										  cout<<"Resultados Consulta:"<<endl;
+										  (*it_query)->exportNode();
+										}
+									}
+								}
+							  }else{
+								  cout<<"No se pudo abrir el archivo "<<fichero_entrada<<endl;
+							  }
+							  break;
+	          	  	  	  }
 	          case 'v' :  {/* -v 	� --ver */
 							  kdTreeController.mostrarEstado();
 							  break;
@@ -153,11 +189,6 @@ int main(int argc, char** argv){
 	          case 't' :  {/* -t 	� --test */
 							  TestFranjaHoraria* testFranajaHoraria = new TestFranjaHoraria();
 							  testFranajaHoraria->iniciar();
-							  break;
-	          	  	  	  }
-
-	          case 'u' :  {/* -u o --userinterfase */
-							  kdTreeController.iniciarUserInterfax();
 							  break;
 	          	  	  	  }
 

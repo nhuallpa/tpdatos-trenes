@@ -49,4 +49,11 @@
 #define MENOR 2
 #define IGUAL 3
 
+#define ELEM_VACIO "0"
+#define ELEM_TODO "*"
+#define ELEM_TODO_NUM -1
+#define ELEM_SEPARADOR ","
+
+
+
 #endif /* CONST_H_ */
