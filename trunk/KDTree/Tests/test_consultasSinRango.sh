@@ -19,8 +19,8 @@
 function continuar_siguienteTest
 {
 	echo Presione enter para continuar con el Test
-	#read
-	#clear
+	read
+	clear
 }
 
 function mostrar_estructuraReporte

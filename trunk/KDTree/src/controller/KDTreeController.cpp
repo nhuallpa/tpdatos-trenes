@@ -91,12 +91,15 @@ void KDTreeController::modificar(string registro) {
 
 std::vector<BNode*> KDTreeController::consultar(string registro)
 {
+	cout<<"registro: "<<registro<<endl;
 	Reporte* unReporte = (Reporte*)EntityFactory::createEntity();
-	bool esConRango = Util::esRegistroConRango(registro);
+	bool esConRango = Util::tienenParametroConRango(registro);
 	if (esConRango){
-		cout<<"en construccion..."<<endl;
+		cout<<"en construccion(ReporteRango)..."<<endl;
 		unReporte = (ReporteRango*)EntityFactory::createEntity();
+//		unReporte.inicializar(registro);
 	}else{
+//		cout<<"paso ariel 2 "<<endl;
 		unReporte->inicializar(registro);
 //		cout<<*unReporte<<endl;
 	}

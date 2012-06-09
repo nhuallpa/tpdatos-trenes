@@ -458,10 +458,6 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
 	return entradaDeReporte;
 }
 
-bool Util::esRegistroConRango(string registro) {
-	return false;
-}
-
 string Util::calcularEntradaReporte(string contenidoConsulta, int cantParametros) {
 
 	//subParametros encontrados en 'contenidoConsulta_parseada'
@@ -470,7 +466,6 @@ string Util::calcularEntradaReporte(string contenidoConsulta, int cantParametros
 	//("--formacion", "--falla=idFalla")
 	if (cantParametros == 2){
 		entrada_reporte = Util::crearEntradaDeReporte(contenidoConsulta,cantParametros);
-
 	//("--falla")
 	}else if (cantParametros == 1){
 		entrada_reporte = Util::crearEntradaDeReporte(contenidoConsulta,cantParametros);
@@ -478,7 +473,6 @@ string Util::calcularEntradaReporte(string contenidoConsulta, int cantParametros
 	//("--formacion", "--falla=idFalla", "--fechaDesde=fechaDesde", " --fechaHasta=fechaHasta")
 	}else if (cantParametros == 4){
 		entrada_reporte = Util::crearEntradaDeReporte(contenidoConsulta,cantParametros);
-
 	}
 
 	return entrada_reporte;
@@ -489,3 +483,25 @@ bool Util::consulta_esConParametro(string contenidoConsulta) {
 	primero = primero.substr(2,primero.size()-1);
 	return (Util::esSubElemento(primero));
 }
+
+bool Util::tienenParametroConRango(string contenidoConsulta) {
+	bool tiene = false;
+	if ( Util::consulta_esConParametro(contenidoConsulta) ){
+//		cout<<Util::split(' ',contenidoConsulta).size()<<endl;
+		tiene = (Util::split(' ',contenidoConsulta).size()) > 2;
+	}else{
+//		cout<<"consulta: "<<contenidoConsulta<<endl;
+		vector<string> array = Util::split(',',contenidoConsulta);
+		vector<string>::iterator it = array.begin();
+//		string ultimo = *(Util::parsear(contenidoConsulta).end());
+		string ultimo = *(it++);
+		ultimo = *(it++);
+		ultimo = *(it++);
+		ultimo = *(it++);
+		ultimo = *(it);
+		ultimo = ultimo.substr(0,ultimo.size()-2);
+		tiene = (Util::split('-',ultimo).size()) > 1;
+	}
+	return ( tiene );
+}
+
