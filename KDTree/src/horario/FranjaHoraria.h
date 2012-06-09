@@ -53,6 +53,10 @@ public:
 	DataSize getDataSize();
 
 	friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh);
+
+	//metodos para relacionarse con Horario
+	//todo: ...
+
 	virtual ~FranjaHoraria();
 };
 

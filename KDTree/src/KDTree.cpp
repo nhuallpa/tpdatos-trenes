@@ -110,29 +110,24 @@ int main(int argc, char** argv){
 			  	  	  	  }
 
 	          case 'q' :  {/* -q 	� --consultar */
-	        	  	  	  	  //todo: hacer soportar estos dos tipos de argumentos para la consulta:
-	        	  	  	  	  //1) (0,*,10,0,0) y (0,*,10,0,2012030113001300-2012090121002100)
-	        	  	  	  	  //2) "--formacion --falla=$idFalla" ... y demas(ver test_consultas.sh)
 	        	  	  	  	  contenidoConsulta = string(optarg);
-	        	  	  	  	  //para diferenciar entre estos dos formatos:
-	        	  	  	  	  //(0,*,10,0,0) y "--formacion --falla=$idFalla"
-	        	  	  	  	  bool esConParametro = Util::consulta_esConParametro(contenidoConsulta);
-	        	  	  	  	  bool esConRango = false; //todo
+	        	  	  	  	  bool esConParametro = Util::consulta_esConParametro(contenidoConsulta);;
+	        	  	  	  	  bool tienenParametroConRango = Util::tienenParametroConRango(contenidoConsulta);
 	        	  	  	  	  if (esConParametro){
-	        	  	  	  		  if (esConRango){
-	        	  	  	  			  //todo contenidoConsulta =
+	        	  	  	  		  if (tienenParametroConRango){
+	        	  	  	  			  //todo utilizar ReporteRango...
+	        	  	  	  			  //contenidoConsulta =
 	        	  	  	  		  }else{
 										int cantParametros = (int)(Util::split(' ',contenidoConsulta).size());
 										contenidoConsulta = Util::calcularEntradaReporte(contenidoConsulta, cantParametros);
 	        	  	  	  		  }
 	        	  	  	  	  }else{
-	        	  	  	  		  if (esConRango){
-	        	  	  	  			//todo contenidoConsulta =
+	        	  	  	  		  if (tienenParametroConRango){
+	        	  	  	  			  //todo utilizar ReporteRango...
+	        	  	  	  			  //contenidoConsulta =
 	        	  	  	  		  }
 	        	  	  	  	  }
-
 							  resultado_consulta = kdTreeController.consultar(contenidoConsulta);
-
 							  for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
 							  {
 								  cout<<"Resultados Consulta:"<<endl;
