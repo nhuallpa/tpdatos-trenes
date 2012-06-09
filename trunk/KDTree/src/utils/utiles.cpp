@@ -285,18 +285,6 @@ list<string> Util::parsear(string registro) {
 	return idList;
 }
 
-list<string> Util::parsearConsulta(string contenidoConsulta){
-	list<string> contenidoConsulta_parseada;
-	vector<string> vector_parseado;
-	vector_parseado = Util::split(' ',contenidoConsulta);
-
-	for(vector<string>::iterator it=vector_parseado.begin() ; it != vector_parseado.end() ; ++it){
-		contenidoConsulta_parseada.push_back(*it);
-	}
-
-	return contenidoConsulta_parseada;
-}
-
 vector<string> Util::split(char separador, const string& cadena)
 {
 	vector<string> out;
@@ -344,13 +332,23 @@ int Util::getPosicionSubElemento(string nombreSubElemento)
 }
 
 
+bool Util::esSubElemento(string nombreSubElemento) {
+	bool esSubElemento_ = false;
+	for(int i=0 ; i < CANT_SUBELEMENTOS && !esSubElemento_ ; i++){
+		if (nombreSubElemento == Util::getNombreSubElemento(i) )
+			esSubElemento_ = true;
+	}
+
+	return esSubElemento_;
+}
+
 string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
 	string entradaDeReporte = "";
 	bool errores_formatoDeConsulta = false;
 
-	string elem_vacio = "0";
-	string elem_todo = "*";
-	string separador = ",";
+	string elem_vacio = ELEM_VACIO;
+	string elem_todo = ELEM_TODO;
+	string separador = ELEM_SEPARADOR;
 
 	if (cantSubParametros == 2){
 		vector<string> parametro_parseado = Util::split(' ',parametro);
@@ -458,4 +456,36 @@ string Util::crearEntradaDeReporte(string parametro, int cantSubParametros){
 		cout<<"ocurrio un error en formato de consulta[utile.cpp]"<<endl;
 
 	return entradaDeReporte;
+}
+
+bool Util::esRegistroConRango(string registro) {
+	return false;
+}
+
+string Util::calcularEntradaReporte(string contenidoConsulta, int cantParametros) {
+
+	//subParametros encontrados en 'contenidoConsulta_parseada'
+	string entrada_reporte = "";
+
+	//("--formacion", "--falla=idFalla")
+	if (cantParametros == 2){
+		entrada_reporte = Util::crearEntradaDeReporte(contenidoConsulta,cantParametros);
+
+	//("--falla")
+	}else if (cantParametros == 1){
+		entrada_reporte = Util::crearEntradaDeReporte(contenidoConsulta,cantParametros);
+
+	//("--formacion", "--falla=idFalla", "--fechaDesde=fechaDesde", " --fechaHasta=fechaHasta")
+	}else if (cantParametros == 4){
+		entrada_reporte = Util::crearEntradaDeReporte(contenidoConsulta,cantParametros);
+
+	}
+
+	return entrada_reporte;
+}
+
+bool Util::consulta_esConParametro(string contenidoConsulta) {
+	string primero = *(Util::split(' ',contenidoConsulta).begin());
+	primero = primero.substr(2,primero.size()-1);
+	return (Util::esSubElemento(primero));
 }

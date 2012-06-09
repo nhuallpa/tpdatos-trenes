@@ -62,12 +62,17 @@ public:
 	static string strdate();
 
 	static list<string> parsear(string registro);
-	static list<string> parsearConsulta(string contenidoConsulta);
 	static vector<string> split(char separador, const string& cadena);
 	static string getNombreSubElemento(int idSubElemento);
 	static int getPosicionSubElemento(string nombreSubElemento);
+	static bool esSubElemento(string nombreSubElemento);
 	//en principio son 1 , 2 y 3
 	static string crearEntradaDeReporte(string parametro, int cantSubParametros);
+	//TODO: implementar
+	static bool esRegistroConRango(string registro);
+	static string calcularEntradaReporte(string contenidoConsulta_parseada, int cantParametros);
+	//un parametro es por ejemplo esto; "--formacion"
+	static bool consulta_esConParametro(string contenidoConsulta);
 };
 
 #endif /* UTILES_H_ */

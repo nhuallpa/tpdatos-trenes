@@ -23,7 +23,9 @@ private:
 public:
 	Reporte();
 	Reporte(IEntidad* copy);
-	Reporte(string tupla);
+	void inicializar(string entrada_reporte);
+	int compareTo(IEntidad* entidad);
+
 	virtual ~Reporte();
 
 	int getIdLinea();
@@ -41,8 +43,6 @@ public:
 	FranjaHoraria* getFranjaHoraria();
 	void setFranjaHoraria(FranjaHoraria* franjaHoraria);
 
-	//TODO estudiar criterios de compararcion!!! (¡¡¡muy importante!!!)
-	int compareTo(IEntidad* entidad);
   /**
    * compara con la entidad segun la dimension pasada por parametro. 
    * Las dimensiones posibles son:
@@ -54,13 +54,13 @@ public:
    *
    * @return
    * 	MAYOR, MENOR, IGUAL indicando segun su nombre valga la redundancia
-   */ 
+   */
 	int compareTo(Reporte* entidad, int dimension);
 
-	std::string toString () const;
+	string toString () const;
 	
-	std::string serialize();
-	void unserialize(std::string& buffer);
+	string serialize();
+	void unserialize(string& buffer);
 
 	DataSize getDataSize();
 
