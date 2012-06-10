@@ -9,7 +9,7 @@
 #define FRANJAFECHA_H_
 #include "Franja.h"
 #include "date.h"
-#include "../horario/FranjaHoraria.h"
+#include "FranjaHoraria.h"
 
 class FranjaFecha : public Franja{
 private:
@@ -17,6 +17,7 @@ private:
 	Date* fechaHasta;
 public:
 	FranjaFecha();
+	FranjaFecha(string fechaDesde, string fechaHasta);
 	virtual ~FranjaFecha();
 
 	Date* getFechaDesde() const {return fechaDesde;}
@@ -30,13 +31,12 @@ public:
 	bool operator<(FranjaHoraria& unaFranjaHoraria);
 	bool operator>(FranjaHoraria& unaFranjaHoraria);
 	void copiar(FranjaHoraria *unaFranjaHoraria);
-//	string serialize();
-//	void unserialize(std::string& buffer);
-//	//Cantidad de bytes que ocupará cuando sea serializado.Es el TOTAL del elemento
-//	DataSize getDataSize();
+	string serialize();
+	void unserialize(std::string& buffer);
+	//Cantidad de bytes que ocupará cuando sea serializado.Es el TOTAL del elemento
+	DataSize getDataSize();
 
 	friend std::ostream & operator<<(std::ostream & os, const FranjaFecha & fh);
-
 };
 
 #endif /* FRANJAFECHA_H_ */

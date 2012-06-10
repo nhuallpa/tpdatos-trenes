@@ -1,20 +1,5 @@
 #!/bin/bash
-################################################################################
-#                                                                              #
-#       Organizacion de Datos 75.06                                            #
-#       Nombre: test_consultas.sh                                              #
-#       Descripcion: prueba las operaciones de consultas en el arbol KDTree    #
-#                                                                              #
-################################################################################
-#nota: correr este script solo cuando Reporte soporta contruirse con estas entrada:
-# (0,*,10,0,0)
-# (0,*,0,15,0)
-# (0,3,*,0,0)
-# (0,3,0,*,0)
-# (0,0,*,0,0)
-# (0,*,0,0,0)
-# (*,0,0,0,0)
-# (0,0,0,*,0)
+
 ################################################################################
 function continuar_siguienteTest
 {
@@ -36,7 +21,7 @@ function eliminar_arbolKDTree
 ################################################################################
 eliminar_arbolKDTree
 #Variables para probar las consultas:
-mostrarEstructuraReporte="no" #si o no
+mostrarEstructuraReporte="si" #si o no
 idLinea=1
 idFormacion=3
 idFalla=10

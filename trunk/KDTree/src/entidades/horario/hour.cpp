@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
-#include "../persistence/Serializacion.h"
+#include "../../persistence/Serializacion.h"
 
 Hour::Hour(unsigned int h,unsigned  int m): hour(h) , min(m) {
   try

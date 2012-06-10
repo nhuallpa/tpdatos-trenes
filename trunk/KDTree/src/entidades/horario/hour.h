@@ -1,8 +1,8 @@
 	#ifndef HOUR_H
 #define HOUR_H
 #include <iostream>
-#include "../Excepciones/HourExceptions.h"
-#include "../persistence/ISerializable.h"
+#include "../../entidades/horario/exceptions/HourExceptions.h"
+#include "../../persistence/ISerializable.h"
 
 class Hour : public ISerializable {
   unsigned int hour;

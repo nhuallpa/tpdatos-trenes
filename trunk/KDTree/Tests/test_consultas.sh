@@ -19,7 +19,6 @@
 # (0,*,0,15,20120301-20120901)
 # (0,3,*,0,20120301-20120901)
 # (0,3,0,*,20120301-20120901)
-#... y tambien cuando en KDTree.cpp este el siguiente seteo: consulta_porArchivo = false
 
 ################################################################################
 function continuar_siguienteTest
@@ -47,9 +46,8 @@ idLinea=1
 idFormacion=3
 idFalla=10
 idAccidente=15
-franjaHoraria="2012030112001300" #(12:00-13:00-01/03/2012)
-fechaDesde="2012030113001300" #(13:00-13:00-01/03/2012)
-fechaHasta="2012090121002100" #(21:00-21:00-01/09/2012)
+fechaDesde="20120301" #(01/03/2012)
+fechaHasta="20120901" #(01/09/2012)
 ################################################################################
 #Inicio de ejecucion de Consultas en KDTree:
 #Test_01

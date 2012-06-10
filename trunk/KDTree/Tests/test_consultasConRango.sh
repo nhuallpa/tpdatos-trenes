@@ -1,11 +1,6 @@
 #!/bin/bash
 
 ################################################################################
-# (0,*,10,0,2012030113001300-2012090121002100)
-# (0,*,0,15,2012030113001300-2012090121002100)
-# (0,3,*,0,2012030113001300-2012090121002100)
-# (0,3,0,*,2012030113001300-2012090121002100)
-################################################################################
 function continuar_siguienteTest
 {
 	echo Presione enter para continuar con el Test
@@ -26,14 +21,13 @@ function eliminar_arbolKDTree
 ################################################################################
 eliminar_arbolKDTree
 #Variables para probar las consultas:
-mostrarEstructuraReporte="no" #si o no
+mostrarEstructuraReporte="si" #si o no
 idLinea=1
 idFormacion=3
 idFalla=10
 idAccidente=15
-franjaHoraria="2012030112001300" #(12:00-13:00-01/03/2012)
-fechaDesde="2012030113001300" #(13:00-13:00-01/03/2012)
-fechaHasta="2012090121002100" #(21:00-21:00-01/09/2012)
+fechaDesde="20120301" #(01/03/2012)
+fechaHasta="20120901" #(01/09/2012)
 ################################################################################
 #Inicio de ejecucion de Consultas en KDTree:
 #Test_09

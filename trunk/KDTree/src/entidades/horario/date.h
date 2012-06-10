@@ -2,8 +2,8 @@
 #define DATE_H
 #include <iostream>
 #include <fstream>
-#include "../Excepciones/DateExceptions.h"
-#include "../persistence/ISerializable.h"
+#include "../../entidades/horario/exceptions/DateExceptions.h"
+#include "../../persistence/ISerializable.h"
 
 class Date : public ISerializable {
   unsigned int day;
@@ -12,6 +12,7 @@ class Date : public ISerializable {
   public:
     Date( const Date & );
     Date( unsigned int = 1 , unsigned int = 1 , unsigned int = 1970 );
+    Date(string date);
     void setDay( unsigned int );
     void setMonth( unsigned int );
     void setYear( unsigned int );

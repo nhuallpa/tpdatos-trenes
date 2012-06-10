@@ -1,6 +1,7 @@
 #include "date.h"
 #include <iomanip>
 #include <sstream>
+#include "../../utils/StringUtils.h"
 
 using std::cerr;
 using std::endl;
@@ -263,6 +264,12 @@ void Date::unserialize(std::string& buffer)
 	this->day = serial.getEntero();
 }
 
+
+Date::Date(string cadena) {
+	this->setYear(StringUtils::convertStringToUint(cadena.substr(0, 4)));
+	this->setMonth(StringUtils::convertStringToUint(cadena.substr(4, 2)));
+	this->setDay(StringUtils::convertStringToUint(cadena.substr(6, 2)));
+}
 
 DataSize Date::getDataSize()
 {

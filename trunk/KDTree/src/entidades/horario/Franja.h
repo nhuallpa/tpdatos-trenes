@@ -8,7 +8,7 @@
 #ifndef FRANJA_H_
 #define FRANJA_H_
 
-#include "../persistence/ISerializable.h"
+#include "../../persistence/ISerializable.h"
 
 class Franja : public ISerializable{
 public:
