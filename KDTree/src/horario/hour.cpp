@@ -2,7 +2,6 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
-#include "HourExceptions.h"
 #include "../persistence/Serializacion.h"
 
 Hour::Hour(unsigned int h,unsigned  int m): hour(h) , min(m) {

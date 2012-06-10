@@ -7,7 +7,6 @@
 
 #include "KDTreeController.h"
 #include "../entidades/EntityFactory.h"
-#include "../entidades/ReporteRango.h"
 
 using std::cout;
 using std::endl;
@@ -96,7 +95,7 @@ std::vector<BNode*> KDTreeController::consultar(string registro)
 	bool esConRango = Util::tienenParametroConRango(registro);
 	if (esConRango){
 		cout<<"en construccion(ReporteRango)..."<<endl;
-		unReporte = (ReporteRango*)EntityFactory::createEntity();
+		unReporte = (Reporte*)EntityFactory::createEntity();
 //		unReporte.inicializar(registro);
 	}else{
 //		cout<<"paso ariel 2 "<<endl;

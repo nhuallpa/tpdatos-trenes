@@ -8,11 +8,11 @@
 #ifndef FRANJAHORARIA_H_
 #define FRANJAHORARIA_H_
 
-#include "../persistence/ISerializable.h"
 #include "hour.h"
 #include "date.h"
 #include "../utils/types.h"
 #include "../utils/StringUtils.h"
+#include "Franja.h"
 
 #include <iomanip>
 #include <sstream>
@@ -31,7 +31,7 @@ using namespace std;
  *
  */
 
-class FranjaHoraria : public ISerializable {
+class FranjaHoraria : public Franja {
 private:
 	Hour* horaInicio;
 	Hour* horaFin;
@@ -53,9 +53,6 @@ public:
 	DataSize getDataSize();
 
 	friend std::ostream & operator<<(std::ostream & os, const FranjaHoraria & fh);
-
-	//metodos para relacionarse con Horario
-	//todo: ...
 
 	virtual ~FranjaHoraria();
 };
