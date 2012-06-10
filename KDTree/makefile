@@ -41,15 +41,15 @@ endif
 fuentes  = $(wildcard ./src/bplustree/*.cpp) \
 		$(wildcard ./src/bplustree/exceptions/*.cpp) \
 		$(wildcard ./src/bplustree/strategies/*.cpp) \
-		$(wildcard ./src/index/*.cpp) \
 		$(wildcard ./src/controller/*.cpp) \
-		$(wildcard ./src/persistence/*.cpp) \
+		$(wildcard ./src/entidades/horario/exceptions/*.cpp) \
+		$(wildcard ./src/entidades/horario/*.cpp) \
 		$(wildcard ./src/entidades/*.cpp) \
-		$(wildcard ./src/horario/*.cpp) \
-		$(wildcard ./src/iu/*.cpp) \
 		$(wildcard ./src/logger/exceptions/*.cpp) \
 		$(wildcard ./src/logger/*.cpp) \
+		$(wildcard ./src/persistence/*.cpp) \
 		$(wildcard ./src/utils/*.cpp) \
+		$(wildcard ./Tests/testUnit/*.cpp) \
 		$(wildcard ./src/*.cpp)
 
 # REGLAS

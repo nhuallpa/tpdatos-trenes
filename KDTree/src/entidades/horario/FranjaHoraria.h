@@ -10,8 +10,8 @@
 
 #include "hour.h"
 #include "date.h"
-#include "../utils/types.h"
-#include "../utils/StringUtils.h"
+#include "../../utils/types.h"
+#include "../../utils/StringUtils.h"
 #include "Franja.h"
 
 #include <iomanip>

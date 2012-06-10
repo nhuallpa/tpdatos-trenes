@@ -11,7 +11,6 @@
 #include "StringUtils.h"
 #include "../utils/StringUtils.h"
 #include <fstream>
-#include "../horario/FranjaHoraria.h"
 
 Util::Util() {
 

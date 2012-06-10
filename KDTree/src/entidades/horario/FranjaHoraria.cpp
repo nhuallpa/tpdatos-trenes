@@ -6,9 +6,8 @@
  */
 
 #include "FranjaHoraria.h"
-#include "../persistence/Serializacion.h"
-#include "../utils/const.h"
-
+#include "../../utils/const.h"
+#include "../../persistence/Serializacion.h"
 
 FranjaHoraria::FranjaHoraria() {
 	this->horaInicio = new Hour() ;

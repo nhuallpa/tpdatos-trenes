@@ -8,8 +8,8 @@
 #ifndef REPORTE_H_
 #define REPORTE_H_
 
-#include "IEntidad.h"
-#include "../horario/FranjaHoraria.h"
+#include "../entidades/IEntidad.h"
+#include "horario/FranjaHoraria.h"
 #include "../utils/StringUtils.h"
 #include "../utils/utiles.h"
 
