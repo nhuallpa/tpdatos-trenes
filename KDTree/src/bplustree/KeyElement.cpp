@@ -17,6 +17,7 @@ KeyElement::KeyElement(IEntidad* key,Offset rightNode) {
 }
 
 KeyElement::~KeyElement() {
+	delete key;
 
 }
 
@@ -29,7 +30,8 @@ Offset KeyElement::getrightNode(){
 }
 
 void KeyElement::setKey(IEntidad* key) {
-	this->key = key;
+	string buffer = key->serialize();
+	this->key->unserialize(buffer);
 }
 
 IEntidad* KeyElement::getKey(){

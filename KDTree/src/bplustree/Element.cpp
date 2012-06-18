@@ -37,8 +37,9 @@ Element::Element(IEntidad* copy) {
 }
 
 Element::~Element() {
-	if (data != NULL)
+	if (data != NULL){
 		delete data;
+	}
 }
 
 void Element::setData(IEntidad* data) {

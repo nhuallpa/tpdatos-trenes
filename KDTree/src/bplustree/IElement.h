@@ -21,7 +21,7 @@ public:
 	virtual void toString()=0;
 
 	IElement(){}
-	//~IElement(){}
+	virtual ~IElement(){}
 };
 
 #endif /* IELEMENT_H_ */

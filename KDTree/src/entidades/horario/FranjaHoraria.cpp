@@ -16,6 +16,9 @@ FranjaHoraria::FranjaHoraria() {
 }
 
 FranjaHoraria::~FranjaHoraria() {
+	delete horaFin;
+	delete horaInicio;
+	delete fecha;
 
 }
 // yyyymmddhhmmhhmm

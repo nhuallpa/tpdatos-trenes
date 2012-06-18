@@ -30,9 +30,9 @@ BNode* UnderflorRootStrategy::doBalance(BNode* root){
 				Offset oldOffset=newroot->getOffset();
 				newroot->setOffset(root->getOffset());
 				p->removeBlock(oldOffset);
-				p->modify(newroot);
+
 				delete root;
-				return newroot;
+				root = newroot;
 			}
 		}
 	}

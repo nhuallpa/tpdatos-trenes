@@ -86,6 +86,7 @@ int ConfigurationMananger::getMaxRecordSizeTree() {
 	return this->maxRecordSizeTree;
 }
 ConfigurationMananger::~ConfigurationMananger() {
+	delete configFile;
 }
 
 ChargeFactor ConfigurationMananger::getChargeFactor() {

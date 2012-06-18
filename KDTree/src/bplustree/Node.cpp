@@ -21,13 +21,13 @@ Node::Node() {
 	this->leftNode = -1;
 }
 
-//TODO: probar que funcione el vaciado de la lista
 Node::~Node() {
 
 	vector<KeyElement*>::iterator it = keyElements.begin();
-	while (keyElements.begin() != keyElements.end()) {
-		delete (*it);
-		keyElements.erase(it);
+	while (it != keyElements.end()) {
+		KeyElement* elem = *it;
+		delete (elem);
+		it++;
 	}
 
 }
@@ -148,8 +148,10 @@ BNode* Node::findChild(IElement* elementToFind) {
 		keyFromKeyElements = (*it);
 		if (elementToFind->getData()->compareTo(keyFromKeyElements->getKey()) == MENOR) {
 			it--;
-			keyFromKeyElements = (*it);
+			delete childNodeToSearch;
+			childNodeToSearch = NodeFactory::createNodeForSearch(this->getLevel());
 			p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
+			keyFromKeyElements = (*it);
 			found = true;
 
 		}
@@ -159,6 +161,8 @@ BNode* Node::findChild(IElement* elementToFind) {
 		it = this->keyElements.end();
 		it--;
 		keyFromKeyElements = (*it);
+		delete childNodeToSearch;
+		childNodeToSearch = NodeFactory::createNodeForSearch(this->getLevel());
 		//como no lo encuentra implica que el elemento a insertar es mayor a todos entonces bajo por el de la derecha
 		p->load(keyFromKeyElements->getrightNode(), childNodeToSearch);
 	}
@@ -227,18 +231,30 @@ bool Node::insert(IElement* elemToInsert) {
 
 	BNode* childNodeToSearch = this->findChild(elemToInsert);
 
-	bool hasChanged = doInsertOrModifyInChild(childNodeToSearch, elemToInsert,
-			INSERT);
-	delete childNodeToSearch;
+	bool hasChanged = false;
+	try{
+		hasChanged = doInsertOrModifyInChild(childNodeToSearch, elemToInsert,
+				INSERT);
+		delete childNodeToSearch;
+	} catch (ElementAlreadyExists e){
+		delete childNodeToSearch;
+		throw e;
+	}
 	return hasChanged;
 }
 
 bool Node::modify(IElement* elemToModify) {
 	BNode* childNodeToSearch = this->findChild(elemToModify);
 
-	bool hasChanged = doInsertOrModifyInChild(childNodeToSearch, elemToModify,
-			MODIFY);
-	delete childNodeToSearch;
+	bool hasChanged = false;
+	try{
+		hasChanged = doInsertOrModifyInChild(childNodeToSearch, elemToModify,
+				INSERT);
+		delete childNodeToSearch;
+	} catch (ElementAlreadyExists e){
+		delete childNodeToSearch;
+		throw e;
+	}
 	return hasChanged;
 }
 bool Node::remove(IEntidad* key) {
@@ -249,6 +265,7 @@ bool Node::remove(IEntidad* key) {
 		BalanceStrategy* strategy =
 				BalanceStrategyFactory::createBalanceStrategy(DELETE);
 		hasChanged = strategy->doBalance(this, childNodeToSearch);
+		delete (strategy);
 	}
 
 	delete childNodeToSearch;
@@ -374,8 +391,11 @@ LeafNode* Node::find(IEntidad* key) {
 
 	BNode* returnNode = findChild(el);
 
-	if (returnNode->getLevel() > 0)
-		returnNode = returnNode->find(key);
+	if (returnNode->getLevel() > 0){
+		Node* auxNode = (Node*)returnNode;
+		returnNode = auxNode->find(key);
+		delete auxNode;
+	}
 	delete el;
 	return (LeafNode*) returnNode;
 }
@@ -738,8 +758,7 @@ void Node::exportNode() {
 
 	for (it = this->keyElements.begin(); it != this->keyElements.end(); it++) {
 		Offset rightNode = ((KeyElement*) (*it))->getrightNode();
-		PersistorBTree* p = PersistorBTree::getInstance();
-		BNode* bNode = NodeFactory::createNodeForSearch(this->getLevel());
+		bNode = NodeFactory::createNodeForSearch(this->getLevel());
 		p->load(rightNode, bNode);
 		bNode->exportNode();
 		delete bNode;

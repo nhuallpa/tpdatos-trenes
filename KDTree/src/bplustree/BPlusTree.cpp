@@ -157,7 +157,6 @@ void BPlusTree::exportTree(int blockNumber) {
 	delete node;
 }
 void BPlusTree::exportTree() {
-	this->root = PersistorBTree::getInstance()->getRoot();
 	this->root->exportNode();
 	cout << endl;
 }
