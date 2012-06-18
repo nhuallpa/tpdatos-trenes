@@ -7,6 +7,7 @@
 //============================================================================
 
 #include "bplustree/BPlusTree.h"
+#include "logger/Logger.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -183,8 +184,8 @@ int main(int argc, char** argv){
 	      	  	  	  	  }
 
 	          case 't' :  {/* -t 	� --test */
-							  TestFranjaHoraria* testFranjaHoraria = new TestFranjaHoraria();
-							  testFranjaHoraria->iniciar();
+//							  TestFranjaHoraria* testFranjaHoraria = new TestFranjaHoraria();
+//							  testFranjaHoraria->iniciar();
 	        	  	  	  	  TestFranja* testFranja = new TestFranja();
 	        	  	  	  	  testFranja->iniciar();
 							  break;
@@ -212,5 +213,6 @@ int main(int argc, char** argv){
 	          }
 	  }
 
+	 delete Logger::getInstance();
 	return 0;
 }

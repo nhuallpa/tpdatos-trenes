@@ -21,7 +21,10 @@ string StringUtils::converFloatToString(float numero) {
 	char* str = new char[30];
 
 	sprintf(str, "%.4g", numero);
-	return string(str);
+
+	string result (str);
+	delete[] str;
+	return result;
 }
 
 string StringUtils::convertIntToString(int numero) {

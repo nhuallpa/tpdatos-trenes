@@ -64,8 +64,7 @@ int Reporte::getIdAccidente()
 
 void Reporte::setFranjaHoraria(FranjaHoraria *franjaHoraria)
 {
-//	this->franjaHoraria->copiar(franjaHoraria);
-	this->franjaHoraria = franjaHoraria;
+	this->franjaHoraria->copiar(franjaHoraria);
 }
 
 FranjaHoraria* Reporte::getFranjaHoraria()
@@ -131,8 +130,10 @@ void Reporte::inicializar(string entrada_reporte) {
 	this->setIdAccidente((idAccidente_string.compare(ELEM_TODO) == 0) 	? ELEM_TODO_NUM : StringUtils::convertStringToInt(idAccidente_string));
 
 	FranjaHoraria* fh = new FranjaHoraria(*it);
-	this->setFranjaHoraria(fh);
-//	delete fh;
+	std::string franjaHoraria = fh->serialize();
+	this->franjaHoraria->unserialize(franjaHoraria);
+
+	delete fh;
 }
 
 int Reporte::compareTo(IEntidad* entidad) {

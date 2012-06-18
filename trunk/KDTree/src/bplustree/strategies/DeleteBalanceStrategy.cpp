@@ -15,7 +15,10 @@ bool DeleteBalanceStrategy::doBalance(Node* parent, BNode* child){
 	//verificamos si hay underflow.
 
 	ComposedBalanceStrategy* strategy=BalanceStrategyFactory::createComposedBalanceStrategy(UNDERFLOW);
-	return strategy->doBalance(parent,child,this);
+	bool haschange = strategy->doBalance(parent,child,this);
+	delete strategy;
+
+	return haschange;
 }
 
 

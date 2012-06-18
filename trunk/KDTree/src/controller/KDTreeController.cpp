@@ -7,6 +7,7 @@
 
 #include "KDTreeController.h"
 #include "../entidades/EntityFactory.h"
+#include "../bplustree/exceptions/ElementAlreadyExists.h"
 
 using std::cout;
 using std::endl;
@@ -76,7 +77,13 @@ void KDTreeController::insertar(string registro) {
 	Reporte* reporteSimple = (Reporte*)EntityFactory::createEntity();
 	reporteSimple->inicializar(registro);
 	IElement* elem = new Element(reporteSimple);
-	this->BTree->insert(elem);
+	try{
+		this->BTree->insert(elem);
+	} catch (ElementAlreadyExists e) {
+		cout << "el elemento " << reporteSimple->toString() << " ya existe en el archivo." << endl;
+		delete elem;
+	}
+	delete reporteSimple;
 }
 void KDTreeController::remover(string registro) {
 	Reporte* reporteSimple = (Reporte*)EntityFactory::createEntity();

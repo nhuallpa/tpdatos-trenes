@@ -25,7 +25,7 @@ bool ModifyBalanceStrategy::doBalance(Node* parent,BNode* child){
 		strategy=BalanceStrategyFactory::createComposedBalanceStrategy(UNDERFLOW);
 		hasChanged=strategy->doBalance(parent,child,this);
 	}
-
+	delete strategy;
 	return hasChanged;
 
 }

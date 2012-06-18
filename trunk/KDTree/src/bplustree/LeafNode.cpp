@@ -42,8 +42,9 @@ LeafNode::~LeafNode() {
 
 	it = this->elements.begin();
 	while (it != this->elements.end()) {
-		delete (*it);
-		this->elements.erase(it);
+		IElement* elem = *it;
+		delete (elem);
+		it++;
 	}
 }
 
@@ -303,6 +304,7 @@ KeyElement* LeafNode::doSplit() {
 	keyElementFromMiddle->setKey(elemen->getData());
 	this->nextNode = newLeafNode->getOffset();
 
+	delete newLeafNode;
 	return keyElementFromMiddle;
 }
 
@@ -446,8 +448,6 @@ void LeafNode::exportNode() {
 		//casteo para usar el operador que corresonde
 		//esto quedo deprecado.El arobl solo sabe mostrar element.
 		cout << ientidad->toString() << endl;
-		delete ientidad;
-
 	}
 	cout << " siguiente: " << this->nextNode;
 	cout << endl;
@@ -458,7 +458,7 @@ ostream& LeafNode::printMe(ostream& myOstream) {
 	myOstream << "Nodo: " << getOffset() << " ";
 	for (it = getElementsBegin(); it != getElementsEnds(); it++) {
 		Element* elem = (Element*) (*it);
-		IEntidad* ientidad = EntityFactory::createEntity(elem->getData());
+		IEntidad* ientidad = elem->getData();
 		//casteo para usar el operador que corresonde
 
 		myOstream << *elem << " ";

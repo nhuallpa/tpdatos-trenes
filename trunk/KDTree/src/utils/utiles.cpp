@@ -281,6 +281,7 @@ list<string> Util::parsear(string registro) {
 		idList.push_back(valor);
 	}
 
+	delete[] auxStr;
 	return idList;
 }
 
