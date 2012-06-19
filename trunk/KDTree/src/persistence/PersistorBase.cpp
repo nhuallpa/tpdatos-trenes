@@ -149,8 +149,9 @@ std::string PersistorBase::load(Offset key) {
 		throw new PersistExceptions::FileNotFoundexception();
 
 	/* Se Posiciona en en inicio del Block */
-	if (!freeSpaceManager->isBlockUsed(key))
+	if (!freeSpaceManager->isBlockUsed(key)){
 		throw new PersistExceptions::ElementNotFoundException();
+	}
 
 	archivo.seekg((key * blockSize) + HEADER_SIZE);
 

@@ -45,6 +45,7 @@
 #define OPERACION_CARGA_OK 11
 #define OPERACION_OK 12
 
+#define NEXT 0
 #define MAYOR 1
 #define MENOR 2
 #define IGUAL 3

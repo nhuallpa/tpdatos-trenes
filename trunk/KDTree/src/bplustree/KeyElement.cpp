@@ -11,8 +11,10 @@ KeyElement::KeyElement() {
 	this->key = EntityFactory::createEntity();
 }
 
-KeyElement::KeyElement(IEntidad* key,Offset rightNode) {
-	this->key = key;
+KeyElement::KeyElement(IEntidad* keyOther,Offset rightNode) {
+	this->key = EntityFactory::createEntity();
+	string buffer = keyOther->serialize();
+	this->key->unserialize(buffer);
 	this->rightNode = rightNode;
 }
 
@@ -29,8 +31,8 @@ Offset KeyElement::getrightNode(){
 	return rightNode;
 }
 
-void KeyElement::setKey(IEntidad* key) {
-	string buffer = key->serialize();
+void KeyElement::setKey(IEntidad* keyOther) {
+	string buffer = keyOther->serialize();
 	this->key->unserialize(buffer);
 }
 

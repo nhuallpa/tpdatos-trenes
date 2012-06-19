@@ -44,8 +44,6 @@ void FreeSpaceManager::saveBitMap() {
 	freeSpaceFile.escribir(buffer,0);
 	freeSpaceFile.escribir(bitMap,currentFreeSpaceBlock+HEADER_SIZE);
 
-
-
 	freeSpaceFile.flush();
 }
 

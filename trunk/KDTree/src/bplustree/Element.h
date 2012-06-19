@@ -20,6 +20,7 @@ private:
 public:
 
 	Element();
+	virtual ~Element();
 
 	//constructor de copia
 	Element(const Element& el);
@@ -27,9 +28,7 @@ public:
 
 	Element(IEntidad* data);
 
-	virtual ~Element();
 
-	virtual void setData(IEntidad* data);
 	virtual IEntidad* getData();
 	virtual IEntidad* getConstData() const;
 

@@ -16,9 +16,9 @@ public:
 	 * Longitud del dato
 	 */
 	virtual IEntidad* getData()=0;
-	virtual void setData(IEntidad* data)=0;
 
 	virtual void toString()=0;
+
 
 	IElement(){}
 	virtual ~IElement(){}
