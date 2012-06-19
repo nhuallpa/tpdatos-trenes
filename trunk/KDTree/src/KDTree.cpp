@@ -184,8 +184,8 @@ int main(int argc, char** argv){
 	      	  	  	  	  }
 
 	          case 't' :  {/* -t 	� --test */
-//							  TestFranjaHoraria* testFranjaHoraria = new TestFranjaHoraria();
-//							  testFranjaHoraria->iniciar();
+							  TestFranjaHoraria* testFranjaHoraria = new TestFranjaHoraria();
+							  testFranjaHoraria->iniciar();
 	        	  	  	  	  TestFranja* testFranja = new TestFranja();
 	        	  	  	  	  testFranja->iniciar();
 							  break;

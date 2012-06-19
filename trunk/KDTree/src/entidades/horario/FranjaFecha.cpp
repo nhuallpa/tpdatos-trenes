@@ -8,12 +8,9 @@
 #include "FranjaFecha.h"
 
 FranjaFecha::FranjaFecha() {
-	// TODO Auto-generated constructor stub
-
 }
 
 FranjaFecha::~FranjaFecha() {
-	// TODO Auto-generated destructor stub
 }
 
 FranjaFecha::FranjaFecha(string fechaDesde, string fechaHasta) {
@@ -22,11 +19,12 @@ FranjaFecha::FranjaFecha(string fechaDesde, string fechaHasta) {
 }
 
 bool FranjaFecha::contiene_aFranjaHoraria(FranjaHoraria* unaFranjaHoraria) {
-	return false;
+	return (*this->fechaDesde <= *unaFranjaHoraria->getFecha() &&
+			*this->fechaHasta >= *unaFranjaHoraria->getFecha());
 }
 
 string FranjaFecha::serialize() {
-	return "";
+	return "NO IMPLEMENTAR";
 }
 
 void FranjaFecha::unserialize(std::string& buffer) {
@@ -35,6 +33,3 @@ void FranjaFecha::unserialize(std::string& buffer) {
 DataSize FranjaFecha::getDataSize() {
 	return (sizeof(int)*2 + this->fechaDesde->getDataSize()+this->fechaHasta->getDataSize());
 }
-
-
-
