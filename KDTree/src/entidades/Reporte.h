@@ -12,13 +12,11 @@
 #include "horario/FranjaHoraria.h"
 #include "../utils/StringUtils.h"
 #include "../utils/utiles.h"
+#include "Dimension.h"
 
 class Reporte: public IEntidad {
 private:
-	int idLinea;
-	int idFormacion;
-	int idFalla;
-	int idAccidente;
+	std::vector<Dimension*> dimensions;
 	FranjaHoraria* franjaHoraria;
 public:
 	Reporte();
@@ -28,16 +26,18 @@ public:
 
 	virtual ~Reporte();
 
-	int getIdLinea();
+	Dimension* getDimension(int dimension);
+
+	Dimension* getIdLinea();
 	void setIdLinea(int idLinea);
 
-	int getIdFormacion();
+	Dimension* getIdFormacion();
 	void setIdFormacion(int idFormacion);
 
-	int getIdFalla();
+	Dimension* getIdFalla();
 	void setIdFalla(int idFalla);
 
-	int getIdAccidente();
+	Dimension* getIdAccidente();
 	void setIdAccidente(int idAccidente);
 
 	FranjaHoraria* getFranjaHoraria();

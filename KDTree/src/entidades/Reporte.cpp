@@ -7,60 +7,73 @@
 
 #include "Reporte.h"
 
+#define LINEA 0
+#define FORMACION 1
+#define FALLA 2
+#define ACCIDENTE 3
+
 Reporte::Reporte() {
-	this->idLinea = 0;
-	this->idFormacion = 0;
-	this->idFalla = 0;
-	this->idAccidente = 0;
+	dimensions.push_back(new Dimension(1,0));
+	dimensions.push_back(new Dimension(2,0));
+	dimensions.push_back(new Dimension(3,0));
+	dimensions.push_back(new Dimension(4,0));
 	this->franjaHoraria = new FranjaHoraria();
 }
 
 Reporte::Reporte(IEntidad* copy) {
+	dimensions.push_back(new Dimension(1,0));
+	dimensions.push_back(new Dimension(2,0));
+	dimensions.push_back(new Dimension(3,0));
+	dimensions.push_back(new Dimension(4,0));
 	this->franjaHoraria = new FranjaHoraria();
+
 	std::string buffer = copy->serialize();
 	this->unserialize(buffer);
 }
 
 Reporte::~Reporte() {
+	delete(dimensions[LINEA]);
+	delete(dimensions[FORMACION]);
+	delete(dimensions[FALLA]);
+	delete(dimensions[ACCIDENTE]);
 	delete franjaHoraria;
 }
 
 void Reporte::setIdFalla(int idFalla)
 {
-	this->idFalla = idFalla;
+	this->dimensions[FALLA]->setValue(idFalla);
 }
-int Reporte::getIdFalla()
+Dimension* Reporte::getIdFalla()
 {
-	return this->idFalla;
+	return this->dimensions[FALLA];
 }
 
 void Reporte::setIdLinea(int idLinea)
 {
-	this->idLinea = idLinea;
+	this->dimensions[LINEA]->setValue(idLinea);
 }
-int Reporte::getIdLinea()
+Dimension* Reporte::getIdLinea()
 {
-	return this->idLinea;
+	return this->dimensions[LINEA];
 }
 
 void Reporte::setIdFormacion(int idFormacion)
 {
-	this->idFormacion = idFormacion;
+	this->dimensions[FORMACION]->setValue(idFormacion);
 }
-int Reporte::getIdFormacion()
+Dimension* Reporte::getIdFormacion()
 {
-	return this->idFormacion;
+	return this->dimensions[FORMACION];
 }
 
 void Reporte::setIdAccidente(int idAccidente)
 {
-	this->idAccidente = idAccidente;
+	this->dimensions[ACCIDENTE]->setValue(idAccidente);
 }
-int Reporte::getIdAccidente()
+Dimension* Reporte::getIdAccidente()
 {
-	return this->idAccidente;
+	return this->dimensions[ACCIDENTE];
 }
-
 
 void Reporte::setFranjaHoraria(FranjaHoraria *franjaHoraria)
 {
@@ -74,44 +87,50 @@ FranjaHoraria* Reporte::getFranjaHoraria()
 
 std::string Reporte::serialize()
 {
-
 	Serializacion serial;
 
-	serial.addEntero(this->idLinea);
-	serial.addEntero(this->idFormacion);
-	serial.addEntero(this->idFalla);
-	serial.addEntero(this->idAccidente);
+	serial.addString(this->dimensions[LINEA]->serialize());
+	serial.addString(this->dimensions[FORMACION]->serialize());
+	serial.addString(this->dimensions[FALLA]->serialize());
+	serial.addString(this->dimensions[ACCIDENTE]->serialize());
 	serial.addString(this->franjaHoraria->serialize());
 
 	return serial.toString();
 }
+
 void Reporte::unserialize(std::string& buffer)
 {
 	Serializacion serial(buffer);
 
-	this->idLinea = serial.getEntero();
-	this->idFormacion = serial.getEntero();
-	this->idFalla = serial.getEntero();
-	this->idAccidente = serial.getEntero();
+	std::string strBuffer = serial.getString();
+	this->dimensions[LINEA]->unserialize(strBuffer);
 
-	std::string franjaHoraria = serial.getString();
-	this->franjaHoraria->unserialize(franjaHoraria);
+	strBuffer = serial.getString();
+	this->dimensions[FORMACION]->unserialize(strBuffer);
 
+	strBuffer = serial.getString();
+	this->dimensions[FALLA]->unserialize(strBuffer);
+
+	strBuffer = serial.getString();
+	this->dimensions[ACCIDENTE]->unserialize(strBuffer);
+
+	strBuffer = serial.getString();
+	this->franjaHoraria->unserialize(strBuffer);
 }
 
 DataSize Reporte::getDataSize()
 {
-	return (sizeof(int)*4 + sizeof(int) +this->franjaHoraria->getDataSize());
+	return (sizeof(int)*5 + dimensions[LINEA]->getDataSize()*4 + this->franjaHoraria->getDataSize());
 }
 
 std::string Reporte::toString() const{
 
 	std::stringstream flujo;
-	flujo <<"("<< this->idLinea << ", "
-		  << this->idFormacion <<", "
-		  << this->idFalla <<", "
-		  << this->idAccidente <<", "
-		  << *this->franjaHoraria <<");";
+	flujo <<"["<< this-> dimensions[LINEA]->toString() << ", "
+		  << this-> dimensions[FORMACION]->toString() <<", "
+		  << this->dimensions[FALLA]->toString() <<", "
+		  << this->dimensions[ACCIDENTE]->toString() <<", "
+		  << *this->franjaHoraria <<"];";
 	return flujo.str();
 }
 
@@ -124,7 +143,7 @@ void Reporte::inicializar(string entrada_reporte) {
 	this->setIdLinea((idLinea_string.compare(ELEM_TODO) == 0) 		? ELEM_TODO_NUM : StringUtils::convertStringToInt(idLinea_string));
 	idFormacion_string = *(it++);
 	this->setIdFormacion((idFormacion_string.compare(ELEM_TODO) == 0) 	? ELEM_TODO_NUM : StringUtils::convertStringToInt(idFormacion_string));
-	idFalla_string = *(it++);\
+	idFalla_string = *(it++);
 	this->setIdFalla((idFalla_string.compare(ELEM_TODO) == 0) 		? ELEM_TODO_NUM : StringUtils::convertStringToInt(idFalla_string));
 	idAccidente_string = *(it++);
 	this->setIdAccidente((idAccidente_string.compare(ELEM_TODO) == 0) 	? ELEM_TODO_NUM : StringUtils::convertStringToInt(idAccidente_string));
@@ -162,25 +181,12 @@ int Reporte::compareTo(Reporte* entidad, int dimension) {
 
 	switch(dimension){
 		case 1:
-			 mayor = this->getIdLinea() > entidad->getIdLinea();
-			 menor = this->getIdLinea() < entidad->getIdLinea();
-			 igual = this->getIdLinea() == entidad->getIdLinea();
-			 break;
 		case 2:
-			mayor = this->getIdFormacion() > entidad->getIdFormacion();
-			menor = this->getIdFormacion() < entidad->getIdFormacion();
-			igual = this->getIdFormacion() == entidad->getIdFormacion();
-			break;
 		case 3:
-			mayor = this->getIdFalla() > entidad->getIdFalla();
-			menor = this->getIdFalla() < entidad->getIdFalla();
-			igual = this->getIdFalla() == entidad->getIdFalla();
-
-			break;
 		case 4:
-		    mayor = this->getIdAccidente() > entidad->getIdAccidente();
-		    menor = this->getIdAccidente() < entidad->getIdAccidente();
-		    igual = this->getIdAccidente() == entidad->getIdAccidente();
+		    mayor = this->dimensions[dimension-1]->compareTo(entidad->getDimension(dimension)) == MAYOR;
+		    menor = this->dimensions[dimension-1]->compareTo(entidad->getDimension(dimension)) == MENOR;
+		    igual = this->dimensions[dimension-1]->compareTo(entidad->getDimension(dimension)) == IGUAL;
 
 		    break;
 		case 5:
@@ -205,6 +211,11 @@ int Reporte::compareTo(Reporte* entidad, int dimension) {
 	}
 
 	return resultadoComparacion;
+}
+
+
+Dimension* Reporte::getDimension(int dimension){
+	return this->dimensions[dimension-1];
 }
 
 ostream & operator<<(std::ostream & os, const Reporte & reporte){

@@ -37,14 +37,7 @@ Element::Element(IEntidad* copy) {
 }
 
 Element::~Element() {
-	if (data != NULL){
-		delete data;
-	}
-}
-
-void Element::setData(IEntidad* data) {
-	std::string buffer = data->serialize();
-	data->unserialize(buffer);
+	delete(data);
 }
 
 IEntidad* Element::getData() {
