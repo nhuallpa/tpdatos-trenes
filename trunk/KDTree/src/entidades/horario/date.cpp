@@ -266,9 +266,17 @@ void Date::unserialize(std::string& buffer)
 
 
 Date::Date(string cadena) {
-	this->setYear(StringUtils::convertStringToUint(cadena.substr(0, 4)));
-	this->setMonth(StringUtils::convertStringToUint(cadena.substr(4, 2)));
-	this->setDay(StringUtils::convertStringToUint(cadena.substr(6, 2)));
+	int anio = StringUtils::convertStringToUint(cadena.substr(0, 4));
+	int mes = StringUtils::convertStringToUint(cadena.substr(4, 2));
+	int dia = StringUtils::convertStringToUint(cadena.substr(6, 2));
+//	cout<<"anio: "<<anio<<endl;
+//	cout<<"mes: "<<mes<<endl;
+//	cout<<"dia: "<<dia<<endl;
+	this->setYear(anio);
+	this->setMonth(mes);
+	this->setDay(dia);
+	//todo: voy a ver porque no termina por aca
+//	cout<<"termina constructor Date(string)"<<endl;
 }
 
 DataSize Date::getDataSize()

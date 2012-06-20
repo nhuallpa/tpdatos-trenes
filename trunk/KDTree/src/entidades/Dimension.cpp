@@ -26,7 +26,7 @@ int Dimension::compareTo(IEntidad* entidad){
 	if (d->dimension == this->dimension){
 		if (d->value > this->value){
 			return MENOR;
-		} else if (d->value > this->value){
+		} else if (d->value < this->value){
 			return MAYOR;
 		} else {
 			return IGUAL;
