@@ -14,18 +14,9 @@
 
 class TestFranja {
 public:
-	TestFranja(){}
-	virtual ~TestFranja(){}
-	void iniciar(){
-		Franja* franjaHoraria = new FranjaHoraria("2012030113001300");
-		cout<<"paso_ariel_0"<<endl;
-		Franja* franjaFecha = new FranjaFecha("20120101", "20120301");
-		cout<<"paso_ariel_1"<<endl;
-		franjaHoraria->getDataSize();
-		franjaFecha->getDataSize();
-		cout<<"paso_ariel_2"<<endl;
-//		cout<<*franjaHoraria<<endl;
-	}
+	TestFranja();
+	virtual ~TestFranja();
+	void iniciar();
 };
 
 #endif /* TESTFRANJA_H_ */

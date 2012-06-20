@@ -20,7 +20,6 @@
 #include "utils/util_main.h"
 
 #include "controller/KDTreeController.h"
-#include "../Tests/testUnit/TestFranjaHoraria.h"
 #include "../Tests/testUnit/TestFranja.h"
 
 using std::cout;
@@ -184,10 +183,8 @@ int main(int argc, char** argv){
 	      	  	  	  	  }
 
 	          case 't' :  {/* -t 	� --test */
-							  TestFranjaHoraria* testFranjaHoraria = new TestFranjaHoraria();
-							  testFranjaHoraria->iniciar();
-	        	  	  	  	  TestFranja* testFranja = new TestFranja();
-	        	  	  	  	  testFranja->iniciar();
+	        	  	  	  	  TestFranja testFranja;
+	        	  	  	  	  testFranja.iniciar();
 							  break;
 	          	  	  	  }
 
