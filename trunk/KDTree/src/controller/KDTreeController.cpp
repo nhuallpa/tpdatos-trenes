@@ -101,14 +101,14 @@ std::vector<BNode*> KDTreeController::consultar(string registro)
 	Reporte* unReporte = (Reporte*)EntityFactory::createEntity();
 	bool esConRango = Util::tienenParametroConRango(registro);
 	if (esConRango){
-		cout<<"en construccion(ReporteRango)..."<<endl;
+		cout<<"KDTreeController::consultar --> En construccion(ReporteRango)..."<<endl;
 		unReporte = (Reporte*)EntityFactory::createEntity();
-//		unReporte.inicializar(registro);
-	}else{
-//		cout<<"paso ariel 2 "<<endl;
-		unReporte->inicializar(registro);
-//		cout<<*unReporte<<endl;
+		//TODO: aca tendria que inicializar el reporte de forma tal que se pueda consultar
+		//en el arbol...
 	}
+
+	unReporte->inicializar(registro);
+	cout<<"reporte: "<<*unReporte<<endl;
 
 	return ( this->BTree->find(unReporte) );
 }

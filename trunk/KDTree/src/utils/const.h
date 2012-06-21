@@ -36,15 +36,6 @@
 #define NOMBRE_FECHADESDE "fechaDesde"
 #define NOMBRE_FECHAHASTA "fechaHasta"
 
-
-//estados de las operaciones realizadas
-#define OPERACION_ALTA_OK 7
-#define OPERACION_BAJA_OK 8
-#define OPERACION_MODIFICACION_OK 9
-#define OPERACION_CONSULTA_OK  10
-#define OPERACION_CARGA_OK 11
-#define OPERACION_OK 12
-
 #define NEXT 0
 #define MAYOR 1
 #define MENOR 2
@@ -55,6 +46,11 @@
 #define ELEM_TODO_NUM -1
 #define ELEM_SEPARADOR ","
 
+#define DIA_DEFAULT 1
+#define MES_DEFAULT 1
+#define ANIO_DEFAULT 1970
+#define HORA_DEFAULT 0
+#define MINUTO_DEFAULT 0
 
 
 #endif /* CONST_H_ */

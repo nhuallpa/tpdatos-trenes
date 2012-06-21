@@ -129,9 +129,9 @@ int main(int argc, char** argv){
 	        	  	  	  		  }
 	        	  	  	  	  }
 							  resultado_consulta = kdTreeController.consultar(contenidoConsulta);
+							  cout<<"#Resultados Consulta:"<<endl;
 							  for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
 							  {
-								  cout<<"Resultados Consulta:"<<endl;
 								  (*it_query)->exportNode();
 							  }
 
@@ -151,7 +151,7 @@ int main(int argc, char** argv){
 										resultado_consulta = kdTreeController.consultar(registro_entrada);
 										for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
 										{
-										  cout<<"Resultados Consulta:"<<endl;
+										  cout<<"Resultados Consulta(files):"<<endl;
 										  (*it_query)->exportNode();
 										}
 									}
