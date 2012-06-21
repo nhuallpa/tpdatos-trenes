@@ -12,8 +12,8 @@ Hour::Hour(unsigned int h,unsigned  int m): hour(h) , min(m) {
   }
   catch(...)
   {
-    setHour(0,0);
-    std::cerr << "Error: Non-existent hour. Hour default to 0:0" << std::endl;  
+    setHour(HORA_DEFAULT,MINUTO_DEFAULT);
+    std::cerr << "Error: Non-existent hour. Hour default to "<<HORA_DEFAULT<<":"<<MINUTO_DEFAULT<< std::endl;
     throw HourNonexistent();  
   }
 }

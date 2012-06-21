@@ -4,6 +4,7 @@
 #include <fstream>
 #include "../../entidades/horario/exceptions/DateExceptions.h"
 #include "../../persistence/ISerializable.h"
+#include "../../utils/const.h"
 
 class Date : public ISerializable {
   unsigned int day;
@@ -11,7 +12,7 @@ class Date : public ISerializable {
   unsigned int year;
   public:
     Date( const Date & );
-    Date( unsigned int = 1 , unsigned int = 1 , unsigned int = 1970 );
+    Date( unsigned int = DIA_DEFAULT , unsigned int = MES_DEFAULT , unsigned int = ANIO_DEFAULT );
     Date(string date);
     void setDay( unsigned int );
     void setMonth( unsigned int );

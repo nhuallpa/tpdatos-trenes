@@ -21,8 +21,8 @@ Date::Date (unsigned int d , unsigned  int m , unsigned int y ) : day(1) , month
   }
   catch ( DateNonexistent & ) 
   {
-     this->day = 1; this->month = 1; this->year = 1970;
-     cerr << "Error: Non-existent Date. Date by default: 1/1/1970" << endl;
+     this->day = DIA_DEFAULT; this->month = MES_DEFAULT; this->year = ANIO_DEFAULT;
+     cerr << "Error: Non-existent Date. Date by default: "<<DIA_DEFAULT<<"/"<<MES_DEFAULT<<"/"<<ANIO_DEFAULT << endl;
   }
  }
 Date::Date (const Date &d) : day(d.day), month(d.month), year(d.year) {} 

@@ -40,8 +40,11 @@ function eliminar_arbolKDTree
 }
 ################################################################################
 eliminar_arbolKDTree
+#cargo un nuevo arbol para hacerle las consultas, y luego ver los resultados esperables
+#...
+################################################################################
 #Variables para probar las consultas:
-mostrarEstructuraReporte="si" #si o no
+mostrarEstructuraReporte="si" #si/no
 idLinea=1
 idFormacion=3
 idFalla=10

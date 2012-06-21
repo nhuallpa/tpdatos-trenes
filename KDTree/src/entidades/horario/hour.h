@@ -3,12 +3,13 @@
 #include <iostream>
 #include "../../entidades/horario/exceptions/HourExceptions.h"
 #include "../../persistence/ISerializable.h"
+#include "../../utils/const.h"
 
 class Hour : public ISerializable {
   unsigned int hour;
   unsigned int min;
   public:
-    Hour( unsigned int = 0 , unsigned  int = 0 );
+    Hour( unsigned int = HORA_DEFAULT , unsigned  int = MINUTO_DEFAULT );
     Hour( const Hour & );
     void setHour( unsigned int );
     void setMin( unsigned int );

@@ -38,8 +38,9 @@ int Dimension::compareTo(IEntidad* entidad){
 
 string Dimension::toString () const{
 	std::stringstream flujo;
-	flujo <<"("<< this->dimension << ", "
-		  << this->value <<");";
+	//para ver mejor los resultados. Recuerdo los valores de dimensiones
+//	flujo <<"("<< this->dimension << ", "<< this->value <<")";
+	flujo << this->value;
 	return flujo.str();
 }
 
