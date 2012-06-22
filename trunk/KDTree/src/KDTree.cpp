@@ -69,8 +69,8 @@ int main(int argc, char** argv){
 	/* El nombre del fichero que recibe la salida del programa */
 	const char* fichero_entrada = NULL ;
 	string registro_entrada("");
-	std::vector<BNode*> resultado_consulta;
-	std::vector<BNode*>::iterator it_query;
+	std::vector<IElement*> resultado_consulta;
+	std::vector<IElement*>::iterator it_query;
 	string contenidoConsulta("");
 	list<string> contenidoConsulta_parseada;
 
@@ -132,7 +132,7 @@ int main(int argc, char** argv){
 							  cout<<"#Resultados Consulta:"<<endl;
 							  for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
 							  {
-								  (*it_query)->exportNode();
+								  (*it_query)->toString();
 							  }
 
 							  break;
@@ -152,7 +152,7 @@ int main(int argc, char** argv){
 										for ( it_query = resultado_consulta.begin(); it_query != resultado_consulta.end();++it_query)
 										{
 										  cout<<"Resultados Consulta(files):"<<endl;
-										  (*it_query)->exportNode();
+										  (*it_query)->toString();
 										}
 									}
 								}
@@ -183,8 +183,8 @@ int main(int argc, char** argv){
 	      	  	  	  	  }
 
 	          case 't' :  {/* -t 	� --test */
-	        	  	  	  	  TestFranja testFranja;
-	        	  	  	  	  testFranja.iniciar();
+	        	  	  	  	  //TestFranja testFranja;
+	        	  	  	  	  //testFranja.iniciar();
 							  break;
 	          	  	  	  }
 

@@ -213,6 +213,11 @@ int Reporte::compareTo(Reporte* entidad, int dimension) {
 	return resultadoComparacion;
 }
 
+bool Reporte::match(IEntidad* entidad) {
+	// TODO: implementar para el filtrado
+	return true;
+}
+
 
 Dimension* Reporte::getDimension(int dimension){
 	return this->dimensions[dimension-1];

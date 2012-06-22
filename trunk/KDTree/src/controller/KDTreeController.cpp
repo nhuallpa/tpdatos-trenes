@@ -92,12 +92,18 @@ void KDTreeController::remover(string registro) {
 }
 void KDTreeController::modificar(string registro) {
 	cout<<"en proceso de construccion"<<endl;
-	//this->BTree->modify(entidad);
+	//Reporte rp(registro);
+	//this->BTree->modify(rp);
 }
 
-std::vector<BNode*> KDTreeController::consultar(string registro)
+
+
+/*
+ * @return devuelve una lista con todos los reportes encontrados
+ * */
+std::vector<IElement*> KDTreeController::consultar(string registro)
 {
-	cout<<"registro: "<<registro<<endl;
+	 //Realiza la consulta al arbol y luego aplica el filtro en todas las hojas encontradas
 	Reporte* unReporte = (Reporte*)EntityFactory::createEntity();
 	bool esConRango = Util::tienenParametroConRango(registro);
 	if (esConRango){
@@ -108,9 +114,19 @@ std::vector<BNode*> KDTreeController::consultar(string registro)
 	}
 
 	unReporte->inicializar(registro);
-	cout<<"reporte: "<<*unReporte<<endl;
-
-	return ( this->BTree->find(unReporte) );
+	std::vector<BNode*> hojasEncontradas = this->BTree->find(unReporte);
+	std::vector<BNode*>::iterator itNodos;
+	std::vector<IElement*> reportesFiltrados;
+	for (itNodos=hojasEncontradas.begin();itNodos!=hojasEncontradas.end();itNodos++) {
+		LeafNode* hoja = ((LeafNode*)*itNodos); //Supongo que son hojas TODO: miralo nestor!
+		std::vector<IElement*>::iterator itElem;
+		for (itElem = hoja->getElementsBegin(); itElem!=hoja->getElementsEnds(); itElem++) {
+			if (unReporte->match((*itElem)->getData())) {
+				reportesFiltrados.push_back(*itElem);
+			}
+		}
+	}
+	return reportesFiltrados;
 }
 
 void KDTreeController::mostrarEstado(){
