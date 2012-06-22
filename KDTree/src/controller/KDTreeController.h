@@ -56,7 +56,7 @@ public:
 	void insertar(string registro);
 	void remover(string registro);
 	void modificar(string registro);
-	std::vector<BNode*> consultar(string contenidoConsulta);
+	std::vector<IElement*> consultar(string contenidoConsulta);
 
 	void mostrarEstado();
 

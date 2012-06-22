@@ -57,6 +57,14 @@ public:
    */
 	int compareTo(Reporte* entidad, int dimension);
 
+	/**
+	 * @author nestor
+	 * @return devuelve true, si coinciden cada dimension valida una de la otra.
+	 *
+	 * Ejemplo: (1,2,0,1,0) con (1,2,4,1,8), hay match
+	 * */
+	bool match(IEntidad* entidad);
+
 	string toString () const;
 	
 	string serialize();
