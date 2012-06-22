@@ -409,13 +409,11 @@ void Node::findElements(IEntidad* key, std::vector<BNode*> &founds) {
 	std::vector<BNode*>::iterator it;
 	for (it = returnNodes.begin(); it != returnNodes.end(); it++) {
 		if ((*it)->getLevel() > 0){
-			((Node*)(*it))->findElements(key, founds);
+			Node* node = (Node*)*it;
+			node->findElements(key, founds);
+			delete node;
 		} else {
-			IEntidad* entidad = ((LeafNode*)(*it))->getFirstKey();
-			cout << "---------------------------" << entidad->toString() << endl;
-			if (key->compareTo(entidad) != MENOR){
-				founds.push_back(*it);
-			}
+			founds.push_back(*it);
 		}
 	}
 	delete el;
